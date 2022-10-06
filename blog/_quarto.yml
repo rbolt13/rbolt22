@@ -2,12 +2,14 @@ project:
   type: website
 
 website:
-  title: "Quarto Blog Test"
+  title: "Randi Bolt"
   navbar:
     right:
       - about.qmd
       - icon: github
-        href: https://github.com/
+        href: https://github.com/rbolt13
+      - icon: linkedin
+        href: https://www.linkedin.com/in/randi-bolt/
       - icon: instagram
         href: https://twitter.com
 format:
