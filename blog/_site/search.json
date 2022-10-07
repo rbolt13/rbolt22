@@ -18,7 +18,7 @@
     "href": "index.html",
     "title": "Randi Bolt",
     "section": "",
-    "text": "personal\n\n\n\n\n\n\n\n\n\n\n\nOct 6, 2022\n\n\nRandi Bolt\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nOct 5, 2022\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nOct 2, 2022\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+    "text": "This is about me."
   },
   {
     "objectID": "about.html",
@@ -33,5 +33,54 @@
     "title": "Life Update",
     "section": "",
     "text": "Here is a post."
+  },
+  {
+    "objectID": "journal.html",
+    "href": "journal.html",
+    "title": "Journal",
+    "section": "",
+    "text": "2022 10 October\n\n\n\n\n\n\n\n\n\n\n\nOct 6, 2022\n\n\nRandi Bolt\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\n2022 00 Introduction\n\n\n\n\n\n\n\n\n\n\n\nOct 5, 2022\n\n\nRandi Bolt\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "journal/life-update/index.html",
+    "href": "journal/life-update/index.html",
+    "title": "Life Update",
+    "section": "",
+    "text": "Hello hello! Welcome to the first post of my ✨new blog✨ . I’ve started this Journal to help develop my written skills and hopefully boost my confidence when communicating complicated subject matter.\nFor this first post I’ve decided to give a life update on some of the big events of the last six months."
+  },
+  {
+    "objectID": "journal/2022-10-06/index.html",
+    "href": "journal/2022-10-06/index.html",
+    "title": "October 6th, 2022",
+    "section": "",
+    "text": "Tim and Sam from the telivision show Detroiters making suprised faces.\n\n\nI also worked on this blog and finished the Math and Statistics lesson from a Linkedin Learn class on Python for Data Science. Tomorrow I’m planning to make more blog posts, maybe build out another portion of this blog, and maybe do another lesson (or at least another video) from that Linkedin Learn series.\nUnfortunately a lot of my day was spent working, which can be frustrating. My coworker wants me to take over certain duties for this product, but is clearly having issues letting go. What I’ve learned today is that I need to always be thinking about how I can take all the “work” I do and minimize it down into one sentence."
+  },
+  {
+    "objectID": "journal/life-update/index.html#april-2022",
+    "href": "journal/life-update/index.html#april-2022",
+    "title": "Life Update",
+    "section": "April 2022",
+    "text": "April 2022\nMy partner and I bought a house 💗"
+  },
+  {
+    "objectID": "journal/life-update/index.html#june-2022",
+    "href": "journal/life-update/index.html#june-2022",
+    "title": "Life Update",
+    "section": "June 2022",
+    "text": "June 2022\nI graduated magna cum laude from Portland State University with my Bachelors of Science in Mathematics.\nI also started my job as a Product Owner (software analyst expert?), thanks to a referral by my friend Amy."
+  },
+  {
+    "objectID": "journal/life-update/index.html#august-2022",
+    "href": "journal/life-update/index.html#august-2022",
+    "title": "Life Update",
+    "section": "August 2022",
+    "text": "August 2022\nMy sister got married.\n\n\n\nPhoto of my family from my sister’s wedding."
+  },
+  {
+    "objectID": "journal/life-update/index.html#october-2022",
+    "href": "journal/life-update/index.html#october-2022",
+    "title": "Life Update",
+    "section": "October 2022",
+    "text": "October 2022\nI created this blog, and my partner set up plex."
   }
 ]

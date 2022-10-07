@@ -1,12 +1,18 @@
 ---
 title: "Randi Bolt"
-listing:
-  contents: posts
-  sort: "date desc"
-  type: default
-  categories: true
-  sort-ui: false
-  filter-ui: false
-page-layout: full
-title-block-banner: true
+image: img/IMG_7168.JPG
+about:
+  template: jolla
+  links:
+    - icon: github
+      text: Github
+      href: https://github.com/rbolt13/
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/randi-bolt/
+    - icon: instagram
+      text: Instagram
+      href: https://www.instagram.com/rbolt13/
 ---
+
+This is about me.

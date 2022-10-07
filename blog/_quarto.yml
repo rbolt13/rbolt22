@@ -5,13 +5,13 @@ website:
   title: "Randi Bolt"
   navbar:
     right:
-      - about.qmd
+      - journal.qmd
       - icon: github
         href: https://github.com/rbolt13
       - icon: linkedin
         href: https://www.linkedin.com/in/randi-bolt/
       - icon: instagram
-        href: https://twitter.com
+        href: https://www.instagram.com/rbolt13/
 format:
   html:
     theme: minty

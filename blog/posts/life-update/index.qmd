@@ -1,9 +1,0 @@
----
-title: "Life Update"
-author: "Randi Bolt"
-date: "2022-10-06"
-categories: [personal]
----
-
-Here is a post.
-

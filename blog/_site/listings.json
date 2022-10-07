@@ -2,9 +2,15 @@
   {
     "listing": "/index.html",
     "items": [
-      "/posts/life-update/index.html",
       "/posts/post-with-code/index.html",
       "/posts/welcome/index.html"
+    ]
+  },
+  {
+    "listing": "/journal.html",
+    "items": [
+      "/journal/2022-10-06/index.html",
+      "/journal/life-update/index.html"
     ]
   }
 ]
