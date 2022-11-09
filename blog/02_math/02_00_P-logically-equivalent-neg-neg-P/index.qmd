@@ -1,0 +1,40 @@
+---
+title: "Prove P is Logically Equivalent to the Negation of the Negation of P"
+author: "Randi Bolt"
+date: "2022-10-17"
+categories: [Proof]
+toc: true
+---
+
+Let P be a statement form. Prove that $P \equiv\neg (\neg P)$. 
+
+![](../../00_img/to-be-or-not-not-to-be.jpg)
+
+# `Solution 1`
+
+Consider the truth table for P, $\neg P$, and $\neg (\neg P)$, as shown below in **Figure 1**: 
+
+```{r, echo=FALSE, warning=F, include=TRUE, results="asis"}
+library(knitr)
+library(gt)
+
+df <- data.frame(p = c("T", "F"),
+                 neg_p = c("F", "T"),
+                 neg_neg_p = c("T", "F"))
+
+colnames(df) <- c("P", "$\\neg P$", "$\\neg (\\neg P)$")
+
+kable(df, escape=FALSE, caption = md("**Figure 1**: Truth Table"))
+```
+
+Since the truth values for P and $\neg (\neg P)$ are the same then P and $\neg (\neg P)$ are logically equivalent. 
+
+# `Solution 2`
+
+Suppose by way of contradiction (BWOC) that P and $\neg (\neg P)$ are not logically equivalent.
+
+Let P be true and then $\neg (\neg P)$ would be false. 
+
+If P is true then $\neg P$ would be false, but $\neg P$ and $\neg (\neg P)$ cannot both be false. Therefore BWOC $\neg (\neg P)\equiv P$. 
+
+$\square$

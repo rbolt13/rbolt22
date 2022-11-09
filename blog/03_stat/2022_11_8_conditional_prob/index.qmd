@@ -1,0 +1,9 @@
+---
+title: "Conditional Probability of Winning an NBA Game"
+author: "Randi Bolt"
+date: "2022-11-8"
+toc: true
+draft: true
+---
+
+In this tutorial I will be finding the conditional probability that if a team is winning or losing at a given quarter, what is the probability they will win the game?

@@ -9,6 +9,7 @@
   {
     "listing": "/journal.html",
     "items": [
+      "/misc/2022-10-14/index.html",
       "/misc/2022-10-10/index.html",
       "/misc/2022-10-08/index.html",
       "/misc/2022-10-07/index.html",
@@ -18,5 +19,51 @@
       "/misc/2022-06-12/index.html",
       "/misc/2022-04-21/index.html"
     ]
+  },
+  {
+    "listing": "/datsci.html",
+    "items": []
+  },
+  {
+    "listing": "/03_misc.html",
+    "items": [
+      "/03_misc/2022-10-14/index.html",
+      "/03_misc/2022-10-10/index.html",
+      "/03_misc/2022-10-08/index.html",
+      "/03_misc/2022-10-07/index.html",
+      "/03_misc/2022-10-06/index.html",
+      "/03_misc/2022-08-13/index.html",
+      "/03_misc/2022-06-21/index.html",
+      "/03_misc/2022-06-12/index.html",
+      "/03_misc/2022-04-21/index.html"
+    ]
+  },
+  {
+    "listing": "/01_datsci.html",
+    "items": [
+      "/01_datsci/2022_10_19_NBA-functions/index.html"
+    ]
+  },
+  {
+    "listing": "/02_math.html",
+    "items": [
+      "/02_math/02_00_P-logically-equivalent-neg-neg-P/index.html"
+    ]
+  },
+  {
+    "listing": "/04_proj.html",
+    "items": []
+  },
+  {
+    "listing": "/05_stat.html",
+    "items": []
+  },
+  {
+    "listing": "/03_stat.html",
+    "items": []
+  },
+  {
+    "listing": "/04_misc.html",
+    "items": []
   }
 ]

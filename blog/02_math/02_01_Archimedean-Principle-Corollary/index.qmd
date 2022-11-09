@@ -1,0 +1,13 @@
+---
+title: "Prove Corollary of Archimedian Principle"
+author: "Randi Bolt"
+date: "2022-10-216"
+categories: [proofs]
+draft: true
+---
+
+Prove the following corollary of Archimedean Principle.
+
+For every positive real number $\epsilon$, there exists a positive integer N such that 1/n \< $\epsilon$ for all $n\geq N$. (Note: this exercise is the basis for the formal proof that the sequence \${\$1, $\frac{1}{2}$, $\frac{1}{3}$, $\frac{1}{4}$,...$\}$ converges to 0.)
+
+

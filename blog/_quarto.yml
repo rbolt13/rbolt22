@@ -5,7 +5,9 @@ website:
   title: "Randi Bolt"
   navbar:
     right:
-      - journal.qmd
+      - 01_datsci.qmd
+      - 02_math.qmd
+      - 03_stat.qmd
       - icon: github
         href: https://github.com/rbolt13
       - icon: linkedin
@@ -14,7 +16,8 @@ website:
         href: https://www.instagram.com/rbolt13/
 format:
   html:
-    theme: minty
+    theme: journal
+    backgroundcolor: pink
     css: styles.css
 
 editor: visual
