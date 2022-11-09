@@ -22,3 +22,6 @@ format:
 
 editor: visual
 
+comments: 
+  giscus:
+    repo: rbolt13/rbolt22
