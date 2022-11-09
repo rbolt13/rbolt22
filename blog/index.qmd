@@ -19,5 +19,3 @@ about:
 Hello, and welcome to my new and improved blog made with [Quarto](https://quarto.org/), [Github](https://github.com/), and [Netlify](https://www.netlify.com/). 
 
 This blog is currently under construction so be sure to check out the links below and my [old blog](https://rbolt2.netlify.app/) which showcases all of my academic and personal projects from undergrad. 
-
-Thanks for stopping by!
