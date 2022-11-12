@@ -5,9 +5,7 @@ website:
   title: "Randi Bolt"
   navbar:
     right:
-      - 01_datsci.qmd
-      - 02_math.qmd
-      - 03_stat.qmd
+      - 01_blog.qmd
       - icon: github
         href: https://github.com/rbolt13
       - icon: linkedin

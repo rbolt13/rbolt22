@@ -1,0 +1,14 @@
+{
+  "hash": "55b0c6a0d577b27d1b3b6bd3c599a315",
+  "result": {
+    "markdown": "---\ntitle: \"Prove P is Logically Equivalent to the Negation of the Negation of P\"\nauthor: \"Randi Bolt\"\ndate: \"2022-10-17\"\ncategories: [Proof]\ntoc: true\n---\n\n\nLet P be a statement form. Prove that $P \\equiv\\neg (\\neg P)$. \n\n![](../../00_img/to-be-or-not-not-to-be.jpg)\n\n# `Solution 1`\n\nConsider the truth table for P, $\\neg P$, and $\\neg (\\neg P)$, as shown below in **Figure 1**: \n\n\n::: {.cell-output-display}\nTable: **Figure 1**: Truth Table\n\n|P  |$\\neg P$ |$\\neg (\\neg P)$ |\n|:--|:--------|:---------------|\n|T  |F        |T               |\n|F  |T        |F               |\n:::\n\n\nSince the truth values for P and $\\neg (\\neg P)$ are the same then P and $\\neg (\\neg P)$ are logically equivalent. \n\n# `Solution 2`\n\nSuppose by way of contradiction (BWOC) that P and $\\neg (\\neg P)$ are not logically equivalent.\n\nLet P be true and then $\\neg (\\neg P)$ would be false. \n\nIf P is true then $\\neg P$ would be false, but $\\neg P$ and $\\neg (\\neg P)$ cannot both be false. Therefore BWOC $\\neg (\\neg P)\\equiv P$. \n\n$\\square$\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
