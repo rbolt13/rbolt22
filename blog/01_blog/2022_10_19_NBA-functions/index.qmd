@@ -2,7 +2,7 @@
 title: "Creating Functions in R to Scrape NBA Data"
 author: "Randi Bolt"
 date: "2022-10-19"
-categories: [NBA, Web-Scraping]
+categories: [NBA, Web-Scraping, R]
 toc: true
 ---
 

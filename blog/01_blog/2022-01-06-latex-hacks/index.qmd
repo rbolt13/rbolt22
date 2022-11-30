@@ -1,0 +1,165 @@
+---
+title: "Latex"
+author: "Randi Bolt"
+date: "2022-01-06"
+categories: [Undergrad]
+toc: true
+---
+
+Here is some short and simple latex.
+
+![](../../00_img/LaTeX_logo.svg.png)
+
+# `Basic Symbols` : 
+
+- $\sim$ : `\sim`
+
+- $\circ$ : `\circ`
+
+- $\square$ : `\square`
+
+- $\equiv$ : `\equiv`
+
+- $\cong$ : `\cong`
+
+- $\unlhd$ : `\unlhd`
+
+- $\div$ : `\div`
+
+- $\nless$ : `\nless`
+
+- $\ngtr$ : `ngtr`
+
+- $\emptyset$ : `\emptyset`
+
+- $\subseteq$ : `\subseteq`
+
+- $a\choose b$ : `a\choose b`
+
+- $\underset{i\in I}U$ : `\underset{i\in I}U`
+
+- $\Leftrightarrow$ : `\Leftrightarrow`
+
+- $\langle\rangle$ : `\langle\rangle`
+
+- $\overrightarrow{\rm AB}$ : `\overrightarrow{\rm AB}`
+
+- $\underline{\text{Underline Text}}$ : `\underline{\text{Underline Text}}`
+
+- $\mathbb{R}$ : `\mathbb{R}` 
+
+  - bb : blackboard bold 
+  
+- $\mathcal{F}$ : `\mathcal{F}`
+
+- $\mathscr{F}$ : `\mathscr{F}`
+
+# `Greek` : 
+
+- $\tau$ : `\tau`
+
+- $\rho$ : `\rho`
+
+- $\alpha$ : `\alpha`
+
+- $\beta$ : `\beta`
+
+- $\Gamma$ : `\Gamma`
+
+- $\epsilon$ : `\epsilon`
+
+- $\mathcal{E}$ : `\mathcal{E}`
+
+- $\varepsilon$ : `\varepsilon`
+
+- $\varphi$ : `\varphi`
+
+# `Inline` : 
+
+**Limits above and below sums and integrals** 
+
+- $\sum\limits_{n}^{i}\int_0^1$ : `\limits`
+
+**Matrices and Matrix Equations** 
+
+- $\begin{smallmatrix} 1 & 0 \\ 0 & 1\end{smallmatrix}$ : `\begin{smallmatrix} 1 & 0 \\ 0 & 1\end{smallmatrix}`
+
+  - $I=[\begin{smallmatrix} 1 & 0 \\ 0 & 1\end{smallmatrix}]$
+  
+  - $(\begin{smallmatrix} 1 & 1 \\ 1 & 0\end{smallmatrix})(\begin{smallmatrix} 1 & 1 \\ 0 & 1\end{smallmatrix})\ne(\begin{smallmatrix} 1 & 1 \\ 0 & 1\end{smallmatrix})(\begin{smallmatrix} 1 & 1 \\ 1 & 0\end{smallmatrix})$
+
+# `Multiple Lines` : 
+
+**Function** 
+
+- $F(x)=\begin{cases}1 & x\geq 0\\0 & \text{otherwise}\end{cases}$ : `F(x)=\begin{cases} . . . \end{cases}`
+
+  - `1 & x \geq 0 \\`
+  
+  - `0 & \text{otherwise}`
+  
+**Matrix**
+  
+  - $F(x)=\begin{bmatrix}1\\2\\3\\4\\5\\6\\\end{bmatrix}$ : `F(x)=\begin{bmatrix}1\\2\\3\\4\\5\\6\\\end{bmatrix}`
+  
+**Series of Equalities** 
+
+- $\begin{equation}\label{a}\begin{split}x &= a+b+c\\&=1+2+3\\&=6\end{split}\end{equation}$ : `\begin{equation}\{label}\begin{split}... \end{split}\end{equation}'
+
+  - `x &= a+b+c \\`
+
+  - `&= 1+2+3`
+  
+  - `&= 6` 
+  
+Note: still haven't figured out how to get multiple lines of equations to work in blogposts. 
+  
+# `Potential Errors` : 
+
+**Spelling**
+
+- Ex: `\overlien{AB}` should be `\overline{AB}`
+
+  - label , table 
+  
+**More than two backslashes**
+
+- Ex: Equation will work but `\end{equation}` will show at the end. One of the lines has more than two backslashes at the end of at least one of the lines. 
+
+**Space before final $**
+
+- Ex: `$\angle ABC $` should be `$\angle ABC$`
+
+**More $ on one side of equation than the other**
+
+- Ex: `$A^2+B^2=C^2$$` should be `$A^2+B^2=C^2$`
+
+**Closing `{}`**
+
+- Ex: `$\int\limits_{1}^{2$` should be `$\int\limits_{1}^{2}$`
+
+**Underset on the wrong side**
+
+- Ex: `U\underset{i\in I}` should be `\underset{i\in I}U`
+
+# Advice :
+
+**Detextify**
+
+- If you don't know what a symbol is, draw it in Detextify [here](http://detexify.kirelabs.org/classify.html). 
+
+**Google Docs Equations Boxes**
+
+- Most latex backslashes work in google doc's equation boxes. If I have to do a "quick" homework, and dont want to spend a lot of time formatting a pdf in R, I will use google docs and latex in the equations boxes.  
+
+Note: This is how I began learning latex.
+
+**Why learn Latex?**
+
+When you type with latex instead of writting by hand: 
+
+- Generally speaking it looks nicer, especially on reports, projects, and presentations. 
+
+- Can spread any tension that is normally located in your dominate hand into both. 
+
+- It saves time in the long run updating a document on your computer than re-writing an entire problem by hand. 
