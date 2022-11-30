@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Randi Bolt">
-<meta name="dcterms.date" content="2021-08-26">
+<meta name="dcterms.date" content="2022-10-17">
 
-<title>Randi Bolt - Enable Emojis in Quarto</title>
+<title>Randi Bolt - Prove P is Logically Equivalent to the Negation of the Negation of P</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -110,9 +110,10 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Enable Emojis in Quarto</h1>
+      <h1 class="title">Prove P is Logically Equivalent to the Negation of the Negation of P</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">Quarto</div>
+                <div class="quarto-category">Proof</div>
+                <div class="quarto-category">Math</div>
               </div>
                   </div>
   </div>
@@ -130,7 +131,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">August 26, 2021</p>
+        <p class="date">October 17, 2022</p>
       </div>
     </div>
       
@@ -145,8 +146,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#visual-editor" id="toc-visual-editor" class="nav-link active" data-scroll-target="#visual-editor"><code>1. Visual Editor</code></a></li>
-  <li><a href="#include-from-markdownemoji-in-header" id="toc-include-from-markdownemoji-in-header" class="nav-link" data-scroll-target="#include-from-markdownemoji-in-header"><code>2. Include 'from: markdown+emoji' in Header</code></a></li>
+  <li><a href="#solution-1" id="toc-solution-1" class="nav-link active" data-scroll-target="#solution-1"><code>Solution 1</code></a></li>
+  <li><a href="#solution-2" id="toc-solution-2" class="nav-link" data-scroll-target="#solution-2"><code>Solution 2</code></a></li>
   </ul>
 </nav>
     </div>
@@ -156,30 +157,48 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p>This post explains two ways to insert emojis into a quarto blog using R Studio.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
-<p><img src="../../00_img/emoji.webp" class="img-fluid"></p>
-<section id="visual-editor" class="level1">
-<h1><code>1. Visual Editor</code></h1>
-<p>One way to add emojis to a quarto blog posts is from the ‘Visual’ editor in R Studio, select the Insert tab <span class="math inline">\(\rightarrow\)</span> ‘Special Characters’ <span class="math inline">\(\rightarrow\)</span> ‘Insert Emoji …’ and then selecting you desired emoji from a large list.</p>
+<p>Let P be a statement form. Prove that <span class="math inline">\(P \equiv\neg (\neg P)\)</span>.</p>
+<p><img src="../../00_img/to-be-or-not-not-to-be.jpg" class="img-fluid"></p>
+<section id="solution-1" class="level1">
+<h1><code>Solution 1</code></h1>
+<p>Consider the truth table for P, <span class="math inline">\(\neg P\)</span>, and <span class="math inline">\(\neg (\neg P)\)</span>, as shown below in <strong>Figure 1</strong>:</p>
+<div class="cell-output-display">
+<table class="table">
+<caption><strong>Figure 1</strong>: Truth Table</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">P</th>
+<th style="text-align: left;"><span class="math inline">\(\neg P\)</span></th>
+<th style="text-align: left;"><span class="math inline">\(\neg (\neg P)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">T</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: left;">T</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">F</td>
+<td style="text-align: left;">T</td>
+<td style="text-align: left;">F</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Since the truth values for P and <span class="math inline">\(\neg (\neg P)\)</span> are the same then P and <span class="math inline">\(\neg (\neg P)\)</span> are logically equivalent.</p>
 </section>
-<section id="include-from-markdownemoji-in-header" class="level1">
-<h1><code>2. Include 'from: markdown+emoji' in Header</code></h1>
-<p>The second way to add emoji’s into a quarto blog is to include ‘from: markdown+emoji’ in the .qmd header, and then type the name of the emoji you want to include encased in colons as shown below:</p>
-<p><code>:grinning:</code> <span class="math inline">\(\rightarrow\)</span> <span class="emoji" data-emoji="grinning">😀</span></p>
-<p><code>:smile:</code> <span class="math inline">\(\rightarrow\)</span> <span class="emoji" data-emoji="smile">😄</span></p>
-<p><code>:heart:</code> <span class="math inline">\(\rightarrow\)</span> <span class="emoji" data-emoji="heart">❤️</span></p>
-<p><code>:thumbsup:</code> <span class="math inline">\(\rightarrow\)</span> <span class="emoji" data-emoji="thumbsup">👍</span></p>
+<section id="solution-2" class="level1">
+<h1><code>Solution 2</code></h1>
+<p>Suppose by way of contradiction (BWOC) that P and <span class="math inline">\(\neg (\neg P)\)</span> are not logically equivalent.</p>
+<p>Let P be true and then <span class="math inline">\(\neg (\neg P)\)</span> would be false.</p>
+<p>If P is true then <span class="math inline">\(\neg P\)</span> would be false, but <span class="math inline">\(\neg P\)</span> and <span class="math inline">\(\neg (\neg P)\)</span> cannot both be false. Therefore BWOC <span class="math inline">\(\neg (\neg P)\equiv P\)</span>.</p>
+<p><span class="math inline">\(\square\)</span></p>
 
 
 </section>
 
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>From <a href="https://quarto.org/docs/visual-editor/content.html#:~:text=within%20LaTeX%20output.-,Emojis,%3E%20Special%20Characters%20%2D%3E%20Emoji%E2%80%A6&amp;text=For%20markdown%20formats%20that%20support,text%20version%20will%20be%20written.">Quarto Documentation - Content Editing</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

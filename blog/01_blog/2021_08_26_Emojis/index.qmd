@@ -2,7 +2,7 @@
 title: "Enable Emojis in Quarto"
 author: "Randi Bolt"
 date: "2021-08-26"
-categories: [Undergrad]
+categories: [Quarto]
 toc: true
 from: markdown+emoji
 ---

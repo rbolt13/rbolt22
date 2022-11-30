@@ -508,7 +508,7 @@
     "href": "01_blog.html",
     "title": "Blog",
     "section": "",
-    "text": "NBA\n\n\nWeb-Scraping\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\nOct 19, 2022\n\n\nRandi Bolt\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nProof\n\n\n\n\n\n\n\n\n\n\n\nOct 17, 2022\n\n\nRandi Bolt\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nUndergrad\n\n\n\n\n\n\n\n\n\n\n\nJan 6, 2022\n\n\nRandi Bolt\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nUndergrad\n\n\n\n\n\n\n\n\n\n\n\nAug 26, 2021\n\n\nRandi Bolt\n\n\n\n\n\n\nNo matching items"
+    "text": "NBA\n\n\nWeb-Scraping\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\nOct 19, 2022\n\n\nRandi Bolt\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nMath\n\n\nProof\n\n\n\n\n\n\n\n\n\n\n\nOct 17, 2022\n\n\nRandi Bolt\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nMath\n\n\n\n\n\n\n\n\n\n\n\nJan 6, 2022\n\n\nRandi Bolt\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nAug 26, 2021\n\n\nRandi Bolt\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "01_blog/2022_10_19_NBA-functions/index.html",
@@ -579,5 +579,12 @@
     "title": "Enable Emojis in Quarto",
     "section": "",
     "text": "1. Visual Editor\nOne way to add emojis to a quarto blog posts is from the ‘Visual’ editor in R Studio, select the Insert tab \\(\\rightarrow\\) ‘Special Characters’ \\(\\rightarrow\\) ‘Insert Emoji …’ and then selecting you desired emoji from a large list.\n\n\n2. Include 'from: markdown+emoji' in Header\nThe second way to add emoji’s into a quarto blog is to include ‘from: markdown+emoji’ in the .qmd header, and then type the name of the emoji you want to include encased in colons as shown below:\n:grinning: \\(\\rightarrow\\) 😀\n:smile: \\(\\rightarrow\\) 😄\n:heart: \\(\\rightarrow\\) ❤️\n:thumbsup: \\(\\rightarrow\\) 👍\n\n\n\n\n\nFootnotes\n\n\nFrom Quarto Documentation - Content Editing↩︎"
+  },
+  {
+    "objectID": "01_blog/2022_10_17_P-logically-equivalent-neg-neg-P/index.html",
+    "href": "01_blog/2022_10_17_P-logically-equivalent-neg-neg-P/index.html",
+    "title": "Prove P is Logically Equivalent to the Negation of the Negation of P",
+    "section": "",
+    "text": "Solution 1\nConsider the truth table for P, \\(\\neg P\\), and \\(\\neg (\\neg P)\\), as shown below in Figure 1:\n\n\nFigure 1: Truth Table\n\n\nP\n\\(\\neg P\\)\n\\(\\neg (\\neg P)\\)\n\n\n\n\nT\nF\nT\n\n\nF\nT\nF\n\n\n\n\nSince the truth values for P and \\(\\neg (\\neg P)\\) are the same then P and \\(\\neg (\\neg P)\\) are logically equivalent.\n\n\nSolution 2\nSuppose by way of contradiction (BWOC) that P and \\(\\neg (\\neg P)\\) are not logically equivalent.\nLet P be true and then \\(\\neg (\\neg P)\\) would be false.\nIf P is true then \\(\\neg P\\) would be false, but \\(\\neg P\\) and \\(\\neg (\\neg P)\\) cannot both be false. Therefore BWOC \\(\\neg (\\neg P)\\equiv P\\).\n\\(\\square\\)"
   }
 ]
