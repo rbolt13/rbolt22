@@ -4,6 +4,7 @@ author: "Randi Bolt"
 date: "2022-11-15"
 categories: [Python]
 toc: true
+draft: true
 ---
 
 In this post I will be showcasing some basic python skills for data scientist. 
