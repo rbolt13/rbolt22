@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Randi Bolt">
-<meta name="dcterms.date" content="2022-01-06">
+<meta name="dcterms.date" content="2021-08-26">
 
-<title>Randi Bolt - Latex</title>
+<title>Randi Bolt - Enable Emojis in Quarto</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -110,7 +110,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Latex</h1>
+      <h1 class="title">Enable Emojis in Quarto</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">Undergrad</div>
               </div>
@@ -130,7 +130,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">January 6, 2022</p>
+        <p class="date">August 26, 2021</p>
       </div>
     </div>
       
@@ -145,12 +145,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#basic-symbols" id="toc-basic-symbols" class="nav-link active" data-scroll-target="#basic-symbols"><code>Basic Symbols</code> :</a></li>
-  <li><a href="#greek" id="toc-greek" class="nav-link" data-scroll-target="#greek"><code>Greek</code> :</a></li>
-  <li><a href="#inline" id="toc-inline" class="nav-link" data-scroll-target="#inline"><code>Inline</code> :</a></li>
-  <li><a href="#multiple-lines" id="toc-multiple-lines" class="nav-link" data-scroll-target="#multiple-lines"><code>Multiple Lines</code> :</a></li>
-  <li><a href="#potential-errors" id="toc-potential-errors" class="nav-link" data-scroll-target="#potential-errors"><code>Potential Errors</code> :</a></li>
-  <li><a href="#advice" id="toc-advice" class="nav-link" data-scroll-target="#advice">Advice :</a></li>
+  <li><a href="#visual-editor" id="toc-visual-editor" class="nav-link active" data-scroll-target="#visual-editor"><code>1. Visual Editor</code></a></li>
+  <li><a href="#include-from-markdownemoji-in-header" id="toc-include-from-markdownemoji-in-header" class="nav-link" data-scroll-target="#include-from-markdownemoji-in-header"><code>2. Include 'from: markdown+emoji' in Header</code></a></li>
   </ul>
 </nav>
     </div>
@@ -160,143 +156,30 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p>Here is some short and simple latex.</p>
-<p><img src="../../00_img/LaTeX_logo.svg.png" class="img-fluid"></p>
-<section id="basic-symbols" class="level1">
-<h1><code>Basic Symbols</code> :</h1>
-<ul>
-<li><p><span class="math inline">\(\sim\)</span> : <code>\sim</code></p></li>
-<li><p><span class="math inline">\(\circ\)</span> : <code>\circ</code></p></li>
-<li><p><span class="math inline">\(\square\)</span> : <code>\square</code></p></li>
-<li><p><span class="math inline">\(\equiv\)</span> : <code>\equiv</code></p></li>
-<li><p><span class="math inline">\(\cong\)</span> : <code>\cong</code></p></li>
-<li><p><span class="math inline">\(\unlhd\)</span> : <code>\unlhd</code></p></li>
-<li><p><span class="math inline">\(\div\)</span> : <code>\div</code></p></li>
-<li><p><span class="math inline">\(\nless\)</span> : <code>\nless</code></p></li>
-<li><p><span class="math inline">\(\ngtr\)</span> : <code>ngtr</code></p></li>
-<li><p><span class="math inline">\(\emptyset\)</span> : <code>\emptyset</code></p></li>
-<li><p><span class="math inline">\(\subseteq\)</span> : <code>\subseteq</code></p></li>
-<li><p><span class="math inline">\(a\choose b\)</span> : <code>a\choose b</code></p></li>
-<li><p><span class="math inline">\(\underset{i\in I}U\)</span> : <code>\underset{i\in I}U</code></p></li>
-<li><p><span class="math inline">\(\Leftrightarrow\)</span> : <code>\Leftrightarrow</code></p></li>
-<li><p><span class="math inline">\(\langle\rangle\)</span> : <code>\langle\rangle</code></p></li>
-<li><p><span class="math inline">\(\overrightarrow{\rm AB}\)</span> : <code>\overrightarrow{\rm AB}</code></p></li>
-<li><p><span class="math inline">\(\underline{\text{Underline Text}}\)</span> : <code>\underline{\text{Underline Text}}</code></p></li>
-<li><p><span class="math inline">\(\mathbb{R}\)</span> : <code>\mathbb{R}</code></p>
-<ul>
-<li>bb : blackboard bold</li>
-</ul></li>
-<li><p><span class="math inline">\(\mathcal{F}\)</span> : <code>\mathcal{F}</code></p></li>
-<li><p><span class="math inline">\(\mathscr{F}\)</span> : <code>\mathscr{F}</code></p></li>
-</ul>
+<p>This post explains two ways to insert emojis into a quarto blog using R Studio.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p><img src="../../00_img/emoji.webp" class="img-fluid"></p>
+<section id="visual-editor" class="level1">
+<h1><code>1. Visual Editor</code></h1>
+<p>One way to add emojis to a quarto blog posts is from the ‘Visual’ editor in R Studio, select the Insert tab <span class="math inline">\(\rightarrow\)</span> ‘Special Characters’ <span class="math inline">\(\rightarrow\)</span> ‘Insert Emoji …’ and then selecting you desired emoji from a large list.</p>
 </section>
-<section id="greek" class="level1">
-<h1><code>Greek</code> :</h1>
-<ul>
-<li><p><span class="math inline">\(\tau\)</span> : <code>\tau</code></p></li>
-<li><p><span class="math inline">\(\rho\)</span> : <code>\rho</code></p></li>
-<li><p><span class="math inline">\(\alpha\)</span> : <code>\alpha</code></p></li>
-<li><p><span class="math inline">\(\beta\)</span> : <code>\beta</code></p></li>
-<li><p><span class="math inline">\(\Gamma\)</span> : <code>\Gamma</code></p></li>
-<li><p><span class="math inline">\(\epsilon\)</span> : <code>\epsilon</code></p></li>
-<li><p><span class="math inline">\(\mathcal{E}\)</span> : <code>\mathcal{E}</code></p></li>
-<li><p><span class="math inline">\(\varepsilon\)</span> : <code>\varepsilon</code></p></li>
-<li><p><span class="math inline">\(\varphi\)</span> : <code>\varphi</code></p></li>
-</ul>
-</section>
-<section id="inline" class="level1">
-<h1><code>Inline</code> :</h1>
-<p><strong>Limits above and below sums and integrals</strong></p>
-<ul>
-<li><span class="math inline">\(\sum\limits_{n}^{i}\int_0^1\)</span> : <code>\limits</code></li>
-</ul>
-<p><strong>Matrices and Matrix Equations</strong></p>
-<ul>
-<li><p><span class="math inline">\(\begin{smallmatrix} 1 &amp; 0 \\ 0 &amp; 1\end{smallmatrix}\)</span> : <code>\begin{smallmatrix} 1 &amp; 0 \\ 0 &amp; 1\end{smallmatrix}</code></p>
-<ul>
-<li><p><span class="math inline">\(I=[\begin{smallmatrix} 1 &amp; 0 \\ 0 &amp; 1\end{smallmatrix}]\)</span></p></li>
-<li><p><span class="math inline">\((\begin{smallmatrix} 1 &amp; 1 \\ 1 &amp; 0\end{smallmatrix})(\begin{smallmatrix} 1 &amp; 1 \\ 0 &amp; 1\end{smallmatrix})\ne(\begin{smallmatrix} 1 &amp; 1 \\ 0 &amp; 1\end{smallmatrix})(\begin{smallmatrix} 1 &amp; 1 \\ 1 &amp; 0\end{smallmatrix})\)</span></p></li>
-</ul></li>
-</ul>
-</section>
-<section id="multiple-lines" class="level1">
-<h1><code>Multiple Lines</code> :</h1>
-<p><strong>Function</strong></p>
-<ul>
-<li><p><span class="math inline">\(F(x)=\begin{cases}1 &amp; x\geq 0\\0 &amp; \text{otherwise}\end{cases}\)</span> : <code>F(x)=\begin{cases} . . . \end{cases}</code></p>
-<ul>
-<li><p><code>1 &amp; x \geq 0 \\</code></p></li>
-<li><p><code>0 &amp; \text{otherwise}</code></p></li>
-</ul></li>
-</ul>
-<p><strong>Matrix</strong></p>
-<ul>
-<li><span class="math inline">\(F(x)=\begin{bmatrix}1\\2\\3\\4\\5\\6\\\end{bmatrix}\)</span> : <code>F(x)=\begin{bmatrix}1\\2\\3\\4\\5\\6\\\end{bmatrix}</code></li>
-</ul>
-<p><strong>Series of Equalities</strong></p>
-<ul>
-<li><span class="math inline">\(\begin{equation}\label{a}\begin{split}x &amp;= a+b+c\\&amp;=1+2+3\\&amp;=6\end{split}\end{equation}\)</span></li>
-</ul>
-<p>: <code>\begin{equation}\{label}\begin{split}... \end{split}\end{equation}</code></p>
-<ul>
-<li><p><code>x &amp;= a+b+c \\</code></p></li>
-<li><p><code>&amp;= 1+2+3</code></p></li>
-<li><p><code>&amp;= 6</code></p></li>
-</ul>
-</section>
-<section id="potential-errors" class="level1">
-<h1><code>Potential Errors</code> :</h1>
-<p><strong>Spelling</strong></p>
-<ul>
-<li><p>Ex: <code>\overlien{AB}</code> should be <code>\overline{AB}</code></p>
-<ul>
-<li>label , table</li>
-</ul></li>
-</ul>
-<p><strong>More than two backslashes</strong></p>
-<ul>
-<li>Ex: Equation will work but <code>\end{equation}</code> will show at the end. One of the lines has more than two backslashes at the end of at least one of the lines.</li>
-</ul>
-<p><strong>Space before final $</strong></p>
-<ul>
-<li>Ex: <code>$\angle ABC $</code> should be <code>$\angle ABC$</code></li>
-</ul>
-<p><strong>More $ on one side of equation than the other</strong></p>
-<ul>
-<li>Ex: <code>$A^2+B^2=C^2$$</code> should be <code>$A^2+B^2=C^2$</code></li>
-</ul>
-<p><strong>Closing <code>{}</code></strong></p>
-<ul>
-<li>Ex: <code>$\int\limits_{1}^{2$</code> should be <code>$\int\limits_{1}^{2}$</code></li>
-</ul>
-<p><strong>Underset on the wrong side</strong></p>
-<ul>
-<li>Ex: <code>U\underset{i\in I}</code> should be <code>\underset{i\in I}U</code></li>
-</ul>
-</section>
-<section id="advice" class="level1">
-<h1>Advice :</h1>
-<p><strong>Detextify</strong></p>
-<ul>
-<li>If you don’t know what a symbol is, draw it in Detextify <a href="http://detexify.kirelabs.org/classify.html">here</a>.</li>
-</ul>
-<p><strong>Google Docs Equations Boxes</strong></p>
-<ul>
-<li>Most latex backslashes work in google doc’s equation boxes. If I have to do a “quick” homework, and dont want to spend a lot of time formatting a pdf in R, I will use google docs and latex in the equations boxes.</li>
-</ul>
-<p>Note: This is how I began learning latex.</p>
-<p><strong>Why learn Latex?</strong></p>
-<p>When you type with latex instead of writting by hand:</p>
-<ul>
-<li><p>Generally speaking it looks nicer, especially on reports, projects, and presentations.</p></li>
-<li><p>Can spread any tension that is normally located in your dominate hand into both.</p></li>
-<li><p>It saves time in the long run updating a document on your computer than re-writing an entire problem by hand.</p></li>
-</ul>
+<section id="include-from-markdownemoji-in-header" class="level1">
+<h1><code>2. Include 'from: markdown+emoji' in Header</code></h1>
+<p>The second way to add emoji’s into a quarto blog is to include ‘from: markdown+emoji’ in the .qmd header, and then type the name of the emoji you want to include encased in colons as shown below:</p>
+<p><code>:grinning:</code> <span class="math inline">\(\rightarrow\)</span> <span class="emoji" data-emoji="grinning">😀</span></p>
+<p><code>:smile:</code> <span class="math inline">\(\rightarrow\)</span> <span class="emoji" data-emoji="smile">😄</span></p>
+<p><code>:heart:</code> <span class="math inline">\(\rightarrow\)</span> <span class="emoji" data-emoji="heart">❤️</span></p>
+<p><code>:thumbsup:</code> <span class="math inline">\(\rightarrow\)</span> <span class="emoji" data-emoji="thumbsup">👍</span></p>
 
 
 </section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>From <a href="https://quarto.org/docs/visual-editor/content.html#:~:text=within%20LaTeX%20output.-,Emojis,%3E%20Special%20Characters%20%2D%3E%20Emoji%E2%80%A6&amp;text=For%20markdown%20formats%20that%20support,text%20version%20will%20be%20written.">Quarto Documentation - Content Editing</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

@@ -104,15 +104,15 @@ Here is some short and simple latex.
   
 **Series of Equalities** 
 
-- $\begin{equation}\label{a}\begin{split}x &= a+b+c\\&=1+2+3\\&=6\end{split}\end{equation}$ : `\begin{equation}\{label}\begin{split}... \end{split}\end{equation}'
+- $\begin{equation}\label{a}\begin{split}x &= a+b+c\\&=1+2+3\\&=6\end{split}\end{equation}$ 
+
+: `\begin{equation}\{label}\begin{split}... \end{split}\end{equation}`
 
   - `x &= a+b+c \\`
 
   - `&= 1+2+3`
   
   - `&= 6` 
-  
-Note: still haven't figured out how to get multiple lines of equations to work in blogposts. 
   
 # `Potential Errors` : 
 
