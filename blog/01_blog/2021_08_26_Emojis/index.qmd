@@ -7,7 +7,7 @@ toc: true
 from: markdown+emoji
 ---
 
-This post explains two ways to insert emojis into a quarto blog using R Studio.[^1]
+This post explains two ways to insert emojis into a quarto blog.[^1]
 
 [^1]: From [Quarto Documentation - Content Editing](https://quarto.org/docs/visual-editor/content.html#:~:text=within%20LaTeX%20output.-,Emojis,%3E%20Special%20Characters%20%2D%3E%20Emoji%E2%80%A6&text=For%20markdown%20formats%20that%20support,text%20version%20will%20be%20written.)
 
