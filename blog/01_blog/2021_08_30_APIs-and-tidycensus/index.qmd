@@ -1,0 +1,78 @@
+---
+title: "API's and tidycensus"
+author: "Randi Bolt"
+date: "2021-08-27"
+categories: [R, tidycensus, API]
+toc: true
+---
+
+This post explains how to use an API to access tidycensus. 
+
+![](../../00_img/tidycensus.png)
+
+# `1. Set-up`
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
+
+To start [Request a Key](http://api.census.gov/data/key_signup.html) to get an API key. 
+
+Then create an .Renviron file to your projects main directory with "CENSUS_API_KEY=XXXXXXXXXXX", where all the X's represent you key. 
+
+Note: 
+
+* This key will not work with spaces on either side of the equal sign.
+
+* tidycensus already has this utility worked into it (read ?census_api_key). They call their api key CENSUS_API_KEY (it is common for this key to be in all caps), so that is what I also called mine. This will be especially helpful in not mixing up API keys if I use other API keys in the future. 
+
+Now load the `tidycensus` package and use `readRenviron()` to access the API key. 
+
+```{r}
+library(tidycensus)
+base::readRenviron("../../.Renviron")
+```
+
+Note: 
+
+* The first time you access your API key you may want to reload your environment so you don't have to restart R. 
+
+* `../` tells your machine to go one folder outside the folder it is in. 
+
+* Use `Sys.getenv("CENSUS_API_KEY")` to check your key is accesible and correct.
+
+# `2. Using tidycensus`
+
+Use `load_variables(year, dataset, chache=T/F)` for various data sets. Read `?load_variables()` for more information. 
+
+Note:
+
+* **label** shows the estimates by total, and then sex and age range.
+
+* **concept** is by sex, then race, origins, and ancestry.  
+
+```{r}
+a <- tidycensus::load_variables(2019, "acs1")
+utils::head(a, 10)
+```
+
+Let's only focus on the first line for now, "B01001_001" which should be the total estimates. Then we can use `get_acs()` to get data population data by state from the American Community Survey.
+
+```{r}
+b <- tidycensus::get_acs(geography = "state", year = 2019, variable = "B01001_001")
+utils::head(b, 10)
+```
+
+We can get similar population estimates setting the variable = c("POP), with get_estimates. As well as "DENSITY"; for housing unit estimates, c("HUEST"); and for components of change estimates, c("BIRTHS", "DEATHS", "DOMESTICMIG", "INTERNATIONALMIG", "NATURALINC", "NETMIG", "RBIRTH", "RDEATH", "RDOMESTICMIG", "RINTERNATIONALMIG", "RNATURALINC", "RNETMIG").
+
+```{r}
+c <- tidycensus::get_estimates(geography = "state", year = 2019, variable = c("POP"))
+utils::head(c, 10)
+```
+
+
+```{r}
+d <- tidycensus::get_estimates(geography = "county", state = "OR", year = 2019, variable = c("POP"))
+utils::head(d, 10)
+```
+
