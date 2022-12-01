@@ -1,7 +1,7 @@
 ---
 title: "API's and tidycensus"
 author: "Randi Bolt"
-date: "2021-08-27"
+date: "2021-08-30"
 categories: [R, tidycensus, API]
 toc: true
 ---

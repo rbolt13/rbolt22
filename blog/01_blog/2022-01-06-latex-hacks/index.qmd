@@ -156,10 +156,9 @@ Note: This is how I began learning latex.
 
 **Why learn Latex?**
 
-When you type with latex instead of writting by hand: 
+1. Generally speaking it looks nicer, especially on reports, projects, and presentations. 
 
-- Generally speaking it looks nicer, especially on reports, projects, and presentations. 
+2. A lot of my peers and professors who wrote math by hand would have problems in their dominate writing hand. Typing math with latex helps spread that tension out to two hands. 
 
-- Can spread any tension that is normally located in your dominate hand into both. 
+3. It saves time in the long run, since updating a line in a typed document is a lot easier than re-writing an entire problem by hand. Not to mention the ability to use copy paste. 
 
-- It saves time in the long run updating a document on your computer than re-writing an entire problem by hand. 
