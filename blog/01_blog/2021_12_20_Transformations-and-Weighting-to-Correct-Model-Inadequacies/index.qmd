@@ -1,0 +1,196 @@
+---
+title: "Transformations and Weighting to Correct Model Inadequacies"
+date: "2021-12-20"
+categories: [R, Linear Regression]
+toc: true
+---
+
+This post covers examples from Chapter 5 of [Introduction to Linear Regression Analysis](https://www.amazon.com/Introduction-Regression-Analysis-Douglas-Montgomery/dp/0470542810). 
+
+![](../../00_img/slr_meme.jpeg)
+
+# `1. Set Up`
+
+For this analysis I will be using four packages: 
+
+* magrittr: for piping (%>%)
+
+* dplyr: to arrange the data
+
+* MASS: to use the boxcox function
+
+* latex2exp: to put latex on graphs 
+
+```{r, message=FALSE, warning=FALSE}
+library(latex2exp) 
+library(magrittr) 
+library(dplyr) 
+library(MASS) 
+```
+
+# `2. Example 5.1: The Electric Utility Data`
+
+An electric utility company is interested in developing a model relating peak-hour demand $(y)$ to total energy usage during the month $(x)$. 
+
+To start lets look at the data. 
+
+```{r}
+ex51 <- utils::read.csv("../../00_data/ex5-1.csv")
+ex51
+```
+
+Right away we can see that for each customer there is a value `x_.kWH` for Kilowatt hour which corresponds to energy usage during the month, and `y_.kW` for kilowatt which would then be peak-hour demand. The plot of this is shown below.
+
+```{r, fig.cap= 'Scatter diagram of the energy demand (kW) versus energy usage (kWh)'}
+base::plot(ex51$x_.kWh., 
+           ex51$y_.kW.,
+           xlab = "Usage",
+           ylab = "Demand")
+```
+
+As a starting point a simple linear regression model is assumed. Lets look at the summary to get an equation for the [least-squares fit](https://mathworld.wolfram.com/LeastSquaresFitting.html#:~:text=A%20mathematical%20procedure%20for%20finding,the%20points%20from%20the%20curve.), and analyze variability. 
+
+```{r}
+lm51 <- stats::lm(ex51$y_.kW. ~ ex51$x_.kWh., data = ex51)
+summary(lm51)
+```
+
+From our summary our we can extrapolate our least-squares fit is: $\hat y=-0.83130+0.00368x$ 
+
+For this model $R^2=0.7046$; that is about 70% of the variability in demand is accounted for by the straight-line fit to energy usage. The summary statistics do not reveal any obvious problems with this model. 
+
+Below this model is plotted with a red line.
+
+```{r, fig.cap='Scatter diagram of the energy demand (kW) versus energy usage (kWh) with Simple Linear Model'}
+base::plot(ex51$x_.kWh.,
+           ex51$y_.kW.,
+           xlab = "Usage",
+           ylab = "Demand")
+graphics::abline(lm51, col = "red")
+```
+
+From visual inspection we can see the points on the far left side of the graph are much closer to the best fit line than those in the middle and right side of the graph. We might want to apply a transformation to this model, so lets look at the [Studentized Residual](https://en.wikipedia.org/wiki/Studentized_residual#:~:text=In%20statistics%2C%20a%20studentized%20residual,in%20the%20detection%20of%20outliers.) also known as r student.
+
+```{r, fig.cap= 'Plot of R-Student vs. fitted values'}
+base::plot(stats::fitted(lm51),
+           stats::rstudent(lm51),
+           ylab=latex2exp::TeX(r'($t_i$)'),
+           xlab=latex2exp::TeX(r'($\hat{y}_i$)'),
+           pch = 16);graphics::abline(0, 0,lty = 2)
+```
+
+From this graph we can see that the residuals form an outward-opening funnel, indicating that the error variance is increasing as energy consumption increases. A transformation may be helpful in correcting this model inadequacy. To select the form of the transformation, note that the response variable y may be viewed as a "count" of the number of kilowatts used by a customer during a particular hour. The simplest probabilistic model for count data is the [Poisson distribution](https://en.wikipedia.org/wiki/Poisson_distribution). This suggests regressing $y^*=\sqrt{y}$ on x as a variance-stabilizing transformation. 
+
+```{r}
+ex51$ystar <- base::sqrt(ex51$y_.kW.)
+lm51T <- stats::lm(ex51$ystar ~ ex51$x_.kWh., data = ex51)
+base::summary(lm51T)
+```
+
+The resulting least-squares fit is: $\hat y^*=0.5822+0.0009529x$
+
+```{r}
+base::plot(stats::fitted(lm51T),
+           stats::rstudent(lm51T),
+           ylab=latex2exp::TeX(r'($t_i$)'),
+           xlab=latex2exp::TeX(r'($\hat{y}^*_i$)'),
+           pch = 16);graphics::abline(0, 0,lty = 2)
+```
+
+The impression from examining this plot is that the variance is stable; consequently, we conclude that the transformed model is adequate. 
+
+Note that there is one suspiciously large residual (customer 26) and one customer whose energy usage is somewhat large (customer 50). The effect of these two points on the fit should be studied further before the model is released for use. 
+
+# `3. Example 5.2: The Windmill Data`
+
+A research engineer is investigating the use of a windmill to generate electricity. He has collected data on the DC Output from his windmill and the corresponding wind velocity. 
+
+```{r}
+ex52 <- utils::read.csv("../../00_data/ex5-2.csv")
+utils::head(ex52)
+```
+
+The data is plotted below. 
+
+```{r}
+base::plot(ex52$WindVelocity_xi_mph,
+           ex52$DCOutput_yi,
+           xlab = "Wind Velocity, X",
+           ylab = "DC Output, Y")
+```
+
+Inspection of the scatter diagram indicates that the relationship between DC output $(y)$ and wind velocity $(x)$ may be nonlinear. However, we initially fit a straight-line model to the data, and look at the summary statistics. 
+
+```{r}
+lm52 <- stats::lm(ex52$DCOutput_yi ~ ex52$WindVelocity_xi_mph, data = ex52)
+base::summary(lm52)
+```
+
+The summary statistics for this model are $R^2=0.8745$, and $F_0=160.26$ (the P-value is <0.0001), and he regression model is: $\hat y=0.1309+0.2411x$, shown in red below.  
+
+```{r}
+base::plot(ex52$WindVelocity_xi_mph,
+           ex52$DCOutput_yi,
+           xlab = "Wind Velocity, x",
+           ylab = "DC Output, Y")
+graphics::abline(lm52, col = "red")
+```
+
+Below we can extract the fitted and residual values from our linear model, and then arrange them in order of increasing wind speed. 
+
+```{r}
+ex52$fitted <- stats::fitted(lm52)
+ex52$resid <- stats::resid(lm52)
+ex52 %>% dplyr::arrange(-dplyr::desc(ex52$WindVelocity_xi_mph)) 
+```
+
+The residuals show a distinct pattern, that is, they move systematically from negative to positive and back to negative again as wind speed increases. 
+
+```{r}
+base::plot(stats::fitted(lm52),
+           stats::resid(lm52),
+           ylab=TeX(r'($e_i$)'),
+           xlab=TeX(r'($\hat{y}_i$)'),
+           pch = 16);graphics::abline(0, 0,lty = 2)
+```
+
+This residual plot indicates model inadequacy and implies that the linear relationship has not captured all of the information in the wind speed variable. Note that the curvature was apparent in the earlier scatter diagram, but is greatly amplified in the residual plot
+
+Clearly some other model form must be considered. We might initially consider using a quadratic model such as: $y=\beta_0+\beta_1x+\beta_2x^2+\epsilon$ to account for the curvature. However since the quadratic model will eventually bend downward as wind speed increases, it would not be appropriate for these data. A more reasonable model for windmill data that incorporates an upper asymptote would be: $y=\beta_0+\beta_1(\frac{1}{x})+\epsilon$.
+
+```{r}
+ex52$xstar <- 1/ex52$WindVelocity_xi_mph
+lm52T <- stats::lm(ex52$DCOutput_yi ~ ex52$xstar, data = ex52)
+base::summary(lm52T)
+```
+
+The fitted regression model is $\hat y=2.9789-6.9345x'$
+
+The summary statistics for this model are $R^2=0.98$, and $F_0=1128$ (the p value is <0.0001).
+
+```{r}
+base::plot(stats::fitted(lm52T),
+           stats::rstudent(lm52T),
+           ylab=TeX(r'($t_i$)'),
+           xlab=TeX(r'($\hat{y}_i$)'),
+           pch = 16);graphics::abline(0, 0,lty = 2)
+```
+
+This plot does not reveal any serious problems. 
+
+# `4. Example 5.3: The Electic Utility Data`
+
+We use the [Box-Cox](https://www.statisticshowto.com/probability-and-statistics/normal-distributions/box-cox-transformation/) procedure to select a variance-stabilizing transformation. The values of $SS_{Res}(\lambda)$ for various values are shown in the table. 
+
+```{r}
+boxcoxResult = MASS::boxcox(ex51$y_.kW. ~ ex51$x_.kWh., data = ex51, lambda = seq(-2,2,0.125))
+```
+
+The Box-Cox graph shows most of the data is below the 95% confidence interval.
+
+```{r}
+lambda <- boxcoxResult$x[which.max(boxcoxResult$y)]
+lambda
+```
+
+Where $\lambda\approx$ `r lambda` could be used as an appropriate exponent to use to transform the data into a “normal shape.” 

@@ -279,7 +279,7 @@ pd.concat([DF_obj3, DF_obj4])
 Read cars csv with python. 
 
 ```{python}
-address = '../../02_data/mtcars.csv'
+address = '../../00_data/mtcars.csv'
 cars = pd.read_csv(address)
 cars.head()
 ```
