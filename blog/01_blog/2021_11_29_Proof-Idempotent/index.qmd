@@ -1,0 +1,40 @@
+---
+title: "Prove H and I-H are Idempotent"
+author: "Randi Bolt"
+date: "2021-11-29"
+categories: [Proof, Statistics, Linear Regression]
+toc: true
+---
+
+Define the hat matrix $H=X(X^TX)^{-1}X^T$. Prove H and I-H are Idempotent
+
+![](../../00_img/idempotent.png)
+
+# `Proof`
+
+For H to be Idempotent then $HH=H$
+
+\begin{equation}\label{HH=H}
+\begin{split}
+HH & =[X(X^TX)^{-1}X^T][X(X^TX)^{-1}X^T]\\
+& = X(X^TX)^{-1}X^TX(X^TX)^{-1}X^T\quad\quad(X^TX)^{-1}X^TX=1\\
+& = X(X^TX)^{-1}X^T\\
+& = H
+\end{split}
+\end{equation}
+
+Therefore by the series of equalities H is idempotent. 
+
+For I-H to be idempotent then $(I-H)(I-H)=I-H$
+
+\begin{equation}\label{I-H}
+\begin{split}
+(I-H)(I-H) & =II-HI-IH+HH\quad\quad II=I, HI=IH=H, HH=H\\
+& = I-H-H+H\\
+& = I-H
+\end{split}
+\end{equation}
+
+Therefor by the series of equalities I-H is idempotent. 
+
+QED. 
