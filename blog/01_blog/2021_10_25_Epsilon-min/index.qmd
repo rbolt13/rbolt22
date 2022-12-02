@@ -1,0 +1,21 @@
+---
+title: "Let epsilon = min(x-a, b-x)"
+author: "Randi Bolt"
+date: "2021-10-25"
+categories: [Math, Abstract Math]
+toc: true
+---
+
+This post explains what it means for $\epsilon=\text{min}(x-a,b-x)$. 
+
+![](../../00_img/smol-epsilon.webp)
+
+# `Explanation`
+
+Consider the real number line $\mathbb{R}$ and some value x which lies between (a,b). When $\epsilon=\text{min}(x-a,b-x)$ then $\epsilon$ is equal to $2\times$ smaller distance to either a or b. For example, in the picture below x is closer to a, so x-a is smaller than b-x. Therefore $\epsilon=2(x-a)$. 
+
+![](../../00_img/epsilon.png)
+
+If it helps to apply values consider $a=1$, $b=4$, and $x=2$. Then 
+
+$\epsilon=\text{min}(x-a,b-x)=\text{min}(2-1,4-2)=\text{min}(1,2)=2(1)=2$
