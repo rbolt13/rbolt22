@@ -1,6 +1,5 @@
 ---
 title: "Let epsilon = min(x-a, b-x)"
-author: "Randi Bolt"
 date: "2021-10-25"
 categories: [Math, Abstract Math]
 toc: true

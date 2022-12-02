@@ -1,6 +1,5 @@
 ---
 title: "Tree Diagrams"
-author: "Randi Bolt"
 date: "2021-10-18"
 categories: [R, Conditional Probabilty, Tree Diagrams, Statistics]
 toc: true

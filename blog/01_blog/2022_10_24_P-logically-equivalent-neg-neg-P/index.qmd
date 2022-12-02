@@ -1,7 +1,6 @@
 ---
 title: "Prove P is Logically Equivalent to the Negation of the Negation of P"
-author: "Randi Bolt"
-date: "2022-10-17"
+date: "2022-10-24"
 categories: [Math, Proof]
 toc: true
 ---

@@ -1,6 +1,5 @@
 ---
 title: "Generative Art with Jasmines"
-author: "Randi Bolt"
 date: "2021-09-27"
 categories: [R, Generative Art]
 toc: true

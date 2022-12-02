@@ -1,6 +1,5 @@
 ---
 title: "Prove H and I-H are Idempotent"
-author: "Randi Bolt"
 date: "2021-11-29"
 categories: [Proof, Statistics, Linear Regression]
 toc: true

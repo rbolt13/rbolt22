@@ -1,6 +1,5 @@
 ---
 title: "Latex"
-author: "Randi Bolt"
 date: "2022-01-06"
 categories: [Math]
 toc: true

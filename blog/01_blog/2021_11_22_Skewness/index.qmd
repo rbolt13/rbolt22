@@ -1,6 +1,5 @@
 ---
 title: "Skewness"
-author: "Randi Bolt"
 date: "2021-11-22"
 categories: [Statistics]
 toc: true
