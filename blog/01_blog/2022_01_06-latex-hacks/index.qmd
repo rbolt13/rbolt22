@@ -1,6 +1,6 @@
 ---
 title: "Latex"
-date: "2022-01-06"
+date: "2022-01-24"
 categories: [Math]
 toc: true
 ---
