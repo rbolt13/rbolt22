@@ -3,6 +3,7 @@ title: "Diagnostic For Leverage And Influence"
 date: "2021-12-20"
 categories: [R, Linear Regression]
 toc: true
+draft: true
 ---
 
 This post covers examples from Chapter 6 of [Introduction to Linear Regression Analysis](https://www.amazon.com/Introduction-Regression-Analysis-Douglas-Montgomery/dp/0470542810). 

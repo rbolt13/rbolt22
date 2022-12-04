@@ -1,0 +1,135 @@
+---
+title: "LearnGeom"
+date: "2022-01-31"
+categories: [R, Geometry]
+toc: true
+---
+
+In this post I create some polygons and line segments with [LearnGeom](https://cran.r-project.org/web/packages/LearnGeom/LearnGeom.pdf).
+
+![](../../00_img/triangles.jpeg)
+
+```{r, error=FALSE, message=FALSE, echo=FALSE}
+knitr::opts_chunk$set(error=FALSE, 
+                      message= FALSE,
+                      warning=FALSE)
+```
+
+# `1. Set Up`
+
+To create coordinate planes, trianges, and line segments I will be using the [LearnGeom](https://cran.r-project.org/web/packages/LearnGeom/LearnGeom.pdf) package. 
+
+```{r}
+library(LearnGeom)
+```
+
+# `2. Coordinate Plane`
+
+To create a coordinate plane I will first need to define x and y minimums and maximums, and then plot the planes with the `CoordinatePlane()` function. 
+
+```{r}
+x_min <- 0
+x_max <- 10
+y_min <- 0
+y_max <- 10
+LearnGeom::CoordinatePlane(x_min, x_max, y_min, y_max)
+```
+
+# `3. Polygons`
+
+To create a triangle with labels: 
+
+1. Print the coordinate plane I just created. 
+
+2. Define three points of a triangle. 
+
+3. Use `CreatePolygon()` function to create the polygon. 
+
+4. Use the `Draw()` function to draw the polygon. 
+
+5. Define `label = TRUE` to show the points of a triangle.
+
+```{r, fig.cap='Triangle'}
+LearnGeom::CoordinatePlane(x_min, x_max, y_min, y_max)
+P1 <- c(1,4)
+P2 <- c(3,7)
+P3 <- c(4, 1)
+Poly <- LearnGeom::CreatePolygon(P1, P2, P3)
+LearnGeom::Draw(Poly, c("pink"), label = TRUE)
+```
+
+To create a trapezoid: 
+
+1. Print the coordinate plane I just created. 
+
+2. Define four points of a trapezoid. 
+
+3. Use `CreatePolygon()` function to create the polygon. 
+
+Note: The order of points will matter. 
+
+4. Use the `Draw()` function to draw the polygon. 
+
+
+```{r, fig.cap='Trapezoid'}
+LearnGeom::CoordinatePlane(x_min, x_max, y_min, y_max)
+P4 <- c(6, 3)
+P5 <- c(8, 3)
+P6 <- c(9, 8)
+P7 <- c(7, 8)
+Poly2 <- LearnGeom::CreatePolygon(P4, P5, P6, P7)
+LearnGeom::Draw(Poly2, c("light blue"))
+```
+
+We can also print both polygons on the same graph, shown below. 
+
+```{r, fig.cap='Triangle and Trapezoid'}
+LearnGeom::CoordinatePlane(x_min, x_max, y_min, y_max)
+LearnGeom::Draw(Poly, c("pink"), label = TRUE)
+LearnGeom::Draw(Poly2, c("light blue"))
+```
+
+# `4. Angle and Point Line Segments`
+
+To create a Segment Angle: 
+
+1. Print the coordinate plane I just created. 
+
+2. Define a points where the line originates from. 
+
+3. Define the angle of the line. 
+
+4. Define the length of the line. 
+
+5. Use `CreateSegmentAngle()` function to create the line segment. 
+
+6. Use the `Draw()` function to draw the line. 
+
+```{r}
+LearnGeom::CoordinatePlane(x_min, x_max, y_min, y_max)
+P <- c(0,0)
+angle <- 30
+len <- 10
+Segment <- LearnGeom::CreateSegmentAngle(P, angle, len)
+LearnGeom::Draw(Segment, "blue")
+```
+
+Segment Point 
+
+To create a Segment (with) Point(s): 
+
+1. Print the coordinate plane. 
+
+2. Define two endpoint. 
+
+3. Use `CreateSegmentPoint()` function to create the line segment. 
+
+4. Use the `Draw()` function to draw the line. 
+
+```{r}
+LearnGeom::CoordinatePlane(x_min, x_max, y_min, y_max)
+P1 <- c(2,8)
+P2 <- c(8,6)
+Segment <- LearnGeom::CreateSegmentPoints(P1, P2)
+LearnGeom::Draw(Segment, "purple")
+```
