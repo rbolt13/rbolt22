@@ -1,0 +1,110 @@
+---
+title: "RStudio: Building a Blog with R"
+date: "2022-02-28"
+categories: [R]
+toc: true
+---
+
+These are my notes from Posit's (formerly R Studio) ["Building a Blog with R"](https://youtu.be/MrW5XFf7aps) tutorial, which was presented by [Isabella Velasquez](https://ivelasq.rbind.io/about.html) on January 25th, 2022. [Materials for this presentation](https://github.com/ivelasq/2022-01-25_building-a-blog-with-r) are available on Github. Check out [Posit meet-up](https://www.meetup.com/posit-enterprise-community-meetup/) for more from Posit.
+
+![](../../00_img/blog.jpeg)
+
+# `1. About Isabella Velesquez`
+
+Email: isabella.velasquez@rstudio.com 
+
+* Works at Posit.
+
+* Seattle Lady Co-Organizer.
+
+* First R-Ladies talk in 2018.
+
+# `2. Agenda`
+
+* Why create a blog?
+
+* Deciding on a topic.
+
+* Tools for building a blog. 
+
+# `3. Why create a blog?`
+
+* When you're given the same advice 3 times, write a blog post. 
+
+* Share what you've learned. 
+
+* Write your opinions.
+
+* Share updates, and news.
+
+* External blogs (for business)
+
+    * Posit has 4 different external blogs: 
+    
+      * [The Posit Blog](https://posit.co/blog/)
+      
+      * [Posit AI Blog](https://blogs.rstudio.com/ai/)
+      
+      * [Tidyverse](https://www.tidyverse.org/blog/)
+      
+      * [R Views](https://rviews.rstudio.com/)
+  
+* Internal blogs (for business)
+
+  * Share information more easily and effectively.
+  
+  * Improve collaboration.
+  
+  * Serving as a bulletin board for projects. 
+  
+# `4. Types of Posts`
+
+* Standard lists
+
+* How To's / tutorials
+
+* New posts
+
+* Problem - and - solution
+
+* FAQ
+
+* Cheat sheets
+
+* Checklists
+
+* Info graphics 
+
+* Presentations
+
+* Debates
+
+* Inspiration
+
+* Interviews
+
+# `5. Seperating Posts`
+
+* Tutorials (learning oriented)
+
+* How To's (task oriented)
+
+* Explanation (understanding oriented)
+
+* Reference (information oriented)
+
+# `6. Building a Blog with R`
+
+* Knowledge of R and R Markdown.
+
+* Version Control (Github)
+
+* Netlify
+
+# `7. Overall Thoughts`
+
+While this was called "Building a blog", there wasn't a lot of blog building. Similar to other RStudio presentations it was very business and product information heavy. 
+
+# `8. Recommended Blog (from chat)`
+
+[Machine Learning Mastery](https://machinelearningmastery.com/ )
