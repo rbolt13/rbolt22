@@ -1,0 +1,302 @@
+---
+title: "UO: ggplot2 Part 2"
+date: "2022-02-21"
+categories: [R, Data Visuals]
+toc: true
+---
+
+These are my notes from the University of Oregon's Data Service Consultants workshop on ggplot2, part 2. Cameron Mulder ran this workshop. He can be contacted via U of O's [consultation page](https://library.uoregon.edu/research-data-management/consultations). 
+
+![](../../00_img/ggplot2.png)
+
+```{r, error=FALSE, message=FALSE, echo=FALSE}
+knitr::opts_chunk$set(error=FALSE, 
+                      message= FALSE,
+                      warning=FALSE)
+```
+
+# `1. Set Up`
+
+For this post we used the following packages:
+
+* ggplot2: to create nice looking plots. 
+
+* magrittr: to pipe `%>%`.
+
+* dplyr: to use `filter()`.
+
+* flametree: to make art.
+
+* ozmaps: to make Australian Maps.
+
+* rmapshaper: to use `ms_simplyfy` to simplify polygons.
+
+* plotly: to create interactive plots.
+
+```{r}
+library(ggplot2)
+library(magrittr)
+library(dplyr)
+library(flametree)
+library(ozmaps)
+library(rmapshaper)
+library(plotly)
+```
+
+And the following data sets: 
+ 
+* cars
+
+* [BOD](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/BOD.html)(Biochemical Oxygen Demand) 
+
+```{r}
+data("cars")
+data ("BOD")
+```
+
+# `2. ggplot2 Review`
+
+To start we made a simple point plot using the cars data set.
+
+Note: `ggplot(data= <DATA>, mapping = aes(<MAPPING>))+ <GEOM FUNCTION>()` 
+
+```{r}
+ggplot2::ggplot(data = mpg, mapping = ggplot2::aes(x = displ, y = hwy)) + 
+  ggplot2::geom_point()
+```
+
+We can compare this to a simple plot in base R. 
+
+Note : the `$` is how we id the specific variable we are wanting to work with. 
+
+```{r}
+base::plot(mpg$displ, mpg$hwy)
+```
+
+# `3. Line Graph`
+
+Starting with base R: 
+
+Note: `help(pressure)` is the same as `?pressure`
+
+```{r line graph }
+base::plot(pressure$temperature, pressure$pressure, type = "l")
+# add points
+graphics::points(pressure$temperature, pressure$pressure)
+# add lines (and points)
+graphics::lines(pressure$temperature, pressure$pressure/2, col = "red")
+graphics::points(pressure$temperature, pressure$pressure/2, col = "red")
+```
+
+ggplot: 
+
+```{r line graph ggplot}
+ggplot2::ggplot(pressure, ggplot2::aes(x = temperature, y = pressure)) + 
+  ggplot2::geom_line() + 
+  ggplot2::geom_point() + 
+  ggplot2::geom_line(ggplot2::aes(x = temperature, y = pressure/2), color = "red") + 
+  ggplot2::geom_point(ggplot2::aes(x = temperature, y = pressure/2), color = "red") 
+```
+
+# `4. Bar Graphs`
+
+Base R:
+
+```{r bar graph base r}
+graphics::barplot(BOD$demand, names.arg = BOD$Time)
+```
+
+```{r}
+graphics::barplot(base::table(mtcars$cyl))
+```
+
+ggplot2:
+
+```{r}
+ggplot2::ggplot(BOD, ggplot2::aes(x = base::factor(Time), y = demand)) + 
+  ggplot2::geom_col()
+```
+
+Notice that the 6 isn't there because of `factor()`. 
+
+Note : geom_bar does counts, but column has the height of the bar based on the data. 
+
+```{r bargraph ggplot cars}
+ggplot2::ggplot(mtcars, aes(x=cyl)) +
+  ggplot2::geom_bar()
+```
+
+# `5. Histogram`
+
+Base R: 
+
+```{r}
+graphics::hist(mtcars$mpg, breaks = 4)
+```
+
+ggplot2: 
+
+```{r}
+ggplot2::ggplot(mtcars, ggplot2::aes(x=mpg)) +
+  ggplot2::geom_histogram(binwidth = 4)
+```
+
+# `6. Boxplot`
+
+Base R: 
+
+```{r}
+base::plot(ToothGrowth$supp, ToothGrowth$len)
+```
+
+Base R: Formula Syntax
+
+```{r}
+base::plot(len ~ supp, data = ToothGrowth)
+base::plot(len ~ supp + dose, data = ToothGrowth)
+```
+
+ggplot2:
+
+```{r}
+ggplot2::ggplot(ToothGrowth, ggplot2::aes(x= supp, y = len)) +
+  ggplot2::geom_boxplot()
+```
+
+# `7. Time Series`
+
+ggplot2 will automatically recognize the variable as a date as long as the variable is imported as a date. 
+
+To start create some dummy data:
+
+```{r}
+data <- base::data.frame(
+  day = base::as.Date("2017-06-14")-0:364,
+  value = stats::runif(365)
+)
+utils::head(data)
+```
+
+Then plot it with ggplot2: 
+
+```{r}
+ggplot2::ggplot(data, ggplot2::aes(x = day, y = value)) +
+  ggplot2::geom_line()
+```
+
+Now to make a plot with the economics data set which is included in ggplot2. 
+
+```{r}
+ggplot2::ggplot(data = economics, ggplot2::aes(x = date, y = pop)) +
+  ggplot2::geom_line()
+```
+
+Next create a subset of the data from 2006 and beyond:
+
+```{r}
+subset <- ggplot2::economics %>%
+  dplyr::filter(date>base::as.Date("2006-1-1"))
+```
+
+Now to create a different line graph of the subset data over time where the size of the line is based on the value of unemployment (which is the number of unemployment in thousands). 
+
+```{r}
+ggplot2::ggplot(economics, ggplot2::aes(x = date, y = pop)) +
+  ggplot2::geom_line(ggplot2::aes(size = unemploy), color = "red")
+```
+
+# `8. Maps`
+
+Using `map_data()` get lat and long data for counties in Oregon: 
+
+```{r}
+or_counties <- ggplot2::map_data("county", "oregon") %>%
+  dplyr::select(lon = long, lat, group, id = subregion)
+utils::head(or_counties)
+```
+
+Using or_counties data create a ggplot2 map:
+
+```{r}
+ggplot2::ggplot(or_counties, ggplot2::aes(lon, lat, group = group))+
+  ggplot2::geom_polygon(fill = "white", color = "grey") +
+  ggplot2::coord_quickmap()
+```
+
+Using `ozmap_states` get the names of the different states in Australia. 
+
+```{r}
+oz_stats <- ozmaps::ozmap_states
+oz_stats
+```
+
+Then create a ggplot2 map of Australia: 
+
+```{r}
+ggplot2::ggplot(oz_stats)+
+  ggplot2::geom_sf() +
+  ggplot2::coord_sf()
+```
+
+Next we remove the "Other territories", and create a multi-polygon data set of Australian Bureau of Statistics.
+
+```{r}
+oz_stats <- ozmaps::ozmap_states %>% 
+  dplyr::filter(NAME != "Other Territories")
+oz_votes <- rmapshaper::ms_simplify(ozmaps::abs_ced)
+```
+
+Then create another map of Australian territories: 
+
+```{r}
+ggplot2::ggplot()+
+  ggplot2::geom_sf(data = oz_stats, mapping = ggplot2::aes(fill = NAME)) +
+  ggplot2::geom_sf(data = oz_votes, fill = NA) +
+  ggplot2::coord_sf()
+```
+
+# `9. Plotly`
+
+An interactive graph of the iris data:
+
+```{r interactive}
+fig <- plotly::plot_ly(data = iris, x = ~Sepal.Length, y = ~Petal.Length)
+fig
+```
+
+An interactive plot of the cars data set: 
+
+```{r}
+mpg %>% plotly::plot_ly(x = ~displ, y = ~mpg, color = ~class)
+```
+
+Note: you can double click on the legend to see a subset of the data. 
+
+Another plot with ggplot2: 
+
+```{r}
+plot <- ggplot2::ggplot(mpg, ggplot2::aes(x = displ, y = hwy)) + 
+  ggplot2::geom_point(mapping = aes(color = class)) +
+  ggplot2::geom_smooth()
+plot
+```
+
+Use `ggplotly` to make it interactive: 
+
+```{r}
+plotly::ggplotly(plot)
+```
+
+# `10. Art`
+
+```{r}
+shades <- c("blue", "green", "red", "orange")
+data <- flametree::flametree_grow(time = 10, trees = 10)
+data %>% flametree::flametree_plot(
+  background = "white",
+  palette = shades,
+  style = "nativeflora"
+)
+```
+
+Package by Danielle Navarro. Check out her [art](https://art.djnavarro.net/). 
