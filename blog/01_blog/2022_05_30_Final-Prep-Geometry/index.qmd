@@ -1,0 +1,167 @@
+---
+title: "Final Prep. Modern College Geometry"
+date: "2022-05-30"
+categories: [Geometry]
+toc: true
+---
+
+Notes consist of Euclidean geometry, similarity, circles, isometries and symmetries, taxicab geometry, spherical geometry, and hyperbolic geometry. 
+
+![](../../00_img/taxicab.webp)
+
+# `1. Euclidean Geometry` 
+
+- Euclid's 5th Axiom
+
+- Triangle Congruence: SAS, ASA, SSS, AAS
+
+- Angles and Parallel Lines
+
+   - vertical angels are congruent
+   
+   - corresponding angles are congruent
+   
+   - alternate interior angles are congruent 
+   
+   - supplementary angles add to $180^\circ$ 
+   
+**Quadrilaterals**: 4 sided figure in the plane, where the edges are straight lines. 
+
+**Parallelogram**: Both pairs of opposite sides are parallel. 
+
+**Trapezoid**: At least 1 pair of opposite sides are parallel. 
+
+**Rhombus**: Parallelogram, all sides are same length. 
+
+**Rectangle**: Parallelogram whose internal angles are all right angles.
+
+**Square**: Rectangle whose sides are all equal length. 
+
+**Parallelogram Theorem**: Let ABCD be a parallelogram. Then the following are equivalent:
+
+1. ABCD is a parallelogram. (opposite sides are parallel)
+
+2. $\angle DAB \cong \angle BCD$ and $\angle ABC\cong \angle CDA$ (angles that are across from each other are congruent)
+
+3. $AB=CD$ and $BC=DA$ (opposite sides have equal measure)
+
+4. $\overline{AC}$ and $\overline{BD}$ bisect each other. (diagnals bisect each other)
+
+**Axioms of Area**:
+
+1. To every polygonal region (space enclosed by straight lines in the plane) there corresponds a unique positive number called $\underline{area}$. 
+
+2. If 2 tirangles are congruent their areas are equal. 
+
+3. If $R=R_1\cup R_2$ and $R_1\cap R_2$ is a finite number of segments or points, then the area of $R$ is the sum of the areas of $R_1+R_2$. 
+
+4. The area of a rectangle is its base times its height.
+
+# `2. Similarity`
+
+**Dilation**: shrink or expand by a scaling factor, k,  from a center point, P. 
+
+**Similarity**: 2 figures are similar if one can be superimposed on the other by a dilation and a sequence of isometries. 
+
+- AA, SAS
+
+# `3. Circles`
+
+**Circle:** center, radius 
+
+Points on circle have distance r from the center point O. 
+
+**Unit Circle:** radius length 1.
+
+**Arc:** a connected subset of the points on circle.
+
+**Chord:** line segment connecting 2 points on circle. 
+
+**Central Angle:** vertex is center of circle, rays intersect in 2 different points. (pie slice)
+
+**Inscribed Angles** vertex is on circle, rays intersect circle in 2 points. 
+
+**Inscribed:** verities on circle. 
+
+For an inscribed square, all four points of a square are on the circle.
+
+**Tangent Line:** Line that intersects circle at only 1 point. 
+
+**Radian:** measure of the central angle in a unit circle with arc length of 1. 
+
+**Inscribed Angle Theorem**: An inscribed angle is half of a centeral angle that subtends the same arc. 
+
+**Corollary**: Any two inscribed angles have the same arc on the circle are congruent. 
+
+**Power of the Point Theorem 1**: If $\overline{AB}$ and $\overline{CD}$ are chords of circle intersecting in x inside a circle. Then $Ax\cdot xB=Cx\cdot xD$
+
+**Power of the Point Theorem 2**: LEt P be a point outside a given circle. Suppose we draw two rays from the point P: one ray intersects the circle at points A and B (in that order), and the other intersects the circle at the points C and D (in that order). Then $PA\cdot PB=PC\cdot PD$
+
+# `4. Isometries and Symmetries`
+
+The set of isometries with composition is a group: 
+
+0. Closure
+
+1. Associativity 
+
+2. Identity 
+
+3. Inverses
+
+**Symmetry** A symmetry is an isometry that sends a geometric figure to itself. 
+
+- 6 symmetries of an equilateral triangle
+
+- 8 symmetries of a square 
+
+- 2n symmetries of a regular polygon
+
+# `5. Taxicab Geometry`
+
+**Euclidean Distance**: $d_E(A,B)=\sqrt{(x_B-x_A)^2+(y_B-y_A)^2}$
+
+- $\pi\approx 3.14$
+
+**Taxicab Distance**: $d_T=|x_B-x_A|+|y_B-y_A|$
+
+- $\pi = 4$
+
+Isometries for taxicab (traingles):
+
+- translations
+
+- rotations by $90^\circ k$ where k is an integer
+
+- combinations
+
+# `6. Spherical Geometry`
+
+No parallel may be drawn through a point not on a given line.
+
+**Equation of a Sphere**: $S^2=\{(x,y,z)\in\mathbb{R}^3|x^2+y^2+z^2=\rho^2\}$
+
+- great circles are straight lines (equator and longitudes)
+
+**Distance of a Sphere**: $d_s(A,B)=\rho\cdot\text{arc cos}(\frac{A\cdot B}{\rho ^2})$
+
+**Triangle Angle Measurements**
+
+- Can have three right angles 
+
+- All three angles added together will be greater than $180^\circ$
+
+**Area of a Sphere**: $\rho^2\cdot E$ (where the excess $E=\alpha+\beta+\gamma-180^\circ$)
+
+Consider the surface area of a sphere to be $4\pi\rho^2$, then the area of a triangle on a sphere will be a proportion of that. 
+
+
+# `7. Hyperbolic Geometry`
+
+More than one parallel may be drawn through a point not on a given line. 
+
+**Inversions about a circle**
+
+- preserve angles (conformal)
+
+**Cross Ratio**: Given four distinct points (A,B,C,D) in the plane, the cross ratio is define $(A,B;C,D)=\frac{AC\cdot BD}{BC\cdot AD}$
