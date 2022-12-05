@@ -1,0 +1,307 @@
+---
+title: "Portland R User Group: Aggregate making tables with gt packag"
+date: "2022-04-25"
+categories: [R, Data Visuals]
+toc: true
+---
+
+[Ted Landeras](https://laderast.github.io/) led this event for [Portland R user Group](https://pdxrlang.com/) where we watched [Rich Lannone|| Making Beautiful Tables with `{gt}`|| RStudio](https://www.youtube.com/watch?v=z0UGmMOxl-c) as a group on Youtube, and then went through some other examples. 
+
+![](../../00_img/gt.svg)
+
+```{r, message=F, error=F, echo=F}
+knitr::opts_chunk$set(error=FALSE, 
+                      message= FALSE,
+                      warning=FALSE)
+```
+
+# `1. Set Up`
+
+```{r}
+library(gt)
+library(gtExtras)
+library(gtsummary)
+library(tidyverse)
+library(palmerpenguins)
+```
+
+# `2. Penguins`
+
+This examples follows the video: [Rich Lannone|| Making Beautiful Tables with `{gt}`|| RStudio](https://www.youtube.com/watch?v=z0UGmMOxl-c).
+
+```{r}
+penguins %>%
+  group_by(species) %>%
+  summarize_at(
+    .vars = c(
+      "bill_length_mm", 
+      "bill_depth_mm",
+      "flipper_length_mm",
+      "body_mass_g"
+      ),
+            .funs = ~ mean(.,na.rm = TRUE)) %>%
+  gt() %>%
+  tab_header(
+    title = md("The penguins dataset"),
+    subtitle = md("**Three** years of data on penguins on _three_ islands.")
+  ) %>%
+  cols_label(
+    bill_length_mm = md("Bill Length,<br>mm"),
+    bill_depth_mm = md("Bill Depth,<br>mm"),
+    flipper_length_mm = md("Flipper Length,<br>mm"),
+    body_mass_g = md("Body Mass,<br>g")
+  ) %>%
+  opt_align_table_header(align = "left") %>% 
+  fmt_number(columns = bill_length_mm, decimals = 2) %>%
+  fmt_number(columns = bill_depth_mm, decimals = 2) %>%
+  fmt_number(columns = flipper_length_mm, decimals = 2) %>%
+  fmt_number(columns = body_mass_g, scale_by = 1/1000) %>%
+  cols_width(
+    bill_length_mm ~ px(120),
+    bill_depth_mm ~ px(120),
+    flipper_length_mm ~ px(120),
+    body_mass_g ~ px(120),
+    everything() ~ px(100)
+  ) %>% 
+  tab_source_note(source_note = md("Dataset is from the `palmerpenguins` **R** package.")
+                  ) %>%
+  # tab_footnote(
+  #   footnote = "The Largest of the three penguins studied.",
+  #   locations = cells_stub(rows = "Gentoo")
+  # )
+  tab_footnote(
+    footnote = "Flipper Length was measured with a tape measure.",
+    locations = cells_column_labels(columns = flipper_length_mm)
+  ) %>%
+  tab_footnote(
+    footnote = "Tap measure suffered some frost damage.",
+    locations = list(
+      cells_column_labels(columns = flipper_length_mm),
+      cells_body(columns = flipper_length_mm)
+  )
+  ) %>%
+  # tab_style(
+  #   locations = cells_body(
+  #     columns = c("bill_length_mm", "bill_depth_mm", "flipper_length_mm", "body_mass_g")
+  #     ),
+  #   style = list(
+  #     cell_fill(color = "steelblue"),
+  #     cell_text(color = "white")
+  #     )
+  # ) %>%
+  data_color(
+    columns = c(bill_depth_mm),
+    colors = scales::col_numeric(
+      palett = c("red", "orange", "brown"),
+      domain = c(10,20)) 
+  ) %>%
+    data_color(
+    columns = c(bill_length_mm),
+    colors = scales::col_numeric(
+      palett = c("red", "orange", "green"),
+      domain = c(30,50)) 
+  ) %>%
+  tab_stubhead(label = md("Penguin *Species*")) %>%
+  opt_table_font(font = google_font("Montserrat"), 
+                 weight = 600, 
+                 style = "italic")
+```
+
+# `3. Allison Horst's Examples`
+
+These examples are from [Allison Horst](https://allisonhorst.com/allison-horst) 
+
+## `Example 1`
+
+```{r}
+head(rock)
+```
+
+```{r}
+rock %>% # Get 'rock' data
+  head(5) %>% # First 5 lines only
+  gt() # Make a table, it just works.
+```
+
+## `Example 2`
+
+```{r}
+head(BOD)
+```
+
+```{r}
+BOD %>% # Get the data...
+gt() %>% # use 'gt' to make an awesome table...
+  tab_header( 
+    title = "BOD Table Woooooo!", # ...with this title
+    subtitle = "Hooray gt!") %>% # and this subtitle
+  fmt_number( # A column (numeric data)
+    columns = vars(Time), # What column variable? BOD$Time
+    decimals = 2 # With two decimal places
+    ) %>% 
+  fmt_number( # Another column (also numeric data)
+    columns = vars(demand), # What column variable? BOD$demand
+    decimals = 1 # I want this column to have one decimal place
+  ) %>% 
+  cols_label(Time = "Time (hours)", demand = "Demand (mg/L)") # Update labels
+```
+
+## `Example 3`
+
+```{r}
+BOD %>% # Get the data...
+gt() %>% # use 'gt' to make an awesome table...
+  tab_header( 
+    title = "BOD Table Woooooo!", # ...with this title
+    subtitle = "Hooray gt!") %>% # and this subtitle
+  fmt_number( # A column (numeric data)
+    columns = vars(Time), # What column variable? BOD$Time
+    decimals = 2 # With two decimal places
+    ) %>% 
+  fmt_number( # Another column (also numeric data)
+    columns = vars(demand), # What column variable? BOD$demand
+    decimals = 1 # I want this column to have one decimal place
+  ) %>% 
+  cols_label(Time = "Time (hours)", demand = "Demand (mg/L)") # Update labels
+```
+
+## `Example 4`
+
+```{r}
+tooth_length <- ToothGrowth %>% 
+  group_by(supp, dose) %>% 
+  summarize(
+    mean_len = mean(len)
+  ) %>% 
+  as_tibble() 
+
+# A gt table: 
+tooth_length %>% # Take tooth_length
+  gt() %>% # Make a gt table with it
+  tab_header(
+    title = "A title just like that", # Add a title
+    subtitle = "(with something below it!)" # And a subtitle
+  ) %>%
+  fmt_passthrough( # Not sure about this but it works...
+    columns = vars(supp) # First column: supp (character)
+  ) %>% 
+  fmt_number(
+    columns = vars(mean_len), # Second column: mean_len (numeric)
+    decimals = 2 # With 4 decimal places
+  ) %>% 
+  fmt_number(
+    columns = vars(dose), # Third column: dose (numeric)
+    decimals = 2 # With 2 decimal places
+  ) %>% 
+  data_color( # Update cell colors...
+    columns = vars(supp), # ...for supp column!
+    colors = scales::col_factor( # <- bc it's a factor
+      palette = c(
+        "green","cyan"), # Two factor levels, two colors
+      domain = c("OJ","VC")# Levels
+  )
+  ) %>% 
+  data_color( # Update cell colors...
+    columns = vars(dose), # ...for dose column 
+    colors = scales::col_numeric( # <- bc it's numeric
+      palette = c(
+        "yellow","orange"), # A color scheme (gradient)
+      domain = c(0.5,2) # Column scale endpoints
+  )
+  ) %>% 
+  data_color( # Update cell colors...
+    columns = vars(mean_len), # ...for mean_len column
+    colors = scales::col_numeric(
+      palette = c(
+        "red", "purple"), # Overboard colors! 
+      domain = c(7,27) # Column scale endpoints
+  )
+  ) %>% 
+  cols_label(supp = "Supplement", dose = "Dosage (mg/d)", mean_len = "Mean Tooth Length") %>% # Make the column headers
+  tab_footnote(
+    footnote = "Baby footnote test", # This is the footnote text
+    locations = cells_column_labels(
+      columns = vars(supp) # Associated with column 'supp'
+      )
+    ) %>% 
+    tab_footnote(
+    footnote = "A second footnote", # Another line of footnote text
+    locations = cells_column_labels( 
+      columns = vars(dose) # Associated with column 'dose'
+      )
+    )
+```
+
+# `4. Animal Crossing`
+
+This is an example using the Animal Crossing data set from Tidy Tuesday. In this data set, you'll see that the `items` column is a URL. 
+
+```{r}
+items <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-05-05/items.csv')
+head(items)
+```
+
+We display the most expensive items in Animal Crossing below: 
+
+```{r}
+items %>% 
+  top_n(10, buy_value) %>%
+  arrange(desc(buy_value)) %>%
+  select(name, sell_value, buy_value, category, image=image_url) %>%
+  gt() %>%
+   text_transform(
+     #tell gt that the image column 
+    locations = cells_body(vars(image)),
+    fn = function(x) {
+      web_image(
+        url = x,
+        height = 50
+      )
+    }
+  )
+
+```
+
+# `5. Stream Data`
+
+Tom Mock has created a package called `{gtExtras}` which can be installed with the following command:
+
+This example is from one of Tom's tweets. Gist is here: https://gist.github.com/jthomasmock/923604deb65682b0364c9220a85ddb36
+
+```{r}
+stream_data  <- utils::read.csv("../../00_data/stream_data.csv")
+stream_data
+```
+
+```{r}
+gt(stream_data) %>% 
+  #transform Nominee and Winner columns into a bullet plot
+  gt_plt_bullet(column = Nominee, target = Winner) %>% 
+  #take the type column and retrieve a font awesome symbol
+  gt_fa_column(column = type) %>% 
+  #format table with nytimes style formating
+  gt_theme_nytimes() %>% 
+  #format ratio column with percentage
+  fmt_symbol_first(column = Ratio, suffix = "%", decimals = 1, scale_by = 100)
+```
+
+# `6. Biostats`
+
+Example from [FAQ + Gallery ](https://cran.r-project.org/web/packages/gtsummary/vignettes/gallery.html)
+
+For bio-statisticians, one of the most annoying tasks to build is a Table 1: a breakdown of research subjects by various demographics. The {gtsummary} package simplifies building these tables.
+
+```{r}
+trial %>%
+  select(trt, age, grade) %>%
+  tbl_summary(
+    by = trt, 
+    missing = "no",
+    statistic = all_continuous() ~ "{median} ({p25}, {p75})"
+  ) %>%
+  modify_header(all_stat_cols() ~ "**{level}**<br>N =  {n} ({style_percent(p)}%)") %>%
+  add_n() %>%
+  bold_labels() %>%
+  modify_spanning_header(all_stat_cols() ~ "**Chemotherapy Treatment**")
+```
+

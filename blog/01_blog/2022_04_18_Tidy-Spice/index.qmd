@@ -133,7 +133,7 @@ base::dim(lyrics_sparse)
 
 This means there are 31 songs (i.e. documents) and 979 different tokens (i.e. terms or words) in our data set for modeling.
 
-"The most important parameter when training a [topic modeling](https://sicss.io/2019/materials/day3-text-analysis/topic-modeling/rmarkdown/Topic_Modeling.html) is K, the number of topics. This is like k in k-means in that it is a hyper parameter of the model and we must choose this value ahead of time. We could try to multiple different values to find the best value for K, but this is a very small data set so let’s just stick with K = 4."
+"The most important parameter when training a [topic modeling](https://sicss.io/2019/materials/day3-text-analysis/topic-modeling/rmarkdown/Topic_Modeling.html) is K, the number of topics. This is like k in [k-means](https://allisonhorst.com/k-means-clustering) in that it is a hyper parameter of the model and we must choose this value ahead of time. We could try to multiple different values to find the best value for K, but this is a very small data set so let’s just stick with K = 4."
 
 ```{r}
 base::set.seed(123) 
