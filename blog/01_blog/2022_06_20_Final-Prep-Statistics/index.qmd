@@ -1,0 +1,34 @@
+---
+title: "Final Prep. Statistics"
+date: "2022-06-20"
+categories: [Statistics]
+toc: true
+from: markdown+emoji
+draft: true
+---
+
+Notes consist of method of distribution function (CDF), 
+
+
+# `1. Method of Distribution Function (CDF)` :sparkling_heart:
+
+1. Given the density function $f(y)$ the distribution function $$F_Y(y)=\int_{\text{lower}}^{y}f(t)dt=F_Y(t)|_{t=\text{lower}}^{t=y}=F_Y(y)$$
+
+2. For $U=$ :heart:, when y = lower, u = :heartbeat: and when y = upper, u = :heartpulse:.
+
+3. By definition of the CDF, the CDF of U is, 
+
+$F_U(u)=P(U\leq u)=P($:heart:$\leq u)=P(Y\leq$:blue_heart:$)=F_Y($:blue_heart:$)=$:purple_heart:
+
+$$F_U(u)=\begin{cases}0 &\quad\quad\quad\quad u<\text{:heartbeat:}\\ \text{:purple_heart:} & \text{:heartbeat:}\leq u\leq \text{:heartpulse:}\\ 1 & \text{:heartpulse:}\leq u\end{cases}$$
+
+4. Since $f_U(u)=F'_U(u)$, 
+
+$f_U(u)=\frac{d}{du}(F_U(u))=$:green_heart:
+
+The complete pdf of U is, 
+
+$$f_U(u)=\begin{cases}\text{:green_heart:} & \text{:heartbeat:}<u<\text{:heartpulse:}\\0 & \text{otherwise}\end{cases}$$
+
+# `2. Jacobian (Univariate)` :hatched_chick:
+

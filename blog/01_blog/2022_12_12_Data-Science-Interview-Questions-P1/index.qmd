@@ -1,0 +1,94 @@
+---
+title: "Data Science Interview Questions - Part 1"
+date: "2022-12-05"
+categories: [Statistics, Linear Regression]
+toc: true
+---
+
+This post covers 12 questions that might be asked in a technical interview for a data science position. 
+
+![](../../00_img/interview.webp)
+
+# `1.` What is the difference between supervised and unsupervised learning?
+
+**Supervised Learning:** Uses labeled data for prediction. (Logistical Regression, Linear Regression, Decision Tree)
+
+**Unsupervised Learning:** Uses unlabeled data for analysis such as identifying hidden patterns in clustering, association, and anomalies or errors. (K-means clustering, hierarchical clustering)
+
+# `2.` What is the difference between univariate, bivariate, and multivariate analysis?
+
+**Univariate**: Looks at only one variable at a time. 
+
+**Bivariate**: Compares two variables. 
+
+**Multivariate**: Compares more than two variables. 
+
+# `3.` What is the difference between wide format data and long format data?
+
+**Wide Format Data**: Has a column for each variable. 
+
+**Long Format Data**: Has a column for possible variable types, and a value for each of those variables. 
+
+# `4.` What is the difference between normalization and stadardization?
+
+**Normalization**: Rescales the values into a range of [0,1].
+
+**Standardization**: Rescales data to have a mean of 0 and a standard deviation of 1. 
+
+# `5.` What is variance? 
+
+**Variance**: $s^2=\frac{\sum(x_i-\bar{x})}{n-1}$ is a measure of spread within the data. 
+
+# `6.` What is a normal distribution? 
+
+**Normal distribution**: (Gaussian distribution or bell curve) is a probability distribution that is symmetrical about the mean. 
+
+# `7.` What is the law of large numbers?
+
+**Law of Large Numbers**: if an experiment is repeated independently a large number of times then the average results of the obtained results should be close to the expected value. 
+
+# `8.` What is the goal of A/B testing?
+
+To determine which experiment A or B preformed better. 
+
+# `9.` You are given a dataset consisting of variables with more than 30 percent missing values. How do you deal with them?
+
+1. Delete rows or columns with missing values. This can be problematic if it means loosing valuable data. 
+
+2. Fill in the missing values with an approximation of the average of the other values in the column. 
+
+# `10.` For the given points how do you calculate the Euclidean distance in Python?
+
+point 1 = (2,3) and point 2 = (1,1)
+
+```{python}
+import numpy as np
+ 
+# initializing points in numpy arrays
+point1 = np.array((1, 2, 3))
+point2 = np.array((1, 1, 1))
+ 
+# calculating Euclidean distance using linalg.norm()
+dist = np.linalg.norm(point1 - point2)
+ 
+# printing Euclidean distance
+print(dist)
+```
+
+Note: Check out the [distance package](https://github.com/rbolt13/distance) I created to solve this same problem using R. 
+
+# `11.` How do you find RMSE and MSE in a linear regression model?
+
+**Root Mean Square Error (RMSE)**: $\text{RMSE}=\sqrt{\text{MSE}}=\sqrt\frac{\sum{(y_i-\hat{y_i})^2}}{n}$
+
+**Mean Square Error (MSE)**: $\text{MSE}=\frac{\sum{(\text{observed}-\text{predicted})^2}}{n}=\frac{\sum{(y_i-\hat{y_i})^2}}{n}$
+
+Note: The values are squared is to prevent negative values, and to increase the impact of of larger errors. 
+
+# `12.` What is the significance of p-value?
+
+The p value is the probability that the null hypothesis is true. Meaning there is no statistical significance that exists between variables.  
+
+When p is $\leq$ 0.05 then we can reject the null hypothesis. 
+
+When p is > 0.05 then we fail to reject the null hypothesis aka accept it. 
