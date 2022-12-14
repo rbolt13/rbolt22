@@ -161,3 +161,8 @@ Note: This is how I began learning latex.
 
 3. It saves time in the long run, since updating a line in a typed document is a lot easier than re-writing an entire problem by hand. Not to mention the ability to use copy paste. 
 
+# Bonus: 
+
+**Colors**
+
+- $\color{red}\text{colored text}$ : `\color{red}\text{colored text}`
