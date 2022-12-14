@@ -1,6 +1,6 @@
 ---
 title: "Prove P is Logically Equivalent to the Negation of the Negation of P"
-date: "2022-10-24"
+date: "2022-10-31"
 categories: [Math, Proof]
 toc: true
 ---
