@@ -91,4 +91,4 @@ The p value is the probability that the null hypothesis is true. Meaning there i
 
 When p is $\leq$ 0.05 then we can reject the null hypothesis. 
 
-When p is > 0.05 then we fail to reject the null hypothesis aka accept it. 
+When p is > 0.05 then we fail to reject the null hypothesis aka accept it.

@@ -1,16 +1,18 @@
 ---
 title: "Python Basics"
-date: "2022-12-05"
-categories: [Python]
+date: "2022-11-28"
+categories: [Python, Data Visuals]
 toc: true
-draft: true
+draft: false
 ---
 
-In this post I will be showcasing some basic python skills for data scientist. 
+This post covers topics from [Lillian Pierson](https://www.data-mania.com/blog/author/lillianpierson/)'s Linkedin Learning course [Python for Data Sciene Training Part 1](https://www.linkedin.com/learning-login/continue?account=71753745&forceAccount=false&authModeName=SAML-1&authUUID=Jn8kaR1lSRaVYTMZwb8wJw%3D%3D&redirect=https%3A%2F%2Fwww.linkedin.com%2Flearning%2Fpython-for-data-science-essential-training-part-1%2Fdata-science-life-hacks%3Fautoplay%3Dtrue%26resume%3Dfalse%26u%3D71753745). Topics include Series, Data Frames, Data Visuals, Math and Statistics. 
 
 ![Image of a pink snake with a bow](../../00_img/pink-snake.png)
 
-# `0_0. Introduction`
+# `0.0` Introduction
+
+## `0.0.1` Import Packages
 
 ```{python}
 import numpy as np
@@ -19,30 +21,36 @@ import pandas as pd
 from pandas import Series, DataFrame
 ```
 
-# `1_0. Series`
+## `0.0.2` Print Working Directory
 
-Create a Series object with 8 rows. 
+```{python}
+%pwd
+```
+
+# `1.0` Series
+
+### `1.0.1` Create a Series object with 8 rows. 
 
 ```{python}
 series_obj = Series(np.arange(8), index=['row 1', 'row 2', 'row 3', 'row 4', 'row 5', 'row 6', 'row 7', 'row 8'])
 series_obj
 ```
 
-## `1_1. Extracting`
+## `1.1` Extracting
 
-Select row 7
+### `1.1.1` Select row 7
 
 ```{python}
 series_obj['row 7']
 ```
 
-Select Elements at Position 0 and 7
+### `1.1.2` Select Elements at Position 0 and 7
 
 ```{python}
 series_obj[[0,7]]
 ```
 
-## `1_2. Slicing`
+## `1.2` Slicing
 
 Select every row between 3 and 7. 
 
@@ -50,24 +58,24 @@ Select every row between 3 and 7.
 series_obj['row 3':'row 7']
 ```
 
-## `1_3. Scalars`
+## `1.3` Scalars
 
-Print values greater than 5. 
+### `1.3.1` Print values greater than 5. 
 
 ```{python}
 series_obj[series_obj>5]
 ```
 
-Set row 1 to the value 8. 
+### `1.3.2` Set row 1 to the value 8. 
 
 ```{python}
 series_obj['row 1'] = 8
 series_obj
 ```
 
-## `1_4. Missing Values`
+## `1.4` Missing Values
 
-Create a variable of missing values using np.nan
+### `1.4.1` Create a variable of missing values using np.nan
 
 * np.nan: numpy function, not a number (nan)
 
@@ -76,14 +84,14 @@ missing = np.nan
 missing
 ```
 
-Create a new series object with missing values for row 3 and 7.
+### `1.4.2` Create a new series object with missing values for row 3 and 7.
 
 ```{python}
 series_obj2 = Series(['row 1', 'row 2', missing , 'row 5', 'row 6', missing, 'row 8'])
 series_obj2
 ```
 
-Find what values are missing using .isnull()
+### `1.4.3` Find what values are missing using .isnull()
 
 * isnull(): pandas function that returns t/f if null
 
@@ -91,18 +99,18 @@ Find what values are missing using .isnull()
 series_obj2.isnull()
 ```
 
-## `1_5. Rename Data`
+## `1.5` Rename Data
 
-Name series object. 
+### `1.5.1` Name series object. 
 
 ```{python}
 series_obj.name ="added_variable"
 series_obj
 ```
 
-# `2_0. Data Frame`
+# `2.0` Data Frame
 
-Create a data frame object of 36 random numbers (6X6) with a set seed of 25.
+### `2.0.1` Create a data frame object of 36 random numbers (6X6) with a set seed of 25.
 
 * np.random.seed(): numpy seed generator function 
 * np.random.rand(): numpy random number generator function
@@ -116,26 +124,26 @@ DF_obj = DataFrame(np.random.rand(36).reshape((6,6)),
 DF_obj
 ```
 
-## `2_1. Extracting`
+## `2.1` Extracting
 
-Select values from row 2, row 5, column 5, and column 2. 
+### `2.1.1` Select values from row 2, row 5, column 5, and column 2. 
 
 ```{python}
 DF_obj.loc[['row 2', 'row 5'], ['column 5', 'column 2']]
 ```
 
-## `2_2. Scalars`
+## `2.2` Scalars
 
-Return a true or false for all values less than .2
+### `2.2.1` Return a true or false for all values less than .2
 
 ```{python}
 DF_obj < .2
 ```
 
 
-## `2_3. Missing Values`
+## `2.3` Missing Values
 
-Set the values in rows 4-5 of column 1, and rows 2-4 of column 6 to missing.  
+### `2.3.1` Set the values in rows 4-5 of column 1, and rows 2-4 of column 6 to missing.  
 
 * iloc: python function used to select a particular cell of the dataset.
 
@@ -145,7 +153,7 @@ DF_obj.iloc[1:4, 5] = missing
 DF_obj
 ```
 
-Replace non values with 0.
+### `2.3.2` Replace non values with 0.
 
 * fillna: pandas function used to replace missing values. 
 
@@ -155,13 +163,13 @@ filled_DF = DF_obj.fillna(0)
 filled_DF
 ```
 
-Count the number of missing values in each column. 
+### `2.3.3` Count the number of missing values in each column. 
 
 ```{python}
 DF_obj.isnull().sum()
 ```
 
-Filter out rows with missing values. 
+### `2.3.4` Filter out rows with missing values. 
 
 * dropna(): pandas function that removes rows with missing values. 
 
@@ -170,7 +178,7 @@ DF_no_NaN_rows = DF_obj.dropna()
 DF_no_NaN_rows
 ```
 
-Filter out columns with missing values.
+### `2.3.5` Filter out columns with missing values.
 
 ```{python}
 DF_no_NaN_columns = DF_obj.dropna(axis=1)
@@ -178,7 +186,7 @@ DF_no_NaN_columns
 ```
 
 
-Fill the missing values with the method ffill.
+### `2.3.6` Fill the missing values with the method ffill.
 
 * ffill: pandas function fill forward which fills in the lass non-null value in DF. 
 
@@ -187,9 +195,9 @@ fill_DF = DF_obj.fillna(method='ffill')
 fill_DF
 ```
 
-## `2_4. Duplicates`
+## `2.4` Duplicates
 
-Create a new data frame object. 
+### `2.4.1` Create a new data frame object. 
 
 ```{python}
 DF_obj2 = DataFrame({'column 1':[1,1,2,2,3,3,3],
@@ -198,7 +206,7 @@ DF_obj2 = DataFrame({'column 1':[1,1,2,2,3,3,3],
 DF_obj2
 ```
 
-Show which rows have duplicates. 
+### `2.4.2` Show which rows have duplicates. 
 
 * duplicated(): pandas function that returns t/f for rows with duplicate values. 
 
@@ -206,7 +214,7 @@ Show which rows have duplicates.
 DF_obj2.duplicated()
 ```
 
-Drop duplicates rows. 
+### `2.4.3` Drop duplicates rows. 
 
 * drop_duplicates()
 
@@ -215,44 +223,44 @@ DF_obj2_row_drop  = DF_obj2.drop_duplicates()
 DF_obj2_row_drop
 ```
 
-Drop duplicate from column 3. 
+### `2.4.4` Drop duplicate from column 3. 
 
 ```{python}
 DF_obj2_c3_drop = DF_obj2.drop_duplicates(['column 3'])
 DF_obj2_c3_drop
 ```
 
-## `2_5. Adding data`
+## `2.5` Adding data
 
-Slice the first 6 rows of series object. 
+### `2.5.1` Slice the first 6 rows of series object. 
 
 ```{python}
 new_series_obj = series_obj['row 0':'row 6']
 new_series_obj
 ```
 
-Add new_series_obj to the end of DF_obj
+### `2.5.2` Add new_series_obj to the end of DF_obj
 
 ```{python}
 variable_added = DataFrame.join(DF_obj, series_obj)
 variable_added
 ```
 
-Use append to add data table to itself retaining index values. 
+### `2.5.3` Use append to add data table to itself retaining index values. 
 
 ```{python}
 added_datatable = variable_added.append(variable_added, ignore_index=False)
 added_datatable
 ```
 
-Use append to add data table to itself, resetting index values. 
+### `2.5.4` Use append to add data table to itself, resetting index values. 
 
 ```{python}
 added_datatable = variable_added.append(variable_added, ignore_index=True)
 added_datatable
 ```
 
-Create a 6x6 data frame with values arraged from 0-35, and another 3x5 data frame with values arranged from 0-14. 
+### `2.5.5` Create a 6x6 data frame with values arraged from 0-35, and another 3x5 data frame with values arranged from 0-14. 
 
 ```{python}
 DF_obj3 = pd.DataFrame(np.arange(36).reshape(6,6))
@@ -262,43 +270,45 @@ DF_obj4 = pd.DataFrame(np.arange(15).reshape(5,3))
 DF_obj4
 ```
 
-Concatenate by adding columns. 
+### `2.5.6` Concatenate by adding columns. 
 
 ```{python}
 pd.concat([DF_obj3, DF_obj4], axis = 1)
 ```
 
-Concatenate by adding rows. 
+### `2.5.7` Concatenate by adding rows. 
 
 ```{python}
 pd.concat([DF_obj3, DF_obj4])
 ```
 
-## `2_6. Grouping and Aggregating Data`
+## `2.6` Grouping and Aggregating Data
 
-Read cars csv with python. 
+### `2.6.1` Read cars csv with python. 
 
 ```{python}
 address = '../../00_data/mtcars.csv'
 cars = pd.read_csv(address)
+# assign column names
+cars.columns = ['car_names', 'mpg', 'cyl', 'disp', 'hp', 'drat', 'wt', 'qsec', 'vs', 'am', 'gear', 'carb']
 cars.head()
 ```
 
-Group by cyl and find mean values.
+### `2.6.2` Group by cyl and find mean values.
 
 ```{python}
 cars_groups = cars.groupby(cars['cyl'])
 cars_groups.mean()
 ```
 
-Group by am and find mean values. 
+### `2.6.3` Group by am and find mean values. 
 
 ```{python}
 cars_trans_group = cars.groupby(cars['am'])
 cars_trans_group.mean()
 ```
 
-# `3_0. Data Visuals`
+# `3.0` Data Visuals
 
 ```{python}
 from numpy.random import randn
@@ -307,20 +317,521 @@ import matplotlib.pyplot as plt
 from matplotlib import rcParams
 ```
 
-## `3_1. Line Chart`
+## `3.1` Line Charts
 
-Plot a line with matplotlib.
+### `3.1.1` Plot a line chart with matplotlib.
 
 ```{python}
-# x = range(1,10)
-# y = [1,2,3,4,0,4,3,2,1]
-# plt.plot(x,y)
+x = range(1,10)
+y = [1,2,3,4,0,4,3,2,1]
+plt.plot(x,y)
 ```
 
+### `3.1.2` Defining axes, limits, and tick marks
 
+```{python}
+# gerate a figure
+fig = plt.figure()
 
+# add axis
+ax = fig.add_axes([.1,.1,1,1]) 
 
+# add limits 
+ax.set_xlim([1,9])
+ax.set_ylim([0,5])
 
+# set tick marks
+ax.set_xticks([0,1,2,4,5,6,8,9,10])
+ax.set_yticks([0,1,2,3,4,5])
 
+# plot
+ax.plot(x,y)
+```
 
+### `3.1.3` Add Grid
 
+```{python}
+# gerate a figure
+fig = plt.figure()
+
+# add axis
+ax = fig.add_axes([.1,.1,1,1])
+
+# add limits 
+ax.set_xlim([1,9])
+ax.set_ylim([0,5])
+
+# add grid
+ax.grid()
+
+# plot
+ax.plot(x,y)
+```
+
+### `3.1.4` Create A plot with two lines
+
+```{python}
+# create new variables
+x1 = range(0,10)
+y1 = [10,9,8,7,6,5,4,3,2,1]
+
+# make line plot with two lines
+plt.plot(x,y)
+plt.plot(x1,y1)
+```
+
+### `3.1.5` Customizing Line Styles
+
+```{python}
+# make line plot with two lines with style
+plt.plot(x,y, ds ='steps', lw=5)
+plt.plot(x1,y1, ls='--', lw=10)
+```
+
+### `3.1.6` Customizing Markers
+
+```{python}
+# make line plot with two lines with markers
+plt.plot(x,y, marker='1', mew='20')
+plt.plot(x1,y1, marker='+', mew=15)
+```
+
+### `3.1.7` Generating Multiple Plots
+
+```{python}
+# generate a figure
+fig = plt.figure()
+
+# create a tuple equal to the subplots function defined as 1 row with 2 columns
+fig,(ax1, ax2) = plt.subplots(1,2)
+
+# defining axes
+ax1.plot(x)
+ax2.plot(x,y)
+```
+
+### `3.1.8` Plot a line chart with Pandas
+
+Using the cars data set from 2.6.1:
+
+```{python}
+# select mpg variable
+mpg = cars['mpg']
+
+# print plot
+mpg.plot()
+```
+
+### `3.1.9` Plot 3 Variables
+
+```{python}
+df = cars[['cyl','wt','mpg']]
+df.plot()
+```
+
+### `3.1.10` Define Color
+
+```{python}
+# color
+color_theme = ['darkgray', 'lightsalmon', 'powderblue']
+
+# pass in color theme
+df.plot(color=color_theme)
+```
+
+### `3.1.11` Add Labels (Object Oriented Method)
+
+Note: Car names are numbers because of the data set I am using. 
+
+```{python}
+# create a figure
+fig = plt.figure()
+
+# add axis 
+ax = fig.add_axes([.1,.1,1,1])
+
+# call plot method
+mpg.plot()
+
+# add tick marks
+ax.set_xticks(range(32))
+
+# add lables with 60 degree rotaion
+ax.set_xticklabels(cars.car_names, rotation=60, fontsize='medium')
+
+# set title
+ax.set_title('Miles per Gallon of Cars in mtcars Dataset')
+
+# set x and y lables
+ax.set_xlabel('car names')
+ax.set_ylabel('mpg')
+```
+
+### `3.1.12` Add Legend (Object Oriented Method)
+
+```{python}
+# create a figure
+fig = plt.figure()
+
+# add axis 
+ax = fig.add_axes([.1,.1,1,1])
+
+# call plot method
+mpg.plot()
+
+# add tick marks
+ax.set_xticks(range(32))
+
+# add lables with 60 degree rotaion
+ax.set_xticklabels(cars.car_names, rotation=60, fontsize='medium')
+
+# set title
+ax.set_title('Miles per Gallon of Cars in mtcars Dataset')
+
+# set x and y lables
+ax.set_xlabel('car names')
+ax.set_ylabel('mpg')
+
+# add legend
+ax.legend(loc='best')
+```
+
+### `3.1.13` Annotating
+
+```{python}
+# create a figure
+fig = plt.figure()
+
+# add axis 
+ax = fig.add_axes([.1,.1,1,1])
+
+# call plot method
+mpg.plot()
+
+# add tick marks
+ax.set_xticks(range(32))
+
+# add lables with 60 degree rotaion
+ax.set_xticklabels(cars.car_names, rotation=60, fontsize='medium')
+
+# set title
+ax.set_title('Miles per Gallon of Cars in mtcars Dataset')
+
+# set x and y lables
+ax.set_xlabel('car names')
+ax.set_ylabel('mpg')
+
+# add legend
+ax.legend(loc='best')
+
+# set y limit
+ax.set_ylim([0,45])
+
+# create annotation at (19,33.9) with text at (21,35) of an arrow
+ax.annotate('Toyota Corolla', xy=(19,33.9), xytext=(21,35), 
+            arrowprops=dict(facecolor='black', shrink=0.05))
+```
+
+## `3.2` Bar Charts
+
+### `3.2.1` Create a bar chart from a list
+
+```{python}
+plt.bar(x,y)
+```
+
+### `3.2.2` Define bar width and plot color
+
+```{python}
+# widths to adjust default bar width
+wide = [.5,.5,.5,.9,.9,.9,.5,.5,.5]
+
+# change color
+color = ['salmon']
+
+# format barchart with adjustments
+plt.bar(x,y, width=wide, color=color, align='center')
+```
+
+### `3.2.3` Create a bar chart from Pandas object
+
+```{python}
+mpg.plot(kind="bar")
+```
+
+### `3.2.4` Create a horizontal bar chart
+
+```{python}
+mpg.plot(kind="barh")
+```
+
+### `3.2.5` Add labels
+
+```{python}
+# create variables
+x = range(1,10)
+y = [1,2,3,4,.5,4,3,2,1]
+
+# generate barchart 
+plt.bar(x,y)
+
+# add labels
+plt.xlabel('your x-axis label')
+plt.ylabel('your y-axis label')
+```
+
+## `3.3` Pie Charts
+
+### `3.3.1` Create a pie chart.
+
+```{python}
+x = [1,2,3,4,0.5]
+
+# create pie chart
+plt.pie(x)
+
+# show pie chart
+plt.show()
+```
+
+### `3.3.2` Define Color
+
+```{python}
+# create color theme with RGB code
+color_theme = ['#A9A9A9', '#FFA07A', '#B0E0E6', '#FFE4C4', '#BDB76B']
+
+# call pie function
+plt.pie(x, colors=color_theme)
+
+# show pie chart
+plt.show()
+```
+
+### `3.3.3` Add labels (Functional Method)
+
+```{python}
+# create variable
+z = [1,2,3,4,.5]
+veh_type = ['bicycle', 'motorbike', 'car', 'van', 'stroller']
+
+# generate pie chart
+plt.pie(z, labels=veh_type)
+
+# plot pie chart
+plt.show()
+```
+
+### `3.3.4` Add Legend
+
+```{python}
+# create pie chart
+plt.pie(x)
+
+# create a legend located in the best location
+plt.legend(veh_type, loc='best')
+
+# show pot
+plt.show()
+```
+
+### `3.3.5 `Saving a pie chart
+
+```{python}
+plt.pie(x)
+plt.savefig('../../00_figs/pie-chart.png')
+plt.show()
+```
+
+## `3.4` Time Series
+
+### `3.4.0` Load Data
+
+```{python}
+# address
+address = '../../00_data/Superstore-Sales.csv'
+# create a dataframe of csv file
+df = pd.read_csv(address, index_col='Order Date', encoding='cp1252', parse_dates=True)
+
+# look at first 5 records
+df.head()
+```
+
+### `3.4.1` Use Sample Method to Create Line Chart
+
+```{python}
+# use sample method
+df2 = df.sample(n=100, random_state=25, axis=0)
+
+# add labels
+plt.xlabel('Order Date')
+plt.ylabel('Order Quantity')
+
+# add title
+plt.title('Superstore Sales')
+
+# select Order Quantity and plot
+df2['Order Quantity'].plot()
+```
+
+## `3.5` Statistical Plots
+
+### `3.5.1` Scatterplot
+
+```{python}
+# create a scatterplot with darkgray dots of size 150
+cars.plot(kind='scatter', x='hp', y='mpg', c=['darkgray'], s=150)
+```
+
+### `3.5.2` Boxplots
+
+```{python}
+# create 2 boxplots with matplotlib
+cars.boxplot(column='mpg', by='am')
+cars.boxplot(column='wt', by='am')
+```
+
+# `4.0` Math and Statistics
+
+## `4.1` Arrays
+
+### `4.1.1` Creating Arrays
+
+```{python}
+a = np.array([1,2,3,4,5,6])
+b = np.array([6,5,4,3,2,1])
+a
+b
+```
+
+### `4.1.2` Array Arithimetic
+
+```{python}
+a*10
+a+b
+a-b
+a*b
+a/b
+```
+
+## `4.2` Matricies
+
+### `4.2.1` Creating Matricies
+
+```{python}
+aa = np.array([[2,3,6],[1,3,5],[10,20,30]])
+bb = np.array([[0,1,2],[3,4,5],[6,7,8]])
+aa
+bb
+```
+
+### `4.2.2` Multiplying Matricies
+
+```{python}
+aa*bb
+```
+
+### `4.2.3` Dot Product of Matricies
+
+```{python}
+np.dot(aa,bb)
+```
+
+## `4.3` Summary Statistics
+
+### `4.3.1` Sum of Column values
+
+```{python}
+cars.sum()
+```
+
+### `4.3.2` Sum of Row values
+
+```{python}
+cars.sum(axis=1)
+```
+
+### `4.3.3` Median
+
+```{python}
+cars.median()
+```
+
+### `4.3.4` Mean
+
+```{python}
+cars.mean()
+```
+
+### `4.3.5` Max
+
+```{python}
+cars.max()
+```
+
+### `4.3.6` Find index value for row with max value
+
+```{python}
+mpg = cars.mpg
+mpg.idxmax()
+```
+
+### `4.3.7` Standard Deviation
+
+```{python}
+cars.std()
+```
+
+### `4.3.8` Variance
+
+```{python}
+cars.var()
+```
+
+### `4.3.9` Counts
+
+```{python}
+gear = cars.gear
+gear.value_counts()
+```
+
+### `4.3.10` Descriptive Statistics
+
+```{python}
+cars.describe()
+```
+
+## `4.4` Summarizing Categorical Data
+
+### `4.4.1` Count Carborators of Each Car
+
+```{python}
+carb = cars.carb
+carb.value_counts()
+```
+
+### `4.4.2` Group By Gear
+
+```{python}
+# subset data
+cars_cat = cars[['cyl', 'vs', 'am', 'gear', 'carb']]
+# Group by gear
+gears_group = cars_cat.groupby('gear')
+gears_group.describe()
+```
+
+### `4.4.3` Transforming Variables to Categorical Data type
+
+```{python}
+# create new column
+cars['group'] = pd.Series(cars.gear, dtype = 'category')
+# look at new variable 
+cars['group'].dtypes
+# look at distribution
+cars['group'].value_counts()
+```
+
+### `4.4.4` Describe Categorical Data with Crosstabs
+
+```{python}
+pd.crosstab(cars['am'], cars['gear'])
+```
