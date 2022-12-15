@@ -1,0 +1,153 @@
+---
+title: "Reactable"
+date: "2022-07-18"
+categories: [R, NBA, Web-Scraping, Data Visuals]
+toc: true
+---
+
+This post uses the r package reactable to look at 2022 NBA Finals contenders: Golden State Warriors and Boston Celtics. 
+
+![](../../00_img/gsw-bs-22-final.jpeg)
+
+```{r options, echo=FALSE}
+knitr::opts_chunk$set(error=FALSE,
+                      message= FALSE,
+                      warning=FALSE)
+```
+
+# `1.` Set Up
+
+This post will use three packages:
+
+* rvest: to harvest the data.
+
+* dplyr: to join and tidy data. 
+
+* reactable: to make interactive tables. 
+
+```{r set up}
+library(rvest) 
+library(dplyr)
+library(reactable)
+```
+
+# `2.` Havest the Data with rvest
+
+Using data from [Basketball Reference](https://www.basketball-reference.com/) and the rvest package I can harvest current data without having to save CSV's.  For this table I will be pulling in the final two teams which competed in the 2022 NBA Finals: 
+
+* Golden State Warriors 
+
+* Boston Celtics
+
+```{r}
+# team name
+gsw <- "Golden State Warriors"
+bc <- "Boston Celtics"
+
+# team slug
+gsw_slug <- "GSW"
+bc_slug <- "BOS"
+
+# url
+gsw_url <- base::paste0("https://www.basketball-reference.com/teams/",
+                        gsw_slug,"/2022.html")
+bc_url <- base::paste0("https://www.basketball-reference.com/teams/",
+                       bc_slug,"/2022.html")
+```
+
+There is a lot of data available on [Basketball Reference](https://www.basketball-reference.com/), but for this table I will only be looking at each teams 2022 total stats. 
+
+```{r rvest data}
+# harvest data
+gsw_ttl_stat <- gsw_url %>%
+  read_html %>%
+  html_node("#totals") %>% 
+  html_table()
+
+bc_ttl_stat <- bc_url %>%
+  read_html %>%
+  html_node("#totals") %>% 
+  html_table()
+# look at data
+utils::head(gsw_ttl_stat)
+utils::head(bc_ttl_stat)
+```
+
+# `3.` Tidy Data
+
+To tidy the data I want to do 3 things:
+
+1. Rename column 2 to 'Name'.
+
+2. Add a column with the team name.
+
+3. Join two tables into one. 
+
+```{r tidy data}
+# remane 
+base::names(gsw_ttl_stat)[2] <- "Name"
+base::names(bc_ttl_stat)[2] <- "Name"
+
+# add column
+gsw_ttl_stat$Team <- gsw
+bc_ttl_stat$Team <- bc
+
+# merge tables
+total_stats <- dplyr::full_join(gsw_ttl_stat, bc_ttl_stat)
+
+#view data  
+utils::head(total_stats)
+total_stats
+```
+
+# `4.` Reactable
+
+Now to make a simple reactable I will do 7 things:
+
+1. Group by "Team" name. 
+
+2. Define column names. 
+
+3. Include boarders around the table and every cell.  
+
+4. Include highlight rows that are hovered over.  
+
+5. Make filterable. 
+
+6. Make Searchable. 
+
+7. Have the two teams be the minimum number of rows initally shown. 
+
+```{r reactable}
+reactable(
+  total_stats,
+  groupBy = "Team",
+  columns = list(
+    Rk = colDef(name = "Rank"),
+    G = colDef(name = "Games"),
+    MP = colDef(name = "Minutes Played"),
+    FG = colDef(name = "Field Goals"),
+    `3P` = colDef(name = "3 Point Goals"),
+    `2P` = colDef(name = "2 Point Goals"),
+    FT = colDef(name = "Free Throws"),
+    AST = colDef(name = "Assists"),
+    STL = colDef(name = "Steals"),
+    BLK = colDef(name = "Blocks"),
+    PTS = colDef(name = "Points"),
+    TOV = colDef(name = "Turnovers"),
+    PF = colDef(name = "Personal Fouls")
+  ),
+  bordered = TRUE,
+  highlight = TRUE,
+  filterable = TRUE,
+  searchable = TRUE,
+  minRows = 2
+  )
+```
+
+# `5.` Sources
+
+[NBA Analytics Tutorial: Using R to Display Player Career Stats](https://sweepsportsanalytics.com/2021/12/19/nba-analytics-tutorial-using-r-to-display-player-career-stats/)
+
+[Reactable](https://glin.github.io/reactable/index.html)
+
