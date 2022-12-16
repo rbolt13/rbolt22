@@ -1,8 +1,0 @@
----
-title: "June 21st, 2022"
-author: "Randi Bolt"
-date: "2022-06-21"
-categories: [2022 06 June]
----
-
-I started my first day as a product owner / software analyst at finastra. 

@@ -98,5 +98,38 @@
       "/01_blog/2021_08_30_Ch.3-R-for-ds/index.html",
       "/01_blog/2021_08_23_Emojis/index.html"
     ]
+  },
+  {
+    "listing": "/blog.html",
+    "items": [
+      "/01_blog/2022_12_12_Data-Science-Interview-Questions-P1/index.html",
+      "/01_blog/2022_11_28_python-beg/index.html",
+      "/01_blog/2022_11_21_Quartro/index.html",
+      "/01_blog/2022_11_07_NBA-functions/index.html",
+      "/01_blog/2022_10_31_P-logically-equivalent-neg-neg-P/index.html",
+      "/01_blog/2022_07_25_Tidyverse-P1/index.html",
+      "/01_blog/2022_07_18_Reactable/index.html",
+      "/01_blog/2022_06_27_Predicting-Stock-Prices/index.html",
+      "/01_blog/2022_06_20_Final-Prep-Statistics/index.html",
+      "/01_blog/2022_05_30_Final-Prep-Geometry/index.html",
+      "/01_blog/2022_05_23_Final-Prep-Group-Theory/index.html",
+      "/01_blog/2022_04_25_PDX-R-Aggregate-Making-Tables-with-gt/index.html",
+      "/01_blog/2022_04_18_Tidy-Spice/index.html",
+      "/01_blog/2022_03_28_Midterm-Prep-Group-Theory/index.html",
+      "/01_blog/2022_03_21_Midterm-Prep-Modern-College-Geometry/index.html",
+      "/01_blog/2022_02_28_RStudio-building-a-blog-with-R/index.html",
+      "/01_blog/2022_02_21_UO-ggplot2/index.html",
+      "/01_blog/2022_01_31_LearnGeom/index.html",
+      "/01_blog/2022_01_24-latex-hacks/index.html",
+      "/01_blog/2021_12_20_Transformations-and-Weighting-to-Correct-Model-Inadequacies/index.html",
+      "/01_blog/2021_11_29_Proof-Idempotent/index.html",
+      "/01_blog/2021_11_22_Skewness/index.html",
+      "/01_blog/2021_10_25_Epsilon-min/index.html",
+      "/01_blog/2021_10_18_Tree-Diagrams/index.html",
+      "/01_blog/2021_09_27_Generative-Art-Jasmines/index.html",
+      "/01_blog/2021_09_20_APIs-and-tidycensus/index.html",
+      "/01_blog/2021_08_30_Ch.3-R-for-ds/index.html",
+      "/01_blog/2021_08_23_Emojis/index.html"
+    ]
   }
 ]

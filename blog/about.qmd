@@ -1,0 +1,56 @@
+---
+title: "About Randi"
+comments: false
+background-video: true
+from: markdown+emoji
+---
+
+**Professional**
+
+I graduated magna cum laude with a Bachelors of Science in Mathematics from Portland State University in 2022 with an emphasis on statistics. Since most of my undergrad was during COVID-19 lock down I've become proficient at collaborating remotely. I ran remote study groups through discord, participated in the GIS (Geographic Information Systems) club, spoke virtually at [G.I.S. in Action](https://gisinaction2021.sched.com/directory/speakers), and in the summer of 2021 created my first blog.
+
+Currently I am looking for work as a data analyst, data scientist, or a machine learning engineer. My hope is that this blog will not only showcase my technical skills in these areas, but also my determination, adaptability, and perseverance.
+
+------------------------------------------------------------------------
+
+**Personal**
+
+:ballet_shoes: Before I went to back to school to get my degree in mathematics I was a dancer. I have trained pre-professionally at [Dance Vision](https://www.dancevisionusa.com/) and [The SanFrancisco Conservatory of Dance](https://sfcdblog.wordpress.com/). My favorite dance styles are ballet, hip-hop, and modern, but I love all kinds of dance and will try any form of movement. I unfortunately an not able to dance as much anymore due to a car accident in 2014 which required me to have two separate jaw surgeries in 2016 and 2017.
+
+:jp: In high school I took Japanese, and have been appreciative of the culture ever since. Recently I bought plane tickets to visit Japan for the first time for my 30th birthday in 2023. While I'd still consider myself a beginner at speaking, writing, and reading the language, I am very much looking forward to the experience.
+
+:basketball: I enjoy most sports, but especially soccor and basketball. It's a great way to do hobby statistics, and get rowdy :stuck_out_tongue_winking_eye:. Growing up both of my sisters, and dad played basketball so I watched a lot of games, and I still enjoy watching the NBA and WNBA. My favorite NBA teams are the Portland Trail Blazers, Phoenix Suns, and New Orleans Pelicans. 
+
+:video_game: I have a switch, and when I am not working on my blog I play [Stardew Valley](https://www.nintendo.com/store/products/stardew-valley-switch/), [Cat Cafe Manager](https://www.nintendo.com/store/products/cat-cafe-manager-switch/), [Unpacking](https://www.nintendo.com/store/products/unpacking-switch/), [Mario Carts](https://www.nintendo.com/store/products/mario-kart-8-deluxe-switch/), [Pokemon Legends Arceus](https://www.nintendo.com/store/products/pokemon-legends-arceus-switch/), [Animal Crossing](https://www.nintendo.com/store/products/animal-crossing-new-horizons-switch/), and most recently [Just Dance](https://www.nintendo.com/store/products/just-dance-switch/).
+
+------------------------------------------------------------------------
+
+:books:**Books I'm Currently Reading**:books:
+
+[Basketball Analytics](https://www.amazon.com/Basketball-Analytics-Objective-Strategies-Understanding/dp/1492923176/ref=pd_bxgy_img_sccl_1/139-9559542-4708158?pd_rd_w=PgVSG&content-id=amzn1.sym.7f0cf323-50c6-49e3-b3f9-63546bb79c92&pf_rd_p=7f0cf323-50c6-49e3-b3f9-63546bb79c92&pf_rd_r=T2F994YDQV6G0J1S2E58&pd_rd_wg=iLkda&pd_rd_r=105a4c21-7e17-4938-84af-07a897041615&pd_rd_i=1492923176&psc=1)
+
+[Etiquette Guide to Japan](https://www.amazon.com/Etiquette-Guide-Japan-Rules-Difference/dp/4805313617)
+
+[Weapons of Math Destruction](https://www.amazon.com/Weapons-Math-Destruction-Increases-Inequality/dp/0553418815)
+
+------------------------------------------------------------------------
+
+:notes:**Music I'm Currently Listening To**:notes:
+
+[Face Your Fears - Crazy Ex Girlfriend](https://www.youtube.com/watch?v=brzZQBSVMX0)
+
+[I Owe You Nothing](https://www.youtube.com/watch?v=UUWid7BetA8)
+
+[Never Thought - Mel Bryant](https://www.youtube.com/watch?v=WqsIZQt29Ag)
+
+[Pudgy - Smino](https://www.youtube.com/watch?v=vYDTxajCnfU)
+
+[Supremacy - Muse](https://www.youtube.com/watch?v=avM_UsVo0IA)
+
+------------------------------------------------------------------------
+
+:movie_camera:**Movies I've Watched Recently**:movie_camera:
+
+[Hellraiser](https://en.wikipedia.org/wiki/Hellraiser_(franchise)) (Remake, 1,2,3,4,5,6)
+
+[The Father](https://en.wikipedia.org/wiki/The_Father_(2020_film))

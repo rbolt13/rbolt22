@@ -43,5 +43,7 @@ These blogs are either not made with quarto, or I couldn't find their github rep
 
 [Machine Learning Mastery!](https://machinelearningmastery.com/)
 
+[Nan Xiao](https://nanx.me/): [Repo](https://github.com/nanxstats/nanx.me)
+
 [Tanner Heffner](https://www.heffner.dev/): [Repo](https://github.com/tjheffner/heffdotdev) (Made with Svelte)
 
