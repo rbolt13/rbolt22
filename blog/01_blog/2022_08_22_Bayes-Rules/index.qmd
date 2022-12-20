@@ -1,7 +1,7 @@
 ---
 title: "Bayes Rules! - Salt Lake City R User Group"
 date: "2022-08-22"
-categories: [R]
+categories: [R, Bayes]
 toc: true
 ---
 
