@@ -18,7 +18,7 @@
     "href": "index.html",
     "title": "Randi Bolt",
     "section": "",
-    "text": "This website is currently under construction so be sure to check out the links below and my old blog which showcases all of my academic and personal projects from undergrad.\nI post every Monday about a range of topics that are related to data science, statistics, mathematics, or machine learning. Check out my journey, and feel free to leave my posts comments. I’d love to hear from you!\nThanks for stopping by, and please enjoy!\n😘✨"
+    "text": "This website is currently under construction so be sure to check out the links below and my old blog which showcases all of my academic and personal projects from undergrad.\nI post bimonthly about a range of topics that are related to data science, statistics, mathematics, or machine learning. Check out my journey, and feel free to leave my posts comments. I’d love to hear from you!\nThanks for stopping by, and please enjoy!\n😘✨"
   },
   {
     "objectID": "about.html",
@@ -1481,13 +1481,125 @@
     "href": "01_blog/2022_11_21_Quartro/index.html",
     "title": "Quarto Links",
     "section": "",
-    "text": "1. Creating a Blog with Quatro\nCreating a blog with Quarto in 10 steps - Bea Milz\nInstalling and Configuring Python with RStudio\nQuarto: Creating a Blog Documentation\nA Quarto tip a day\n\n\n2. Quartro Blogs and their Github Repos\nBea Milz: repo\nDaniel Tran: Repo\nDanielle Navarro - Notes from a data witch: repo\nRober Mitchell: Repo\nSam Csik: Repo\nTed Landeras, PhD: repo\n\n\nMore Blogs (For Inspiration)\nThese blogs are either not made with quarto, or I couldn’t find their github repositories.\nAllison Hill, PhD\nJulia Silge: Repo (Made with Blogdown and Hugo)\nMachine Learning Mastery!\nNan Xiao: Repo\nTanner Heffner: Repo (Made with Svelte)"
+    "text": "1. Creating a Blog with Quatro\nCreating a blog with Quarto in 10 steps - Bea Milz\nInstalling and Configuring Python with RStudio\nQuarto: Creating a Blog Documentation\nA Quarto tip a day\n\n\n2. Quartro Blogs and their Github Repos\nBea Milz: repo\nDaniel Tran: Repo\nDanielle Navarro - Notes from a data witch: repo\nRober Mitchell: Repo\nSam Csik: Repo\nTed Landeras, PhD: repo\n\n\nMore Blogs (For Inspiration)\nThese blogs are either not made with quarto, or I couldn’t find their github repositories.\nAlicia Johnson (Made with blogdown)\nAllison Hill, PhD\nJulia Silge: Repo (Made with Blogdown and Hugo)\nMachine Learning Mastery!\nNan Xiao: Repo\nTanner Heffner: Repo (Made with Svelte)"
   },
   {
     "objectID": "blog.html",
     "href": "blog.html",
     "title": "Blog",
     "section": "",
-    "text": "Statistics\n\n\nLinear Regression\n\n\n\n\n\n\n\n\n\n\n\nDec 5, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nPython\n\n\nData Visuals\n\n\n\n\n\n\n\n\n\n\n\nNov 28, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nNov 21, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nNBA\n\n\nWeb-Scraping\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\nNov 7, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nMath\n\n\nProof\n\n\n\n\n\n\n\n\n\n\n\nOct 31, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\nJul 25, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nR\n\n\nNBA\n\n\nWeb-Scraping\n\n\nData Visuals\n\n\n\n\n\n\n\n\n\n\n\n\nJul 18, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\nJun 27, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nStatistics\n\n\n\n\n\n\n\n\n\n\n\nJun 20, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nGeometry\n\n\n\n\n\n\n\n\n\n\n\nMay 30, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nAbstract Math\n\n\n\n\n\n\n\n\n\n\n\nMay 23, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nR\n\n\nData Visuals\n\n\n\n\n\n\n\n\n\n\n\n\nApr 25, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nR\n\n\nNLP\n\n\nData Visuals\n\n\n\n\n\n\n\n\n\n\n\nApr 18, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nAbstract Math\n\n\n\n\n\n\n\n\n\n\n\nMar 28, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nGeometry\n\n\n\n\n\n\n\n\n\n\n\nMar 21, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\nFeb 28, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nR\n\n\nData Visuals\n\n\n\n\n\n\n\n\n\n\n\nFeb 21, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nR\n\n\nGeometry\n\n\n\n\n\n\n\n\n\n\n\nJan 31, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nMath\n\n\n\n\n\n\n\n\n\n\n\nJan 24, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nR\n\n\nLinear Regression\n\n\n\n\n\n\n\n\n\n\n\nDec 20, 2021\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nProof\n\n\nStatistics\n\n\nLinear Regression\n\n\n\n\n\n\n\n\n\n\n\nNov 29, 2021\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nStatistics\n\n\n\n\n\n\n\n\n\n\n\nNov 22, 2021\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nMath\n\n\nAbstract Math\n\n\n\n\n\n\n\n\n\n\n\nOct 25, 2021\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nR\n\n\nConditional Probabilty\n\n\nTree Diagrams\n\n\nStatistics\n\n\n\n\n\n\n\n\n\n\n\nOct 18, 2021\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nR\n\n\nGenerative Art\n\n\n\n\n\n\n\n\n\n\n\nSep 27, 2021\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nR\n\n\ntidycensus\n\n\nAPI\n\n\n\n\n\n\n\n\n\n\n\nSep 20, 2021\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nR\n\n\nData Visuals\n\n\n\n\n\n\n\n\n\n\n\nAug 30, 2021\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nAug 23, 2021\n\n\n\n\n\n\nNo matching items"
+    "text": "Statistics\n\n\nLinear Regression\n\n\n\n\n\n\n\n\n\n\n\nDec 5, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nPython\n\n\nData Visuals\n\n\n\n\n\n\n\n\n\n\n\nNov 28, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nNov 21, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nNBA\n\n\nWeb-Scraping\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\nNov 7, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nMath\n\n\nProof\n\n\n\n\n\n\n\n\n\n\n\nOct 31, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\nAug 22, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\nJul 25, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nR\n\n\nNBA\n\n\nWeb-Scraping\n\n\nData Visuals\n\n\n\n\n\n\n\n\n\n\n\n\nJul 18, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\nJun 27, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nStatistics\n\n\n\n\n\n\n\n\n\n\n\nJun 20, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nGeometry\n\n\n\n\n\n\n\n\n\n\n\nMay 30, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nAbstract Math\n\n\n\n\n\n\n\n\n\n\n\nMay 23, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nR\n\n\nData Visuals\n\n\n\n\n\n\n\n\n\n\n\n\nApr 25, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nR\n\n\nNLP\n\n\nData Visuals\n\n\n\n\n\n\n\n\n\n\n\nApr 18, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nAbstract Math\n\n\n\n\n\n\n\n\n\n\n\nMar 28, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nGeometry\n\n\n\n\n\n\n\n\n\n\n\nMar 21, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\nFeb 28, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nR\n\n\nData Visuals\n\n\n\n\n\n\n\n\n\n\n\nFeb 21, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nR\n\n\nGeometry\n\n\n\n\n\n\n\n\n\n\n\nJan 31, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nMath\n\n\n\n\n\n\n\n\n\n\n\nJan 24, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nR\n\n\nLinear Regression\n\n\n\n\n\n\n\n\n\n\n\nDec 20, 2021\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nProof\n\n\nStatistics\n\n\nLinear Regression\n\n\n\n\n\n\n\n\n\n\n\nNov 29, 2021\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nStatistics\n\n\n\n\n\n\n\n\n\n\n\nNov 22, 2021\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nMath\n\n\nAbstract Math\n\n\n\n\n\n\n\n\n\n\n\nOct 25, 2021\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nR\n\n\nConditional Probabilty\n\n\nTree Diagrams\n\n\nStatistics\n\n\n\n\n\n\n\n\n\n\n\nOct 18, 2021\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nR\n\n\nGenerative Art\n\n\n\n\n\n\n\n\n\n\n\nSep 27, 2021\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nR\n\n\ntidycensus\n\n\nAPI\n\n\n\n\n\n\n\n\n\n\n\nSep 20, 2021\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nR\n\n\nData Visuals\n\n\n\n\n\n\n\n\n\n\n\nAug 30, 2021\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nAug 23, 2021\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "01_blog/2022_08_22_Bayes-Rules/index.html",
+    "href": "01_blog/2022_08_22_Bayes-Rules/index.html",
+    "title": "Bayes Rules! - Salt Lake City R User Group",
+    "section": "",
+    "text": "Alicia Johnson led this R User Connect Philadelphia to discus the book she co-authored, Bayes Rules!."
+  },
+  {
+    "objectID": "01_blog/2022_08_22_Bayes-Rules/index.html#alicia-johnson",
+    "href": "01_blog/2022_08_22_Bayes-Rules/index.html#alicia-johnson",
+    "title": "Bayes Rules! - Salt Lake City R User Group",
+    "section": "1.1. Alicia Johnson",
+    "text": "1.1. Alicia Johnson\n\nStatistics Professor.\nAuthor of Bayes Rules!."
+  },
+  {
+    "objectID": "01_blog/2022_08_22_Bayes-Rules/index.html#materials",
+    "href": "01_blog/2022_08_22_Bayes-Rules/index.html#materials",
+    "title": "Bayes Rules! - Salt Lake City R User Group",
+    "section": "1.2. Materials",
+    "text": "1.2. Materials\nSlides\nGithub Repository"
+  },
+  {
+    "objectID": "01_blog/2022_08_22_Bayes-Rules/index.html#what-does-pheads0.5-mean",
+    "href": "01_blog/2022_08_22_Bayes-Rules/index.html#what-does-pheads0.5-mean",
+    "title": "Bayes Rules! - Salt Lake City R User Group",
+    "section": "2.1. What does P(heads)=0.5 mean?",
+    "text": "2.1. What does P(heads)=0.5 mean?\n\nIf I flip this coin over and over, roughly 50% will be heads.\nHeads and Tails are equally plausible.\nBoth a and b make sense.\n\n\nScores: a = 1, b = 3, c = 2\nMajority Responses: C\n\n\nFrequentist Philosophy\n\nlong run outcome\n\nBayesian Philosophy\n\nrelative probability of events\n\nPragmatic Philosophy\n\nboth interpretations make sense"
+  },
+  {
+    "objectID": "01_blog/2022_08_22_Bayes-Rules/index.html#what-does-pcandidate-a-wins-0.8-mean",
+    "href": "01_blog/2022_08_22_Bayes-Rules/index.html#what-does-pcandidate-a-wins-0.8-mean",
+    "title": "Bayes Rules! - Salt Lake City R User Group",
+    "section": "2.2 What does P(candidate A wins) = 0.8 mean?",
+    "text": "2.2 What does P(candidate A wins) = 0.8 mean?\n\nIf we observe this election over and over, candidate A will win roughly 80% of the time.\nCandidate A is much more likely to win than to lose (4 times more likely).\nThe pollster’s calculation is wrong.\n\n\nMajority Response: B\nScores: a = 1, b = 3, c = 1\n\n\nFreq.\nBayes\nFreq.\n\nthe event cannot be repeated over and over again"
+  },
+  {
+    "objectID": "01_blog/2022_08_22_Bayes-Rules/index.html#alicia-claims-she-can-predict-the-outcome-of-a-coin-flip.-mine-claims-she-can-distinguish-between-a-crown-burger-and-a-vegan-alternative.-both-succeed-in-10-out-of-10-trials.-what-do-you-conclude",
+    "href": "01_blog/2022_08_22_Bayes-Rules/index.html#alicia-claims-she-can-predict-the-outcome-of-a-coin-flip.-mine-claims-she-can-distinguish-between-a-crown-burger-and-a-vegan-alternative.-both-succeed-in-10-out-of-10-trials.-what-do-you-conclude",
+    "title": "Bayes Rules! - Salt Lake City R User Group",
+    "section": "2.3 Alicia claims she can predict the outcome of a coin flip. Mine claims she can distinguish between a Crown Burger and a Vegan Alternative. Both succeed in 10 out of 10 trials. What do you conclude?",
+    "text": "2.3 Alicia claims she can predict the outcome of a coin flip. Mine claims she can distinguish between a Crown Burger and a Vegan Alternative. Both succeed in 10 out of 10 trials. What do you conclude?\n\nYou’re still more confident in Mine’s claim than Alicia’s claim.\nThe evidence supporting Mine’s claim.\n\n\nScore: a = 3, b = 1\n\n\nBayes\nFreq."
+  },
+  {
+    "objectID": "01_blog/2022_08_22_Bayes-Rules/index.html#youve-tested-positive-for-a-very-rare-genetic-trait.-if-you-only-get-to-ask-the-doctor-one-question-which-would-it-be",
+    "href": "01_blog/2022_08_22_Bayes-Rules/index.html#youve-tested-positive-for-a-very-rare-genetic-trait.-if-you-only-get-to-ask-the-doctor-one-question-which-would-it-be",
+    "title": "Bayes Rules! - Salt Lake City R User Group",
+    "section": "2.4 You’ve tested positive for a very rare genetic trait. If you only get to ask the doctor one question, which would it be?",
+    "text": "2.4 You’ve tested positive for a very rare genetic trait. If you only get to ask the doctor one question, which would it be?\n\nP(rare trait|+)\nP(+| no rare trait)\n\n\nScore: a = 3, b = 1\n\n\nBayes\n\nasking about uncertainty of hypothesis given certainty of the data\nmore natural question to ask\n\nFreq. = p-value\n\nhard to wrap minds around\nasking about uncertainty in data\nless natural question to ask (since data is certain)"
+  },
+  {
+    "objectID": "01_blog/2022_08_22_Bayes-Rules/index.html#goals",
+    "href": "01_blog/2022_08_22_Bayes-Rules/index.html#goals",
+    "title": "Bayes Rules! - Salt Lake City R User Group",
+    "section": "3.1 Goals",
+    "text": "3.1 Goals\n\nLearn to think like Bayesians.\nApply Bayesian thinking in a regression setting."
+  },
+  {
+    "objectID": "01_blog/2022_08_22_Bayes-Rules/index.html#set-up",
+    "href": "01_blog/2022_08_22_Bayes-Rules/index.html#set-up",
+    "title": "Bayes Rules! - Salt Lake City R User Group",
+    "section": "3.2 Set Up",
+    "text": "3.2 Set Up\n\n# Load packages\nlibrary(tidyverse)\nlibrary(tidybayes)\nlibrary(bayesrules)\nlibrary(bayesplot)\nlibrary(rstanarm)\nlibrary(broom.mixed)"
+  },
+  {
+    "objectID": "01_blog/2022_08_22_Bayes-Rules/index.html#background",
+    "href": "01_blog/2022_08_22_Bayes-Rules/index.html#background",
+    "title": "Bayes Rules! - Salt Lake City R User Group",
+    "section": "3.3 Background",
+    "text": "3.3 Background\nLet \\(\\pi\\) (“pi”) be the proportion of U.S. adults that believe that climate change is real and caused by people. Thus \\(\\pi\\) is some value between 0 and 1."
+  },
+  {
+    "objectID": "01_blog/2022_08_22_Bayes-Rules/index.html#exercise-1-specify-a-prior-model",
+    "href": "01_blog/2022_08_22_Bayes-Rules/index.html#exercise-1-specify-a-prior-model",
+    "title": "Bayes Rules! - Salt Lake City R User Group",
+    "section": "3.4 Exercise 1: Specify a Prior Model",
+    "text": "3.4 Exercise 1: Specify a Prior Model\nThe first step in learning about \\(\\pi\\) is to specify a prior model for \\(\\pi\\) (i.e. prior to collecting any data). Suppose your friend specifies their understanding of \\(\\pi\\) through the “Beta(2, 20)” model. Plot this Beta model and discuss what it tells you about your friend’s prior understanding. For example:\n\nWhat do they think is the most likely value of \\(\\pi\\)?\n\nWhat range of \\(\\pi\\) values do they think are plausible?\n\n\nplot_beta(alpha = 2, beta = 20)\n\n\n\n\n\n\n\n\nNotes:\n\nproportion between 0 and 1 (not \\(-\\infty\\) to \\(+\\infty\\))\nthis model, beta-2-20, is right skewed\n\n\n3.4.1 What is your friend saying is the most likely value of pi?\nAbout .12 or 12 % or people believe in climate change.\n\nspike of model is best estimate\nlooking at range the prior model drops off above .25, so you friend believes under 25% of people believe in climate change."
+  },
+  {
+    "objectID": "01_blog/2022_08_22_Bayes-Rules/index.html#check-out-some-data",
+    "href": "01_blog/2022_08_22_Bayes-Rules/index.html#check-out-some-data",
+    "title": "Bayes Rules! - Salt Lake City R User Group",
+    "section": "3.5 Check Out Some Data",
+    "text": "3.5 Check Out Some Data\nThe second step in learning about \\(\\pi\\), the proportion of U.S. adults that believe that climate change is real and caused by people, is to collect data. Your friend surveys 10 people and 6 believe that climate change is real and caused by people. The likelihood function of \\(\\pi\\) plots the chance of getting this 6-out-of-10 survey result under different possible \\(\\pi\\) values. Based on this plot:\n\nplot_binomial_likelihood(y = 6, n = 10)\n\n\n\n\n\n\n\n\nNotes:\n\nThe next step after creating a model (beta-2-20) we collect data.\nThis plot is showing us what the chance is that we got these survey results under different possible pie values.\n\n\n3.5.1 With what values of \\(\\pi\\) are the 6-out-of-10 results most consistent?\nApprox. 60% of people believe in climate change. Shown by our graph spiking at that value.\n\n\n3.5.2 For what values of \\(\\pi\\) would these 6-out-of-10 results be unlikely?\nOur data would not be very likely to happen for values below .25 and above .9."
+  },
+  {
+    "objectID": "01_blog/2022_08_22_Bayes-Rules/index.html#exercist-3-build-the-posterior-model",
+    "href": "01_blog/2022_08_22_Bayes-Rules/index.html#exercist-3-build-the-posterior-model",
+    "title": "Bayes Rules! - Salt Lake City R User Group",
+    "section": "3.6 Exercist 3: Build the Posterior Model",
+    "text": "3.6 Exercist 3: Build the Posterior Model\nIn a Bayesian analysis of \\(\\pi\\), we build a posterior model of \\(\\pi\\) by combining the prior model of \\(\\pi\\) with the data (represented through the likelihood function). Plot all 3 components below. Summarize your observations:\n\nplot_beta_binomial(alpha = 2, beta = 20, y = 6, n = 10)\n\n\n\n\n\n\n\n\nNotes:\n\nDepends on a lot of factors\n\n\n3.6.1 What’s your friend’s posterior understanding of \\(\\pi\\)?\nMy friend’s prior understanding of \\(\\pi\\) is not as low as what it was before, but also not as high as what is suggested in the data.\n\n\n3.6.2 How does their posterior understanding compare to their prior and likelihood? Thus how does their posterior balance the prior and data?\nTheir posterior understanding is higher than their prior knowledge and likelihood. The density of their posterior knowledge is lower than their previous density."
+  },
+  {
+    "objectID": "01_blog/2022_08_22_Bayes-Rules/index.html#exercise-4-another-friend",
+    "href": "01_blog/2022_08_22_Bayes-Rules/index.html#exercise-4-another-friend",
+    "title": "Bayes Rules! - Salt Lake City R User Group",
+    "section": "3.7 Exercise 4: Another Friend",
+    "text": "3.7 Exercise 4: Another Friend\nConsider another friend that saw the same 6-out-of-10 polling data but started with a Beta(1, 1) prior model for \\(\\pi\\):\n\nplot_beta(alpha = 1, beta = 1)\n\n\n\n\n\n\n\n\n\n3.7.1 Describe the new friend’s understanding of \\(\\pi\\). Compared to the first friend, are they more or less sure about \\(\\pi\\)?\nThis is a uniform distribution which maybe indicates the friend thinks everyone believes in Climate Change.\n\n\n3.7.2 Do you think the new friend will have a different posterior model than the first friend? If so, how do you think it will compare?\nYes, I think their posterior model will be higher than the first friend.\nTest your intuition. Use plot_beta_binomial() to explore your new friend’s posterior model of \\(\\pi\\).\n\nplot_beta_binomial(alpha = 1, beta = 1, y = 6, n = 10)\n\n\n\n\n\n\n\n\nNotes:\n\nThis is a shoulder shrug, uncertain prior model. It could really be anything."
+  },
+  {
+    "objectID": "01_blog/2022_08_22_Bayes-Rules/index.html#exercise-5-more-data",
+    "href": "01_blog/2022_08_22_Bayes-Rules/index.html#exercise-5-more-data",
+    "title": "Bayes Rules! - Salt Lake City R User Group",
+    "section": "3.8 Exercise 5: More Data",
+    "text": "3.8 Exercise 5: More Data\nTest your intuition. Use plot_beta_binomial() to explore your new friend’s posterior model of \\(\\pi\\).\n\ndata(\"pulse_of_the_nation\")\npulse_of_the_nation %>% \n  count(climate_change)\n\n# A tibble: 3 × 2\n  climate_change                    n\n  <fct>                         <int>\n1 Not Real At All                 150\n2 Real and Caused by People       655\n3 Real but not Caused by People   195\n\n\n\n3.8.1 How do you think the additional data will impact your first friend’s posterior understanding of \\(\\pi\\)? What about the second friend’s?\nI think the first friends understanding of \\(\\pi\\) would increase will increase, while the second friends understanding will decrease.\n\n\n3.8.2 Upon seeing the 1000-person survey results, do you think your two friends’ posterior understandings of \\(\\pi\\) will disagree a lot or a little?\nI think the two friends’ posterior understanding will disagree a little.\nTest your intuition. Use plot_beta_binomial() to explore both friends’ posterior models of \\(\\pi\\).\n\n# first friend \nplot_beta_binomial(alpha = 2, beta = 20, y = 655, n = 1000)\n\n\n\n\n\n\n\n# second friend \nplot_beta_binomial(alpha = 1, beta = 1, y = 655, n = 1000)"
+  },
+  {
+    "objectID": "01_blog/2022_08_22_Bayes-Rules/index.html#exercise-6-your-turn",
+    "href": "01_blog/2022_08_22_Bayes-Rules/index.html#exercise-6-your-turn",
+    "title": "Bayes Rules! - Salt Lake City R User Group",
+    "section": "3.9 Exercise 6: Your Turn",
+    "text": "3.9 Exercise 6: Your Turn\nLet \\(\\pi\\) be the proportion of U.S. adults that believe in ghosts.\n\nUse plot_beta() to tune your prior model of \\(\\pi\\). To this end, think about what values of \\(\\pi\\) you think are most likely and how sure you are.\n\nNote:\n\nalpha and beta must be positive.\nThe prior means falls at alpha/(alpha + beta). Thus when alpha is smaller than beta, the prior mode falls below 0.5.\nIn general, the smaller the alpha and beta, the more variable / less certain the prior.\n\n\nbayesrules::plot_beta(alpha = 20, beta = 10)\n\n\n\n\n\n\n\n\n\nCollect some data. How many of the 1000 pulse_of_the_nation respondents believe in ghosts?\n\n\npulse_of_the_nation %>% \n  count(ghosts)\n\n# A tibble: 2 × 2\n  ghosts     n\n  <fct>  <int>\n1 No       621\n2 Yes      379\n\n\n\nUse plot_beta_binomial() to visualize your prior, data, and posterior.\n\n\nbayesrules::plot_beta_binomial(alpha = 20, beta = 10, y = 378, n = 1000)\n\n\n\n\n\n\n\n\nCheck out the Github Repository for Part 2: Apply Bayesian thinking to a regression model."
   }
 ]

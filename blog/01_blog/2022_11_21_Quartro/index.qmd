@@ -37,6 +37,8 @@ Here is a list of links I used to help create this Quarto blog. As well as links
 
 These blogs are either not made with quarto, or I couldn't find their github repositories. 
 
+[Alicia Johnson](https://ajohns24.github.io/portfolio/) (Made with blogdown)
+
 [Allison Hill, PhD](https://www.apreshill.com/)
 
 [Julia Silge](https://juliasilge.com/): [Repo](https://github.com/juliasilge/juliasilge.com) (Made with Blogdown and Hugo)

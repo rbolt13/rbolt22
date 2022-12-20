@@ -102,11 +102,13 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/01_blog/2022_08_22_Bayes-Rules/bayes.html",
       "/01_blog/2022_12_12_Data-Science-Interview-Questions-P1/index.html",
       "/01_blog/2022_11_28_python-beg/index.html",
       "/01_blog/2022_11_21_Quartro/index.html",
       "/01_blog/2022_11_07_NBA-functions/index.html",
       "/01_blog/2022_10_31_P-logically-equivalent-neg-neg-P/index.html",
+      "/01_blog/2022_08_22_Bayes-Rules/index.html",
       "/01_blog/2022_07_25_Tidyverse-P1/index.html",
       "/01_blog/2022_07_18_Reactable/index.html",
       "/01_blog/2022_06_27_Predicting-Stock-Prices/index.html",
