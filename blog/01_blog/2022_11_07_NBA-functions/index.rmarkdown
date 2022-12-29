@@ -1,0 +1,286 @@
+---
+title: "Creating Functions in R to Scrape NBA Data"
+date: "2022-11-07"
+categories: [NBA, Web-Scraping, R]
+toc: true
+draft: true
+---
+
+
+In this tutorial I will be creating functions to scrape NBA data. The goal here is to prepare these functions to use in a package for future analysis.
+
+![Image of a page from a basketball playbook.](../../00_img/playbook.jpeg)
+
+# `0_0. Introduction`
+
+Two essential chapters in every data scientists playbook are functions and web scrapping. In this blog post I will be making three main scrapping functions that will each include smaller nested functions. The three main functions will output specific data frames of NBA data. The nested functions will help scrape the data, and clean it so it's in a readable form. 
+
+## `0_1. About-The-Data`
+
+I will be scrapping data from [Basketball Reference](https://www.basketball-reference.com/) which gets thier data updated regularly by a handful of [contributors and sources](https://www.basketball-reference.com/about/sources.html). The main reasons I like using this data is because it's reliable, updated regularly, and similar sites exist for other non-NBA Sports (such as: [WNBA](https://www.basketball-reference.com/wnba/), [Baseball](https://www.baseball-reference.com/), [Football](https://www.pro-football-reference.com/), and others) if I wanted to expand my research outside the NBA.
+
+## `0_2. Package Installs`
+
+The packages I will be using are [rvest](https://rvest.tidyverse.org/) to scrape the data and [magrittr](https://magrittr.tidyverse.org/) to pipe it. To install these packages, copy the code below and remove the first comment hash (command - shift - c).
+
+
+```{r}
+## install packages
+# install.packages("rvest",  "magrittr")
+```
+
+
+Then load:
+
+
+```{r, message=FALSE, warning=FALSE}
+# load packages 
+library(rvest) 
+library(magrittr)
+```
+
+
+# `1_0. Functions`
+
+To start I will be creating three function: 
+
+1. Team Statistics
+
+2. Player Statistics
+
+3. Box Scores 
+
+## `1_1. Team Statistics`:
+
+The first function I'm creating scrapes team statistics, which will need the user to input the teams url **slug**, the **year** that team attended or attends the NBA playoffs, and the **stats_tb** or statistics table that corresponds to what is shown on [Basketball Reference](https://www.basketball-reference.com/). Currently not all tables work, but it should work for: #per_game, #totals, #per_36_minutes, and #advanced. 
+
+
+```{r}
+scrape_team_data <- function(slug, year, stats_tb){
+    "
+  A function that returns a data frame of team statistics. 
+  
+  @param slug is string of three letters that represents the teams url. 
+  @param year is a string that corresponds to the NBA finals.
+  @param stats_tb is a string that corresponds to the statistics table on BasketBall Reference such as #per_game, #totals, #per_36_minutes, and #advanced
+  
+  @return a df of team statistics
+  "
+  # define team page URL
+  url <- base::paste0("https://www.basketball-reference.com/teams/",
+                slug,"/", year, ".html")
+  
+  # Read stats table
+  stats_tb <- url %>%
+  read_html %>%
+  html_node(stats_tb) %>% 
+  html_table()
+  
+  # Rename Column 2 to Name 
+  base::names(stats_tb)[2] <- "Name"
+  
+  # Replace NA values with 0 (for stat functions)
+  stats_tb[base::is.na(stats_tb)] <- 0
+  
+  # make data frame
+  df <- base::data.frame(stats_tb)
+  base::return(df)
+  }
+```
+
+
+### Examples
+
+#### A. Current Blazers Roster
+
+
+```{r}
+zers_roster <- scrape_team_data("POR","2022","#roster")
+utils::head(zers_roster)
+```
+
+
+#### B. 1997 Chicago Bulls Total Statistics
+
+
+```{r}
+bulls_totals <- scrape_team_data("CHI", "1998", "#totals")
+utils::head(bulls_totals)
+```
+
+
+_Here we can see when Michael Jordan won his 6th ring with the Chicago Bulls he was also the leagues leading point scorer with 2,357 total points that season. Dennis Rodman was also a league leader that season in rebounds collecting a total of 1,201 rebounds._
+
+## `1_2. Player Statistics`
+
+The second function will scrape player statistics. The user will need to input the players **name**, and the **stats_tb** or statistics table that corresponds to what is shown on [Basketball Reference](https://www.basketball-reference.com/). Currently not all tables work, but it should work for: #per_game, #totals, #per_36_minutes, and #advanced.
+
+
+```{r}
+scrape_player_data <- function(name, stats_tb){
+  "
+  A function that returns a data frame of player statistics. 
+  
+  @param name is a string that represnets an NBA players name
+  @param stats_tb is a string that corresponds to the statistics table on BasketBall Reference such as #per_game, #totals, #per_36_minutes, and #advanced
+  
+  @return a df of player statistics
+  "
+  # make name lower case
+  lower_case_name <- base::tolower(name)
+
+  # split name 
+  split_name <- base::strsplit(lower_case_name, " +")[[1]]
+
+  # define first and last name
+  first_name <- split_name[[1]]
+  last_name <- split_name[[2]]
+  
+  # first letter of last name
+  letter <- base::substr(last_name, 1,1)
+  
+  # first five letters of last name 
+  last_5 <- base::substr(last_name, 1, 5)
+  
+  # first two letters of first name
+  first_2 <- base::substr(first_name, 1,2)
+  
+  # define team page URL
+  url <- base::paste0("https://www.basketball-reference.com/players/",letter ,"/",last_5,first_2,"01.html")
+  
+  # Read stats table
+  stats_tb <- url %>%
+  read_html %>%
+  html_node(stats_tb) %>% 
+  html_table()
+  
+  # Rename Column 2 to Name 
+  names(stats_tb)[2] <- "Name"
+  
+  # Replace NA values with 0 (for stat functions)
+  stats_tb[base::is.na(stats_tb)] <- 0
+  
+  # make list a dataframe
+  df <- base::data.frame(stats_tb)
+  
+  base::return(df)
+  }
+```
+
+
+### Examples
+
+#### C. [Allen Iverson](https://en.wikipedia.org/wiki/Allen_Iverson) Per Game Stats
+
+
+```{r}
+ai_per_game <- scrape_player_data("Allen Iverson", "#per_game")
+head(ai_per_game)
+```
+
+
+_Notice that when Allen Iverson won the NBA's MVP in 2001 he was putting up about 31 points a game._
+
+#### D. [Kareem Abdul-Jabbar](https://en.wikipedia.org/wiki/Kareem_Abdul-Jabbar) Totals
+
+
+```{r}
+kaj_totals <- scrape_player_data("Kareem Abdul-Jabbar", "#totals")
+utils::head(kaj_totals)
+```
+
+
+## `1_3. Box Scores`
+
+The last function still needs a bit of work, but will pull box scores of all the NBA games on a given day. The user will need to enter the **game_day** or day of the games they want box scores for. 
+
+Note: Ideally this function would return a list with each game being its own df, but for now it only prints one data frame that includes all games played on that date. There also seem to be issues when only one game is played, or it is the first game of the season (see examples below), but for now those issues are manageable. 
+
+
+```{r}
+box_scores <- function(game_day){
+  "
+  A function that returns a data frame of box scores. 
+  
+  @param game_day is a string that represents the date in the form Y-M-D
+  
+  @return a df of box scores from that day.
+  "
+  # split by dash
+  split_date <- base::strsplit(game_day, "-")
+  
+  # year - month - day 
+  year <- split_date[[1]][[1]]
+  month <- split_date[[1]][[2]]
+  day <- split_date[[1]][[3]]
+  
+  #url
+  url <- base::paste0("https://www.basketball-reference.com/boxscores/?month=",
+                month ,"&day=", day,"&year=", year)
+  
+  # read url
+  html <- read_html(url)
+  
+  # extract all the 'div" items from the html as tables
+  div <- html %>% 
+    html_elements("div") %>% 
+    html_table()
+  
+  #remove empties
+  div <- div[base::sapply(div, function(i) dim(i)[1]) > 0]
+  
+  # only keep rows == 7
+  div <- div[base::sapply(div, function(i) nrow(i)[1]) == 7]
+  
+  # empty list
+  my_vec <- base::list()
+  
+  #for loop
+  for(i in 1:base::length(div)) {        
+  my_out <- div[[i]][3:5,] 
+  my_vec <- c(my_vec, my_out)
+  df <- base::data.frame(my_vec)
+  }
+  
+  df <- df[-1,]
+  
+  base::return(df)
+}
+```
+
+
+
+### Example 
+
+#### E. Box Scores for 10-19-2022 (works correctly)
+
+
+```{r}
+oct_19 <- box_scores("2022-10-19")
+oct_19
+```
+
+
+#### F. Box scores for the first day of the '22/'23 NBA season (issues)
+
+
+```{r}
+oct_18 <- box_scores("2022-10-18")
+oct_18
+```
+
+
+<span style="color: red;">Issue: For the first game of the season there is an are NA tables that are being pulled in.</span> 
+
+G. First game of the 1992 NBA Finals AKA [Michael Jordan's famous Shrug](https://www.youtube.com/watch?v=hynjpv8y1pA&t=16s) (issues)
+
+
+```{r}
+finals_92_g1 <- box_scores("1992-6-3")
+finals_92_g1
+```
+
+
+<span style="color: red;">Issue: For days where only one game is played the one game is printed twice in the data frame.</span>
+
+

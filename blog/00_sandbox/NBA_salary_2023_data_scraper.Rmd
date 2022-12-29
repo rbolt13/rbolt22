@@ -1,0 +1,87 @@
+---
+title: "NBA Salary 2023 Data Scraper"
+---
+
+```{r}
+library(rvest)
+library(tidyverse)
+```
+
+Link: http://www.espn.com/nba/salaries
+
+# Function 
+
+```{r}
+salary.scrape <- function(url_page){
+  " 
+  This function takes in the url_page and returns a df of the table on that page.
+  "
+  # save and read url
+  url <- base::paste0("http://www.espn.com/nba/salaries", url_page)
+  html <- read_html(url)
+
+  # read table
+  tb <- html %>%
+  html_elements("div") %>%
+  html_table
+  
+  # only use first table the rest are repeats or empty
+  tb1 <- tb[[1]]
+  
+  # use first row as column names
+  names(tb1) <- as.character(unlist(tb1[1,]))
+  
+  # remove duplicate headers
+  tb2 <- tb1 %>%
+    filter(duplicated(RK) == FALSE)
+  
+  # remove first row
+  tb3 <- tb2[-1,]
+  
+  # Add position column, and remove position from name
+  tb3$POSITION <- sub('.*,',"", tb3$NAME)
+  tb3$NAME <- sub(', [A-Z]{,2}','', tb3$NAME)
+  
+  return(tb3)
+}
+```
+
+# Gather, Merge, Clean, and Save Data
+
+```{r}
+# a string of url page extensions
+url_pages <- c("", "/_/page/2", "/_/page/3", "/_/page/4", "/_/page/5", 
+               "/_/page/6", "/_/page/7", "/_/page/8", "/_/page/9", 
+               "/_/page/10", "/_/page/11", "/_/page/12", "/_/page/13")
+
+# empty list
+salary_list <- list()
+
+# pulls salary info from each url page
+for (i in 1:length(url_pages))
+{
+  output <- salary.scrape(url_pages[[i]])
+  salary_list[[i]] <- output
+}
+
+# combine all 13 pages into one list
+nba_salaries_2023 <- rbind(salary_list[[1]],
+                           salary_list[[2]],
+                           salary_list[[3]],
+                           salary_list[[4]],
+                           salary_list[[5]],
+                           salary_list[[6]],
+                           salary_list[[7]],
+                           salary_list[[8]],
+                           salary_list[[9]],
+                           salary_list[[10]],
+                           salary_list[[11]],
+                           salary_list[[12]],
+                           salary_list[[13]],
+                           by = c("RK", "NAME", "TEAM", "SALARY", "POSITION"))
+# remove last row
+nba_salaries_2023<- head(nba_salaries_2023,-1)
+
+# save data 
+base::saveRDS(nba_salaries_2023, "../00_data/nba_salaries_22-23.rds")
+```
