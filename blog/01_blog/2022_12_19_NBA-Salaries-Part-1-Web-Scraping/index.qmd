@@ -1,0 +1,228 @@
+---
+title: "NBA Salaries - Part 1: Web-Scraping"
+date: "2022-12-19"
+categories: [R, Web-Scraping, NBA, Data Visuals]
+toc: true
+---
+
+This post exhibits a scraping function that saves and cleans data from [ESPN - NBA Players Salaries](http://www.espn.com/nba/salaries), as well as some simple data visuals of NBA Salaries. 
+
+![](../../00_img/NBA-Money.webp)
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(error=FALSE,
+                      message= FALSE,
+                      warning=FALSE)
+```
+
+# `0.0` Introduction 
+
+Money is a crucial element in any professional sport, and NBA players are ranked among some of the highest paid athletes in the world^[[Forbes - The Worlds 10 Highest-Paid Athletes of 2022](https://www.forbes.com/sites/brettknight/2022/05/11/the-worlds-10-highest-paid-athletes-2022/?sh=77961731f6c9)]. As a data scientist, having data for NBA players salaries could go a long way in many different types of analysis, and machine learning models. It is also good to practice and experience scraping different websites, and cleaning the data. 
+
+# `0.1` About The Data
+
+This data comes from [ESPN - NBA Players Salaries](http://www.espn.com/nba/salaries). I choose this data for a number of reasons, mainly that it includes extra information such as the player position, and team they play for. 
+
+# `0.2` Package Installs
+
+To scrape and clean [ESPN - NBA Players Salaries](http://www.espn.com/nba/salaries), I will use two packages: 
+
+* [rvest](https://rvest.tidyverse.org/): To scrape the data.
+
+* [tidyverse](https://www.tidyverse.org/): To gather, manipulate, and clean the data.
+
+```{r}
+library(rvest)
+library(tidyverse)
+```
+
+
+# `1.0` Scraping Function 
+
+Similar to some of my other scraping function this function starts by taking in a small part of the url, in this case the `url_page`. It then uses that information to do the following: 
+
+1. Pastes the `url_page` to the rest of the URL and reads the whole URL as HTML. 
+2. Scrapes all the "div" elements off the HTML. 
+3. Saves the first div element. 
+4. Uses the first row of the table as the column names.
+5. Removes the duplicated rows of column names. 
+6. Removes the first row of column names. 
+7. Adds a POSITION column.
+8. Removes player position in NAME column 
+
+```{r}
+salary.scrape <- function(url_page){
+  " 
+  This function takes in the url_page and returns a df of the table on that page.
+  "
+  # save and read url
+  url <- base::paste0("http://www.espn.com/nba/salaries", url_page)
+  html <- read_html(url)
+
+  # read table
+  div <- html %>%
+  html_elements("div") %>%
+  html_table
+  
+  # only use first table the rest are repeats or empty
+  tb1 <- div[[1]]
+  
+  # use first row as column names
+  names(tb1) <- as.character(unlist(tb1[1,]))
+  
+  # remove duplicate headers
+  tb2 <- tb1 %>%
+    filter(duplicated(RK) == FALSE)
+  
+  # remove first row
+  tb3 <- tb2[-1,]
+  
+  # Add position column, and remove position from name
+  tb3$POSITION <- sub('.*,',"", tb3$NAME)
+  tb3$NAME <- sub(', [A-Z]{,2}','', tb3$NAME)
+  
+  return(tb3)
+}
+```
+
+# `2.0` For Loop to Collect the Data into a List
+
+[ESPN - NBA Players Salaries](http://www.espn.com/nba/salaries) has 13 pages of data to scrape, so to do this quickly and efficiently I am: 
+
+1. Creating a string of `url_pages`. 
+2. Creating an empty list for each table to be saved in. 
+3. Created a for loop to save a table for each page into the `salary_list()`. 
+
+```{r}
+# a string of url page extensions
+url_pages <- c("", "/_/page/2", "/_/page/3", "/_/page/4", "/_/page/5", 
+               "/_/page/6", "/_/page/7", "/_/page/8", "/_/page/9", 
+               "/_/page/10", "/_/page/11", "/_/page/12", "/_/page/13")
+
+# empty list
+salary_list <- list()
+
+# pulls salary info from each url page
+for (i in 1:length(url_pages))
+{
+  output <- salary.scrape(url_pages[[i]])
+  salary_list[[i]] <- output
+}
+```
+
+# `3.0` Merge Data
+
+Now that all 13 pages of data are saved into a list, I then:
+
+1. Use `rbing()` to merge all the data. 
+2. Remove the last row of data, which is the column headers. 
+3. Change Salary Column from character to numeric. 
+
+```{r}
+# combine all 13 pages into one list
+nba_salaries_2023 <- rbind(salary_list[[1]],
+                           salary_list[[2]],
+                           salary_list[[3]],
+                           salary_list[[4]],
+                           salary_list[[5]],
+                           salary_list[[6]],
+                           salary_list[[7]],
+                           salary_list[[8]],
+                           salary_list[[9]],
+                           salary_list[[10]],
+                           salary_list[[11]],
+                           salary_list[[12]],
+                           salary_list[[13]],
+                           by = c("RK", "NAME", "TEAM", "SALARY", "POSITION"))
+
+# remove last row
+nba_salaries_2023 <- head(nba_salaries_2023,-1)
+```
+
+
+# `4.0` View Data
+
+Since we have the data, might as well look at it and play with it a little. To start lets just see the highest paid NBA players: 
+
+```{r}
+utils::head(nba_salaries_2023, 10)
+```
+
+## `4.1` Change Salaray from Character to Numeric
+
+Notice that the SALARY column is a character value. This will not be helpful when trying to do math, or make graphs with this numerical data. To change this 3 things must be addressed:
+
+1. Removing the dollar sign.
+2. Removing the commas.
+3. Change character type to numeric. 
+
+```{r}
+nba_salaries_2023$SALARY <- str_remove_all(nba_salaries_2023$SALARY,
+                    "\\$")
+nba_salaries_2023$SALARY <- str_remove_all(nba_salaries_2023$SALARY,
+                    ",")
+nba_salaries_2023$SALARY <- as.numeric(nba_salaries_2023$SALARY)
+```
+
+Now we are able to do math, make graphs, and arrange the data by salary. 
+
+## `4.2` Basic Statistics
+
+```{r, echo=FALSE}
+max <- format(max(nba_salaries_2023$SALARY),
+              format="d",
+              big.mark=",")
+min <- format(min(nba_salaries_2023$SALARY),
+              format="d",
+              big.mark=",")
+med <- format(median(nba_salaries_2023$SALARY),
+              format="d",
+              big.mark=",")
+mean <- format(mean(nba_salaries_2023$SALARY),
+              format="d",
+              big.mark=",")
+sd <- format(sd(nba_salaries_2023$SALARY),
+              format="d",
+              big.mark=",")
+```
+
+1. Highest paid value : `r max`
+2. Lowest paid value : `r min`
+3. Median : `r med`
+4. Mean : `r mean`
+5. Standard Deviation : `r sd`
+
+## `4.3` Box Plots
+
+### `4.3.1` 2022 - 2023 Yearly Salary by Postion 
+
+```{r}
+ggplot2::ggplot(data = nba_salaries_2023,
+                mapping = ggplot2::aes(x = SALARY,
+                                       y = POSITION)) + 
+  ggplot2::geom_boxplot()
+```
+
+From this visual we can see that Point Guards (PG) appear to be paid the most. Especially compared to Guards (G) and Forwards (F) who are paid considerably less than. 
+
+### `4.4` 2022-2023 Yearly Salary by Team
+
+```{r}
+ggplot2::ggplot(data = nba_salaries_2023,
+                mapping = ggplot2::aes(x = SALARY,
+                                       y = TEAM)) + 
+  ggplot2::geom_boxplot()
+```
+
+This plot is not the easiest to read, and might be worth sub-setting the information further. However eye-balling this visual we can see most teams pay between `$`2,000,000 and `$`15,000,000 per player with a few outliers. These outliers of course being superstar players.
+
+# `5.0` Save Data
+
+Lastly, it is important to save the data to work with in the future. To do this I used the `write.csv()` function to save the data as a csv. 
+
+```{r}
+utils::write.csv(nba_salaries_2023, 
+                 paste0("../../00_data/",
+                        base::Sys.Date(),
+                        "_NBA_22-23_Salaries.csv"))
+```
