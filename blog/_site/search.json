@@ -1607,7 +1607,7 @@
     "href": "01_blog/2022_12_19_NBA-Salaries-Part-1-Web-Scraping/index.html",
     "title": "NBA Salaries - Part 1: Web-Scraping",
     "section": "",
-    "text": "This post exhibits a scraping function that saves and cleans data from ESPN - NBA Players Salaries, as well as some simple data visuals of NBA Salaries."
+    "text": "This post exhibits mainly a scraping function that saves and cleans data from ESPN - NBA Players Salaries, with some simple statistic and data visuals."
   },
   {
     "objectID": "01_blog/2022_12_19_NBA-Salaries-Part-1-Web-Scraping/index.html#change-salaray-from-character-to-numeric",
@@ -1635,6 +1635,6 @@
     "href": "01_blog/2022_12_19_NBA-Salaries-Part-1-Web-Scraping/index.html#box-plots",
     "title": "NBA Salaries - Part 1: Web-Scraping",
     "section": "4.3 Box Plots",
-    "text": "4.3 Box Plots\n\n4.3.1 2022 - 2023 Yearly Salary by Postion\n\nggplot2::ggplot(data = nba_salaries_2023,\n                mapping = ggplot2::aes(x = SALARY,\n                                       y = POSITION)) + \n  ggplot2::geom_boxplot()\n\n\n\n\nFrom this visual we can see that Point Guards (PG) appear to be paid the most. Especially compared to Guards (G) and Forwards (F) who are paid considerably less than.\n\n\n4.4 2022-2023 Yearly Salary by Team\n\nggplot2::ggplot(data = nba_salaries_2023,\n                mapping = ggplot2::aes(x = SALARY,\n                                       y = TEAM)) + \n  ggplot2::geom_boxplot()\n\n\n\n\nThis plot is not the easiest to read, and might be worth sub-setting the information further. However eye-balling this visual we can see most teams pay between $2,000,000 and $15,000,000 per player with a few outliers. These outliers of course being superstar players."
+    "text": "4.3 Box Plots\n\n4.3.1 2022 - 2023 Yearly Salary by Postion\n\nggplot2::ggplot(data = nba_salaries_2023,\n                mapping = ggplot2::aes(x = SALARY,\n                                       y = POSITION)) + \n  ggplot2::geom_boxplot()\n\n\n\n\nFrom this visual we can see that Point Guards (PG) appear to be paid the most, while Guards (G) and Forwards (F) on average are paid the least.\n\n\n4.4 2022-2023 Yearly Salary by Team\n\nggplot2::ggplot(data = nba_salaries_2023,\n                mapping = ggplot2::aes(x = SALARY,\n                                       y = TEAM)) + \n  ggplot2::geom_boxplot()\n\n\n\n\nThis plot is not the easiest to read, and might be worth sub-setting the information further. However eye-balling this visual we can see most teams pay between $2,000,000 and $15,000,000 per player with a few outliers. These outliers of course being superstar players."
   }
 ]

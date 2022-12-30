@@ -5,7 +5,7 @@ categories: [R, Web-Scraping, NBA, Data Visuals]
 toc: true
 ---
 
-This post exhibits a scraping function that saves and cleans data from [ESPN - NBA Players Salaries](http://www.espn.com/nba/salaries), as well as some simple data visuals of NBA Salaries. 
+This post exhibits mainly a scraping function that saves and cleans data from [ESPN - NBA Players Salaries](http://www.espn.com/nba/salaries), with some simple statistic and data visuals. 
 
 ![](../../00_img/NBA-Money.webp)
 
@@ -203,7 +203,7 @@ ggplot2::ggplot(data = nba_salaries_2023,
   ggplot2::geom_boxplot()
 ```
 
-From this visual we can see that Point Guards (PG) appear to be paid the most. Especially compared to Guards (G) and Forwards (F) who are paid considerably less than. 
+From this visual we can see that Point Guards (PG) appear to be paid the most, while Guards (G) and Forwards (F) on average are paid the least. 
 
 ### `4.4` 2022-2023 Yearly Salary by Team
 
