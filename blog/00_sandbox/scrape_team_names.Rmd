@@ -1,0 +1,47 @@
+---
+title: "Scrape Teams Function"
+---
+
+```{r}
+library(rvest)
+library(tidyverse)
+```
+
+This function works for basketball, and football (except the first row is column headers). Baseball might work, but needs more to work on, and hockey currently does not work. 
+
+Note futeball is in Spanish, and the url changes. 
+
+```{r}
+scrape.teams <- function(sport){
+  "
+  This function ...
+  "
+  # save url
+  url <- paste0("https://www.", sport,"-reference.com/teams/")
+
+  # Read stats table
+  div <- url %>%
+  read_html %>%
+  html_node("#all_teams_active") %>% 
+  html_table()
+  
+  
+  return(div)
+}
+```
+
+This function
+
+```{r}
+# test <- scrape.teams("basketball")
+
+t2 <- test %>% 
+  subset(test$To == "2022-23") %>%
+  filter(duplicated(Franchise) == FALSE)
+
+t3 <- t2$Franchise
+t3
+```
+
+
+

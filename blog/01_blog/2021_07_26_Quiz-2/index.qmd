@@ -1,0 +1,225 @@
+---
+title: "Proving that the Set of Symmetries of Non-Square Rhombus is a Group Under Composition"
+author: "Randi Bolt"
+date: "2021-07-26"
+categories: [Abstract Math, Geometry, Math, Proof]
+toc: true
+---
+
+This is a "presentation" style proof for Math-338: Modern College Geometry, and looks at the symmetries of a non-square rectangle. 
+
+![](https://media.giphy.com/media/26vUucK24XyuAy9a0/giphy.gif)
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(error=FALSE,
+                      message= FALSE,
+                      warning=FALSE,
+                      echo=FALSE)
+```
+
+# `0.` Quiz 2
+
+_Prove for the following statement using course resources such as our notes and textbooks. Your proof should be your own work, so you should not use any other resources. Record a short presentation or create a slideshow explaining your proof. Make sure that you clearly state any definitions, axioms, or theorems that you are using._
+
+## Suppose _R_ is a non-square rhombus.
+
+1. List the symmetries of R. Write as a composition of translations, reflections, and rotations. 
+
+2. Prove that the set of symmetries of _R_ is a group under composition. 
+
+---
+
+# `1.` Definitions
+
+![](https://media.giphy.com/media/3FQvdeipKo9Ywvx09W/giphy.gif)
+
+## `1.1` Parallelogram
+
+Both pairs of opposite sides are parallel. 
+
+```{r parallelogram, out.width = "40%", fig.align='left', fig.cap='**Fig. 1: ** Parallelogram'}
+knitr::include_graphics("../../00_img/quiz-2/img1.png")
+```
+
+- $AB\parallel DC$
+
+- $CB\parallel DA$
+
+## `1.2` Rhombus
+
+Parallelogram whose sides are all the same length. 
+
+_Notation_: R
+
+```{r rhombus, out.width = "40%", fig.align='left', fig.cap='**Fig. 2: ** Rhombus'}
+knitr::include_graphics("../../00_img/quiz-2/img1.png")
+```
+
+- $\overline{AB}=\overline{BC}=\overline{CD}=\overline{DA}$
+
+## `1.3` Isometry 
+
+Preserves distance, length, and angle measure through "rigid motion" of rotations, reflections, translations, and compositions.
+
+### `1.3.1` Translations
+
+Move all the points across a vector $\vec{v}$. 
+
+_Notation_: $\tau_{\text{start point,end point}}$
+
+```{r translations, out.width = "40%", fig.align='left', fig.cap='**Fig. 3: ** Translation of line AB along vector v.'}
+knitr::include_graphics("../../00_img/quiz-2/img6.png")
+```
+
+### `1.3.2` Rotations
+
+Pick a center O (origin), $\theta$ (angle), takes P to P' on a circle on a circle with center O and radius $\overline{OP}$ with $\angle POP'=\theta$. 
+
+_Notation_: $R_{O,\theta}$
+
+```{r rotation, out.width = "40%", fig.align='left', fig.cap='**Fig. 4: ** Rotation of line OP.'}
+knitr::include_graphics("../../00_img/quiz-2/img9.png")
+```
+
+### `1.3.3` Reflections
+
+Mirror of a shape across a line. 
+
+Pick line b, shown in red in **Fig. 5**.
+
+- Points on B don't move.
+
+- Points not on b, such as P, go to P' where b is perpendicular to bisector of $\overline{PP'}$. 
+
+- Midpoint m of PP' on b make right angle $\overline{PP'}$
+
+_Notation_: $r_{b}$
+
+```{r reflection, out.width = "40%", fig.align='left', fig.cap='**Fig. 5: ** Triangle QPR reflected across line b.'}
+knitr::include_graphics("../../00_img/quiz-2/img8.png")
+```
+
+### `1.3.4` Compositions
+
+Combinations of rotations, reflections, and translations. 
+
+## `1.4` Symmetry
+
+An isometry that sends a geometric figure to itself.
+
+![](https://i0.wp.com/www.mathswithmum.com/wp-content/uploads/2021/07/Rotational-Symmetry-1.gif?resize=600%2C450&ssl=1)
+
+## `1.5` Group
+
+### `1.5.0` Closure
+
+- Order doesn't matter.
+
+- $ab=ba$
+
+### `1.5.1` Associativity
+
+- Parentheses don't matter.
+
+- $(ab)c=a(bc)$
+
+### `1.5.2` Identity
+
+- Anything combined with identity equals itself. 
+
+- $ea=ae=a$
+
+### `1.5.3` Inverses
+
+- Undoes isometry.
+
+- $f^{-1}(f(a))=a$
+
+# `2.` Symmetries of R
+
+![](https://media.giphy.com/media/YnHg3U08RcCJ34OhpJ/giphy.gif)
+
+
+## `2.1` 4 Symmetries of R
+
+(Using Boyce's Notation)
+
+### `2.1.1` $e$
+
+```{r id, out.width = "40%", fig.align='left', fig.cap='Identity'}
+knitr::include_graphics("../../00_img/quiz-2/img2.png")
+```
+
+### `2.1.2` $R_{O,180^\circ}$
+
+```{r rotation 2, out.width = "40%", fig.align='left', fig.cap='Rotation about center (O) by $180^o$.'}
+knitr::include_graphics("../../00_img/quiz-2/img3.png")
+```
+
+### `2.1.3` $r_{m_1}$
+
+```{r reflection 1, out.width = "40%", fig.align='left', fig.cap='Reflection over $m_1$'}
+knitr::include_graphics("../../00_img/quiz-2/img4.png")
+```
+
+### `2.1.4` $r_{m_2}$
+
+```{r reflection 2, out.width = "40%", fig.align='left', fig.cap='Reflection over $m_2$'}
+knitr::include_graphics("../../00_img/quiz-2/img5.png")
+```
+
+### `2.1.5` Verify
+
+To verify this we can imagine that one point only has two places to choose from, then the a different point only has two places to choose from, and then the remaining two points only have one place to choose i.e. $2\cdot 2\cdot 1\cdot 1=4$. Therefore there are only four possible symmetries of R. 
+
+# `3.` Group Under Composition
+
+![](https://media.giphy.com/media/n3huUe5YwYzwbrrgFc/giphy.gif)
+
+Define the set of symmetries of a rhombus as $\mathscr{S}=\{e, R_{\text{ }O,\text{ }180^\circ}, r_{m_1}, r_{m_1}\}.$
+
+## `3.1` Claim: $\mathscr{S}$ is a group under composition.
+
+### `3.1.0` Closure
+
+We want to show that composing two symmetries equals a symmetry. 
+
+Let $\square 1234$ be a non-square rhombus, and suppose F and G are in $\mathscr{S}$. 
+
+$$F\circ G(\square 1234)=F(G(\square 1234))=F(\square 1234)=\square 1234$$
+
+For example: 
+
+Let $F=r_{m_1}$ and $G=r_{m_2}$. Then $F\circ G(\square 1234)=R_{O,180^\circ}$. 
+
+### `3.1.1` Associative
+
+$F\circ(G\circ H)=(F\circ G)\circ H$
+
+\begin{equation}\label{D14,1}
+\begin{split}
+F\circ(G\circ H) &= F\circ (G\circ H)(\square 1234)\\
+&= F(G\circ H (\square 1234))\\
+&= F(G(H(\square 1234)))\\
+&= (F\circ G)\circ H(\square 1234)
+\end{split}
+\end{equation}
+
+### `3.1.2` Identity
+
+e is one of the symmetries. 
+
+Example: $R_{O,180^\circ}\circ e=R_{O,180^\circ}$
+
+### `3.1.3` Inverses
+
+Every symmetry of a rhombus undoes itself. 
+
+$e\circ e=e$
+
+$R_{O,180^\circ}\circ R_{O,180^\circ}=e$
+
+$r_{m_1}\circ r_{m_1}=e$
+
+$r_{m_2}\circ r_{m_2}=e$
+

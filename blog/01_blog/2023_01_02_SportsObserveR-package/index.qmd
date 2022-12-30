@@ -1,0 +1,327 @@
+---
+title: "SportsObserveR - Part 2: Creating a R Packege"
+author: "Randi Bolt"
+date: "2023-01-02"
+categories: [Package Building, R, NBA]
+toc: true
+draft: true
+---
+
+In this tutorial I will be taking the functions I created in my previous post, [Creating Functions in R to Scrape NBA Data](http://localhost:5293/01_blog/2022_11_07_NBA-functions/), and putting them in my own package, [SportsObserveR](). 
+
+**NEED TO UPDATE PICTURE (removing all sports but basketball)**
+
+![](../../00_img/SportsObserveR.png)
+
+# `0.` Introduction
+
+
+
+# `1.` Initial Set Up  
+
+Start in the **Terminal** and move to the folder where you want want to build your package. For me, I organize my projects by year, so I would use the following command: 
+
+```{r, eval=FALSE}
+cd Desktop/2023
+```
+
+From this folder you then open R in the terminal: 
+
+```{r, eval=FALSE}
+R()
+```
+
+And load the following libraries: 
+
+```{r, eval=FALSE}
+library(usethis)
+```
+
+```{r,eval=FALSE}
+library(devtools)
+```
+
+If you do not have these packages installed, you can use the following code to install them: 
+
+```{r, eval=FALSE}
+install.packages("usethis", "devtools")
+```
+
+Use the `create_package()`, and select Yes (or Definitely) to create a package:
+
+```{r, eval=FALSE}
+create_package("SportsObserveR")
+```
+
+Then use `q()` to quit R, and `y` to save.
+
+```{r,eval=FALSE}
+q()
+```
+
+# `2.` Github Repository 
+
+Open your [Github](https://github.com/) and create a repository with the same name as your project. From the **Terminal** type in the following commands (similar to what is given on your Github page) to connect your project folder to your Github repo.
+
+```{r,eval=FALSE}
+git init
+```
+
+```{r,eval=FALSE}
+git status
+```
+
+```{r,eval=FALSE}
+git add --all
+```
+
+```{r,eval=FALSE}
+git status
+```
+
+```{r,eval=FALSE}
+git commit -m"my first commit"
+```
+
+```{r, eval=FALSE}
+git branch -M main
+```
+
+Note: You will want to replace 'rbolt13' with your own username. 
+
+```{r,eval=FALSE}
+git remote add origin https://github.com/rbolt13/SportsObserveR.git
+```
+
+```{r,eval=FALSE}
+git push -u origin main
+```
+
+Then refresh your github repo page to verify that your files have been successfully uploaded. 
+
+# `3.` Creating the First Function
+
+Using **R Studio Console** (or in your **terminal**, but opening `R` first) reload the usethis and devtools packages:
+
+```{r, eval=FALSE}
+library(usethis)
+```
+
+```{r,eval=FALSE}
+library(devtools)
+```
+
+The function to create a function in r is `use_r()`, and then `load_all()`.  
+
+```{r,eval=FALSE}
+use_r("scrape.team.stats")
+```
+
+```{r,eval=FALSE}
+load_all()
+```
+
+Then use the `check()` function to look at any potential errors. 
+
+```{r,eval=FALSE}
+check()
+```
+
+There are probably going to be a few errors, but they can be easily fixed. For starters open and update the **description** file. Then use the the `use_mit_license()` function to update the license and check your project again for errors. 
+
+```{r,eval=FALSE}
+use_mit_license()
+```
+
+```{r,eval=FALSE}
+check()
+```
+
+Everything should come back green, which means it is time to create the first function in the R file that is named "scrape.team.stats.R". Notice that below have modified this function somewhat from the original post to be able to access more sports data than just the NBA. 
+
+```{r,eval=FALSE}
+#' Scrape Team Data
+#'
+#'@import rvest 
+#'@import magrittr
+#'
+#'@descritpion This function scrapes team data off of sports-reference.com.
+#'
+#'@param sport is a string that represents the sport.
+#'@param slug is a string that corresponds to the sports team.
+#'@param year is 
+#'@param stats_tb
+#'
+#'@return
+#'@export
+#'
+#'@examples
+#'
+
+scrape_team_data <- function(slug, year, stats_tb){
+    "
+  A function that returns a data frame of team statistics. 
+  
+  @param slug is string of three letters that represents the teams url. 
+  @param year is a string that corresponds to the NBA finals.
+  @param stats_tb is a string that corresponds to the statistics table on BasketBall Reference such as #per_game, #totals, #per_36_minutes, and #advanced
+  
+  @return a df of team statistics
+  "
+  # define team page URL
+  url <- base::paste0("https://www.basketball-reference.com/teams/",
+                slug,"/", year, ".html")
+  
+  # Read stats table
+  stats_tb <- url %>%
+  read_html %>%
+  html_node(stats_tb) %>% 
+  html_table()
+  
+  # Rename Column 2 to Name 
+  base::names(stats_tb)[2] <- "Name"
+  
+  # Replace NA values with 0 (for stat functions)
+  stats_tb[base::is.na(stats_tb)] <- 0
+  
+  # make data frame
+  df <- base::data.frame(stats_tb)
+  base::return(df)
+  }
+```
+
+Now save this file, and in the **R Studio Console** type `document()` to create documentation for this function.
+
+```{r,eval=FALSE}
+document()
+```
+
+Then check that it works!
+
+```{r,eval=FALSE}
+?scrape.team.stats.R
+```
+
+If everything looks good, it is time to push this code to github again. 
+
+```{r,eval=FALSE}
+git status
+```
+
+```{r,eval=FALSE}
+git add --all
+```
+
+```{r,eval=FALSE}
+git status
+```
+
+```{r,eval=FALSE}
+git commit -m"Created first function: scrape.team.stats"
+```
+
+```{r,eval=FALSE}
+git push origin main
+```
+
+# `4.` Creating Tests
+
+Now to build tests for our code which is intended to detect and protect against bugs. To do this use the function `use_testthat()`, and `use_test()`:
+
+```{r,eval=FALSE}
+use_testthat()
+```
+
+```{r,eval=FALSE}
+use_test("scrape.team.stats")
+```
+
+A simple test ...
+
+for our code could be if there is no data...
+
+```{r,eval=FALSE}
+# test code
+```
+
+Check again for errors: 
+
+```{r,eval=FALSE}
+check()
+```
+
+And if everything still looks green, push to Github again. 
+
+```{r,eval=FALSE}
+git status
+```
+
+```{r,eval=FALSE}
+git add --all
+```
+
+```{r,eval=FALSE}
+git status
+```
+
+```{r,eval=FALSE}
+git commit -m"Created test for scrape.team.stats"
+```
+
+```{r,eval=FALSE}
+git push origin main
+```
+
+# `5.` Create README
+
+To create a README file you can use the function `use_readme_rmd()` which created a README.Rmd file that allows you to code in R, and come with a lot of information already pre-filled in.
+
+```{r,eval=FALSE}
+use_readme_rmd()
+```
+
+As a starter readme, I used the following:
+
+```{r,eval=FALSE}
+# read me
+```
+
+You'll want the README file to in markdown, so use the function `build_readme()` to render the file as such. Note that you will need to use this function every time you update the .Rmd. 
+
+```{r,eval=FALSE}
+build_readme()
+```
+
+Then ...
+
+```{r,eval=FALSE}
+git status
+```
+
+```{r,eval=FALSE}
+git add --all
+```
+
+```{r,eval=FALSE}
+git status
+```
+
+```{r,eval=FALSE}
+git commit -m"Created README"
+```
+
+```{r,eval=FALSE}
+git push origin main
+```
+
+# `6.` Add More Functions
+
+Coming soon...
+
+```{r,eval=FALSE}
+
+```
+
+Note to self: 
+
+Change [Creating Functions in R to Scrape NBA Data](http://localhost:5293/01_blog/2022_11_07_NBA-functions/) title to SportsObserveR - Part 1: Web Scraping Functions. 
