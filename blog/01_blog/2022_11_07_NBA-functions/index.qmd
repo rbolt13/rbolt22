@@ -1,7 +1,7 @@
 ---
-title: "Creating Functions in R to Scrape NBA Data"
+title: "SportsObserveR - Part 1: Scraping Functions"
 date: "2022-11-07"
-categories: [NBA, Web-Scraping, R]
+categories: [NBA, Web-Scraping, R, SportsObserveR]
 toc: true
 ---
 

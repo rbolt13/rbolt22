@@ -147,7 +147,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../01_blog.html">Blog</a>
+    <a class="nav-link" href="../../index.html">home</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html">about</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html">blog</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../Resume/Randi-Bolt-Resume.pdf">resume</a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/rbolt13"><i class="bi bi-github" role="img">
@@ -1455,7 +1464,7 @@ Name: added_variable, dtype: int64</code></pre>
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>added_datatable <span class="op">=</span> variable_added.append(variable_added, ignore_index<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>added_datatable</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/90/4rtssdj16dl23f_f66qj0t3w0000gn/T/ipykernel_1064/426574045.py:1: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+<pre><code>/var/folders/90/4rtssdj16dl23f_f66qj0t3w0000gn/T/ipykernel_2545/426574045.py:1: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
   added_datatable = variable_added.append(variable_added, ignore_index=False)</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="28">
@@ -1608,7 +1617,7 @@ Name: added_variable, dtype: int64</code></pre>
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>added_datatable <span class="op">=</span> variable_added.append(variable_added, ignore_index<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>added_datatable</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/90/4rtssdj16dl23f_f66qj0t3w0000gn/T/ipykernel_1064/4230768127.py:1: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+<pre><code>/var/folders/90/4rtssdj16dl23f_f66qj0t3w0000gn/T/ipykernel_2545/4230768127.py:1: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
   added_datatable = variable_added.append(variable_added, ignore_index=True)</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="29">
@@ -2162,7 +2171,7 @@ Name: added_variable, dtype: int64</code></pre>
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>cars_groups <span class="op">=</span> cars.groupby(cars[<span class="st">'cyl'</span>])</span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>cars_groups.mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/90/4rtssdj16dl23f_f66qj0t3w0000gn/T/ipykernel_1064/3858733335.py:2: FutureWarning: The default value of numeric_only in DataFrameGroupBy.mean is deprecated. In a future version, numeric_only will default to False. Either specify numeric_only or select only columns which should be valid for the function.
+<pre><code>/var/folders/90/4rtssdj16dl23f_f66qj0t3w0000gn/T/ipykernel_2545/3858733335.py:2: FutureWarning: The default value of numeric_only in DataFrameGroupBy.mean is deprecated. In a future version, numeric_only will default to False. Either specify numeric_only or select only columns which should be valid for the function.
   cars_groups.mean()</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="34">
@@ -2250,7 +2259,7 @@ Name: added_variable, dtype: int64</code></pre>
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>cars_trans_group <span class="op">=</span> cars.groupby(cars[<span class="st">'am'</span>])</span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>cars_trans_group.mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/90/4rtssdj16dl23f_f66qj0t3w0000gn/T/ipykernel_1064/564591146.py:2: FutureWarning: The default value of numeric_only in DataFrameGroupBy.mean is deprecated. In a future version, numeric_only will default to False. Either specify numeric_only or select only columns which should be valid for the function.
+<pre><code>/var/folders/90/4rtssdj16dl23f_f66qj0t3w0000gn/T/ipykernel_2545/564591146.py:2: FutureWarning: The default value of numeric_only in DataFrameGroupBy.mean is deprecated. In a future version, numeric_only will default to False. Either specify numeric_only or select only columns which should be valid for the function.
   cars_trans_group.mean()</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="35">
@@ -2553,7 +2562,7 @@ Name: added_variable, dtype: int64</code></pre>
 <span id="cb71-23"><a href="#cb71-23" aria-hidden="true" tabindex="-1"></a><span class="co"># add legend</span></span>
 <span id="cb71-24"><a href="#cb71-24" aria-hidden="true" tabindex="-1"></a>ax.legend(loc<span class="op">=</span><span class="st">'best'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="48">
-<pre><code>&lt;matplotlib.legend.Legend at 0x7fea6ccd8250&gt;</code></pre>
+<pre><code>&lt;matplotlib.legend.Legend at 0x7f84484d3310&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <p><img src="index_files/figure-html/cell-49-output-2.png" width="736" height="664"></p>
@@ -3103,7 +3112,7 @@ dtype: object</code></pre>
 <div class="cell" data-execution_count="70">
 <div class="sourceCode cell-code" id="cb109"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a>cars.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/90/4rtssdj16dl23f_f66qj0t3w0000gn/T/ipykernel_1064/1808080884.py:1: FutureWarning: Dropping of nuisance columns in DataFrame reductions (with 'numeric_only=None') is deprecated; in a future version this will raise TypeError.  Select only valid columns before calling the reduction.
+<pre><code>/var/folders/90/4rtssdj16dl23f_f66qj0t3w0000gn/T/ipykernel_2545/1808080884.py:1: FutureWarning: Dropping of nuisance columns in DataFrame reductions (with 'numeric_only=None') is deprecated; in a future version this will raise TypeError.  Select only valid columns before calling the reduction.
   cars.sum(axis=1)</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="70">
@@ -3148,7 +3157,7 @@ dtype: float64</code></pre>
 <div class="cell" data-execution_count="71">
 <div class="sourceCode cell-code" id="cb112"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a>cars.median()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/90/4rtssdj16dl23f_f66qj0t3w0000gn/T/ipykernel_1064/2356643283.py:1: FutureWarning: The default value of numeric_only in DataFrame.median is deprecated. In a future version, it will default to False. In addition, specifying 'numeric_only=None' is deprecated. Select only valid columns or specify the value of numeric_only to silence this warning.
+<pre><code>/var/folders/90/4rtssdj16dl23f_f66qj0t3w0000gn/T/ipykernel_2545/2356643283.py:1: FutureWarning: The default value of numeric_only in DataFrame.median is deprecated. In a future version, it will default to False. In addition, specifying 'numeric_only=None' is deprecated. Select only valid columns or specify the value of numeric_only to silence this warning.
   cars.median()</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="71">
@@ -3172,7 +3181,7 @@ dtype: float64</code></pre>
 <div class="cell" data-execution_count="72">
 <div class="sourceCode cell-code" id="cb115"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a>cars.mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/90/4rtssdj16dl23f_f66qj0t3w0000gn/T/ipykernel_1064/1764053374.py:1: FutureWarning: The default value of numeric_only in DataFrame.mean is deprecated. In a future version, it will default to False. In addition, specifying 'numeric_only=None' is deprecated. Select only valid columns or specify the value of numeric_only to silence this warning.
+<pre><code>/var/folders/90/4rtssdj16dl23f_f66qj0t3w0000gn/T/ipykernel_2545/1764053374.py:1: FutureWarning: The default value of numeric_only in DataFrame.mean is deprecated. In a future version, it will default to False. In addition, specifying 'numeric_only=None' is deprecated. Select only valid columns or specify the value of numeric_only to silence this warning.
   cars.mean()</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="72">
@@ -3227,7 +3236,7 @@ dtype: object</code></pre>
 <div class="cell" data-execution_count="75">
 <div class="sourceCode cell-code" id="cb122"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a>cars.std()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/90/4rtssdj16dl23f_f66qj0t3w0000gn/T/ipykernel_1064/2703001680.py:1: FutureWarning: The default value of numeric_only in DataFrame.std is deprecated. In a future version, it will default to False. In addition, specifying 'numeric_only=None' is deprecated. Select only valid columns or specify the value of numeric_only to silence this warning.
+<pre><code>/var/folders/90/4rtssdj16dl23f_f66qj0t3w0000gn/T/ipykernel_2545/2703001680.py:1: FutureWarning: The default value of numeric_only in DataFrame.std is deprecated. In a future version, it will default to False. In addition, specifying 'numeric_only=None' is deprecated. Select only valid columns or specify the value of numeric_only to silence this warning.
   cars.std()</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="75">
@@ -3251,7 +3260,7 @@ dtype: float64</code></pre>
 <div class="cell" data-execution_count="76">
 <div class="sourceCode cell-code" id="cb125"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a>cars.var()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/90/4rtssdj16dl23f_f66qj0t3w0000gn/T/ipykernel_1064/2053581105.py:1: FutureWarning: The default value of numeric_only in DataFrame.var is deprecated. In a future version, it will default to False. In addition, specifying 'numeric_only=None' is deprecated. Select only valid columns or specify the value of numeric_only to silence this warning.
+<pre><code>/var/folders/90/4rtssdj16dl23f_f66qj0t3w0000gn/T/ipykernel_2545/2053581105.py:1: FutureWarning: The default value of numeric_only in DataFrame.var is deprecated. In a future version, it will default to False. In addition, specifying 'numeric_only=None' is deprecated. Select only valid columns or specify the value of numeric_only to silence this warning.
   cars.var()</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="76">

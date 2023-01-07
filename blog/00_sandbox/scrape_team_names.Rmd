@@ -39,9 +39,58 @@ t2 <- test %>%
   subset(test$To == "2022-23") %>%
   filter(duplicated(Franchise) == FALSE)
 
-t3 <- t2$Franchise
-t3
+team_names <- t2$Franchise
+team_names
 ```
+
+```{r}
+team_n <- sub('\\w+ ',"", team_names)
+team_n[[10]] <- "Warriors"
+team_n[[13]] <- "Clippers"
+team_n[[14]] <- "Lakers"
+team_n[[19]] <- "Pelicans"
+team_n[[20]] <- "Knicks"
+team_n[[21]] <- "Thunder"
+team_n[[25]] <- "Blazers"
+team_n[[27]] <- "Spurs"
+short_name <- team_n
+long_name <- team_names
+```
+
+
+```{r}
+team_slugs <- c("ATL", "BOS",
+                "BRK", "CHO",
+                "CHI", "CLE",
+                "DAL", "DEN",
+                "DET", "GSW",
+                "HOU", "IND",
+                "LAC", "LAL",
+                "MEM", "MIA",
+                "MIL", "MIN",
+                "NOP", "NYK",
+                "OKC", "ORL",
+                "PHI", "PHO",
+                "POR", "SAC",
+                "SAS", "TOR",
+                "UTA", "WAS")
+```
+
+
+```{r}
+team_info <- data.frame(long_namez,
+                        short_name, 
+                        team_slugs)
+team_info
+```
+
+```{r}
+utils::write.csv(team_info, 
+                 paste0("../00_data/",
+                        base::Sys.Date(),
+                        "_NBA_Team_Names_and_Slugs"))
+```
+
 
 
 

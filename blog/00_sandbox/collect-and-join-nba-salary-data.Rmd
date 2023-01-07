@@ -1,0 +1,47 @@
+---
+title: "collect and join data"
+---
+
+```{r}
+# devtools::install_github("rbolt13/SportsObserveR")
+```
+
+
+```{r}
+library(SportsObserveR)
+```
+
+
+```{r}
+gsw_totals <- scrape_nba_team_stats("GSW", "2022", "#totals")
+utils::head(gsw_totals)
+```
+
+```{r}
+ai <- scrape_nba_player_stats("Allen Iverson", "#per_game")
+utils::head(ai, 10)
+```
+
+```{r}
+names <- gsw_totals$Name
+
+names <- names[-18]
+
+p_stats <- list()
+
+for (i in 1:length(names))
+{
+  output <- scrape_nba_player_stats(names[i], "#per_game" )
+  p_stats[[i]] <- output
+}
+```
+
+```{r}
+p_stats
+```
+
+
+
+
+
+

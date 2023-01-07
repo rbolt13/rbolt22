@@ -1,37 +1,51 @@
 ---
-title: "SportsObserveR - Part 2: Creating a R Packege"
+title: "SportsObserveR - Part 2: Creating a Package in R"
 author: "Randi Bolt"
 date: "2023-01-02"
-categories: [Package Building, R, NBA]
+categories: [Package Building, R, NBA, SportsObserveR]
 toc: true
-draft: true
+draft: false
 ---
 
-In this tutorial I will be taking the functions I created in my previous post, [Creating Functions in R to Scrape NBA Data](http://localhost:5293/01_blog/2022_11_07_NBA-functions/), and putting them in my own package, [SportsObserveR](). 
+In this tutorial I will be taking the functions I created in my previous post, [SportsObserveR - Part 1: Scraping Functions](https://www.rbolt.me/01_blog/2022_11_07_nba-functions/), and using them to create my own package, [SportsObserveR](https://github.com/rbolt13/SportsObserveR). 
 
-**NEED TO UPDATE PICTURE (removing all sports but basketball)**
-
-![](../../00_img/SportsObserveR.png)
+![](../../00_img/SportsObserveR-NBA.png)
 
 # `0.` Introduction
 
+Recently I have been looking to create more mathematical models of NBA statistics. However the process of scrapping and downloading data has become more tedious as the models scale. To save myself time, and lines of code I am creating a package in R to do a lot of the heavy lifting for me. 
 
+To start I will only be creating two functions:
+
+1. Scrape NBA Team Data
+
+2. Scrape NBA Player Data
+
+## `0.1` Technologies
+
+To build a package in R you need three things:
+
+1. [R](https://ftp.osuosl.org/pub/cran/) installed on your computer. 
+
+2. A coding editor such as [R Studio](https://posit.co/download/rstudio-desktop/), or [Sublime](https://www.sublimetext.com/).
+
+3. A [bash](https://formulae.brew.sh/formula/bash) terminal.
 
 # `1.` Initial Set Up  
 
-Start in the **Terminal** and move to the folder where you want want to build your package. For me, I organize my projects by year, so I would use the following command: 
+Start in a **Bash Terminal** and move to the folder where you want want to build your package. For me, I organize my projects by year, so I would use the following command: 
 
 ```{r, eval=FALSE}
 cd Desktop/2023
 ```
 
-From this folder you then open R in the terminal: 
+From this folder you then use the command `R` to open R in the terminal. 
 
 ```{r, eval=FALSE}
-R()
+R
 ```
 
-And load the following libraries: 
+With R open load the following libraries: 
 
 ```{r, eval=FALSE}
 library(usethis)
@@ -47,7 +61,7 @@ If you do not have these packages installed, you can use the following code to i
 install.packages("usethis", "devtools")
 ```
 
-Use the `create_package()`, and select Yes (or Definitely) to create a package:
+Now use the `create_package()` function to create a package.
 
 ```{r, eval=FALSE}
 create_package("SportsObserveR")
@@ -59,9 +73,21 @@ Then use `q()` to quit R, and `y` to save.
 q()
 ```
 
+Check that a "SportsObserveR" folder now exists within your original directory with `ls` for "list". 
+
+```{r,eval=FALSE}
+ls
+```
+
+Then move into that directory. 
+
+```{r,eval=FALSE}
+cd SportsObserveR
+```
+
 # `2.` Github Repository 
 
-Open your [Github](https://github.com/) and create a repository with the same name as your project. From the **Terminal** type in the following commands (similar to what is given on your Github page) to connect your project folder to your Github repo.
+Open your [Github](https://github.com/) and create a repository with the same name as your project. From the **Bash Terminal** type in the following commands (similar to what is given on your Github page) to connect your project folder to your Github repo.
 
 ```{r,eval=FALSE}
 git init
@@ -97,11 +123,11 @@ git remote add origin https://github.com/rbolt13/SportsObserveR.git
 git push -u origin main
 ```
 
-Then refresh your github repo page to verify that your files have been successfully uploaded. 
+Refresh your github repo page to verify that your files have been successfully uploaded. 
 
 # `3.` Creating the First Function
 
-Using **R Studio Console** (or in your **terminal**, but opening `R` first) reload the usethis and devtools packages:
+Using **R Studio Console** (or opening `R` first in your **bash terminal**) reload the usethis and devtools packages.
 
 ```{r, eval=FALSE}
 library(usethis)
@@ -111,23 +137,28 @@ library(usethis)
 library(devtools)
 ```
 
-The function to create a function in r is `use_r()`, and then `load_all()`.  
+To create a function in r use `use_r()`, and then `load_all()`.  
 
 ```{r,eval=FALSE}
-use_r("scrape.team.stats")
+use_r("scrape_nba_team_stats")
 ```
 
 ```{r,eval=FALSE}
 load_all()
 ```
 
-Then use the `check()` function to look at any potential errors. 
+Now use the `check()` function to look at any potential errors. 
 
 ```{r,eval=FALSE}
 check()
 ```
 
-There are probably going to be a few errors, but they can be easily fixed. For starters open and update the **description** file. Then use the the `use_mit_license()` function to update the license and check your project again for errors. 
+There will probably be one warning about a Non-standard license specification (see image below). 
+
+![](../../00_img/mit-license-warning.PNG)
+
+
+Use the `use_mit_license()` function to update the license and check your project again for errors. 
 
 ```{r,eval=FALSE}
 use_mit_license()
@@ -137,46 +168,33 @@ use_mit_license()
 check()
 ```
 
-Everything should come back green, which means it is time to create the first function in the R file that is named "scrape.team.stats.R". Notice that below have modified this function somewhat from the original post to be able to access more sports data than just the NBA. 
+Everything should be green, which means it is time to create the first function. In the R file named "scrape_nba_team_stats.R" copy the code below:
 
 ```{r,eval=FALSE}
-#' Scrape Team Data
+#' Scrapes NBA team stats tables off basketball-reference.com.
 #'
 #'@import rvest 
 #'@import magrittr
 #'
-#'@descritpion This function scrapes team data off of sports-reference.com.
+#'@param slug is a char string that corresponds to the sports team.
+#'@param year is a char string that corresponds to the playoff year. 
+#'@param stats_tb is a char string that corresponds to the statistics table such as #per_game, #totals, #per_36_minutes, and #advanced.
 #'
-#'@param sport is a string that represents the sport.
-#'@param slug is a string that corresponds to the sports team.
-#'@param year is 
-#'@param stats_tb
-#'
-#'@return
+#'@return a data frame of statistics for a specific NBA team. 
 #'@export
 #'
 #'@examples
-#'
-
-scrape_team_data <- function(slug, year, stats_tb){
-    "
-  A function that returns a data frame of team statistics. 
-  
-  @param slug is string of three letters that represents the teams url. 
-  @param year is a string that corresponds to the NBA finals.
-  @param stats_tb is a string that corresponds to the statistics table on BasketBall Reference such as #per_game, #totals, #per_36_minutes, and #advanced
-  
-  @return a df of team statistics
-  "
+#'scrape_nba_team_stats("CHI", "1998","#totals")
+scrape_nba_team_stats <- function(slug, year, stats_tb){
   # define team page URL
   url <- base::paste0("https://www.basketball-reference.com/teams/",
-                slug,"/", year, ".html")
+                      slug,"/", year, ".html")
   
   # Read stats table
   stats_tb <- url %>%
-  read_html %>%
-  html_node(stats_tb) %>% 
-  html_table()
+    read_html %>%
+    html_node(stats_tb) %>% 
+    html_table()
   
   # Rename Column 2 to Name 
   base::names(stats_tb)[2] <- "Name"
@@ -187,7 +205,7 @@ scrape_team_data <- function(slug, year, stats_tb){
   # make data frame
   df <- base::data.frame(stats_tb)
   base::return(df)
-  }
+}
 ```
 
 Now save this file, and in the **R Studio Console** type `document()` to create documentation for this function.
@@ -196,10 +214,73 @@ Now save this file, and in the **R Studio Console** type `document()` to create 
 document()
 ```
 
-Then check that it works!
+Check that the documentation works.
 
 ```{r,eval=FALSE}
-?scrape.team.stats.R
+?scrape_nba_team_stats()
+```
+
+Run one more `check()` for good measure.
+
+```{r,eval=FALSE}
+check()
+```
+
+If everything looks good, from the **Bash Terminal**  push this code to github. 
+
+```{r,eval=FALSE}
+git status
+```
+
+```{r,eval=FALSE}
+git add --all
+```
+
+```{r,eval=FALSE}
+git status
+```
+
+```{r,eval=FALSE}
+git commit -m"Created first function"
+```
+
+```{r,eval=FALSE}
+git push origin main
+```
+
+# `4.` Create raw-data 
+
+In the **R Studio Console** use the `use_data_raw()` function to create a raw-data folder that includes a `DATASET.R` file. In the future I want to use this data to test my functions, as well as create complimentary data to use with the SportsObserveR package. 
+
+```{r, eval=FALSE}
+usethis::use_data_raw()
+```
+
+From here save the total statistics for the 1998 Chicago bulls, and the check to see if the data looks correct. 
+
+```{r,eval=FALSE}
+bulls_totals <- scrape_nba_team_stats("CHI",
+                                      "1998",
+                                      "#totals")
+```
+
+Now save this data as a .csv into the raw-data folder. 
+
+```{r,eval=FALSE}
+write.csv(bulls_totals,
+          "data_raw/1998_Bulls_Totals.csv")
+```
+
+Then update the DATASET.R file, as shown below:
+
+```{r,eval=FALSE}
+usethis::use_data("1998_Bulls_Totals.csv")
+```
+
+Run another check:
+
+```{r,eval=FALSE}
+check()
 ```
 
 If everything looks good, it is time to push this code to github again. 
@@ -217,40 +298,41 @@ git status
 ```
 
 ```{r,eval=FALSE}
-git commit -m"Created first function: scrape.team.stats"
+git commit -m"Created data_raw"
 ```
 
 ```{r,eval=FALSE}
 git push origin main
 ```
 
-# `4.` Creating Tests
+# `5.` Creating Tests
 
-Now to build tests for our code which is intended to detect and protect against bugs. To do this use the function `use_testthat()`, and `use_test()`:
+Now to build tests which are intended to detect and protect against bugs. To do this, in the **R Studio Console** use the function `use_testthat()`, and `use_test()`:
 
 ```{r,eval=FALSE}
 use_testthat()
 ```
 
 ```{r,eval=FALSE}
-use_test("scrape.team.stats")
+use_test("scrape_nba_team_stats")
 ```
 
-A simple test ...
-
-for our code could be if there is no data...
+I am still learning how to create god test, but for starters I want to make sure that our data is returning a list.
 
 ```{r,eval=FALSE}
-# test code
+test_that("Returns that typeof is list.", {
+  expect_equal(typeof(scrape_nba_team_stats("CHI", "1998","#totals")),
+               "list")
+})
 ```
 
-Check again for errors: 
+Check for errors.
 
 ```{r,eval=FALSE}
 check()
 ```
 
-And if everything still looks green, push to Github again. 
+If everything looks green, from the **Bash Terminal** push to Github. 
 
 ```{r,eval=FALSE}
 git status
@@ -265,34 +347,81 @@ git status
 ```
 
 ```{r,eval=FALSE}
-git commit -m"Created test for scrape.team.stats"
+git commit -m"Created test for scrape_nba_team_stats"
 ```
 
 ```{r,eval=FALSE}
 git push origin main
 ```
 
-# `5.` Create README
+# `6.` Update Description
 
-To create a README file you can use the function `use_readme_rmd()` which created a README.Rmd file that allows you to code in R, and come with a lot of information already pre-filled in.
+Update your description file by filling out the appropriate information for the spots given. Be sure to include `Imports: rvest, magrittr`, see my example below:
+
+```{r,eval=FALSE}
+Package: SportsObserveR
+Title: Scrape Sports Statistics Off Sports-Reference.com
+Version: 0.0.0.9000
+Imports: rvest, magrittr
+Authors@R: 
+    person("Randi", "Bolt", , "randibolt93@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: This package is made up of many functions that scrape data off sports-reference.com.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+BugReports: https://github.com/rbolt13/SportsObserveR/issues
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+```
+
+In the **R Studio Console** run another check.
+
+```{r,eval=FALSE}
+check()
+```
+
+If everything looks good, from the **Bash Terminal** push to github.
+
+```{r,eval=FALSE}
+git status
+```
+
+```{r,eval=FALSE}
+git add --all
+```
+
+```{r,eval=FALSE}
+git status
+```
+
+```{r,eval=FALSE}
+git commit -m"Updated Description"
+```
+
+```{r,eval=FALSE}
+git push origin main
+```
+
+# `7.` Create README
+
+To create a README file where you can show code examples in R, in the **R Studio Console** use the `use_readme_rmd()` function. This file will come with a lot of information already pre-filled in.  
 
 ```{r,eval=FALSE}
 use_readme_rmd()
 ```
 
-As a starter readme, I used the following:
+Fill out the appropriate information such as the goal of the package, how to install it, and some examples on how to use it. Check out my [readme](https://github.com/rbolt13/SportsObserveR) if you need help or inspiration. 
 
-```{r,eval=FALSE}
-# read me
-```
-
-You'll want the README file to in markdown, so use the function `build_readme()` to render the file as such. Note that you will need to use this function every time you update the .Rmd. 
+Next to create a README file in markdown, use the function `build_readme()` to render the .rmd file as such. Note that you will need to use this function every time you update the .Rmd, because your github will only display the README.md file. 
 
 ```{r,eval=FALSE}
 build_readme()
 ```
 
-Then ...
+If everything looks good, from the **Bash Terminal** push again to github. 
 
 ```{r,eval=FALSE}
 git status
@@ -314,14 +443,222 @@ git commit -m"Created README"
 git push origin main
 ```
 
-# `6.` Add More Functions
+# `8.` Add Player Statistics Function
 
-Coming soon...
+Now lets add one more function, `scrape_nba_player_stats` by repeating steps 3, 5, and 7. 
+
+## `8.1` Creating the Function 
+
+From the **R Studio Console**, create the function file, and load it into your enviroment. 
 
 ```{r,eval=FALSE}
-
+use_r("scrape_nba_player_stats")
 ```
 
-Note to self: 
+```{r,eval=FALSE}
+load_all()
+```
 
-Change [Creating Functions in R to Scrape NBA Data](http://localhost:5293/01_blog/2022_11_07_NBA-functions/) title to SportsObserveR - Part 1: Web Scraping Functions. 
+In the R file named "scrape_nba_player_stats.R" copy the code below:
+
+```{r,eval=FALSE}
+#' Scrapes NBA player stats tables off basketball-reference.com.
+#'
+#'@import rvest 
+#'@import magrittr
+#'
+#'@param name is a char string that corresponds to the players name.
+#'@param stats_tb is a char string that corresponds to the statistics table such as #per_game, #totals, #per_36_minutes, and #advanced.
+#'
+#'@return a data frame of statistics for a specific NBA player. 
+#'@export
+#'
+#'@examples
+#'scrape_nba_player_stats("Allen Iverson", "#per_game")
+scrape_nba_player_stats <- function(name, stats_tb){
+  # make name lower case
+  lower_case_name <- base::tolower(name)
+
+  # split name 
+  split_name <- base::strsplit(lower_case_name, " +")[[1]]
+
+  # define first and last name
+  first_name <- split_name[[1]]
+  last_name <- split_name[[2]]
+  
+  # first letter of last name
+  letter <- base::substr(last_name, 1,1)
+  
+  # first five letters of last name 
+  last_5 <- base::substr(last_name, 1, 5)
+  
+  # first two letters of first name
+  first_2 <- base::substr(first_name, 1,2)
+  
+  # define team page URL
+  url <- base::paste0("https://www.basketball-reference.com/players/",letter ,"/",last_5,first_2,"01.html")
+  
+  # Read stats table
+  stats_tb <- url %>%
+  read_html %>%
+  html_node(stats_tb) %>% 
+  html_table()
+  
+  # Rename Column 2 to Name 
+  names(stats_tb)[2] <- "Name"
+  
+  # Replace NA values with 0 (for stat functions)
+  stats_tb[base::is.na(stats_tb)] <- 0
+  
+  # make list a dataframe
+  df <- base::data.frame(stats_tb)
+  
+  base::return(df)
+  }
+```
+
+Now save this file, and in the **R Studio Console** type `document()` to create documentation for this function.
+
+```{r,eval=FALSE}
+document()
+```
+
+Check that the documentation works:
+
+```{r,eval=FALSE}
+?scrape_nba_player_stats()
+```
+
+Use the `check()` function to look at any potential errors. 
+
+```{r,eval=FALSE}
+check()
+```
+
+If everything looks good, from the **Bash Terminal** push this code to github. 
+
+```{r,eval=FALSE}
+git status
+```
+
+```{r,eval=FALSE}
+git add --all
+```
+
+```{r,eval=FALSE}
+git status
+```
+
+```{r,eval=FALSE}
+git commit -m"Created second function"
+```
+
+```{r,eval=FALSE}
+git push origin main
+```
+
+## `8.2` Creating Tests
+
+From the **R Studio Console** use `use_test()` again to create a test file for `scrape_nba_player_stats()`.
+
+```{r,eval=FALSE}
+use_test("scrape_nba_player_stats")
+```
+
+Next create a similar code to what was previously done for `scrape_nba_team_stats()`.
+
+```{r,eval=FALSE}
+test_that("Returns that typeof is list.", {
+  expect_equal(typeof(scrape_nba_player_stats("Kareem Abdul-Jabbar", "#totals")),
+               "list")
+})
+```
+
+Check for errors. 
+
+```{r,eval=FALSE}
+check()
+```
+
+If everything looks green, from the **Bash Terminal** push to Github. 
+
+```{r,eval=FALSE}
+git status
+```
+
+```{r,eval=FALSE}
+git add --all
+```
+
+```{r,eval=FALSE}
+git status
+```
+
+```{r,eval=FALSE}
+git commit -m"Created test for scrape_nba_player_stats"
+```
+
+```{r,eval=FALSE}
+git push origin main
+```
+
+## `8.3` Update README
+
+Add another example to the readme.rmd file using the `scrape_nba_player_stats()` function, and then update the .md file. 
+
+```{r,eval=FALSE}
+build_readme()
+```
+
+From the **Bash Terminal** push this update to Github. 
+
+```{r,eval=FALSE}
+git status
+```
+
+```{r,eval=FALSE}
+git add --all
+```
+
+```{r,eval=FALSE}
+git status
+```
+
+```{r,eval=FALSE}
+git commit -m"added scrape_nba_player_stats example to readme"
+```
+
+```{r,eval=FALSE}
+git push origin main
+```
+
+# `9.` Check Package Works
+
+Now that the SportsObserveR package is up and running, lets check to make sure that it works.
+
+```{r, warning=FALSE, eval=FALSE}
+# install.packages("devtools")
+devtools::install_github("rbolt13/SportsObserveR")
+```
+
+```{r}
+library(SportsObserveR)
+```
+
+```{r}
+gsw_totals <- scrape_nba_team_stats("GSW", "2022", "#totals")
+utils::head(gsw_totals)
+```
+
+```{r}
+ai <- scrape_nba_player_stats("Allen Iverson", "#per_game")
+utils::head(ai, 10)
+```
+
+# `10.` Conclusion 
+
+This package will be helpful in collecting a large amount of NBA related data, and be a great place to put future functions, data, and models all related to sports statistics. 
+
+Please leave me a comment below if you have any questions, need further clarification, or want to get involved in expanding the capabilities of this package. 
+
+Note: You may have a hard time using this package if you are accessing it with a VPN. 
