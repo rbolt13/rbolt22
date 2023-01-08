@@ -2,7 +2,7 @@
 title: "Proving If Two Angles Are Verticle, Then They Are Congruent"
 author: "Randi Bolt"
 date: "2021-07-19"
-categories: [Abstract Math, Geometry, Math, Proof]
+categories: [Geometry, Math, Proof]
 toc: true
 ---
 

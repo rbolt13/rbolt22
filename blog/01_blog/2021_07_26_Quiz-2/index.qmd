@@ -2,7 +2,7 @@
 title: "Proving that the Set of Symmetries of Non-Square Rhombus is a Group Under Composition"
 author: "Randi Bolt"
 date: "2021-07-26"
-categories: [Abstract Math, Geometry, Math, Proof]
+categories: [Geometry, Math, Proof]
 toc: true
 ---
 
