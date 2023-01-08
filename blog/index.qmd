@@ -1,6 +1,6 @@
 ---
 title: "Randi Bolt"
-image: img/IMG_7168.JPG
+image: 00_img/IMG_7168.JPG
 comments: false
 about:
   template: jolla

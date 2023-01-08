@@ -13,7 +13,8 @@ This post is an updated version of NBA circular bar charts, which are used to co
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(error=FALSE,
                       message= FALSE,
-                      warning=FALSE)
+                      warning=FALSE,
+                      eval=FALSE)
 ```
 
 # `0.0` Introduction
@@ -158,7 +159,7 @@ for(i in 1:length(team_list)){
   nba_title[[i]] <- nba_t
 }
 
-nba_title
+# nba_title
 ```
 
 
@@ -173,9 +174,9 @@ for(i in 1:length(team_list)){
   nba_title[[i]] <- output
 }
 
-nba_title
+# nba_title
 
-nba_stats[[c(1,2)]]
+# nba_stats[[c(1,2)]]
 ```
 
 ## `1.4` Graph Caption Subtitle For Loop
