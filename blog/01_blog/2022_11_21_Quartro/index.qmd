@@ -19,6 +19,8 @@ Here is a list of links I used to help create this Quarto blog. As well as links
 
 [A Quarto tip a day](https://mine-cetinkaya-rundel.github.io/quarto-tip-a-day/)
 
+[Managing Execution](https://quarto.org/docs/projects/code-execution.html)
+
 # `2.` Quartro Blogs and their Github Repos
 
 [Bea Milz](https://beamilz.com/): [repo](https://github.com/beatrizmilz/blog-en)

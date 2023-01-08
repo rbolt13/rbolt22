@@ -19,5 +19,12 @@
     "title": "Randi Bolt",
     "section": "",
     "text": "This website is currently under construction so be sure to check out the links below and my old blog which showcases all of my academic and personal projects from undergrad.\nI post bimonthly about a range of topics that are related to data science, statistics, mathematics, or machine learning. Check out my journey, and feel free to leave my posts comments. I’d love to hear from you!\nThanks for stopping by, and please enjoy!\n😘✨"
+  },
+  {
+    "objectID": "01_blog/2022_11_21_Quartro/index.html",
+    "href": "01_blog/2022_11_21_Quartro/index.html",
+    "title": "Quarto Links",
+    "section": "",
+    "text": "1. Creating a Blog with Quatro\nCreating a blog with Quarto in 10 steps - Bea Milz\nInstalling and Configuring Python with RStudio\nQuarto: Creating a Blog Documentation\nA Quarto tip a day\nManaging Execution\n\n\n2. Quartro Blogs and their Github Repos\nBea Milz: repo\nDaniel Tran: Repo\nDanielle Navarro - Notes from a data witch: repo\nRober Mitchell: Repo\nSam Csik: Repo\nTed Landeras, PhD: repo\n\n\nMore Blogs (For Inspiration)\nThese blogs are either not made with quarto, or I couldn’t find their github repositories.\nAlicia Johnson (Made with blogdown)\nAllison Hill, PhD\nJulia Silge: Repo (Made with Blogdown and Hugo)\nMachine Learning Mastery!\nNan Xiao: Repo\nTanner Heffner: Repo (Made with Svelte)"
   }
 ]
