@@ -114,7 +114,7 @@ for (i in 1:length(url_pages))
 
 Now that all 13 pages of data are saved into a list, I then:
 
-1. Use `rbing()` to merge all the data. 
+1. Use `rbind()` to merge all the data. 
 2. Remove the last row of data, which is the column headers. 
 3. Change Salary Column from character to numeric. 
 
