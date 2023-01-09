@@ -26,5 +26,33 @@
     "title": "Quarto Links",
     "section": "",
     "text": "1. Creating a Blog with Quatro\nCreating a blog with Quarto in 10 steps - Bea Milz\nInstalling and Configuring Python with RStudio\nQuarto: Creating a Blog Documentation\nA Quarto tip a day\nManaging Execution\n\n\n2. Quartro Blogs and their Github Repos\nBea Milz: repo\nDaniel Tran: Repo\nDanielle Navarro - Notes from a data witch: repo\nRober Mitchell: Repo\nSam Csik: Repo\nTed Landeras, PhD: repo\n\n\nMore Blogs (For Inspiration)\nThese blogs are either not made with quarto, or I couldn’t find their github repositories.\nAlicia Johnson (Made with blogdown)\nAllison Hill, PhD\nJulia Silge: Repo (Made with Blogdown and Hugo)\nMachine Learning Mastery!\nNan Xiao: Repo\nTanner Heffner: Repo (Made with Svelte)"
+  },
+  {
+    "objectID": "01_blog/2022_12_19_NBA-Salaries-Part-1-Web-Scraping/index.html",
+    "href": "01_blog/2022_12_19_NBA-Salaries-Part-1-Web-Scraping/index.html",
+    "title": "NBA Salaries - Part 1: Web-Scraping",
+    "section": "",
+    "text": "This post exhibits mainly a scraping function that saves and cleans data from ESPN - NBA Players Salaries, with some simple statistic and data visuals."
+  },
+  {
+    "objectID": "01_blog/2022_12_19_NBA-Salaries-Part-1-Web-Scraping/index.html#change-salaray-from-character-to-numeric",
+    "href": "01_blog/2022_12_19_NBA-Salaries-Part-1-Web-Scraping/index.html#change-salaray-from-character-to-numeric",
+    "title": "NBA Salaries - Part 1: Web-Scraping",
+    "section": "4.1 Change Salaray from Character to Numeric",
+    "text": "4.1 Change Salaray from Character to Numeric\nNotice that the SALARY column is a character value. This will not be helpful when trying to do math, or make graphs with this numerical data. To change this 3 things must be addressed:\n\nRemoving the dollar sign.\nRemoving the commas.\nChange character type to numeric.\n\n\nnba_salaries_2023$SALARY <- str_remove_all(nba_salaries_2023$SALARY,\n                    \"\\\\$\")\nnba_salaries_2023$SALARY <- str_remove_all(nba_salaries_2023$SALARY,\n                    \",\")\nnba_salaries_2023$SALARY <- as.numeric(nba_salaries_2023$SALARY)\n\nNow we are able to do math, make graphs, and arrange the data by salary."
+  },
+  {
+    "objectID": "01_blog/2022_12_19_NBA-Salaries-Part-1-Web-Scraping/index.html#basic-statistics",
+    "href": "01_blog/2022_12_19_NBA-Salaries-Part-1-Web-Scraping/index.html#basic-statistics",
+    "title": "NBA Salaries - Part 1: Web-Scraping",
+    "section": "4.2 Basic Statistics",
+    "text": "4.2 Basic Statistics\n\n\n\n\nHighest paid value : 48,070,014\nLowest paid value : 5,318\nMedian : 4,043,639\nMean : 8,599,110\nStandard Deviation : 10,152,995"
+  },
+  {
+    "objectID": "01_blog/2022_12_19_NBA-Salaries-Part-1-Web-Scraping/index.html#box-plots",
+    "href": "01_blog/2022_12_19_NBA-Salaries-Part-1-Web-Scraping/index.html#box-plots",
+    "title": "NBA Salaries - Part 1: Web-Scraping",
+    "section": "4.3 Box Plots",
+    "text": "4.3 Box Plots\n\n4.3.1 2022 - 2023 Yearly Salary by Postion\n\nggplot2::ggplot(data = nba_salaries_2023,\n                mapping = ggplot2::aes(x = SALARY,\n                                       y = POSITION)) + \n  ggplot2::geom_boxplot()\n\n\n\n\nFrom this visual we can see that Point Guards (PG) appear to be paid the most, while Guards (G) and Forwards (F) on average are paid the least.\n\n\n4.4 2022-2023 Yearly Salary by Team\n\nggplot2::ggplot(data = nba_salaries_2023,\n                mapping = ggplot2::aes(x = SALARY,\n                                       y = TEAM)) + \n  ggplot2::geom_boxplot()\n\n\n\n\nThis plot is not the easiest to read, and might be worth sub-setting the information further. However eye-balling this visual we can see most teams pay between $2,000,000 and $15,000,000 per player with a few outliers. These outliers of course being superstar players."
   }
 ]
