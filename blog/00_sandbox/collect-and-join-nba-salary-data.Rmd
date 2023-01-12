@@ -3,23 +3,82 @@ title: "collect and join data"
 ---
 
 ```{r}
+knitr::opts_chunk$set(eval = FALSE)
 # devtools::install_github("rbolt13/SportsObserveR")
 ```
 
+# `0.` Introduction
 
 ```{r}
 library(SportsObserveR)
 ```
 
+```{r}
+salary<- utils::read.csv("../00_data/2023-01-09_NBA_22-23_Salaries.csv")
+utils::head(salary)
+```
+
+# `1.` 
+
+-> Check Nikola Jokic
 
 ```{r}
+names <- salaray$NAME
+
+p_stats <- list()
+
+for (i in 1:length(names))
+{
+  output <- scrape_nba_player_stats(names[i], "#per_game" )
+  p_stats[[i]] <- output
+}
+```
+
+```{r}
+length(p_stats)
+```
+
+
+```{r}
+# works
+sc <- scrape_nba_player_stats("Stephen Curry", "#per_game" )
+sc
+```
+
+```{r}
+y<- salary$NAME[1:4]
+y
+```
+
+```{r}
+# doesn't work 
+sc_2 <- scrape_nba_player_stats(y[1], "#per_game" )
+sc_2
+# doesn't work 
+sc_2 <- scrape_nba_player_stats("Stephen Curry", "#per_game" )
+sc_2
+```
+
+
+# `2.`
+
+```{r}
+pg <- salary[salary$POSITION == "PG",]
+pg
+```
+
+#  Tests
+
+```{r}
+# works on purr palace 1/11
 gsw_totals <- scrape_nba_team_stats("GSW", "2022", "#totals")
 utils::head(gsw_totals)
 ```
 
 ```{r}
-ai <- scrape_nba_player_stats("Allen Iverson", "#per_game")
-utils::head(ai, 10)
+# works 1/11
+sc <- scrape_nba_player_stats("Stephen Curry", "#per_game")
+utils::head(sc, 10)
 ```
 
 ```{r}
@@ -37,8 +96,160 @@ for (i in 1:length(names))
 ```
 
 ```{r}
-p_stats
+# p_stats
 ```
+
+---
+
+
+
+```{r}
+x <- salary_data[salary_data$TEAM == "Golden State Warriors",]
+y <- sum(x$SALARY)
+y
+```
+
+
+```{r}
+x <- salary_data[salary_data$TEAM == "Los Angeles Lakers",]
+y <- sum(x$SALARY)
+y
+```
+
+```{r}
+pie(x$SALARY, labels = x$POSITION)
+```
+
+
+```{r}
+pie(x$SALARY, labels = x$NAME)
+```
+
+
+```{r}
+z <- sum(x$POSITION == "PG")
+z
+```
+
+## Simple
+
+```{r}
+sal_max <- max(salary_data$SALARY)
+sal_max
+```
+
+## Bin 
+
+```{r}
+bin_df <- salary_data %>%
+  filter(SALARY <= 1000000) %>%
+  group_by(POSITION) 
+bin_df
+
+tail(bin_df, n=1)
+```
+
+```{r}
+breaks <- as.numeric(paste0(c(1:50),"000000"))
+
+group_t <- cut(salary_data$SALARY,
+               breaks = breaks,
+               include.lowest = TRUE,
+               right = FALSE)
+
+x <- summary(group_t)
+x <- as.data.frame(x)
+x
+```
+
+
+
+## Filter, Subset, Group Data
+
+
+```{r}
+df <- salary_data %>%
+  filter(POSITION == "PG") 
+df
+```
+
+
+```{r}
+df_1 <- salary_data %>%
+  group_by(POSITION) %>%
+  summarise(num = n(),
+            sum = sum(SALARY,na.rm=T),
+            avg = mean(SALARY,na.rm=T)) %>%
+  arrange(desc(sum))
+df_1
+```
+
+
+```{r}
+df_2 <- salary_data %>%
+  filter(POSITION == "PG") %>%
+  group_by(TEAM) %>%
+  summarise(num = n(),
+            sum = sum(SALARY,na.rm=T)) %>%
+  arrange(desc(sum))
+df_2
+```
+
+```{r}
+
+```
+
+
+
+
+
+```{r}
+b <- salary_data$POSITION == "PG"
+b
+```
+
+
+# PER GAME : player_stat data
+
+```{r}
+library(SportsObserveR)
+```
+
+
+```{r}
+# test
+test <- scrape_nba_player_stats("Troy Brown Jr.", "#per_game")
+
+test
+```
+
+
+```{r}
+names <- salary_data$NAME
+
+p_stats <- list()
+
+for (i in 1:length(names))
+{
+  output <- scrape_nba_player_stats(names[i], "#per_game" )
+  p_stats[[i]] <- output
+}
+```
+
+```{r}
+length(p_stats)
+```
+
+
+```{r}
+head(p_stats)
+```
+
+
+
+
+
+
 
 
 

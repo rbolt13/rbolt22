@@ -9,25 +9,35 @@ Here is a list of links I used to help create this Quarto blog. As well as links
 
 ![](../../00_img/quarto.png)
 
-# `1.` Creating a Blog with Quatro
+::: {.panel-tabset}
 
-[Creating a blog with Quarto in 10 steps - Bea Milz](https://beamilz.com/posts/2022-06-05-creating-a-blog-with-quarto/en/)
-
-[Installing and Configuring Python with RStudio](https://support.posit.co/hc/en-us/articles/360023654474-Installing-and-Configuring-Python-with-RStudio)
-
-[Quarto: Creating a Blog Documentation](https://quarto.org/docs/websites/website-blog.html)
+### Quarto Links
 
 [A Quarto tip a day](https://mine-cetinkaya-rundel.github.io/quarto-tip-a-day/)
 
+[Creating a blog with Quarto in 10 steps - Bea Milz](https://beamilz.com/posts/2022-06-05-creating-a-blog-with-quarto/en/)
+
+[From R Markdown to Quarto](https://github.com/rstudio-conf-2022/rmd-to-quarto)
+
+[Installing and Configuring Python with RStudio](https://support.posit.co/hc/en-us/articles/360023654474-Installing-and-Configuring-Python-with-RStudio)
+
 [Managing Execution](https://quarto.org/docs/projects/code-execution.html)
 
-# `2.` Quartro Blogs and their Github Repos
+[Quarto: Creating a Blog (Documentation)](https://quarto.org/docs/websites/website-blog.html)
 
-[Bea Milz](https://beamilz.com/): [repo](https://github.com/beatrizmilz/blog-en)
+[Quarto/RMarkdown - What's Different](https://laderast.github.io/qmd_rmd/#/title-slide): [Repo](https://github.com/laderast/qmd_rmd)
+
+[quarto-trio (Using Python, R, and Apache Arrow)](https://gist.github.com/hrbrmstr/23355194d1964688596553a0e6a0050a)
+
+### Quarto Blogs
+
+[Abhirup Moitra](https://abhirup-moitra-mathstat.netlify.app/)
+
+[Bea Milz](https://beamilz.com/): [Repo](https://github.com/beatrizmilz/blog-en)
 
 [Daniel Tran](https://www.ddanieltan.com/): [Repo](https://github.com/ddanieltan/ddanieltan.com)
 
-[Danielle Navarro - Notes from a data witch](https://blog.djnavarro.net/): [repo](https://github.com/djnavarro/quarto-blog)
+[Danielle Navarro - Notes from a data witch](https://blog.djnavarro.net/): [Repo](https://github.com/djnavarro/quarto-blog)
 
 [Rober Mitchell](https://robertmitchellv.com/): [Repo](https://github.com/robertmitchellv/robertmitchellv.github.io)
 
@@ -35,19 +45,23 @@ Here is a list of links I used to help create this Quarto blog. As well as links
 
 [Ted Landeras, PhD](https://laderast.github.io/): [repo](https://github.com/laderast/laderast.github.io)
 
-# More Blogs (For Inspiration)
+### Other Blogs
 
-These blogs are either not made with quarto, or I couldn't find their github repositories. 
-
-[Alicia Johnson](https://ajohns24.github.io/portfolio/) (Made with blogdown)
+[Alicia Johnson (Made with blogdown))](https://ajohns24.github.io/portfolio/) 
 
 [Allison Hill, PhD](https://www.apreshill.com/)
 
-[Julia Silge](https://juliasilge.com/): [Repo](https://github.com/juliasilge/juliasilge.com) (Made with Blogdown and Hugo)
+[Jenny Bryan (Made with Blogdown and Hugo)](https://jennybryan.org/): [Repo](https://github.com/jennybc/jennybryan.org)
+
+[Julia Silge (Made with Blogdown and Hugo)](https://juliasilge.com/): [Repo](https://github.com/juliasilge/juliasilge.com) 
 
 [Machine Learning Mastery!](https://machinelearningmastery.com/)
 
 [Nan Xiao](https://nanx.me/): [Repo](https://github.com/nanxstats/nanx.me)
 
-[Tanner Heffner](https://www.heffner.dev/): [Repo](https://github.com/tjheffner/heffdotdev) (Made with Svelte)
+[Tanner Heffner (Made with Svelte)](https://www.heffner.dev/): [Repo](https://github.com/tjheffner/heffdotdev)
+
+[Yihui Xie](https://yihui.org/en/)
+
+:::
 

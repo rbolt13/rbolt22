@@ -78,7 +78,7 @@ salary.scrape <- function(url_page){
   tb3 <- tb2[-1,]
   
   # Add position column, and remove position from name
-  tb3$POSITION <- sub('.*,',"", tb3$NAME)
+  tb3$POSITION <- sub('.*, ',"", tb3$NAME)
   tb3$NAME <- sub(', [A-Z]{,2}','', tb3$NAME)
   
   return(tb3)

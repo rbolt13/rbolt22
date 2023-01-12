@@ -2,6 +2,11 @@
 title: "R-SQL-Python"
 ---
 
+```{r}
+getwd()
+```
+
+
 Part 2: R
 
 Part 3: SQL
@@ -14,6 +19,6 @@ r_df
 ```
 
 ```{r}
-r_patients <- read.csv('../../00_data/patients.csv')
+r_patients <- read.csv('../00_data/patients.csv')
 utils::head(r_patients)
 ```
