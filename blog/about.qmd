@@ -1,46 +1,162 @@
 ---
-title: "About Randi"
 comments: false
 background-video: true
 from: markdown+emoji
 ---
 
-**Professional**
+:::: {.columns}
 
-I graduated magna cum laude with a Bachelors of Science in Mathematics from Portland State University in 2022. Since most of my undergrad was during COVID-19 lock down I've become proficient at collaborating remotely. I ran remote study groups through discord, participated in the GIS (Geographic Information Systems) club, spoke virtually at [G.I.S. in Action](https://gisinaction2021.sched.com/directory/speakers), and in the summer of 2021 created my first blog.
+::: {.column width="50%"}
 
-Currently I am looking for work as a data analyst, data scientist, or a machine learning engineer. My hope is that this blog will showcase my technical skills in these areas, determination, adaptability, and perseverance.
+<img 
+    style="display: block; 
+           margin-left: true;
+           margin-right: auto;
+           width: 95%;"
+    src="https://media.giphy.com/media/xT77XUHgj7vDdnbiFi/giphy.gif" 
+    alt="Our logo">
+</img>
+:::
 
-------------------------------------------------------------------------
+::: {.column width="50%"}
+**About**
 
-:books:**Books I'm Currently Reading**:books:
+I am a data analyst / scientist based out of Portland, Oregon.
 
-[Basketball Analytics](https://www.amazon.com/Basketball-Analytics-Objective-Strategies-Understanding/dp/1492923176/ref=pd_bxgy_img_sccl_1/139-9559542-4708158?pd_rd_w=PgVSG&content-id=amzn1.sym.7f0cf323-50c6-49e3-b3f9-63546bb79c92&pf_rd_p=7f0cf323-50c6-49e3-b3f9-63546bb79c92&pf_rd_r=T2F994YDQV6G0J1S2E58&pd_rd_wg=iLkda&pd_rd_r=105a4c21-7e17-4938-84af-07a897041615&pd_rd_i=1492923176&psc=1)
+I have been writing about mathematics, statistics, and data science in my blog since 2021. 
 
-[Etiquette Guide to Japan](https://www.amazon.com/Etiquette-Guide-Japan-Rules-Difference/dp/4805313617)
+I am constantly exploring new topics, and ways to improve upon past and current work. 
 
-[Weapons of Math Destruction](https://www.amazon.com/Weapons-Math-Destruction-Increases-Inequality/dp/0553418815)
+I graduated magna cum laude with a Bachelors of Science in Mathematics from Portland State University in 2022. 
 
-------------------------------------------------------------------------
+:::
+::::
 
-:notes:**Music I'm Currently Listening To**:notes:
+```{r set up, echo=F, message=FALSE}
+library(dplyr)
+library(reactable)
+```
 
-[Face Your Fears - Crazy Ex Girlfriend](https://www.youtube.com/watch?v=brzZQBSVMX0)
+::: {.panel-tabset}
 
-[Her Morning Elegance](https://www.youtube.com/watch?v=2_HXUhShhmY)
+### :books:
 
-[Never Thought - Mel Bryant](https://www.youtube.com/watch?v=WqsIZQt29Ag)
+```{r books data, echo = F}
+book_status <- c("Queue",
+                 "Queue",
+                 "Current")
+books <- c("Basketball Analytics",
+           "Etiquette Guide to Japan",
+           "Weapons of Math Destruction")
+book_urls <- c("https://www.amazon.com/Basketball-Analytics-Objective-Strategies-Understanding/dp/1492923176/ref=pd_bxgy_img_sccl_1/139-9559542-4708158?pd_rd_w=PgVSG&content-id=amzn1.sym.7f0cf323-50c6-49e3-b3f9-63546bb79c92&pf_rd_p=7f0cf323-50c6-49e3-b3f9-63546bb79c92&pf_rd_r=T2F994YDQV6G0J1S2E58&pd_rd_wg=iLkda&pd_rd_r=105a4c21-7e17-4938-84af-07a897041615&pd_rd_i=1492923176&psc=1",
+               "https://www.amazon.com/Etiquette-Guide-Japan-Rules-Difference/dp/4805313617",
+               "https://www.amazon.com/Weapons-Math-Destruction-Increases-Inequality/dp/0553418815")
+book_genres <- c("Sports Statistics",
+                 "World",
+                 "DEI")
+```
 
-[Pudgy - Smino](https://www.youtube.com/watch?v=vYDTxajCnfU)
+```{r books df, echo=F}
+books_df <- base::data.frame("Status" = book_status,
+                             "Book" = books,
+                             "Genre" = book_genres)
+```
 
-------------------------------------------------------------------------
+```{r books reactable, echo=FALSE}
+books_reactable <- reactable(
+  books_df,
+  bordered = TRUE,
+  highlight = TRUE,
+  filterable = TRUE,
+  searchable = TRUE,
+  defaultSortOrder = "asc",
+  defaultSorted = c("Status", "Book"))
+books_reactable
+```
 
-:movie_camera:**Movies I've Watched Recently**:movie_camera:
+### :notes:
 
-[The Terminator](https://en.wikipedia.org/wiki/The_Terminator) (1,2,3)
+```{r music data, echo = F}
+song <- c("Face Your Fears",
+           "Her Morning Elegance",
+           "Never Thought",
+           "Pudgy",
+           "Listen to the Music")
+artist <- c("Crazy Ex Girlfriend",
+            "Oren Lavie",
+            "Mel Bryant",
+            "Smino",
+            "The Doobie Brothers")
+listening <- c("12/22",
+               "01/23",
+               "12/22",
+               "12/22",
+               "01/23")
+year_released <- c("2016",
+                   "2007",
+                   "2020",
+                   "2022",
+                   "1972")
+youtube_link <- c("https://www.youtube.com/watch?v=brzZQBSVMX0",
+                  "https://www.youtube.com/watch?v=2_HXUhShhmY",
+                  "https://www.youtube.com/watch?v=WqsIZQt29Ag",
+                  "https://www.youtube.com/watch?v=vYDTxajCnfU",
+                  "https://www.youtube.com/watch?v=DkytJLoxGmQ")
+```
 
-[Pearl](https://www.imdb.com/title/tt18925334/)
+```{r music df, echo=F}
+music_df <- base::data.frame(
+  "Date Listening" = listening,
+  "Song" = song,
+  "Artist" = artist,
+  "Released" = year_released)
+```
 
-[X](https://www.imdb.com/title/tt13560574/?ref_=ttls_li_i)
+```{r music reactable, echo=FALSE}
+music_reactable <- reactable(
+  music_df,
+  bordered = TRUE,
+  highlight = TRUE,
+  filterable = TRUE,
+  searchable = TRUE,
+  defaultSortOrder = "asc",
+  defaultSorted = c("Date.Listening", "Song"))
+music_reactable
+```
 
-[The Father](https://en.wikipedia.org/wiki/The_Father_(2020_film))
+### :movie_camera:
+
+```{r movie data, echo = F}
+film <- c("The Terminator 1, 2, and 3",
+          "Peal",
+          "X",
+          "The Father")
+genres <- c("Action",
+            "Horror",
+            "Horror",
+            "Sad")
+watched <- c("12/22",
+             "12/22",
+             "12/22",
+             "12/22")
+```
+
+```{r movie df, echo=F}
+movie_df <- base::data.frame(
+  "Watched" = watched,
+  "Film" = film,
+  "Genre" = genres)
+```
+
+```{r movie reactable, echo=FALSE}
+movie_reactable <- reactable(
+  movie_df,
+  bordered = TRUE,
+  highlight = TRUE,
+  filterable = TRUE,
+  searchable = TRUE,
+  defaultSortOrder = "asc",
+  defaultSorted = c("Watched", "Film"))
+movie_reactable
+```
+:::

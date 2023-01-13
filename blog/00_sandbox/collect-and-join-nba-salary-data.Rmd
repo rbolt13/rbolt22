@@ -23,7 +23,7 @@ utils::head(salary)
 -> Check Nikola Jokic
 
 ```{r}
-names <- salaray$NAME
+names <- salary$NAME
 
 p_stats <- list()
 

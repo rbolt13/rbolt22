@@ -2,9 +2,9 @@
   {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "About Randi",
+    "title": "Randi Bolt",
     "section": "",
-    "text": "I graduated magna cum laude with a Bachelors of Science in Mathematics from Portland State University in 2022. Since most of my undergrad was during COVID-19 lock down I’ve become proficient at collaborating remotely. I ran remote study groups through discord, participated in the GIS (Geographic Information Systems) club, spoke virtually at G.I.S. in Action, and in the summer of 2021 created my first blog.\nCurrently I am looking for work as a data analyst, data scientist, or a machine learning engineer. My hope is that this blog will showcase my technical skills in these areas, determination, adaptability, and perseverance.\n\n📚Books I’m Currently Reading📚\nBasketball Analytics\nEtiquette Guide to Japan\nWeapons of Math Destruction\n\n🎶Music I’m Currently Listening To🎶\nFace Your Fears - Crazy Ex Girlfriend\nHer Morning Elegance\nNever Thought - Mel Bryant\nPudgy - Smino\n\n🎥Movies I’ve Watched Recently🎥\nThe Terminator (1,2,3)\nPearl\nX\nThe Father"
+    "text": "📚🎶🎥"
   },
   {
     "objectID": "blog.html",
@@ -82,5 +82,33 @@
     "title": "Decision Trees - Shipwreak Data",
     "section": "split data",
     "text": "split data\n\ny=titanic.Survived\nx=titanic.drop('Survived', axis=1)\n\n\nx_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.2)\nx_train.head\n\n<bound method NDFrame.head of      PassengerId  Pclass                                  Name     Sex   Age  \\\n95            96       3           Shorney, Mr. Charles Joseph    male   NaN   \n123          124       2                   Webber, Miss. Susan  female  32.5   \n151          152       1     Pears, Mrs. Thomas (Edith Wearne)  female  22.0   \n162          163       3            Bengtsson, Mr. John Viktor    male  26.0   \n870          871       3                     Balkic, Mr. Cerin    male  26.0   \n..           ...     ...                                   ...     ...   ...   \n249          250       2         Carter, Rev. Ernest Courtenay    male  54.0   \n890          891       3                   Dooley, Mr. Patrick    male  32.0   \n490          491       3  Hagland, Mr. Konrad Mathias Reiersen    male   NaN   \n110          111       1        Porter, Mr. Walter Chamberlain    male  47.0   \n36            37       3                      Mamee, Mr. Hanna    male   NaN   \n\n     SibSp  Parch  Ticket     Fare Cabin Embarked  \n95       0      0  374910   8.0500   NaN        S  \n123      0      0   27267  13.0000  E101        S  \n151      1      0  113776  66.6000    C2        S  \n162      0      0  347068   7.7750   NaN        S  \n870      0      0  349248   7.8958   NaN        S  \n..     ...    ...     ...      ...   ...      ...  \n249      1      0  244252  26.0000   NaN        S  \n890      0      0  370376   7.7500   NaN        Q  \n490      1      0   65304  19.9667   NaN        S  \n110      0      0  110465  52.0000  C110        S  \n36       0      0    2677   7.2292   NaN        C  \n\n[712 rows x 11 columns]>"
+  },
+  {
+    "objectID": "about.html#books-im-currently-reading",
+    "href": "about.html#books-im-currently-reading",
+    "title": "Randi Bolt",
+    "section": "Books I’m Currently Reading",
+    "text": "Books I’m Currently Reading"
+  },
+  {
+    "objectID": "about.html#music-im-listening-to",
+    "href": "about.html#music-im-listening-to",
+    "title": "Randi Bolt",
+    "section": "Music I’m Listening To",
+    "text": "Music I’m Listening To\nFace Your Fears - Crazy Ex Girlfriend\nHer Morning Elegance\nNever Thought - Mel Bryant\nPudgy - Smino"
+  },
+  {
+    "objectID": "about.html#movies-ive-watched-recently",
+    "href": "about.html#movies-ive-watched-recently",
+    "title": "About Randi",
+    "section": "Movies I’ve Watched Recently",
+    "text": "Movies I’ve Watched Recently\nThe Terminator (1,2,3)\nPearl\nX\nThe Father"
+  },
+  {
+    "objectID": "about.html#movies-ive-recently-watched",
+    "href": "about.html#movies-ive-recently-watched",
+    "title": "Randi Bolt",
+    "section": "Movies I’ve Recently Watched",
+    "text": "Movies I’ve Recently Watched\nThe Terminator (1,2,3)\nPearl\nX\nThe Father"
   }
 ]
