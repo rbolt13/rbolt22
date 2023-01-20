@@ -5,7 +5,7 @@ categories: [Quarto]
 toc: true
 ---
 
-Here is a list of links I used to help create this Quarto blog. As well as links to other quarto and non-quarto blogs for inspiration. 
+Here is a list of links I used to help create this Quarto blog. As well as links for web accessibility, examples of other quarto blogs, and examples of non-quarto blogs. 
 
 ![](../../00_img/quarto.png)
 
@@ -25,9 +25,15 @@ Here is a list of links I used to help create this Quarto blog. As well as links
 
 [Quarto: Creating a Blog (Documentation)](https://quarto.org/docs/websites/website-blog.html)
 
-[Quarto/RMarkdown - What's Different](https://laderast.github.io/qmd_rmd/#/title-slide): [Repo](https://github.com/laderast/qmd_rmd)
+[Quarto/RMarkdown - What's Different](https://www.youtube.com/watch?v=i6rajzMkpD0): [Slides](https://laderast.github.io/qmd_rmd/#/title-slide) [Repo](https://github.com/laderast/qmd_rmd)
 
 [quarto-trio (Using Python, R, and Apache Arrow)](https://gist.github.com/hrbrmstr/23355194d1964688596553a0e6a0050a)
+
+### Accessibility
+
+[a11Y - digital accessibility](https://www.a11yproject.com/)
+
+[WAVE - Web Accessibility Evaluation Tool](https://wave.webaim.org/)
 
 ### Quarto Blogs
 
@@ -51,6 +57,8 @@ Here is a list of links I used to help create this Quarto blog. As well as links
 
 [Allison Hill, PhD](https://www.apreshill.com/)
 
+[Greg Wilson](https://third-bit.com/)
+
 [Jenny Bryan (Made with Blogdown and Hugo)](https://jennybryan.org/): [Repo](https://github.com/jennybc/jennybryan.org)
 
 [Julia Silge (Made with Blogdown and Hugo)](https://juliasilge.com/): [Repo](https://github.com/juliasilge/juliasilge.com) 
@@ -60,6 +68,8 @@ Here is a list of links I used to help create this Quarto blog. As well as links
 [Nan Xiao](https://nanx.me/): [Repo](https://github.com/nanxstats/nanx.me)
 
 [Tanner Heffner (Made with Svelte)](https://www.heffner.dev/): [Repo](https://github.com/tjheffner/heffdotdev)
+
+[Yanina Bellini Saibene](https://yabellini.netlify.app/)
 
 [Yihui Xie](https://yihui.org/en/)
 

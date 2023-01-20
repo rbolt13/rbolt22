@@ -23,6 +23,7 @@ format:
   html:
     theme: journal
     backgroundcolor: pink
+    linkcolor: darkred
     css: styles.css
 
 editor: visual

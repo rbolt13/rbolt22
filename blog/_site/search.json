@@ -4,7 +4,7 @@
     "href": "about.html",
     "title": "Randi Bolt",
     "section": "",
-    "text": "📚🎶🎥"
+    "text": "About\nI am a data analyst / scientist based out of Portland, Oregon.\nI have been writing about mathematics, statistics, and data science in my blog since 2021.\nI am constantly exploring new topics, and ways to improve upon past and current work.\nI graduated magna cum laude with a Bachelors of Science in Mathematics from Portland State University in 2022."
   },
   {
     "objectID": "blog.html",
@@ -25,7 +25,7 @@
     "href": "01_blog/2022_11_21_Quartro/index.html",
     "title": "Quarto Links",
     "section": "",
-    "text": "Quarto LinksQuarto BlogsOther Blogs\n\n\nA Quarto tip a day\nCreating a blog with Quarto in 10 steps - Bea Milz\nFrom R Markdown to Quarto\nInstalling and Configuring Python with RStudio\nManaging Execution\nQuarto: Creating a Blog (Documentation)\nQuarto/RMarkdown - What’s Different: Repo\nquarto-trio (Using Python, R, and Apache Arrow)\n\n\nAbhirup Moitra\nBea Milz: Repo\nDaniel Tran: Repo\nDanielle Navarro - Notes from a data witch: Repo\nRober Mitchell: Repo\nSam Csik: Repo\nTed Landeras, PhD: repo\n\n\nAlicia Johnson (Made with blogdown))\nAllison Hill, PhD\nJenny Bryan (Made with Blogdown and Hugo): Repo\nJulia Silge (Made with Blogdown and Hugo): Repo\nMachine Learning Mastery!\nNan Xiao: Repo\nTanner Heffner (Made with Svelte): Repo\nYihui Xie"
+    "text": "Quarto LinksAccessibilityQuarto BlogsOther Blogs\n\n\nA Quarto tip a day\nCreating a blog with Quarto in 10 steps - Bea Milz\nFrom R Markdown to Quarto\nInstalling and Configuring Python with RStudio\nManaging Execution\nQuarto: Creating a Blog (Documentation)\nQuarto/RMarkdown - What’s Different: Slides Repo\nquarto-trio (Using Python, R, and Apache Arrow)\n\n\na11Y - digital accessibility\nWAVE - Web Accessibility Evaluation Tool\n\n\nAbhirup Moitra\nBea Milz: Repo\nDaniel Tran: Repo\nDanielle Navarro - Notes from a data witch: Repo\nRober Mitchell: Repo\nSam Csik: Repo\nTed Landeras, PhD: repo\n\n\nAlicia Johnson (Made with blogdown))\nAllison Hill, PhD\nGreg Wilson\nJenny Bryan (Made with Blogdown and Hugo): Repo\nJulia Silge (Made with Blogdown and Hugo): Repo\nMachine Learning Mastery!\nNan Xiao: Repo\nTanner Heffner (Made with Svelte): Repo\nYanina Bellini Saibene\nYihui Xie"
   },
   {
     "objectID": "01_blog/2022_12_19_NBA-Salaries-Part-1-Web-Scraping/index.html",
@@ -180,5 +180,299 @@
     "title": "Statistics 451: Applied Statistics for Engineers and Scientists - Homework 1",
     "section": "1.60 Observations on burst strength (lb/in2) were obtained both for test nozzle welds (“Proper Procedures Are the Key to Welding Radioactive Waste Canisters,” Welding J., Auud. 1997: 61-67)",
     "text": "1.60 Observations on burst strength (lb/in2) were obtained both for test nozzle welds (“Proper Procedures Are the Key to Welding Radioactive Waste Canisters,” Welding J., Auud. 1997: 61-67)\n\nTest <-c(7200, 6100, 7300, 7300, 8000, 7400,\n         7300, 7300, 8000, 6700, 8300)         \nCannister <- c(5250, 5625, 5900, 5900, 5700, 6050,\n               5800, 6000, 5875, 6100, 5850, 6600)\n\n\na. Construct a comparative boxplot and comment on interesting features (the cited article did not include such a picture, but the authors commented that they had looked at one).\n\npar(mfrow = c(1,2))\nboxplot(Test, ylim = c(5000, 8500), main = \"Test\")\nboxplot(Cannister, ylim = c(5000, 8500), main = \"Cannister\")\n\n\n\n\n\nmean(Test)-mean(Cannister)\n\n[1] 1467.045\n\nmean(Test)\n\n[1] 7354.545\n\nmean(Cannister)\n\n[1] 5887.5\n\nsd(Test)\n\n[1] 613.7811\n\nsd(Cannister)\n\n[1] 317.9301"
+  },
+  {
+    "objectID": "00_data/about_data/movies.html",
+    "href": "00_data/about_data/movies.html",
+    "title": "Randi Bolt",
+    "section": "",
+    "text": "Movie Titles - Generes - Rating - Review\n\ntitles <- c(\"The Terminator 1\",\n            \"Terminator 2: Judgement Day\",\n            \"Terminator 3: Rise of the Machines\",\n          \"Peal\",\n          \"X\",\n          \"The Father\",\n          \"Our Friend\",\n          \"The Lighthouse\",\n          \"Men\")\n\n\ngenres <- c(\"Action\",\n           \"Horror / Thriller\",\n           \"Horror / Slasher\",\n           \"Drama\")\n\n\nstar_rating <- function(rating, max_rating = 5){\n  \n  star_icon <- function(status) {\n    \n    if (status == \"Half\") {\n      tagAppendAttributes(shiny::icon(\"star-half-alt\"),\n      style = paste(\"color: orange\"),\n      \"aria-hidden\" = \"true\")\n    } else {\n          tagAppendAttributes(shiny::icon(\"star\"),\n      style = paste(\"color:\", if (status == \"Empty\") \"#edf0f2\" else \"orange\"),\n      \"aria-hidden\" = \"true\"\n    )\n    }\n    \n  }\n  \n  rounded_rating <- floor(rating)\n  last_rating <- rating - rounded_rating\n  last_rating <- case_when(last_rating < .25 ~ \"Empty\",\n                           last_rating > .75 ~ \"Full\",\n                           TRUE ~ \"Half\"\n                           )\n  \n  stars <- lapply(seq_len(max_rating), function(i) {\n    if (i <= rounded_rating) { star_icon(status = \"Full\")} \n    else {\n      if (i == (rounded_rating+1)) star_icon(status = last_rating)\n      else {\n      star_icon(status = \"Empty\")\n    }\n    }\n    \n    })\n  \n  label <- sprintf(\"%s out of %s\", rating, max_rating)\n  div(title = label, \"aria-label\" = label, role = \"img\", stars)\n\n}\n\n# Example\nstar_rating(4.5)\n\n\n\n\n\n\n\n\n\n\n\nwatched <- c(\"12/22\",\n             \"12/22\",\n             \"12/22\",\n             \"12/22\")"
+  },
+  {
+    "objectID": "01_blog/2023_01_23_Data-Tool-Box-P1/index.html",
+    "href": "01_blog/2023_01_23_Data-Tool-Box-P1/index.html",
+    "title": "R and SQLite",
+    "section": "",
+    "text": "In this post I use fake hospital data to answer questions using both R and SQL (Structured Query Language) via a R package called RSQLite."
+  },
+  {
+    "objectID": "01_blog/2023_01_23_Data-Tool-Box-P1/index.html#packages",
+    "href": "01_blog/2023_01_23_Data-Tool-Box-P1/index.html#packages",
+    "title": "R and SQLite",
+    "section": "0.1 Packages",
+    "text": "0.1 Packages\nFor all my data quering and manipulation in R I will be using the tidyverse.\n\nlibrary(tidyverse)\n\nTo run create a SQL database, and run SQL queries in R chunks I will be using a package called RSQLite.\n\nlibrary(RSQLite)"
+  },
+  {
+    "objectID": "01_blog/2023_01_23_Data-Tool-Box-P1/index.html#data",
+    "href": "01_blog/2023_01_23_Data-Tool-Box-P1/index.html#data",
+    "title": "R and SQLite",
+    "section": "0.2 Data",
+    "text": "0.2 Data\nThis post will use two data sets that I copied from Learn SQL:\n\npatients: Which includes patient_id, first_name, last_name, gender, birth_date, city, province_id, allergies, height, and weight. Note I only copied the first 1000 entries.\n\n\npatients <- utils::read.csv('../../00_data/patients.csv')\n\n\nprovince_names: Which includes province_id, and province_name.\n\n\nprovince_names <- utils::read.csv(\"../../00_data/province_names.csv\")"
+  },
+  {
+    "objectID": "01_blog/2023_01_23_Data-Tool-Box-P1/index.html#database",
+    "href": "01_blog/2023_01_23_Data-Tool-Box-P1/index.html#database",
+    "title": "R and SQLite",
+    "section": "0.3 Database",
+    "text": "0.3 Database\nTo start I am using the dbConnect(), and SQLite() functions to create a hospital\nSince SQL lets the user access and manipulate data from a database, it is important to create this data base.\nCreate a Hospital database to store the patients data.\n\nhosp <- RSQLite::dbConnect(RSQLite::SQLite(),\n                           \"../../00_data/Hospital.db\")\n\n\nRSQLite::dbWriteTable(hosp,\n                      \"patients\",\n                      patients)\nRSQLite::dbWriteTable(hosp,\n                      \"province_names\",\n                      province_names)\n\n\nRSQLite::dbListTables(hosp)\n\n[1] \"patients\"       \"province_names\""
+  },
+  {
+    "objectID": "01_blog/2023_01_23_Data-Tool-Box-P1/index.html#r",
+    "href": "01_blog/2023_01_23_Data-Tool-Box-P1/index.html#r",
+    "title": "R and SQLite",
+    "section": "R",
+    "text": "R\n\nutils::head(patients, 10)\n\n   patient_id first_name  last_name gender birth_date            city\n1           1     Donald Waterfield      M 1963-02-12          Barrie\n2           2     Mickey     Baasha      M 1981-05-28          Dundas\n3           3       Jiji     Sharma      M 1957-09-05        Hamilton\n4           4      Blair       Diaz      M 1967-01-07        Hamilton\n5           5    Charles      Wolfe      M 2017-11-19         Orillia\n6           6        Sue     Falcon      F 2017-09-30            Ajax\n7           7     Thomas     ONeill      M 1993-01-31      Burlington\n8           8      Sonny    Beckett      M 1952-12-11 Port Hawkesbury\n9           9     Sister    Spitzer      F 1966-10-15         Toronto\n10         10     Cedric   Coltrane      M 1961-11-10         Toronto\n   province_id  allergies height weight\n1           ON       NULL    156     65\n2           ON      Sulfa    185     76\n3           ON Penicillin    194    106\n4           ON       NULL    191    104\n5           ON Penicillin     47     10\n6           ON Penicillin     43      5\n7           ON       NULL    180    117\n8           NS       NULL    174    105\n9           ON Penicillin    173     95\n10          ON       NULL    157     61"
+  },
+  {
+    "objectID": "01_blog/2023_01_23_Data-Tool-Box-P1/index.html#sql",
+    "href": "01_blog/2023_01_23_Data-Tool-Box-P1/index.html#sql",
+    "title": "R and SQLite",
+    "section": "SQL",
+    "text": "SQL\n\nRSQLite::dbGetQuery(hosp, \n                    \"SELECT * \n                     FROM patients \n                     LIMIT 10\"\n                    )\n\n   patient_id first_name  last_name gender birth_date            city\n1           1     Donald Waterfield      M 1963-02-12          Barrie\n2           2     Mickey     Baasha      M 1981-05-28          Dundas\n3           3       Jiji     Sharma      M 1957-09-05        Hamilton\n4           4      Blair       Diaz      M 1967-01-07        Hamilton\n5           5    Charles      Wolfe      M 2017-11-19         Orillia\n6           6        Sue     Falcon      F 2017-09-30            Ajax\n7           7     Thomas     ONeill      M 1993-01-31      Burlington\n8           8      Sonny    Beckett      M 1952-12-11 Port Hawkesbury\n9           9     Sister    Spitzer      F 1966-10-15         Toronto\n10         10     Cedric   Coltrane      M 1961-11-10         Toronto\n   province_id  allergies height weight\n1           ON       NULL    156     65\n2           ON      Sulfa    185     76\n3           ON Penicillin    194    106\n4           ON       NULL    191    104\n5           ON Penicillin     47     10\n6           ON Penicillin     43      5\n7           ON       NULL    180    117\n8           NS       NULL    174    105\n9           ON Penicillin    173     95\n10          ON       NULL    157     61"
+  },
+  {
+    "objectID": "01_blog/2023_01_23_Data-Tool-Box-P1/index.html#r-1",
+    "href": "01_blog/2023_01_23_Data-Tool-Box-P1/index.html#r-1",
+    "title": "R and SQLite",
+    "section": "R",
+    "text": "R\n\nbase::data.frame(\"total_admissions\" = base::nrow(patients))\n\n  total_admissions\n1             1000"
+  },
+  {
+    "objectID": "01_blog/2023_01_23_Data-Tool-Box-P1/index.html#sql-1",
+    "href": "01_blog/2023_01_23_Data-Tool-Box-P1/index.html#sql-1",
+    "title": "R and SQLite",
+    "section": "SQL",
+    "text": "SQL\n\nRSQLite::dbGetQuery(hosp,\n                    \"SELECT COUNT(*) AS total_admissions \n                     FROM patients\"\n                    )\n\n  total_admissions\n1             1000"
+  },
+  {
+    "objectID": "01_blog/2023_01_23_Data-Tool-Box-P1/index.html#r-2",
+    "href": "01_blog/2023_01_23_Data-Tool-Box-P1/index.html#r-2",
+    "title": "R and SQLite",
+    "section": "R",
+    "text": "R\n\nutils::head(\n  base::data.frame(\n    full_name = base::paste0(patients$first_name, \n                             \" \", \n                             patients$last_name)), \n  10)\n\n           full_name\n1  Donald Waterfield\n2      Mickey Baasha\n3        Jiji Sharma\n4         Blair Diaz\n5      Charles Wolfe\n6         Sue Falcon\n7      Thomas ONeill\n8      Sonny Beckett\n9     Sister Spitzer\n10   Cedric Coltrane"
+  },
+  {
+    "objectID": "01_blog/2023_01_23_Data-Tool-Box-P1/index.html#sql-2",
+    "href": "01_blog/2023_01_23_Data-Tool-Box-P1/index.html#sql-2",
+    "title": "R and SQLite",
+    "section": "SQL",
+    "text": "SQL\n\nRSQLite::dbGetQuery(hosp,\n  \"SELECT first_name || ' ' || last_name AS full_name \n   FROM patients \n   LIMIT 10\"\n   )\n\n           full_name\n1  Donald Waterfield\n2      Mickey Baasha\n3        Jiji Sharma\n4         Blair Diaz\n5      Charles Wolfe\n6         Sue Falcon\n7      Thomas ONeill\n8      Sonny Beckett\n9     Sister Spitzer\n10   Cedric Coltrane"
+  },
+  {
+    "objectID": "01_blog/2023_01_23_Data-Tool-Box-P1/index.html#r-3",
+    "href": "01_blog/2023_01_23_Data-Tool-Box-P1/index.html#r-3",
+    "title": "R and SQLite",
+    "section": "R",
+    "text": "R\n\npatients %>% \n  filter(province_id == \"NS\") %>%\n  summarise(unique_cities = unique(city)) \n\n    unique_cities\n1 Port Hawkesbury\n2         Halifax"
+  },
+  {
+    "objectID": "01_blog/2023_01_23_Data-Tool-Box-P1/index.html#sql-3",
+    "href": "01_blog/2023_01_23_Data-Tool-Box-P1/index.html#sql-3",
+    "title": "R and SQLite",
+    "section": "SQL",
+    "text": "SQL\n\ndbGetQuery(hosp,\n           \"SELECT DISTINCT(city) AS unique_cities \n            FROM patients \n            WHERE province_id IS 'NS'\"\n           )\n\n    unique_cities\n1 Port Hawkesbury\n2         Halifax"
+  },
+  {
+    "objectID": "01_blog/2023_01_23_Data-Tool-Box-P1/index.html#r-4",
+    "href": "01_blog/2023_01_23_Data-Tool-Box-P1/index.html#r-4",
+    "title": "R and SQLite",
+    "section": "R",
+    "text": "R\n\nbase::data.frame(\n  male_count = base::length(base::which(patients$gender == 'M')),\n  female_count = base::length(base::which(patients$gender == 'F'))\n  )\n\n  male_count female_count\n1        543          457"
+  },
+  {
+    "objectID": "01_blog/2023_01_23_Data-Tool-Box-P1/index.html#sql-4",
+    "href": "01_blog/2023_01_23_Data-Tool-Box-P1/index.html#sql-4",
+    "title": "R and SQLite",
+    "section": "SQL",
+    "text": "SQL\n\ndbGetQuery(hosp,\n           \"SELECT \n           (SELECT COUNT(*) FROM patients WHERE gender = 'M') AS male_count, \n           (SELECT COUNT(*) FROM patients WHERE gender = 'F') AS female_count\")\n\n  male_count female_count\n1        543          457"
+  },
+  {
+    "objectID": "01_blog/2023_01_23_Data-Tool-Box-P1/index.html#r-5",
+    "href": "01_blog/2023_01_23_Data-Tool-Box-P1/index.html#r-5",
+    "title": "R and SQLite",
+    "section": "R",
+    "text": "R\n\npatients %>% \n  filter(allergies != \"NULL\") %>%\n  group_by(allergies) %>%\n  summarise(total_diagnosis = n()) %>%\n  arrange(desc(total_diagnosis)) %>%\n  head(10)\n\n# A tibble: 10 × 2\n   allergies   total_diagnosis\n   <chr>                 <int>\n 1 Penicillin              230\n 2 Codeine                  58\n 3 Sulfa                    35\n 4 ASA                      16\n 5 Sulfa Drugs              13\n 6 Tylenol                  11\n 7 Wheat                    11\n 8 Peanuts                  10\n 9 Bee Stings                9\n10 Iodine                    9"
+  },
+  {
+    "objectID": "01_blog/2023_01_23_Data-Tool-Box-P1/index.html#sql-5",
+    "href": "01_blog/2023_01_23_Data-Tool-Box-P1/index.html#sql-5",
+    "title": "R and SQLite",
+    "section": "SQL",
+    "text": "SQL\n\ndbGetQuery(hosp,\n           \"SELECT allergies,\n            COUNT(*) AS total_diagnosis\n            FROM patients\n            WHERE allergies IS NOT 'NULL'\n            GROUP BY allergies\n            ORDER BY total_diagnosis DESC\n            LIMIT 10\"\n           )\n\n     allergies total_diagnosis\n1   Penicillin             230\n2      Codeine              58\n3        Sulfa              35\n4          ASA              16\n5  Sulfa Drugs              13\n6        Wheat              11\n7      Tylenol              11\n8      Peanuts              10\n9       Iodine               9\n10  Bee Stings               9"
+  },
+  {
+    "objectID": "01_blog/2023_01_23_Data-Tool-Box-P1/index.html#r-6",
+    "href": "01_blog/2023_01_23_Data-Tool-Box-P1/index.html#r-6",
+    "title": "R and SQLite",
+    "section": "R",
+    "text": "R\n\nbase::merge(province_names, patients, by = \"province_id\") %>%\n  group_by(province_name) %>%\n  summarise(patient_count = n()) %>%\n  arrange(desc(patient_count))\n\n# A tibble: 8 × 2\n  province_name             patient_count\n  <chr>                             <int>\n1 Ontario                             954\n2 Alberta                              14\n3 British Columbia                     11\n4 Nova Scotia                           9\n5 Manitoba                              7\n6 Newfoundland and Labrador             2\n7 Quebec                                2\n8 Saskatchewan                          1"
+  },
+  {
+    "objectID": "01_blog/2023_01_23_Data-Tool-Box-P1/index.html#sql-6",
+    "href": "01_blog/2023_01_23_Data-Tool-Box-P1/index.html#sql-6",
+    "title": "R and SQLite",
+    "section": "SQL",
+    "text": "SQL\n\nRSQLite::dbGetQuery(hosp,\n                    \"SELECT province_name,\n                     COUNT(*) as patient_count\n                     FROM patients pa\n                     join province_names pr on pr.province_id = pa.province_id\n                     group by pr.province_id\n                     order by patient_count desc\")\n\n              province_name patient_count\n1                   Ontario           954\n2                   Alberta            14\n3          British Columbia            11\n4               Nova Scotia             9\n5                  Manitoba             7\n6                    Quebec             2\n7 Newfoundland and Labrador             2\n8              Saskatchewan             1"
+  },
+  {
+    "objectID": "01_blog/2023_01_23_Data-Tool-Box-P1/index.html#r-7",
+    "href": "01_blog/2023_01_23_Data-Tool-Box-P1/index.html#r-7",
+    "title": "R and SQLite",
+    "section": "R",
+    "text": "R\n\nbase::merge(province_names, patients, by = \"province_id\") %>%\n  dplyr::group_by(province_name) %>%\n  dplyr::count(gender == \"M\", gender == \"F\") %>%\n  dplyr::slice(base::which.max(n)) %>%\n  dplyr::summarise(province_name = province_name)\n\n# A tibble: 8 × 1\n  province_name            \n  <chr>                    \n1 Alberta                  \n2 British Columbia         \n3 Manitoba                 \n4 Newfoundland and Labrador\n5 Nova Scotia              \n6 Ontario                  \n7 Quebec                   \n8 Saskatchewan"
+  },
+  {
+    "objectID": "01_blog/2023_01_23_Data-Tool-Box-P1/index.html#sql-7",
+    "href": "01_blog/2023_01_23_Data-Tool-Box-P1/index.html#sql-7",
+    "title": "R and SQLite",
+    "section": "SQL",
+    "text": "SQL\n\nRSQLite::dbGetQuery(hosp,\n                    \"SELECT pr.province_name\n                     FROM patients AS pa\n                     JOIN province_names AS pr ON pa.province_id = pr.province_id\n                     GROUP BY pr.province_id\n                     HAVING\n                     COUNT( CASE WHEN gender = 'M' THEN 1 END) >\n                     COUNT( CASE WHEN gender = 'F' THEN 1 END)\")\n\n              province_name\n1                   Alberta\n2          British Columbia\n3                  Manitoba\n4 Newfoundland and Labrador\n5               Nova Scotia\n6                   Ontario\n7                    Quebec\n8              Saskatchewan"
+  },
+  {
+    "objectID": "01_blog/2023_01_23_Data-Tool-Box-P1/index.html#r-8",
+    "href": "01_blog/2023_01_23_Data-Tool-Box-P1/index.html#r-8",
+    "title": "R and SQLite",
+    "section": "R",
+    "text": "R\n\n\n\n\nfor(i in 1:length(patients$patient_id))\n  {\n  if(patients$patient_id[[i]]%%2==1){\n     patients$has_insurance[[i]] <- \"Yes\"\n  }else{\n    patients$has_insurance[[i]] <- \"No\"\n  }\n}\n\n#. patients"
+  },
+  {
+    "objectID": "01_blog/2023_01_23_Data-Tool-Box-P1/index.html#sql-8",
+    "href": "01_blog/2023_01_23_Data-Tool-Box-P1/index.html#sql-8",
+    "title": "R and SQLite",
+    "section": "SQL",
+    "text": "SQL\n\nRSQLite::dbGetQuery(hosp,\n                    \"SELECT \n                        CASE WHEN patient_id % 2 = 0 Then 'Yes'\n                        ELSE 'No' \n                        END as has_insurance,\n                     SUM(\n                        CASE WHEN patient_id % 2 = 0 Then 10\n                        ELSE 50 \n                        END\n                         ) as cost_after_insurance\n                     FROM patients \n                     GROUP BY has_insurance;\")\n\n  has_insurance cost_after_insurance\n1            No                25000\n2           Yes                 5000"
+  },
+  {
+    "objectID": "01_blog/2023_01_23_Data-Tool-Box-P1/index.html#r-9",
+    "href": "01_blog/2023_01_23_Data-Tool-Box-P1/index.html#r-9",
+    "title": "R and SQLite",
+    "section": "R",
+    "text": "R\n\npatients %>%\n  filter(base::grepl(\"^.{2}[b]\", first_name),\n         gender == \"F\",\n         weight > 50 && weight < 80,\n         patient_id %%2==1,\n         city == \"Burlington\")\n\n  patient_id first_name last_name gender birth_date       city province_id\n1        695    Sabrina    Hettie      F 2000-11-25 Burlington          ON\n   allergies height weight has_insurance\n1 Penicillin    160     51           Yes"
+  },
+  {
+    "objectID": "01_blog/2023_01_23_Data-Tool-Box-P1/index.html#sql-9",
+    "href": "01_blog/2023_01_23_Data-Tool-Box-P1/index.html#sql-9",
+    "title": "R and SQLite",
+    "section": "SQL",
+    "text": "SQL\n\nRSQLite::dbGetQuery(hosp,\n                    \"SELECT *\n                     FROM patients\n                     WHERE\n                      first_name LIKE '__b%'\n                      AND gender = 'F'\n                      AND weight BETWEEN 50 AND 70\n                      AND patient_id % 2 = 1\n                      AND city = 'Burlington';\")\n\n  patient_id first_name last_name gender birth_date       city province_id\n1        695    Sabrina    Hettie      F 2000-11-25 Burlington          ON\n   allergies height weight\n1 Penicillin    160     51"
+  },
+  {
+    "objectID": "01_blog/2021_07_19_Quiz-1/index.html",
+    "href": "01_blog/2021_07_19_Quiz-1/index.html",
+    "title": "Proving If Two Angles Are Verticle, Then They Are Congruent",
+    "section": "",
+    "text": "This is a “presentation” style proof for Math-338: Modern College Geometry, and looks at congruence of two verticle angles."
+  },
+  {
+    "objectID": "01_blog/2021_07_19_Quiz-1/index.html#suppose-two-angles-are-verticle.",
+    "href": "01_blog/2021_07_19_Quiz-1/index.html#suppose-two-angles-are-verticle.",
+    "title": "Proving If Two Angles Are Verticle, Then They Are Congruent",
+    "section": "Suppose two angles are verticle.",
+    "text": "Suppose two angles are verticle.\nProve that they are congruent."
+  },
+  {
+    "objectID": "01_blog/2021_07_19_Quiz-1/index.html#vertical-angles",
+    "href": "01_blog/2021_07_19_Quiz-1/index.html#vertical-angles",
+    "title": "Proving If Two Angles Are Verticle, Then They Are Congruent",
+    "section": "1.1 Vertical Angles",
+    "text": "1.1 Vertical Angles\nIn class we defined vertical angles as being “across from each other”.\n\n\n\n\n\nFig. 1:  Vertical angles are shown in pink.\n\n\n\n\nWe can see a simple example of this in Fig. 1 where a pair of pink angles \\(\\angle AOB\\) and \\(\\angle COD\\) are vertical to each other.\nNote that \\(\\angle AOC\\) and \\(\\angle BOD\\) are vertical angles as well."
+  },
+  {
+    "objectID": "01_blog/2021_07_19_Quiz-1/index.html#congruence",
+    "href": "01_blog/2021_07_19_Quiz-1/index.html#congruence",
+    "title": "Proving If Two Angles Are Verticle, Then They Are Congruent",
+    "section": "1.2 Congruence",
+    "text": "1.2 Congruence\n\\(x\\cong y\\) if there is an \\(\\underline{\\text{isometry}}\\) that superimposes x onto y.\n\nIsometry is a map that preserves distance and angles\n\ntranslation (move without turning)\nrotation (moving about a fixed point)\nreflection (mirror)\ncombination\n\n\n\n\n\n\n\nFig. 2:  Two congruent triangles\n\n\n\n\nIn Fig. 2 we see the two triangles are congruent, and would only need a translation isometry or two to map \\(\\triangle ABC\\) onto \\(\\triangle A_1B_1C_1\\)."
+  },
+  {
+    "objectID": "01_blog/2021_07_19_Quiz-1/index.html#supplementary-angles",
+    "href": "01_blog/2021_07_19_Quiz-1/index.html#supplementary-angles",
+    "title": "Proving If Two Angles Are Verticle, Then They Are Congruent",
+    "section": "1.3 Supplementary Angles",
+    "text": "1.3 Supplementary Angles\nWe defined supplementary angles as angles whose measurement adds up to \\(180^\\circ\\).\n\n\n\n\n\nFig. 3: Supplementary angles are shown in pink and orange.\n\n\n\n\nIn Fig.3 we can clearly see that \\(m\\angle AOC\\) shown in pink and \\(m\\angle AOB\\) in orange adds to a straight line or \\(180^\\circ\\). We can also see three other pairs of supplementary angles:\n\n\\(m\\angle AOB+m\\angle BOD=180^\\circ\\)\n\\(m\\angle BOD+m\\angle COD=180^\\circ\\)\n\\(m\\angle COD+m\\angle AOC=180^\\circ\\)"
+  },
+  {
+    "objectID": "01_blog/2021_07_19_Quiz-1/index.html#axioms-of-angle-measure",
+    "href": "01_blog/2021_07_19_Quiz-1/index.html#axioms-of-angle-measure",
+    "title": "Proving If Two Angles Are Verticle, Then They Are Congruent",
+    "section": "2.1 Axioms of Angle Measure",
+    "text": "2.1 Axioms of Angle Measure\n\nRight angle measures \\(90^\\circ\\)\n\\(m\\angle ABC=m\\angle CBA\\)\nIf D is the interior of \\(\\angle ABC\\), then \\(m\\angle ABC=m\\angle ABD+m\\angle BDC\\)\nThere exists a unique ray that is the angle bisector of \\(\\angle ABC\\)."
+  },
+  {
+    "objectID": "01_blog/2021_07_19_Quiz-1/index.html#congruence-and-angle-measure-theorem",
+    "href": "01_blog/2021_07_19_Quiz-1/index.html#congruence-and-angle-measure-theorem",
+    "title": "Proving If Two Angles Are Verticle, Then They Are Congruent",
+    "section": "2.2 Congruence and Angle Measure theorem",
+    "text": "2.2 Congruence and Angle Measure theorem\n\\(\\angle ABC\\cong \\angle DEF \\Leftrightarrow m\\angle ABC=m\\angle DEF\\)\n\nIf two angles are congruent then the measure of those two angles is the same.\nIf the measure of two angles is the same, then those two angles are congruent.\n\n(Note that the measure for angles that will be used on the proof will be in degrees. )"
+  },
+  {
+    "objectID": "01_blog/2021_07_19_Quiz-1/index.html#supplementary-interior-angle-theorem",
+    "href": "01_blog/2021_07_19_Quiz-1/index.html#supplementary-interior-angle-theorem",
+    "title": "Proving If Two Angles Are Verticle, Then They Are Congruent",
+    "section": "2.3 Supplementary Interior Angle Theorem",
+    "text": "2.3 Supplementary Interior Angle Theorem\nIf two lines are parallel then the supplementary interior angles add to \\(180^\\circ\\).\n\n\n\n\n\nFig. 4:  Supplementary interior angles are shown in red.\n\n\n\n\nIn Fig. 4 the supplementary interior angles \\(\\angle AEF\\) and \\(\\angle CFE\\) are shown in red and add up to \\(180^\\circ\\)."
+  },
+  {
+    "objectID": "01_blog/2021_07_26_Quiz-2/index.html",
+    "href": "01_blog/2021_07_26_Quiz-2/index.html",
+    "title": "Proving that the Set of Symmetries of Non-Square Rhombus is a Group Under Composition",
+    "section": "",
+    "text": "This is a “presentation” style proof for Math-338: Modern College Geometry, and looks at the symmetries of a non-square rectangle."
+  },
+  {
+    "objectID": "01_blog/2021_07_26_Quiz-2/index.html#suppose-r-is-a-non-square-rhombus.",
+    "href": "01_blog/2021_07_26_Quiz-2/index.html#suppose-r-is-a-non-square-rhombus.",
+    "title": "Proving that the Set of Symmetries of Non-Square Rhombus is a Group Under Composition",
+    "section": "Suppose R is a non-square rhombus.",
+    "text": "Suppose R is a non-square rhombus.\n\nList the symmetries of R. Write as a composition of translations, reflections, and rotations.\nProve that the set of symmetries of R is a group under composition."
+  },
+  {
+    "objectID": "01_blog/2021_07_26_Quiz-2/index.html#parallelogram",
+    "href": "01_blog/2021_07_26_Quiz-2/index.html#parallelogram",
+    "title": "Proving that the Set of Symmetries of Non-Square Rhombus is a Group Under Composition",
+    "section": "1.1 Parallelogram",
+    "text": "1.1 Parallelogram\nBoth pairs of opposite sides are parallel.\n\n\n\n\n\nFig. 1:  Parallelogram\n\n\n\n\n\n\\(AB\\parallel DC\\)\n\\(CB\\parallel DA\\)"
+  },
+  {
+    "objectID": "01_blog/2021_07_26_Quiz-2/index.html#rhombus",
+    "href": "01_blog/2021_07_26_Quiz-2/index.html#rhombus",
+    "title": "Proving that the Set of Symmetries of Non-Square Rhombus is a Group Under Composition",
+    "section": "1.2 Rhombus",
+    "text": "1.2 Rhombus\nParallelogram whose sides are all the same length.\nNotation: R\n\n\n\n\n\nFig. 2:  Rhombus\n\n\n\n\n\n\\(\\overline{AB}=\\overline{BC}=\\overline{CD}=\\overline{DA}\\)"
+  },
+  {
+    "objectID": "01_blog/2021_07_26_Quiz-2/index.html#isometry",
+    "href": "01_blog/2021_07_26_Quiz-2/index.html#isometry",
+    "title": "Proving that the Set of Symmetries of Non-Square Rhombus is a Group Under Composition",
+    "section": "1.3 Isometry",
+    "text": "1.3 Isometry\nPreserves distance, length, and angle measure through “rigid motion” of rotations, reflections, translations, and compositions.\n\n1.3.1 Translations\nMove all the points across a vector \\(\\vec{v}\\).\nNotation: \\(\\tau_{\\text{start point,end point}}\\)\n\n\n\n\n\nFig. 3:  Translation of line AB along vector v.\n\n\n\n\n\n\n1.3.2 Rotations\nPick a center O (origin), \\(\\theta\\) (angle), takes P to P’ on a circle on a circle with center O and radius \\(\\overline{OP}\\) with \\(\\angle POP'=\\theta\\).\nNotation: \\(R_{O,\\theta}\\)\n\n\n\n\n\nFig. 4:  Rotation of line OP.\n\n\n\n\n\n\n1.3.3 Reflections\nMirror of a shape across a line.\nPick line b, shown in red in Fig. 5.\n\nPoints on B don’t move.\nPoints not on b, such as P, go to P’ where b is perpendicular to bisector of \\(\\overline{PP'}\\).\nMidpoint m of PP’ on b make right angle \\(\\overline{PP'}\\)\n\nNotation: \\(r_{b}\\)\n\n\n\n\n\nFig. 5:  Triangle QPR reflected across line b.\n\n\n\n\n\n\n1.3.4 Compositions\nCombinations of rotations, reflections, and translations."
+  },
+  {
+    "objectID": "01_blog/2021_07_26_Quiz-2/index.html#symmetry",
+    "href": "01_blog/2021_07_26_Quiz-2/index.html#symmetry",
+    "title": "Proving that the Set of Symmetries of Non-Square Rhombus is a Group Under Composition",
+    "section": "1.4 Symmetry",
+    "text": "1.4 Symmetry\nAn isometry that sends a geometric figure to itself."
+  },
+  {
+    "objectID": "01_blog/2021_07_26_Quiz-2/index.html#group",
+    "href": "01_blog/2021_07_26_Quiz-2/index.html#group",
+    "title": "Proving that the Set of Symmetries of Non-Square Rhombus is a Group Under Composition",
+    "section": "1.5 Group",
+    "text": "1.5 Group\n\n1.5.0 Closure\n\nOrder doesn’t matter.\n\\(ab=ba\\)\n\n\n\n1.5.1 Associativity\n\nParentheses don’t matter.\n\\((ab)c=a(bc)\\)\n\n\n\n1.5.2 Identity\n\nAnything combined with identity equals itself.\n\\(ea=ae=a\\)\n\n\n\n1.5.3 Inverses\n\nUndoes isometry.\n\\(f^{-1}(f(a))=a\\)"
+  },
+  {
+    "objectID": "01_blog/2021_07_26_Quiz-2/index.html#symmetries-of-r-1",
+    "href": "01_blog/2021_07_26_Quiz-2/index.html#symmetries-of-r-1",
+    "title": "Proving that the Set of Symmetries of Non-Square Rhombus is a Group Under Composition",
+    "section": "2.1 4 Symmetries of R",
+    "text": "2.1 4 Symmetries of R\n(Using Boyce’s Notation)\n\n2.1.1 \\(e\\)\n\n\n\n\n\nIdentity\n\n\n\n\n\n\n2.1.2 \\(R_{O,180^\\circ}\\)\n\n\n\n\n\nRotation about center (O) by \\(180^o\\).\n\n\n\n\n\n\n2.1.3 \\(r_{m_1}\\)\n\n\n\n\n\nReflection over \\(m_1\\)\n\n\n\n\n\n\n2.1.4 \\(r_{m_2}\\)\n\n\n\n\n\nReflection over \\(m_2\\)\n\n\n\n\n\n\n2.1.5 Verify\nTo verify this we can imagine that one point only has two places to choose from, then the a different point only has two places to choose from, and then the remaining two points only have one place to choose i.e. \\(2\\cdot 2\\cdot 1\\cdot 1=4\\). Therefore there are only four possible symmetries of R."
+  },
+  {
+    "objectID": "01_blog/2021_07_26_Quiz-2/index.html#claim-mathscrs-is-a-group-under-composition.",
+    "href": "01_blog/2021_07_26_Quiz-2/index.html#claim-mathscrs-is-a-group-under-composition.",
+    "title": "Proving that the Set of Symmetries of Non-Square Rhombus is a Group Under Composition",
+    "section": "3.1 Claim: \\(\\mathscr{S}\\) is a group under composition.",
+    "text": "3.1 Claim: \\(\\mathscr{S}\\) is a group under composition.\n\n3.1.0 Closure\nWe want to show that composing two symmetries equals a symmetry.\nLet \\(\\square 1234\\) be a non-square rhombus, and suppose F and G are in \\(\\mathscr{S}\\).\n\\[F\\circ G(\\square 1234)=F(G(\\square 1234))=F(\\square 1234)=\\square 1234\\]\nFor example:\nLet \\(F=r_{m_1}\\) and \\(G=r_{m_2}\\). Then \\(F\\circ G(\\square 1234)=R_{O,180^\\circ}\\).\n\n\n3.1.1 Associative\n\\(F\\circ(G\\circ H)=(F\\circ G)\\circ H\\)\n\\[\\begin{equation}\\label{D14,1}\n\\begin{split}\nF\\circ(G\\circ H) &= F\\circ (G\\circ H)(\\square 1234)\\\\\n&= F(G\\circ H (\\square 1234))\\\\\n&= F(G(H(\\square 1234)))\\\\\n&= (F\\circ G)\\circ H(\\square 1234)\n\\end{split}\n\\end{equation}\\]\n\n\n3.1.2 Identity\ne is one of the symmetries.\nExample: \\(R_{O,180^\\circ}\\circ e=R_{O,180^\\circ}\\)\n\n\n3.1.3 Inverses\nEvery symmetry of a rhombus undoes itself.\n\\(e\\circ e=e\\)\n\\(R_{O,180^\\circ}\\circ R_{O,180^\\circ}=e\\)\n\\(r_{m_1}\\circ r_{m_1}=e\\)\n\\(r_{m_2}\\circ r_{m_2}=e\\)"
   }
 ]

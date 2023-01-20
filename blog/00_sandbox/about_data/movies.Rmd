@@ -1,0 +1,128 @@
+
+```{r options, echo=FALSE}
+knitr::opts_chunk$set(eval=FALSE)
+```
+
+# Set Up
+
+```{r}
+library(dplyr)
+library(htmltools)
+```
+
+
+# Movie Titles - Generes - Rating - Review
+
+```{r}
+titles <- c("The Terminator 1",
+            "Terminator 2: Judgement Day",
+            "Terminator 3: Rise of the Machines",
+          "Peal",
+          "X",
+          "The Father",
+          "Our Friend",
+          "The Lighthouse",
+          "Men")
+```
+
+```{r}
+rating <- c(3,
+            3,
+            2,
+            4,
+            3,
+            4,
+            3,
+            2,
+            3)
+```
+
+```{r}
+review <- c("I'll be back. Fun, classic, action film.",
+            "Hasta la vista baby. A strong female protagonist in an action film.",
+            "Titty terminator, and a forced romance.",
+            "The film style was simialr to Oklahoma! (the musical), which was a lot of fun for a horror film.",
+            "Fun because this film is related to the movie Pearl, but more sex and bloody murders.",
+            "Heartbreaking. You view the whole movie thorugh the eyes of a person with dementia.",
+            "Emotional, and at times heartbreaking. Cancer is hell.",
+            "Two crazy (and horny) guys go more crazy (and drunk) in a lighthouse. Cool style, but not very interesting or scary.",
+            "Artsy, colorful, suspenseful, and confusing. I think the hidden monster is men who think women are the cause of their problems.")
+```
+
+
+```{r}
+genres <- c("Action / Sci-fi",
+            "Action / Sci-fi",
+            "Action / Sci-fi",
+           "Horror / Thriller",
+           "Horror / Slasher",
+           "Drama",
+           "Drama / Romance",
+           "Horror / Drama",
+           "Horror / Drama")
+```
+
+
+```{r}
+star_rating <- function(rating, max_rating = 5){
+  
+  star_icon <- function(status) {
+    
+    if (status == "Half") {
+      tagAppendAttributes(shiny::icon("star-half-alt"),
+      style = paste("color: orange"),
+      "aria-hidden" = "true")
+    } else {
+          tagAppendAttributes(shiny::icon("star"),
+      style = paste("color:", if (status == "Empty") "#edf0f2" else "orange"),
+      "aria-hidden" = "true"
+    )
+    }
+    
+  }
+  
+  rounded_rating <- floor(rating)
+  last_rating <- rating - rounded_rating
+  last_rating <- case_when(last_rating < .25 ~ "Empty",
+                           last_rating > .75 ~ "Full",
+                           TRUE ~ "Half"
+                           )
+  
+  stars <- lapply(seq_len(max_rating), function(i) {
+    if (i <= rounded_rating) { star_icon(status = "Full")} 
+    else {
+      if (i == (rounded_rating+1)) star_icon(status = last_rating)
+      else {
+      star_icon(status = "Empty")
+    }
+    }
+    
+    })
+  
+  label <- sprintf("%s out of %s", rating, max_rating)
+  div(title = label, "aria-label" = label, role = "img", stars)
+
+}
+
+# Example
+star_rating(4)
+```
+
+
+
+
+
+```{r}
+watched <- c("12/22",
+             "12/22",
+             "12/22",
+             "12/22")
+```
+
+```{r movie df, echo=F}
+# movie_df <- base::data.frame(
+#   "Watched" = watched,
+#   "Film" = film,
+#   "Genre" = genres)
+```
+
