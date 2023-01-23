@@ -42,5 +42,18 @@
   {
     "listing": "/01_qmd-files/blog.html",
     "items": []
+  },
+  {
+    "listing": "/dictionary.html",
+    "items": [
+      "/02_dictionary/Statistics/index.html"
+    ]
+  },
+  {
+    "listing": "/terminology.html",
+    "items": [
+      "/02_terms/Machine-Learning/index.html",
+      "/02_terms/Statistics/index.html"
+    ]
   }
 ]

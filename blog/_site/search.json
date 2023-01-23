@@ -544,5 +544,47 @@
     "title": "SportsObserveR - Part 2: Creating a Package in R",
     "section": "8.3 Update README",
     "text": "8.3 Update README\nAdd another example to the readme.rmd file using the scrape_nba_player_stats() function, and then update the .md file.\n\nbuild_readme()\n\nFrom the Bash Terminal push this update to Github.\n\ngit status\n\n\ngit add --all\n\n\ngit status\n\n\ngit commit -m\"added scrape_nba_player_stats example to readme\"\n\n\ngit push origin main"
+  },
+  {
+    "objectID": "dictionary.html",
+    "href": "dictionary.html",
+    "title": "Terminology",
+    "section": "",
+    "text": "No matching items"
+  },
+  {
+    "objectID": "02_terminology/Statistics/index.html",
+    "href": "02_terminology/Statistics/index.html",
+    "title": "Statistics",
+    "section": "",
+    "text": "COMING SOON!!"
+  },
+  {
+    "objectID": "terminology.html",
+    "href": "terminology.html",
+    "title": "terminology",
+    "section": "",
+    "text": "No matching items"
+  },
+  {
+    "objectID": "02_terminology/Machine-Learning/index.html",
+    "href": "02_terminology/Machine-Learning/index.html",
+    "title": "Machine Learning",
+    "section": "",
+    "text": "COMING SOON!!"
+  },
+  {
+    "objectID": "02_terms/Statistics/index.html",
+    "href": "02_terms/Statistics/index.html",
+    "title": "Statistics",
+    "section": "",
+    "text": "COMING SOON!!"
+  },
+  {
+    "objectID": "02_terms/Machine-Learning/index.html",
+    "href": "02_terms/Machine-Learning/index.html",
+    "title": "Machine Learning",
+    "section": "",
+    "text": "COMING SOON!!"
   }
 ]
