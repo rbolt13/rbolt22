@@ -6,6 +6,7 @@ toc: true
 draft: false
 ---
 
+
 This post composes a short data set of 13 ballets, and then creates an interactive graph with plotly. 
 
 ![Image from the ballet Firebird.](../../00_img/firebird.jpeg)
@@ -32,6 +33,7 @@ I will use the following packages:
 
 * `plotly` to make the graph interactive. 
 
+
 ```{r, message=F}
 library(dplyr)
 library(lubridate)
@@ -41,9 +43,11 @@ library(ggplot2)
 library(plotly)
 ```
 
+
 ### `0.2 Collect Data` 
 
 To build this data from scratch, I started with 13 different popular ballets. 
+
 
 ```{r}
 Ballet <- c("Swan Lake", 
@@ -61,9 +65,11 @@ Ballet <- c("Swan Lake",
             "Firebird")
 ```
 
+
 Using Wikipedia I am including:
 
 * Composers
+
 
 ```{r}
 Composer <- c("Pyotr Ilyich Tchaikovsky", 
@@ -81,9 +87,11 @@ Composer <- c("Pyotr Ilyich Tchaikovsky",
               "Igor Stravinsky ")
 ```
 
+
 * Choreographers
 
 Note ballets with only one choreographer will show the second choreographer as blank. 
+
 
 ```{r}
 choreographer_1 <- c("Julius Reisinger",
@@ -114,13 +122,17 @@ choreographer_2 <- c("",
                      "")
 ```
 
+
 * Number of Acts
+
 
 ```{r}
 Acts <- c(4, 2, 2, 4, 3, 3, 4, 2, 3, 2, 3, 3, 1)
 ```
 
+
 * Date Premiered
+
 
 ```{r}
 month_premiered <- c( 3, 12, 6, 12, 12, 11, 2, 5, 1, 3, 12, 2, 6)
@@ -128,7 +140,9 @@ day_premiered <- c( 4, 18, 28, 30, 26, 21, 11, 25, 5, 12, 27, 28, 9)
 year_premiered <- c(1877, 1892, 1841, 1938, 1869, 1945, 1877, 1870, 1890, 1832, 1956, 2011, 1910)
 ```
 
+
 * Links to Youtube Videos of each Ballet
+
 
 ```{r}
 Links <- c("https://www.youtube.com/watch?v=LbUatYSm8ME", 
@@ -146,6 +160,7 @@ Links <- c("https://www.youtube.com/watch?v=LbUatYSm8ME",
             "https://www.youtube.com/watch?v=Yo9L9H--t3k")
 ```
 
+
 ### `0.3 Create Data Frame`
 
 For the ballet dataframe, ballet_df, I will use:
@@ -155,6 +170,7 @@ For the ballet dataframe, ballet_df, I will use:
 * `arrange()` to arrange the df alphabetically by Ballet. 
 
 I also did not include choreographer_2, because it only provided two data points which did not contribute a lot to this short analysis. 
+
 
 ```{r}
 ballet_df <- base::data.frame(
@@ -168,9 +184,10 @@ ballet_df <- base::data.frame(
   dplyr::arrange(Ballet)
 ```
 
+
 :::
 
-# `1.` Code
+# `1.` Data Table
 
 ::: {.panel-tabset}
 
@@ -194,6 +211,7 @@ To create the table I used:
 
 * `gt()` to create the table. 
 
+
 ```{r}
 ballet_table <- ballet_df %>%
     dplyr::mutate(
@@ -201,6 +219,7 @@ ballet_table <- ballet_df %>%
       Links = map(Links, ~ gt::html(as.character(.x)))) %>%
     gt::gt()
 ```
+
 
 ### `1.2 Code for Interactive Plot`
 
@@ -214,6 +233,7 @@ To create a ggplot I used:
 
 * `ggtitle` to define the title. 
 
+
 ```{r}
 ballet_plot <- ballet_df %>%
   ggplot2::ggplot(mapping = aes(x = date_premiered, 
@@ -226,6 +246,7 @@ ballet_plot <- ballet_df %>%
   ggplot2::ggtitle("Ballets by Date Premiered")
 ```
 
+
 :::
 
 # `2.` Visuals 
@@ -234,14 +255,19 @@ ballet_plot <- ballet_df %>%
 
 ### `2.1 Table`
 
+
 ```{r, echo=FALSE}
 ballet_table
 ```
 
+
 ### `2.2 Interactive Plot`
+
 
 ```{r, echo=FALSE}
 ggplotly(ballet_plot)
 ```
 
+
 :::
+
