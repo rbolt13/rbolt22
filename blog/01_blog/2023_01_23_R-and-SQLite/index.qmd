@@ -1,6 +1,5 @@
 ---
 title: "R and SQLite"
-author: "Randi Bolt"
 date: "2023-01-23"
 categories: [R, SQL]
 toc: true

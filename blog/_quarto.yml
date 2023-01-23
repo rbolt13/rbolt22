@@ -7,29 +7,33 @@ website:
     right:
       - href: index.qmd
         text: home
+        aria-label: Home
       - href: about.qmd
         text: about
+        aria-label: About
       - href: blog.qmd
         text: blog
-      - href: Resume/Randi-Bolt-Resume.pdf
+        aria-label: Blog
+      - href: Randi-Bolt-Resume.pdf
         text: resume
+        aria-label: Resume
       - icon: github
         href: https://github.com/rbolt13
+        aria-label: GitHub
       - icon: linkedin
         href: https://www.linkedin.com/in/randi-bolt/
+        aria-label: Linkedin
       - icon: instagram
         href: https://www.instagram.com/rbolt13/
+        aria-label: Instagram
 format:
   html:
     theme: journal
-    backgroundcolor: pink
-    linkcolor: darkred
+    linkcolor: rgb(212, 25, 94)
+    backgroundcolor: rgb(247, 215, 227)
     css: styles.css
 
 editor: visual
-
-google-analytics: 
-    tracking-id: "G-GPSGHZ166H"
 
 comments: 
   giscus:

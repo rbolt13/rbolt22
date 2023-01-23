@@ -1,6 +1,5 @@
 ---
 title: "SportsObserveR - Part 2: Creating a Package in R"
-author: "Randi Bolt"
 date: "2023-01-02"
 categories: [Package Building, R, NBA, SportsObserveR]
 toc: true
