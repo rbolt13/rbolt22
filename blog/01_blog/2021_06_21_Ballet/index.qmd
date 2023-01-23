@@ -1,0 +1,219 @@
+---
+title: "Ballet Data"
+date: "2021-06-21"
+categories: [Data Visuals]
+toc: true
+draft: true
+---
+
+This post composes a short data set of 13 ballets, and then create an interactive graph with plotly. 
+
+![](../../00_img/firebird.jpeg)
+
+# `0.` Introduction 
+
+This is the into.
+
+::: {.panel-tabset}
+
+### `0.0` 
+
+**Contents**
+
+* 0.1 Set Up
+
+* 0.2 Collect Data
+
+* 0.3 Create Data Frame
+
+### `0.1 Set Up` 
+
+I will use the following packages: 
+
+* `dplyr` to manipulate the data.
+
+* `lubridate` to convert 
+
+```{r, echo=F, message=F}
+library(dplyr)
+library(lubridate)
+library(kableExtra) 
+library(ggplot2)
+library(RColorBrewer)
+library(plotly)
+```
+
+### `0.2 Collect Data` 
+
+To build this data from scratch, I started with 13 different popular ballets. 
+
+```{r}
+Ballet <- c("Swan Lake", 
+            "The Nutcracker", 
+            "Giselle", 
+            "Romeo and Juliet",  
+            "Don Quixote", 
+            "Cinderella ", 
+            "La Bayadere", 
+            "Coppelia", 
+            "The Sleeping Beauty ", 
+            "La Sylphide ", 
+            "Spartacus", 
+            "Alice's Adventures in Wonder Land",
+            "Firebird")
+```
+
+Using Wikipedia I am including:
+
+* Composers
+
+```{r}
+Composer <- c("Pyotr Ilyich Tchaikovsky", 
+              "Pyotr Ilyich Tchaikovsky",
+              "Adolph Adam", 
+              "Sergei Prokofiev",
+              "Ludwig Minkus",
+              "Sergei Prokofiev",
+              "Ludwig Minkus",
+              "Leo Delibes",
+              "Pyotr Ilyich Tchaikovsky",
+              "Filippo Talioni",
+              "Leonid Yakobson",
+              "Joby Talbo",
+              "Igor Stravinsky ")
+```
+
+* Choreographers
+
+```{r}
+choreographer_1 <- c("Julius Reisinger",
+                     "Marius Petipa", 
+                     "Jean Coralli",
+                     "Ivo Vana-Psota",
+                     "Marius Petipa", 
+                     "Rosstislav Zakharov",
+                     "Marius Petipa",
+                     "Arthur Saint-Leon",
+                     "Marius Petipa",
+                     "Jean-Madeline Schnitzhoeffer",
+                     "Aram Khachaturian",
+                     "Christopoher Wheeldon",
+                     "Michel Fokine")
+choreographer_2 <- c("",
+                     "Lev Ivanov",
+                     "Jules Perrot",
+                     "",
+                     "",
+                     "",
+                     "",
+                     "",
+                     "",
+                     "",
+                     "",
+                     "",
+                     "")
+```
+
+* Number of Acts
+
+```{r}
+Acts <- c(4, 2, 2, 4, 3, 3, 4, 2, 3, 2, 3, 3, 1)
+```
+
+* Date Premiered
+
+```{r}
+month_premiered <- c( 3, 12, 6, 12, 12, 11, 2, 5, 1, 3, 12, 2, 6)
+day_premiered <- c( 4, 18, 28, 30, 26, 21, 11, 25, 5, 12, 27, 28, 9)
+year_premiered <- c(1877, 1892, 1841, 1938, 1869, 1945, 1877, 1870, 1890, 1832, 1956, 2011, 1910)
+```
+
+* Links to Youtube Videos of each Ballet
+
+```{r}
+Links <- c("https://www.youtube.com/watch?v=LbUatYSm8ME", 
+            "https://www.youtube.com/watch?v=tR_Z1LUDQuQ", 
+            "https://www.youtube.com/watch?v=VroMXEDLTq8", 
+            "https://www.youtube.com/watch?v=7AnpPu7j6Dg",  
+            "https://www.youtube.com/watch?v=pazAS4cNi7w", 
+            "https://www.youtube.com/watch?v=LPbKZXNfJ-Y", 
+            "https://www.youtube.com/watch?v=zTR4Oco_0Bc", 
+            "https://www.youtube.com/watch?v=uE2fjFMag7E", 
+            "https://www.youtube.com/watch?v=EDFlRq5RnbQ", 
+            "https://www.youtube.com/watch?v=R_RFxSLar2A", 
+            "https://www.youtube.com/watch?v=Fha6rYtaLMk", 
+            "https://www.youtube.com/watch?v=c2wWq25p5Sk",
+            "https://www.youtube.com/watch?v=Yo9L9H--t3k")
+```
+
+### `0.3` Create Data Frame
+
+```{r}
+ballet_df <- base::data.frame(
+  Ballet,
+  Composer,
+  "First Choreographer" = choreographer_1,
+  "Second Choreographer" = choreographer_2,
+  Acts,
+  month_premiered,
+  day_premiered,
+  year_premiered)
+```
+
+:::
+
+# `1.` Data Manipulation and Cleaning
+
+::: {.panel-tabset}
+
+### `1.0`
+
+**Contents**
+
+* 1.1 Add date_premiered
+
+* 1.2 
+
+### `1.1 Add date_premiered`
+
+```{r}
+ballet_df <- ballet_df %>% 
+  mutate(Date.Premiered = make_date(year_premiered,
+                                    month_premiered,
+                                    day_premiered))
+```
+
+### `1.2 Add Links`
+
+```{r}
+
+```
+
+### `1.3 Color Pallete`
+
+```{r}
+nb.cols <- 13
+mycolors <- colorRampPalette(brewer.pal(7, "Pastel2"))(nb.cols)
+```
+
+:::
+
+# `2.` Data Visuals
+
+```{r, echo=F}
+# TABLE 
+kable(ballet_df) %>%
+  column_spec(1:5, background = mycolors) %>%
+  row_spec(0:13, align = "c")
+```
+
+
+```{r, echo = F}
+# date premiered 
+plot <- ballet_df %>% 
+  ggplot(aes(x= Date.Premiered, y = Ballet, color = factor(Acts))) +
+  geom_point() +
+  labs(x = "Date Premiered", y = "Ballet", color = "Number of Acts") +
+  ggtitle("Ballets by Date Premiered")
+ggplotly(plot)
+```

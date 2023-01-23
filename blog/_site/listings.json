@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/01_blog/2023_01_23_R-and-SQLite/index.html",
       "/01_blog/2023_01_02_SportsObserveR-package/index.html",
       "/01_blog/2022_12_19_NBA-Salaries-Part-1-Web-Scraping/index.html",
       "/01_blog/2022_12_12_Data-Science-Interview-Questions-P1/index.html",

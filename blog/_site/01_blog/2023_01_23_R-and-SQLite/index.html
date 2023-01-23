@@ -222,10 +222,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#show-total-patients-admitted." id="toc-show-total-patients-admitted." class="nav-link" data-scroll-target="#show-total-patients-admitted."><code>2.</code> Show total patients admitted.</a></li>
   <li><a href="#show-first-and-last-name-as-full_name." id="toc-show-first-and-last-name-as-full_name." class="nav-link" data-scroll-target="#show-first-and-last-name-as-full_name."><code>3.</code> Show first and last name as full_name.</a></li>
   <li><a href="#show-unique-cities-that-are-in-province_id-ns" id="toc-show-unique-cities-that-are-in-province_id-ns" class="nav-link" data-scroll-target="#show-unique-cities-that-are-in-province_id-ns"><code>4.</code> Show unique cities that are in province_id ‘NS’?</a></li>
-  <li><a href="#show-the-total-amount-of-male-patients-and-the-total-amount-of-female-patients." id="toc-show-the-total-amount-of-male-patients-and-the-total-amount-of-female-patients." class="nav-link" data-scroll-target="#show-the-total-amount-of-male-patients-and-the-total-amount-of-female-patients."><code>5.</code> Show the total amount of male patients and the total amount of female patients.</a></li>
-  <li><a href="#show-all-allergies-ordered-by-popularity.-remove-null-values-from-query." id="toc-show-all-allergies-ordered-by-popularity.-remove-null-values-from-query." class="nav-link" data-scroll-target="#show-all-allergies-ordered-by-popularity.-remove-null-values-from-query."><code>6.</code> Show all allergies ordered by popularity. Remove NULL values from query.</a></li>
-  <li><a href="#display-the-total-amount-of-patients-for-each-province.-order-by-descending." id="toc-display-the-total-amount-of-patients-for-each-province.-order-by-descending." class="nav-link" data-scroll-target="#display-the-total-amount-of-patients-for-each-province.-order-by-descending."><code>7.</code> Display the total amount of patients for each province. Order by descending.</a></li>
-  <li><a href="#show-the-provinces-that-has-more-patients-identified-as-m-than-f.-must-only-show-full-province_name." id="toc-show-the-provinces-that-has-more-patients-identified-as-m-than-f.-must-only-show-full-province_name." class="nav-link" data-scroll-target="#show-the-provinces-that-has-more-patients-identified-as-m-than-f.-must-only-show-full-province_name."><code>8.</code> Show the provinces that has more patients identified as ‘M’ than ‘F’. Must only show full province_name.</a></li>
+  <li><a href="#show-the-total-number-of-male-patients-and-the-total-number-of-female-patients." id="toc-show-the-total-number-of-male-patients-and-the-total-number-of-female-patients." class="nav-link" data-scroll-target="#show-the-total-number-of-male-patients-and-the-total-number-of-female-patients."><code>5.</code> Show the total number of male patients and the total number of female patients.</a></li>
+  <li><a href="#show-all-allergies-ordered-by-popularity.-remove-null-values-from-the-query." id="toc-show-all-allergies-ordered-by-popularity.-remove-null-values-from-the-query." class="nav-link" data-scroll-target="#show-all-allergies-ordered-by-popularity.-remove-null-values-from-the-query."><code>6.</code> Show all allergies ordered by popularity. Remove NULL values from the query.</a></li>
+  <li><a href="#display-the-total-number-of-patients-for-each-province.-order-by-descending." id="toc-display-the-total-number-of-patients-for-each-province.-order-by-descending." class="nav-link" data-scroll-target="#display-the-total-number-of-patients-for-each-province.-order-by-descending."><code>7.</code> Display the total number of patients for each province. Order by descending.</a></li>
+  <li><a href="#show-the-provinces-that-have-more-patients-identified-as-m-than-f.-must-only-show-full-province_name." id="toc-show-the-provinces-that-have-more-patients-identified-as-m-than-f.-must-only-show-full-province_name." class="nav-link" data-scroll-target="#show-the-provinces-that-have-more-patients-identified-as-m-than-f.-must-only-show-full-province_name."><code>8.</code> Show the provinces that have more patients identified as ‘M’ than ‘F’. Must only show full province_name.</a></li>
   <li><a href="#each-admission-costs-50-for-patients-without-insurance-and-10-for-patients-with-insurance.-all-patients-with-an-even-patient_id-have-insurance." id="toc-each-admission-costs-50-for-patients-without-insurance-and-10-for-patients-with-insurance.-all-patients-with-an-even-patient_id-have-insurance." class="nav-link" data-scroll-target="#each-admission-costs-50-for-patients-without-insurance-and-10-for-patients-with-insurance.-all-patients-with-an-even-patient_id-have-insurance."><code>9.</code> Each admission costs $50 for patients without insurance, and $10 for patients with insurance. All patients with an even patient_id have insurance.</a></li>
   <li><a href="#we-are-looking-for-a-specific-patient.-pull-all-columns-for-the-patient-who-matches-the-following-criteria" id="toc-we-are-looking-for-a-specific-patient.-pull-all-columns-for-the-patient-who-matches-the-following-criteria" class="nav-link" data-scroll-target="#we-are-looking-for-a-specific-patient.-pull-all-columns-for-the-patient-who-matches-the-following-criteria"><code>10.</code> We are looking for a specific patient. Pull all columns for the patient who matches the following criteria:</a></li>
   </ul>
@@ -237,7 +237,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<p>In this post I use pretend hospital data to answer questions using both R and SQL (Structured Query Language) via a R package called RSQLite.</p>
+<p>Using a R package called SQLite, this post demonstrates how to answer data related questions with both R and SQL (Structured Query Language).</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../../00_img/SQL-and-R.png" class="img-fluid figure-img"></p>
@@ -246,9 +246,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <section id="introduction" class="level1">
 <h1><code>0.</code> Introduction</h1>
-<p>There are a handful of programming languages that data scientists use when querying, analyzing, and manipulating data. What I have found in my experience, research, and interviews with various companies is that while R and Python have a lot more power in what they are capable of producing, SQL is a fairly common way most people (especially outside of data science) query their data. So to get more practice using SQL (and R) I pulled some data and 10 questions off a website called <a href="https://www.sql-practice.com/">Learn SQL</a>, and will be answering them in both R and SQL.</p>
+<p>There are a handful of programming languages that data scientists use when querying, analyzing, and manipulating data. What I have found is that while R and Python have a lot more power in what they are capable of producing, SQL is used by a wider variety of roles to access and query data. So to get more practice using both SQL and R I pulled 10 questions and some data off a website called <a href="https://www.sql-practice.com/">Learn SQL</a>, and will be answering the following questions in both languages.</p>
 <div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true"><code>0.0 Set-Up</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false"><code>0.1 Packages</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false"><code>0.2 Data</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false"><code>0.3 Data base</code></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true"><code>0.0 Set-Up</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false"><code>0.1 Packages</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false"><code>0.2 Data</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false"><code>0.3 Database</code></a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <p><strong>Contents:</strong></p>
@@ -285,7 +285,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
-<p>To create a data base use:</p>
+<p>To create a database use:</p>
 <ul>
 <li><p><code>dbConnect()</code> to connect to a SQL data base called Hospital.db in the 00_data folder.</p></li>
 <li><p><code>SQLite()</code> to connect to a SQLite database file.</p></li>
@@ -296,7 +296,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>To define data within the database use:</p>
 <ul>
-<li><code>dbWriteTable()</code> to create data a set within the hospital data base called patients and province_names with the respective data.</li>
+<li><code>dbWriteTable()</code> to create a data set within the hospital database called patients and province_names with the respective data.</li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>RSQLite<span class="sc">::</span><span class="fu">dbWriteTable</span>(hosp,</span>
@@ -306,9 +306,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"province_names"</span>,</span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>                      province_names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Verify the two data sets are in the data base using:</p>
+<p>Verify the two data sets are in the database using:</p>
 <ul>
-<li><code>dbListTables()</code> to list the tables within the hosp data base.</li>
+<li><code>dbListTables()</code> to list the tables within the hosp database.</li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>RSQLite<span class="sc">::</span><span class="fu">dbListTables</span>(hosp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -476,8 +476,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>In R use:</p>
 <ul>
 <li><p><code>head()</code> to show the first 10 rows of data.</p></li>
-<li><p><code>data.frame()</code> to defines a data frame that includes full_name.</p></li>
-<li><p><code>paste0()</code> to pastes together the first_name, a space, and the last_name. This will equal the full_name.</p></li>
+<li><p><code>data.frame()</code> to define a data frame that includes full_name.</p></li>
+<li><p><code>paste0()</code> to paste together the first_name, a space, and the last_name. This will equal the full_name.</p></li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>utils<span class="sc">::</span><span class="fu">head</span>(</span>
@@ -506,6 +506,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><p><code>SELECT</code> to select.</p></li>
 <li><p><code>||</code> to concatenate first_name, space, and last name.</p></li>
+<li><p><code>AS</code> to define the concatination as full_name.</p></li>
 <li><p><code>FROM</code> to define the patients data for select to concatenate data from.</p></li>
 <li><p><code>LIMIT</code> to show the first 10 rows of data.</p></li>
 </ul>
@@ -572,7 +573,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p><code>AS</code> to define those cities as unique_cites.</p></li>
 <li><p><code>FROM</code> to define the patients data for select to get unique_cites from.</p></li>
 <li><p><code>WHERE</code> specifies a condition.</p></li>
-<li><p><code>IS</code> is the condition that ‘NS’ is in province_id.</p></li>
+<li><p><code>IS</code> is the condition that ‘NS’ is equal to province_id.</p></li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetQuery</span>(hosp,</span>
@@ -590,8 +591,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
-<section id="show-the-total-amount-of-male-patients-and-the-total-amount-of-female-patients." class="level1">
-<h1><code>5.</code> Show the total amount of male patients and the total amount of female patients.</h1>
+<section id="show-the-total-number-of-male-patients-and-the-total-number-of-female-patients." class="level1">
+<h1><code>5.</code> Show the total number of male patients and the total number of female patients.</h1>
 <p>Display the two results in the same row.</p>
 <div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true"><code>5.0</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false"><code>5.1 R</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-3" role="tab" aria-controls="tabset-6-3" aria-selected="false"><code>5.2 SQL</code></a></li></ul>
@@ -644,8 +645,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
-<section id="show-all-allergies-ordered-by-popularity.-remove-null-values-from-query." class="level1">
-<h1><code>6.</code> Show all allergies ordered by popularity. Remove NULL values from query.</h1>
+<section id="show-all-allergies-ordered-by-popularity.-remove-null-values-from-the-query." class="level1">
+<h1><code>6.</code> Show all allergies ordered by popularity. Remove NULL values from the query.</h1>
 <div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true"><code>6.0</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false"><code>6.1 R</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-3" role="tab" aria-controls="tabset-7-3" aria-selected="false"><code>6.2 SQL</code></a></li></ul>
 <div class="tab-content">
@@ -697,7 +698,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p><code>SELECT</code> the allergies column.</p></li>
 <li><p><code>COUNT(*)</code> count all input.</p></li>
 <li><p><code>AS</code> to define the count as total_diagnosis.</p></li>
-<li><p><code>FROM</code> to define the patients data to select allergies column from.</p></li>
+<li><p><code>FROM</code> to define the patients data to select the allergies column from.</p></li>
 <li><p><code>WHERE</code> to define a condition.</p></li>
 <li><p><code>IS NOT</code> is the condition that says allergies cannot be ‘NULL’.</p></li>
 <li><p><code>GROUP BY</code> groups the data by allergies.</p></li>
@@ -733,8 +734,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
-<section id="display-the-total-amount-of-patients-for-each-province.-order-by-descending." class="level1">
-<h1><code>7.</code> Display the total amount of patients for each province. Order by descending.</h1>
+<section id="display-the-total-number-of-patients-for-each-province.-order-by-descending." class="level1">
+<h1><code>7.</code> Display the total number of patients for each province. Order by descending.</h1>
 <div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true"><code>7.0</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false"><code>7.1 R</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-3" role="tab" aria-controls="tabset-8-3" aria-selected="false"><code>7.1 SQL</code></a></li></ul>
 <div class="tab-content">
@@ -813,8 +814,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
-<section id="show-the-provinces-that-has-more-patients-identified-as-m-than-f.-must-only-show-full-province_name." class="level1">
-<h1><code>8.</code> Show the provinces that has more patients identified as ‘M’ than ‘F’. Must only show full province_name.</h1>
+<section id="show-the-provinces-that-have-more-patients-identified-as-m-than-f.-must-only-show-full-province_name." class="level1">
+<h1><code>8.</code> Show the provinces that have more patients identified as ‘M’ than ‘F’. Must only show full province_name.</h1>
 <div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true"><code>8.0</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false"><code>8.1 R</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-3" role="tab" aria-controls="tabset-9-3" aria-selected="false"><code>8.2 SQL</code></a></li></ul>
 <div class="tab-content">
@@ -832,27 +833,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p><code>group_by()</code> to group by province name.</p></li>
 <li><p><code>count()</code> to count the number of “M” and “F” patients for each province.</p></li>
 <li><p><code>slice()</code> to remove certain rows based on a given criteria.</p></li>
-<li><p><code>which.max()</code> to determine which province have greater number of male patients.</p></li>
+<li><p><code>which.max()</code> to determine which province has a greater number of male patients.</p></li>
 <li><p><code>summarise()</code> to define only province_name in the output.</p></li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>base<span class="sc">::</span><span class="fu">merge</span>(province_names, patients, <span class="at">by =</span> <span class="st">"province_id"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(province_name) <span class="sc">%&gt;%</span></span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">count</span>(gender <span class="sc">==</span> <span class="st">"M"</span>, gender <span class="sc">==</span> <span class="st">"F"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">slice</span>(base<span class="sc">::</span><span class="fu">which.max</span>(n)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">slice</span>(base<span class="sc">::</span><span class="fu">which.max</span>(n)) <span class="sc">%&gt;%</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">province_name =</span> province_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 8 × 4
-# Groups:   province_name [8]
-  province_name             `gender == "M"` `gender == "F"`     n
-  &lt;chr&gt;                     &lt;lgl&gt;           &lt;lgl&gt;           &lt;int&gt;
-1 Alberta                   TRUE            FALSE              10
-2 British Columbia          TRUE            FALSE               6
-3 Manitoba                  TRUE            FALSE               7
-4 Newfoundland and Labrador TRUE            FALSE               2
-5 Nova Scotia               TRUE            FALSE               7
-6 Ontario                   TRUE            FALSE             508
-7 Quebec                    TRUE            FALSE               2
-8 Saskatchewan              TRUE            FALSE               1</code></pre>
+<pre><code># A tibble: 8 × 1
+  province_name            
+  &lt;chr&gt;                    
+1 Alberta                  
+2 British Columbia         
+3 Manitoba                 
+4 Newfoundland and Labrador
+5 Nova Scotia              
+6 Ontario                  
+7 Quebec                   
+8 Saskatchewan             </code></pre>
 </div>
 </div>
 </div>
@@ -987,9 +988,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="we-are-looking-for-a-specific-patient.-pull-all-columns-for-the-patient-who-matches-the-following-criteria" class="level1">
 <h1><code>10.</code> We are looking for a specific patient. Pull all columns for the patient who matches the following criteria:</h1>
 <ul>
-<li>First_name contains an ‘b’ after the first two letters.</li>
+<li>First_name contains a ‘b’ after the first two letters.</li>
 <li>Identifies their gender as ‘F’</li>
-<li>Their weight would be between 50kg and 70kg</li>
+<li>Their weight would be between 50 kg and 70 kg</li>
 <li>Their patient_id is an odd number</li>
 <li>They are from the city ‘Burlington’</li>
 </ul>
@@ -1007,7 +1008,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>In R define the patients data then use,</p>
 <ul>
 <li><p><code>%&gt;%</code> to pipe the data.</p></li>
-<li><p><code>filter</code> to filter the data base on first name, gender, weight, parient_id, and city.</p></li>
+<li><p><code>filter</code> to filter the database on first name, gender, weight, patient_id, and city.</p></li>
 <li><p><code>grepl</code> to select first_names where the 3rd letter is b.</p></li>
 </ul>
 <div class="cell">

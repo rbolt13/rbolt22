@@ -4,16 +4,16 @@ author: "Randi Bolt"
 date: "2023-01-23"
 categories: [R, SQL]
 toc: true
-draft: true
+draft: false
 ---
 
-In this post I use pretend hospital data to answer questions using both R and SQL (Structured Query Language) via a R package called RSQLite. 
+Using a R package called SQLite, this post demonstrates how to answer data related questions with both R and SQL (Structured Query Language). 
 
 ![Naruto with SQL logo, and Sauske with the R Studio logo, standing back to back.](../../00_img/SQL-and-R.png)
 
 # `0.` Introduction 
 
-There are a handful of programming languages that data scientists use when querying, analyzing, and manipulating data. What I have found in my experience, research, and interviews with various companies is that while R and Python have a lot more power in what they are capable of producing, SQL is a fairly common way most people (especially outside of data science) query their data. So to get more practice using SQL (and R) I pulled some data and 10 questions off a website called [Learn SQL](https://www.sql-practice.com/), and will be answering them in both R and SQL. 
+There are a handful of programming languages that data scientists use when querying, analyzing, and manipulating data. What I have found is that while R and Python have a lot more power in what they are capable of producing, SQL is used by a wider variety of roles to access and query data. So to get more practice using both SQL and R I pulled 10 questions and some data off a website called [Learn SQL](https://www.sql-practice.com/), and will be answering the following questions in both languages. 
 
 ::: {.panel-tabset}
 
@@ -58,9 +58,9 @@ patients <- utils::read.csv('../../00_data/patients.csv')
 province_names <- utils::read.csv("../../00_data/province_names.csv")
 ```
 
-### `0.3 Data base`  
+### `0.3 Database`  
 
-To create a data base use: 
+To create a database use: 
 
 * `dbConnect()` to connect to a SQL data base called Hospital.db in the 00_data folder. 
 
@@ -73,7 +73,7 @@ hosp <- RSQLite::dbConnect(RSQLite::SQLite(),
 
 To define data within the database use:
 
-* `dbWriteTable()` to create data a set within the hospital data base called patients and province_names with the respective data. 
+* `dbWriteTable()` to create a data set within the hospital database called patients and province_names with the respective data. 
 
 ```{r, eval=FALSE}
 RSQLite::dbWriteTable(hosp,
@@ -84,9 +84,9 @@ RSQLite::dbWriteTable(hosp,
                       province_names)
 ```
 
-Verify the two data sets are in the data base using:
+Verify the two data sets are in the database using:
 
-* `dbListTables()` to list the tables within the hosp data base. 
+* `dbListTables()` to list the tables within the hosp database. 
 
 ```{r}
 RSQLite::dbListTables(hosp)
@@ -205,9 +205,9 @@ In R use:
 
 * `head()` to show the first 10 rows of data. 
 
-* `data.frame()` to defines a data frame that includes full_name.
+* `data.frame()` to define a data frame that includes full_name.
 
-* `paste0()` to pastes together the first_name, a space, and the last_name. This will equal the full_name. 
+* `paste0()` to paste together the first_name, a space, and the last_name. This will equal the full_name. 
 
 ```{r}
 utils::head(
@@ -225,6 +225,8 @@ In SQL use:
 * `SELECT` to select.
 
 * `||` to concatenate first_name, space, and last name.
+
+* `AS` to define the concatination as full_name. 
 
 * `FROM` to define the patients data for select to concatenate data from.  
 
@@ -284,7 +286,7 @@ In SQL:
 
 * `WHERE` specifies a condition.
 
-* `IS` is the condition that 'NS' is in province_id. 
+* `IS` is the condition that 'NS' is equal to province_id. 
 
 ```{r}
 dbGetQuery(hosp,
@@ -296,7 +298,7 @@ dbGetQuery(hosp,
 
 :::
     
-# `5.` Show the total amount of male patients and the total amount of female patients.
+# `5.` Show the total number of male patients and the total number of female patients.
 
 Display the two results in the same row.
 
@@ -350,7 +352,7 @@ dbGetQuery(hosp,
 
 :::
 
-# `6.` Show all allergies ordered by popularity. Remove NULL values from query.
+# `6.` Show all allergies ordered by popularity. Remove NULL values from the query.
 
 ::: {.panel-tabset}
 
@@ -399,7 +401,7 @@ In SQL:
 
 * `AS` to define the count as total_diagnosis. 
 
-* `FROM` to define the patients data to select allergies column from.
+* `FROM` to define the patients data to select the allergies column from.
 
 * `WHERE` to define a condition.
 
@@ -427,7 +429,7 @@ dbGetQuery(hosp,
 
 :::
 
-# `7.` Display the total amount of patients for each province. Order by descending.
+# `7.` Display the total number of patients for each province. Order by descending.
 
 ::: {.panel-tabset}
 
@@ -498,7 +500,7 @@ RSQLite::dbGetQuery(hosp,
 
 :::
 
-# `8.` Show the provinces that has more patients identified as 'M' than 'F'. Must only show full province_name. 
+# `8.` Show the provinces that have more patients identified as 'M' than 'F'. Must only show full province_name. 
 
 ::: {.panel-tabset}
 
@@ -522,7 +524,7 @@ In R use,
 
 * `slice()` to remove certain rows based on a given criteria.
 
-* `which.max()` to determine which province have greater number of male patients.
+* `which.max()` to determine which province has a greater number of male patients.
 
 * `summarise()` to define only province_name in the output.
 
@@ -530,7 +532,8 @@ In R use,
 base::merge(province_names, patients, by = "province_id") %>%
   dplyr::group_by(province_name) %>%
   dplyr::count(gender == "M", gender == "F") %>%
-  dplyr::slice(base::which.max(n)) 
+  dplyr::slice(base::which.max(n)) %>%
+  dplyr::summarise(province_name = province_name)
 ```
 
 ### `8.2 SQL` 
@@ -673,9 +676,9 @@ RSQLite::dbGetQuery(hosp,
 
 # `10.` We are looking for a specific patient. Pull all columns for the patient who matches the following criteria:
 
-- First_name contains an 'b' after the first two letters.
+- First_name contains a 'b' after the first two letters.
 - Identifies their gender as 'F'
-- Their weight would be between 50kg and 70kg
+- Their weight would be between 50 kg and 70 kg
 - Their patient_id is an odd number
 - They are from the city 'Burlington'
 
@@ -695,7 +698,7 @@ In R define the patients data then use,
 
 * `%>%` to pipe the data.
 
-* `filter` to filter the data base on first name, gender, weight, parient_id, and city.
+* `filter` to filter the database on first name, gender, weight, patient_id, and city.
 
 * `grepl` to select first_names where the 3rd letter is b. 
 
