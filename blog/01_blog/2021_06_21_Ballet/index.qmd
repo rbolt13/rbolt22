@@ -6,7 +6,7 @@ toc: true
 draft: false
 ---
 
-This post composes a short data set of 13 ballets, and then creates a table with clickale links, and an interactive graph with plotly. 
+This post composes a short data set of 13 ballets, and then creates a table with clickable links, and an interactive graph with plotly. 
 
 ![Image from the ballet Firebird.](../../00_img/firebird.jpeg)
 
