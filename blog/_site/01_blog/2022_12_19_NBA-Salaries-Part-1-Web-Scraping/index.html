@@ -94,6 +94,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../00_img/pink-bolt.jpeg" rel="icon" type="image/jpeg">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -153,20 +154,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <a class="nav-link" href="../../blog.html">blog</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../Resume/Randi-Bolt-Resume.pdf">resume</a>
+    <a class="nav-link" href="../../resume.html">resume</a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/rbolt13"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/rbolt13"><i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
  </a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.linkedin.com/in/randi-bolt/"><i class="bi bi-linkedin" role="img">
+    <a class="nav-link" href="https://www.linkedin.com/in/randi-bolt/"><i class="bi bi-linkedin" role="img" aria-label="Linkedin">
 </i> 
  </a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.instagram.com/rbolt13/"><i class="bi bi-instagram" role="img">
+    <a class="nav-link" href="https://www.instagram.com/rbolt13/"><i class="bi bi-instagram" role="img" aria-label="Instagram">
 </i> 
  </a>
   </li>  
@@ -238,7 +239,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<p>This post exhibits mainly a scraping function that saves and cleans data from <a href="http://www.espn.com/nba/salaries">ESPN - NBA Players Salaries</a>, with some simple statistic and data visuals.</p>
+<p>Scraping and cleaning NBA Salary data from <a href="http://www.espn.com/nba/salaries">ESPN - NBA Players Salaries</a>, with some simple statistic and data visuals.</p>
 <p><img src="../../00_img/NBA-Money.webp" class="img-fluid"></p>
 <section id="introduction" class="level1">
 <h1><code>0.0</code> Introduction</h1>
@@ -301,7 +302,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>  tb3 <span class="ot">&lt;-</span> tb2[<span class="sc">-</span><span class="dv">1</span>,]</span>
 <span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add position column, and remove position from name</span></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>  tb3<span class="sc">$</span>POSITION <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">'.*,'</span>,<span class="st">""</span>, tb3<span class="sc">$</span>NAME)</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>  tb3<span class="sc">$</span>POSITION <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">'.*, '</span>,<span class="st">""</span>, tb3<span class="sc">$</span>NAME)</span>
 <span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>  tb3<span class="sc">$</span>NAME <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">', [A-Z]{,2}'</span>,<span class="st">''</span>, tb3<span class="sc">$</span>NAME)</span>
 <span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(tb3)</span>
@@ -371,16 +372,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code># A tibble: 10 × 5
    RK    NAME                  TEAM                   SALARY      POSITION
    &lt;chr&gt; &lt;chr&gt;                 &lt;chr&gt;                  &lt;chr&gt;       &lt;chr&gt;   
- 1 1     Stephen Curry         Golden State Warriors  $48,070,014 " PG"   
- 2 2     Russell Westbrook     Los Angeles Lakers     $47,063,478 " PG"   
- 3 3     LeBron James          Los Angeles Lakers     $44,474,988 " SF"   
- 4 4     Kevin Durant          Brooklyn Nets          $44,119,845 " PF"   
- 5 5     Bradley Beal          Washington Wizards     $43,279,250 " SG"   
- 6 6     Damian Lillard        Portland Trail Blazers $42,492,492 " PG"   
- 7 7     Giannis Antetokounmpo Milwaukee Bucks        $42,492,492 " PF"   
- 8 8     Kawhi Leonard         LA Clippers            $42,492,492 " SF"   
- 9 9     Paul George           LA Clippers            $42,492,492 " SG"   
-10 10    Klay Thompson         Golden State Warriors  $40,600,080 " SG"   </code></pre>
+ 1 1     Stephen Curry         Golden State Warriors  $48,070,014 PG      
+ 2 2     Russell Westbrook     Los Angeles Lakers     $47,063,478 PG      
+ 3 3     LeBron James          Los Angeles Lakers     $44,474,988 SF      
+ 4 4     Kevin Durant          Brooklyn Nets          $44,119,845 PF      
+ 5 5     Bradley Beal          Washington Wizards     $43,279,250 SG      
+ 6 6     Damian Lillard        Portland Trail Blazers $42,492,492 PG      
+ 7 7     Giannis Antetokounmpo Milwaukee Bucks        $42,492,492 PF      
+ 8 8     Kawhi Leonard         LA Clippers            $42,492,492 SF      
+ 9 9     Paul George           LA Clippers            $42,492,492 SG      
+10 10    Klay Thompson         Golden State Warriors  $40,600,080 SG      </code></pre>
 </div>
 </div>
 <section id="change-salaray-from-character-to-numeric" class="level2">

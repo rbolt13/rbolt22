@@ -5,7 +5,7 @@ categories: [R, Web-Scraping, NBA, Data Visuals]
 toc: true
 ---
 
-This post exhibits mainly a scraping function that saves and cleans data from [ESPN - NBA Players Salaries](http://www.espn.com/nba/salaries), with some simple statistic and data visuals. 
+Scraping and cleaning NBA Salary data from [ESPN - NBA Players Salaries](http://www.espn.com/nba/salaries), with some simple statistic and data visuals. 
 
 ![](../../00_img/NBA-Money.webp)
 

@@ -12,9 +12,9 @@ In this tutorial I will be taking the functions I created in my previous post, [
 
 # `0.` Introduction
 
-Recently I have been looking to create more mathematical models of NBA statistics. However the process of scrapping and downloading data has become more tedious as the models scale. To save myself time, and lines of code I am creating a package in R to do a lot of the heavy lifting for me. 
+Recently I have been looking to create more mathematical models of NBA statistics. However the process of scrapping and downloading data has become more tedious as the models scale. To save time, and lines of code I am creating a package in R to do a lot of the web scraping heavy lifting. 
 
-To start I will only be creating two functions:
+To start I will be creating two functions:
 
 1. Scrape NBA Team Data
 

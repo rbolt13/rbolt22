@@ -1,0 +1,17 @@
+---
+comments: false
+---
+
+<html>
+  
+<body>
+    <center>
+        <object data=
+"Resume/Randi-Bolt-Resume.pdf"
+                width="1050" 
+                height="1200"> 
+        </object>
+    </center>
+</body>
+  
+</html>

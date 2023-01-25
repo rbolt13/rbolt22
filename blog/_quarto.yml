@@ -15,7 +15,7 @@ website:
       - href: blog.qmd
         text: blog
         aria-label: Blog
-      - href: Resume/Randi-Bolt-Resume.pdf
+      - href: resume.qmd
         text: resume
         aria-label: Resume
       - icon: github
