@@ -6,7 +6,7 @@ title: Decision Tree in R
 
 This is the ID3 algorithm
 
-```{r}
+```{r, eval=FALSE}
 install.packages("caret", dependencies = TRUE)
 ```
 
@@ -17,14 +17,14 @@ install.packages("caret", dependencies = TRUE)
 
 This code is ... [](https://www.tutorialspoint.com/r/r_decision_tree.htm)
 
-```{r}
+```{r, eval=FALSE}
 library(ISLR)
 # data(package="ISLR")
 carseats<-Carseats
 ```
 
 
-```{r}
+```{r, eval=FALSE}
 require(tree)
 ```
 

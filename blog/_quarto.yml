@@ -3,6 +3,7 @@ project:
 
 website:
   title: "Randi Bolt"
+  favicon: 00_img/pink-bolt.jpeg
   navbar:
     right:
       - href: index.qmd
@@ -14,7 +15,7 @@ website:
       - href: blog.qmd
         text: blog
         aria-label: Blog
-      - href: Randi-Bolt-Resume.pdf
+      - href: Resume/Randi-Bolt-Resume.pdf
         text: resume
         aria-label: Resume
       - icon: github

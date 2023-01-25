@@ -3,7 +3,7 @@ title: "Randi Bolt"
 image: 00_img/IMG_7168.JPG
 comments: false
 about:
-  template: jolla
+  template: solana
   links:
     - icon: github
       text: Github

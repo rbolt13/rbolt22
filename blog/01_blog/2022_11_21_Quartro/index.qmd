@@ -17,6 +17,8 @@ Here is a list of links I used to help create this Quarto blog. As well as links
 
 [Creating a blog with Quarto in 10 steps - Bea Milz](https://beamilz.com/posts/2022-06-05-creating-a-blog-with-quarto/en/)
 
+[Create your Data Science portfolio with Quarto](https://www.youtube.com/watch?v=xtSFXtDf4cM): [Slides](https://deepshamenghani.quarto.pub/portfolio-with-quarto-workshop/#/title-slide)
+
 [From R Markdown to Quarto](https://github.com/rstudio-conf-2022/rmd-to-quarto)
 
 [Installing and Configuring Python with RStudio](https://support.posit.co/hc/en-us/articles/360023654474-Installing-and-Configuring-Python-with-RStudio)
@@ -45,6 +47,8 @@ Here is a list of links I used to help create this Quarto blog. As well as links
 
 [Danielle Navarro - Notes from a data witch](https://blog.djnavarro.net/): [Repo](https://github.com/djnavarro/quarto-blog)
 
+[Deesha menghani](https://deepshamenghani.quarto.pub/dmenghani/):  [Repo](https://github.com/deepshamenghani/Portfolio_DeepshaM)
+
 [Rober Mitchell](https://robertmitchellv.com/): [Repo](https://github.com/robertmitchellv/robertmitchellv.github.io)
 
 [Sam Csik](https://samanthacsik.github.io/): [Repo](https://github.com/samanthacsik/samanthacsik.github.io)
@@ -61,11 +65,15 @@ Here is a list of links I used to help create this Quarto blog. As well as links
 
 [Jenny Bryan (Made with Blogdown and Hugo)](https://jennybryan.org/): [Repo](https://github.com/jennybc/jennybryan.org)
 
+[Jon Harmon](http://jonthegeek.com/)
+
 [Julia Silge (Made with Blogdown and Hugo)](https://juliasilge.com/): [Repo](https://github.com/juliasilge/juliasilge.com) 
 
 [Machine Learning Mastery!](https://machinelearningmastery.com/)
 
 [Nan Xiao](https://nanx.me/): [Repo](https://github.com/nanxstats/nanx.me)
+
+[Nicola Rennie](https://nrennie.rbind.io/): [Repo](https://github.com/nrennie/nrennie.rbind.io)
 
 [Tanner Heffner (Made with Svelte)](https://www.heffner.dev/): [Repo](https://github.com/tjheffner/heffdotdev)
 

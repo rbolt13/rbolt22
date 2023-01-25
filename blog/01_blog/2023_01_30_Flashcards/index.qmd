@@ -1,0 +1,475 @@
+---
+title: "Flashcards"
+date: "2023-01-30"
+categories: [Statistics, Machine Learning, Math]
+toc: true
+draft: true
+---
+
+This post covers terminology in the fields of data science, machine learning, math, probability, and statistics. 
+
+![](../../00_img/flashcards.png)
+
+# Introduction 
+
+This is why... each section is split up by topic ... also more will be added. 
+
+# Data Science
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+# Machine Learning 
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+# Mathematics
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+# Probability
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+# Statistics 
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
+
+::: {.panel-tabset}
+
+### Word
+
+
+### Definition 
+
+:::
