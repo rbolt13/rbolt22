@@ -21,12 +21,12 @@ website:
       - icon: github
         href: https://github.com/rbolt13
         aria-label: GitHub
+      - icon: mastodon
+        href: https://pnw.zone/@rbolt
+        aria-label: Mastodon
       - icon: linkedin
         href: https://www.linkedin.com/in/randi-bolt/
         aria-label: Linkedin
-      - icon: instagram
-        href: https://www.instagram.com/rbolt13/
-        aria-label: Instagram
 format:
   html:
     theme: journal
