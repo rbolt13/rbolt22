@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Randi Bolt">
+<meta name="dcterms.date" content="2021-06-28">
+
+<title>Randi Bolt - Statistics 451: Applied Statistics for Engineers and Scientists - Homework 1</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../00_img/pink-bolt.jpeg" rel="icon" type="image/jpeg">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Randi Bolt</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html">home</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html">about</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html">blog</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../resume.html">resume</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/rbolt13"><i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://pnw.zone/@rbolt"><i class="bi bi-mastodon" role="img" aria-label="Mastodon">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/randi-bolt/"><i class="bi bi-linkedin" role="img" aria-label="Linkedin">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Statistics 451: Applied Statistics for Engineers and Scientists - Homework 1</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Statistics</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Randi Bolt </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">June 28, 2021</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#consider-the-strength-data-for-beams." id="toc-consider-the-strength-data-for-beams." class="nav-link active" data-scroll-target="#consider-the-strength-data-for-beams."><code>1.10</code> Consider the strength data for beams.</a>
+  <ul class="collapse">
+  <li><a href="#a.-construct-a-stem-and-leaf-display-of-the-data.-what-appears-to-be-a-representative-strength-value-do-the-observations-appear-to-be-highly-concentrated-about-the-representative-value-or-rather-spread-out" id="toc-a.-construct-a-stem-and-leaf-display-of-the-data.-what-appears-to-be-a-representative-strength-value-do-the-observations-appear-to-be-highly-concentrated-about-the-representative-value-or-rather-spread-out" class="nav-link" data-scroll-target="#a.-construct-a-stem-and-leaf-display-of-the-data.-what-appears-to-be-a-representative-strength-value-do-the-observations-appear-to-be-highly-concentrated-about-the-representative-value-or-rather-spread-out"><code>a.</code> Construct a stem-and leaf display of the data. What appears to be a representative strength value? Do the observations appear to be highly concentrated about the representative value or rather spread out?</a></li>
+  <li><a href="#b.-does-the-display-appear-to-be-reasonably-symmetric-about-a-representative-value-or-would-you-describe-its-shape-in-some-other-way" id="toc-b.-does-the-display-appear-to-be-reasonably-symmetric-about-a-representative-value-or-would-you-describe-its-shape-in-some-other-way" class="nav-link" data-scroll-target="#b.-does-the-display-appear-to-be-reasonably-symmetric-about-a-representative-value-or-would-you-describe-its-shape-in-some-other-way"><code>b.</code> Does the display appear to be reasonably symmetric about a representative value, or would you describe its shape in some other way?</a></li>
+  <li><a href="#c.-do-there-appear-to-be-any-outlying-strength-values" id="toc-c.-do-there-appear-to-be-any-outlying-strength-values" class="nav-link" data-scroll-target="#c.-do-there-appear-to-be-any-outlying-strength-values"><code>c.</code> Do there appear to be any outlying strength values?</a></li>
+  <li><a href="#d.-what-proportion-of-strength-observations-in-this-sample-exceed-10-mpa" id="toc-d.-what-proportion-of-strength-observations-in-this-sample-exceed-10-mpa" class="nav-link" data-scroll-target="#d.-what-proportion-of-strength-observations-in-this-sample-exceed-10-mpa"><code>d.</code> What proportion of strength observations in this sample exceed 10 MPa?</a></li>
+  </ul></li>
+  <li><a href="#the-accompanying-specific-gravity-values-for-various-wood-types-used-in-construction-appeared-in-the-article-bolted-connection-design-values-based-on-european-yield-model-j.-of-structural-engr.-1993-2169-2186" id="toc-the-accompanying-specific-gravity-values-for-various-wood-types-used-in-construction-appeared-in-the-article-bolted-connection-design-values-based-on-european-yield-model-j.-of-structural-engr.-1993-2169-2186" class="nav-link" data-scroll-target="#the-accompanying-specific-gravity-values-for-various-wood-types-used-in-construction-appeared-in-the-article-bolted-connection-design-values-based-on-european-yield-model-j.-of-structural-engr.-1993-2169-2186"><code>1.12</code> The accompanying specific gravity values for various wood types used in construction appeared in the article “Bolted Connection Design Values Based on European Yield Model” (J. of Structural Engr., 1993: 2169-2186):</a>
+  <ul class="collapse">
+  <li><a href="#construct-a-stem-and-leaf-display-using-repeated-stems-see-the-previous-exercise-and-comment-on-any-interesting-features-of-the-display." id="toc-construct-a-stem-and-leaf-display-using-repeated-stems-see-the-previous-exercise-and-comment-on-any-interesting-features-of-the-display." class="nav-link" data-scroll-target="#construct-a-stem-and-leaf-display-using-repeated-stems-see-the-previous-exercise-and-comment-on-any-interesting-features-of-the-display.">Construct a stem-and-leaf display using repeated stems (see the previous exercise), and comment on any interesting features of the display.</a></li>
+  </ul></li>
+  <li><a href="#the-article-cited-in-example-1.2-also-gave-the-accompanying-strengths-observations-for-cylinders" id="toc-the-article-cited-in-example-1.2-also-gave-the-accompanying-strengths-observations-for-cylinders" class="nav-link" data-scroll-target="#the-article-cited-in-example-1.2-also-gave-the-accompanying-strengths-observations-for-cylinders"><code>1.16</code> The article cited in Example 1.2 also gave the accompanying strengths observations for cylinders:</a>
+  <ul class="collapse">
+  <li><a href="#a.-construct-a-comparative-stem-and-leaf-display-see-the-previous-exercise-of-the-beam-and-cylinder-data-and-then-answer-the-questions-in-parts-b-d-of-exercise-10-for-the-observations-on-cylinders." id="toc-a.-construct-a-comparative-stem-and-leaf-display-see-the-previous-exercise-of-the-beam-and-cylinder-data-and-then-answer-the-questions-in-parts-b-d-of-exercise-10-for-the-observations-on-cylinders." class="nav-link" data-scroll-target="#a.-construct-a-comparative-stem-and-leaf-display-see-the-previous-exercise-of-the-beam-and-cylinder-data-and-then-answer-the-questions-in-parts-b-d-of-exercise-10-for-the-observations-on-cylinders."><code>a.</code> Construct a comparative stem-and-leaf display (see the previous exercise) of the beam and cylinder data and then answer the questions in parts (b)-(d) of Exercise 10 for the observations on cylinders.</a></li>
+  <li><a href="#b.-in-what-ways-are-the-two-sides-of-the-display-similar-are-there-any-obvious-differences-between-the-beam-observations-and-the-cylinder-observations" id="toc-b.-in-what-ways-are-the-two-sides-of-the-display-similar-are-there-any-obvious-differences-between-the-beam-observations-and-the-cylinder-observations" class="nav-link" data-scroll-target="#b.-in-what-ways-are-the-two-sides-of-the-display-similar-are-there-any-obvious-differences-between-the-beam-observations-and-the-cylinder-observations"><code>b.</code> In what ways are the two sides of the display similar? Are there any obvious differences between the beam observations and the cylinder observations?</a></li>
+  </ul></li>
+  <li><a href="#exposure-to-microbial-products-especially-endotoxin-may-have-an-impact-on-vulnerability-to-allergic-diseases.-the-article-dust-sampling-methods-for-endotoxin-an-essential-but-underestimated-issue-indoor-air-2006-20-27-considered-various-issues-associated-with-determining-endotoxin-concentration.-the-following-data-on-concentration-eumg-in-settled-dust-for-one-sample-of-urban-homes-and-another-of-farm-homes-was-kindly-supplied-by-the-authors-of-the-cited-article." id="toc-exposure-to-microbial-products-especially-endotoxin-may-have-an-impact-on-vulnerability-to-allergic-diseases.-the-article-dust-sampling-methods-for-endotoxin-an-essential-but-underestimated-issue-indoor-air-2006-20-27-considered-various-issues-associated-with-determining-endotoxin-concentration.-the-following-data-on-concentration-eumg-in-settled-dust-for-one-sample-of-urban-homes-and-another-of-farm-homes-was-kindly-supplied-by-the-authors-of-the-cited-article." class="nav-link" data-scroll-target="#exposure-to-microbial-products-especially-endotoxin-may-have-an-impact-on-vulnerability-to-allergic-diseases.-the-article-dust-sampling-methods-for-endotoxin-an-essential-but-underestimated-issue-indoor-air-2006-20-27-considered-various-issues-associated-with-determining-endotoxin-concentration.-the-following-data-on-concentration-eumg-in-settled-dust-for-one-sample-of-urban-homes-and-another-of-farm-homes-was-kindly-supplied-by-the-authors-of-the-cited-article."><code>1.34</code> Exposure to microbial products, especially endotoxin, may have an impact on vulnerability to allergic diseases. The article “Dust Sampling Methods for Endotoxin – An Essential, But Underestimated Issue” (Indoor Air, 2006: 20-27) considered various issues associated with determining endotoxin concentration. The following data on concentration (EU/mg) in settled dust for one sample of urban homes and another of farm homes was kindly supplied by the authors of the cited article.</a>
+  <ul class="collapse">
+  <li><a href="#a.-determine-the-sample-mean-for-each-sample.-how-do-they-compare" id="toc-a.-determine-the-sample-mean-for-each-sample.-how-do-they-compare" class="nav-link" data-scroll-target="#a.-determine-the-sample-mean-for-each-sample.-how-do-they-compare"><code>a.</code> Determine the sample mean for each sample. How do they compare?</a></li>
+  <li><a href="#b.-determine-the-sample-median-for-each-sample.-how-do-they-compare-why-is-the-median-for-the-urban-sample-so-different-from-the-mean-for-that-sample" id="toc-b.-determine-the-sample-median-for-each-sample.-how-do-they-compare-why-is-the-median-for-the-urban-sample-so-different-from-the-mean-for-that-sample" class="nav-link" data-scroll-target="#b.-determine-the-sample-median-for-each-sample.-how-do-they-compare-why-is-the-median-for-the-urban-sample-so-different-from-the-mean-for-that-sample"><code>b.</code> Determine the sample median for each sample. How do they compare? Why is the median for the urban sample so different from the mean for that sample?</a></li>
+  <li><a href="#c.-calculate-the-trimmed-mean-for-each-sample-by-deleting-the-smallest-and-largest-observation.-what-are-the-corresponding-trimming-percentages-how-do-the-values-of-these-trimmed-means-compare-to-the-corresponding-means-and-medians" id="toc-c.-calculate-the-trimmed-mean-for-each-sample-by-deleting-the-smallest-and-largest-observation.-what-are-the-corresponding-trimming-percentages-how-do-the-values-of-these-trimmed-means-compare-to-the-corresponding-means-and-medians" class="nav-link" data-scroll-target="#c.-calculate-the-trimmed-mean-for-each-sample-by-deleting-the-smallest-and-largest-observation.-what-are-the-corresponding-trimming-percentages-how-do-the-values-of-these-trimmed-means-compare-to-the-corresponding-means-and-medians"><code>c.</code> Calculate the trimmed mean for each sample by deleting the smallest and largest observation. What are the corresponding trimming percentages? How do the values of these trimmed means compare to the corresponding means and medians?</a></li>
+  </ul></li>
+  <li><a href="#exercise-34-presented-the-following-data-on-endotoxin-concentration-in-settled-dust-both-for-a-sample-of-urban-homes-and-for-a-sample-of-farm-homes" id="toc-exercise-34-presented-the-following-data-on-endotoxin-concentration-in-settled-dust-both-for-a-sample-of-urban-homes-and-for-a-sample-of-farm-homes" class="nav-link" data-scroll-target="#exercise-34-presented-the-following-data-on-endotoxin-concentration-in-settled-dust-both-for-a-sample-of-urban-homes-and-for-a-sample-of-farm-homes"><code>1.48</code> Exercise 34 presented the following data on endotoxin concentration in settled dust both for a sample of urban homes and for a sample of farm homes:</a>
+  <ul class="collapse">
+  <li><a href="#a.-determine-the-value-of-the-sample-standard-deviation-for-each-sample-interpret-these-values-and-then-contrast-variability-in-the-two-samples." id="toc-a.-determine-the-value-of-the-sample-standard-deviation-for-each-sample-interpret-these-values-and-then-contrast-variability-in-the-two-samples." class="nav-link" data-scroll-target="#a.-determine-the-value-of-the-sample-standard-deviation-for-each-sample-interpret-these-values-and-then-contrast-variability-in-the-two-samples."><code>a.</code> Determine the value of the sample standard deviation for each sample, interpret these values, and then contrast variability in the two samples.</a></li>
+  <li><a href="#b.-compute-the-fourth-spread-for-each-sample-and-compare.-do-the-fourth-spreads-convey-the-same-message-about-variability-that-the-standard-deviations-do-explain." id="toc-b.-compute-the-fourth-spread-for-each-sample-and-compare.-do-the-fourth-spreads-convey-the-same-message-about-variability-that-the-standard-deviations-do-explain." class="nav-link" data-scroll-target="#b.-compute-the-fourth-spread-for-each-sample-and-compare.-do-the-fourth-spreads-convey-the-same-message-about-variability-that-the-standard-deviations-do-explain."><code>b.</code> Compute the fourth spread for each sample and compare. Do the fourth spreads convey the same message about variability that the standard deviations do? Explain.</a></li>
+  </ul></li>
+  <li><a href="#the-article-a-thin-film-oxygen-uptake-test-for-the-evaluation-of-automotive-crankcase-lubricants-lubric.-engr.-1984-75-83-reported-the-following-data-on-oxidation-induction-time-min-for-various-commercial-oils" id="toc-the-article-a-thin-film-oxygen-uptake-test-for-the-evaluation-of-automotive-crankcase-lubricants-lubric.-engr.-1984-75-83-reported-the-following-data-on-oxidation-induction-time-min-for-various-commercial-oils" class="nav-link" data-scroll-target="#the-article-a-thin-film-oxygen-uptake-test-for-the-evaluation-of-automotive-crankcase-lubricants-lubric.-engr.-1984-75-83-reported-the-following-data-on-oxidation-induction-time-min-for-various-commercial-oils"><code>1.51</code> The article “A Thin-Film Oxygen Uptake Test for the Evaluation of Automotive Crankcase Lubricants” (Lubric. Engr., 1984: 75-83) reported the following data on oxidation-induction time (min) for various commercial oils:</a>
+  <ul class="collapse">
+  <li><a href="#a.-calculate-the-sample-variance-and-the-standard-deviation." id="toc-a.-calculate-the-sample-variance-and-the-standard-deviation." class="nav-link" data-scroll-target="#a.-calculate-the-sample-variance-and-the-standard-deviation."><code>a.</code> Calculate the sample variance and the standard deviation.</a></li>
+  <li><a href="#b.-if-the-observations-were-re-expressed-in-hours-what-would-be-the-resulting-values-of-the-sample-variance-and-sample-standard-deviation-answer-without-actually-performing-the-re-expression." id="toc-b.-if-the-observations-were-re-expressed-in-hours-what-would-be-the-resulting-values-of-the-sample-variance-and-sample-standard-deviation-answer-without-actually-performing-the-re-expression." class="nav-link" data-scroll-target="#b.-if-the-observations-were-re-expressed-in-hours-what-would-be-the-resulting-values-of-the-sample-variance-and-sample-standard-deviation-answer-without-actually-performing-the-re-expression."><code>b.</code> If the observations were re-expressed in hours, what would be the resulting values of the sample variance and sample standard deviation? Answer without actually performing the re-expression.</a></li>
+  </ul></li>
+  <li><a href="#observations-on-burst-strength-lbin2-were-obtained-both-for-test-nozzle-welds-proper-procedures-are-the-key-to-welding-radioactive-waste-canisters-welding-j.-auud.-1997-61-67" id="toc-observations-on-burst-strength-lbin2-were-obtained-both-for-test-nozzle-welds-proper-procedures-are-the-key-to-welding-radioactive-waste-canisters-welding-j.-auud.-1997-61-67" class="nav-link" data-scroll-target="#observations-on-burst-strength-lbin2-were-obtained-both-for-test-nozzle-welds-proper-procedures-are-the-key-to-welding-radioactive-waste-canisters-welding-j.-auud.-1997-61-67"><code>1.60</code> Observations on burst strength (lb/in2) were obtained both for test nozzle welds (“Proper Procedures Are the Key to Welding Radioactive Waste Canisters,” Welding J., Auud. 1997: 61-67)</a>
+  <ul class="collapse">
+  <li><a href="#a.-construct-a-comparative-boxplot-and-comment-on-interesting-features-the-cited-article-did-not-include-such-a-picture-but-the-authors-commented-that-they-had-looked-at-one." id="toc-a.-construct-a-comparative-boxplot-and-comment-on-interesting-features-the-cited-article-did-not-include-such-a-picture-but-the-authors-commented-that-they-had-looked-at-one." class="nav-link" data-scroll-target="#a.-construct-a-comparative-boxplot-and-comment-on-interesting-features-the-cited-article-did-not-include-such-a-picture-but-the-authors-commented-that-they-had-looked-at-one."><code>a.</code> Construct a comparative boxplot and comment on interesting features (the cited article did not include such a picture, but the authors commented that they had looked at one).</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p>The problems on this page are from Probability &amp; Statistics for Engineering &amp; Sciences 9th Edition by Jay L. Devore - Duxbury Publisher, and the work is mine.</p>
+<p><img src="../../00_img/concreate-beams-flex-strength.png" class="img-fluid"></p>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<section id="consider-the-strength-data-for-beams." class="level2">
+<h2 class="anchored" data-anchor-id="consider-the-strength-data-for-beams."><code>1.10</code> Consider the strength data for beams.</h2>
+<section id="a.-construct-a-stem-and-leaf-display-of-the-data.-what-appears-to-be-a-representative-strength-value-do-the-observations-appear-to-be-highly-concentrated-about-the-representative-value-or-rather-spread-out" class="level3">
+<h3 class="anchored" data-anchor-id="a.-construct-a-stem-and-leaf-display-of-the-data.-what-appears-to-be-a-representative-strength-value-do-the-observations-appear-to-be-highly-concentrated-about-the-representative-value-or-rather-spread-out"><code>a.</code> Construct a stem-and leaf display of the data. What appears to be a representative strength value? Do the observations appear to be highly concentrated about the representative value or rather spread out?</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>beam <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">5.9</span>, <span class="fl">7.2</span>, <span class="fl">7.3</span>, <span class="fl">6.3</span>, <span class="fl">8.1</span>, <span class="fl">6.8</span>, <span class="fl">7.0</span>, <span class="fl">7.6</span>, <span class="fl">6.8</span>, <span class="fl">6.5</span>, <span class="fl">7.0</span>, <span class="fl">6.3</span>, <span class="fl">7.9</span>, <span class="fl">9.0</span>,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>         <span class="fl">8.2</span>, <span class="fl">8.7</span>, <span class="fl">7.8</span>, <span class="fl">9.7</span>, <span class="fl">7.4</span>, <span class="fl">7.7</span>, <span class="fl">9.7</span>, <span class="fl">7.8</span>, <span class="fl">7.7</span>, <span class="fl">11.6</span>, <span class="fl">11.3</span>, <span class="fl">11.8</span>, <span class="fl">10.7</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">stem</span>(beam)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  The decimal point is at the |
+
+   5 | 9
+   6 | 33588
+   7 | 00234677889
+   8 | 127
+   9 | 077
+  10 | 7
+  11 | 368</code></pre>
+</div>
+</div>
+<p>A representative strength value would be 7.7, as more observations are concentrated around this value than any other.</p>
+</section>
+<section id="b.-does-the-display-appear-to-be-reasonably-symmetric-about-a-representative-value-or-would-you-describe-its-shape-in-some-other-way" class="level3">
+<h3 class="anchored" data-anchor-id="b.-does-the-display-appear-to-be-reasonably-symmetric-about-a-representative-value-or-would-you-describe-its-shape-in-some-other-way"><code>b.</code> Does the display appear to be reasonably symmetric about a representative value, or would you describe its shape in some other way?</h3>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>No, I would argue that the data has a slight positive skewed to the right. I say this because the higher frequency values (in blues) seem to be to the left of the representative value (indicated by the red line), which is to the left of the mean (indicated by the orange line).</p>
+</section>
+<section id="c.-do-there-appear-to-be-any-outlying-strength-values" class="level3">
+<h3 class="anchored" data-anchor-id="c.-do-there-appear-to-be-any-outlying-strength-values"><code>c.</code> Do there appear to be any outlying strength values?</h3>
+<p>Yes there seems to be a small density of values outlying around 11.</p>
+</section>
+<section id="d.-what-proportion-of-strength-observations-in-this-sample-exceed-10-mpa" class="level3">
+<h3 class="anchored" data-anchor-id="d.-what-proportion-of-strength-observations-in-this-sample-exceed-10-mpa"><code>d.</code> What proportion of strength observations in this sample exceed 10 MPa?</h3>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "14.81 %"</code></pre>
+</div>
+</div>
+<p>An unlikely 14.81% of values exceed 10 MPa.</p>
+</section>
+</section>
+<section id="the-accompanying-specific-gravity-values-for-various-wood-types-used-in-construction-appeared-in-the-article-bolted-connection-design-values-based-on-european-yield-model-j.-of-structural-engr.-1993-2169-2186" class="level2">
+<h2 class="anchored" data-anchor-id="the-accompanying-specific-gravity-values-for-various-wood-types-used-in-construction-appeared-in-the-article-bolted-connection-design-values-based-on-european-yield-model-j.-of-structural-engr.-1993-2169-2186"><code>1.12</code> The accompanying specific gravity values for various wood types used in construction appeared in the article “Bolted Connection Design Values Based on European Yield Model” (J. of Structural Engr., 1993: 2169-2186):</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>wood.g <span class="ot">&lt;-</span> <span class="fu">c</span>(.<span class="dv">31</span>, .<span class="dv">35</span>, .<span class="dv">36</span>, .<span class="dv">36</span>, .<span class="dv">37</span>, .<span class="dv">38</span>, .<span class="dv">40</span>, .<span class="dv">40</span>, .<span class="dv">40</span>,</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>            .<span class="dv">41</span>, .<span class="dv">41</span>, .<span class="dv">42</span>, .<span class="dv">42</span>, .<span class="dv">42</span>, .<span class="dv">42</span>, .<span class="dv">42</span>, .<span class="dv">43</span>, .<span class="dv">44</span>,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>            .<span class="dv">45</span>, .<span class="dv">46</span>, .<span class="dv">46</span>, .<span class="dv">47</span>, .<span class="dv">48</span>, .<span class="dv">48</span>, .<span class="dv">48</span>, .<span class="dv">51</span>, .<span class="dv">54</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>            .<span class="dv">54</span>, .<span class="dv">55</span>, .<span class="dv">58</span>, .<span class="dv">62</span>, .<span class="dv">66</span>, .<span class="dv">66</span>, .<span class="dv">67</span>, .<span class="dv">68</span>, .<span class="dv">75</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="construct-a-stem-and-leaf-display-using-repeated-stems-see-the-previous-exercise-and-comment-on-any-interesting-features-of-the-display." class="level3">
+<h3 class="anchored" data-anchor-id="construct-a-stem-and-leaf-display-using-repeated-stems-see-the-previous-exercise-and-comment-on-any-interesting-features-of-the-display.">Construct a stem-and-leaf display using repeated stems (see the previous exercise), and comment on any interesting features of the display.</h3>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  The decimal point is at the |
+
+  0 | 344444444444444444
+  0 | 555555555566677778</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  The decimal point is 1 digit(s) to the left of the |
+
+  3 | 156678
+  4 | 0001122222345667888
+  5 | 14458
+  6 | 26678
+  7 | 5</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  The decimal point is 1 digit(s) to the left of the |
+
+  3 | 1
+  3 | 56678
+  4 | 000112222234
+  4 | 5667888
+  5 | 144
+  5 | 58
+  6 | 2
+  6 | 6678
+  7 | 
+  7 | 5</code></pre>
+</div>
+</div>
+<p>Looking at the three stem-and-leaf displays there are a few interesting features about the gravity for various wood types used in construction data that stands out. Dropping the last digit in the data, the first stem-and-leaf display shows us that there’s an even number of values that are &gt;0.5 and 0.5that appear most dense around 0.4. The second and third stem-and-leaf displays show us that these values are most dense about 0.42, with a small blip around 6.6 and obvious outlier for value 0.75.</p>
+</section>
+</section>
+<section id="the-article-cited-in-example-1.2-also-gave-the-accompanying-strengths-observations-for-cylinders" class="level2">
+<h2 class="anchored" data-anchor-id="the-article-cited-in-example-1.2-also-gave-the-accompanying-strengths-observations-for-cylinders"><code>1.16</code> The article cited in Example 1.2 also gave the accompanying strengths observations for cylinders:</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>cylinders <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">6.1</span>, <span class="fl">5.8</span>, <span class="fl">7.8</span>, <span class="fl">7.1</span>, <span class="fl">7.2</span>, <span class="fl">9.2</span>, <span class="fl">6.6</span>, <span class="fl">8.3</span>, <span class="fl">7.0</span>, <span class="fl">8.3</span>,</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>           <span class="fl">7.8</span>, <span class="fl">8.1</span>, <span class="fl">7.4</span>, <span class="fl">8.5</span>, <span class="fl">8.9</span>, <span class="fl">9.8</span>, <span class="fl">9.7</span>, <span class="fl">14.1</span>, <span class="fl">12.6</span>, <span class="fl">11.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="a.-construct-a-comparative-stem-and-leaf-display-see-the-previous-exercise-of-the-beam-and-cylinder-data-and-then-answer-the-questions-in-parts-b-d-of-exercise-10-for-the-observations-on-cylinders." class="level3">
+<h3 class="anchored" data-anchor-id="a.-construct-a-comparative-stem-and-leaf-display-see-the-previous-exercise-of-the-beam-and-cylinder-data-and-then-answer-the-questions-in-parts-b-d-of-exercise-10-for-the-observations-on-cylinders."><code>a.</code> Construct a comparative stem-and-leaf display (see the previous exercise) of the beam and cylinder data and then answer the questions in parts (b)-(d) of Exercise 10 for the observations on cylinders.</h3>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  The decimal point is at the |
+
+   5 | 8
+   6 | 16
+   7 | 012488
+   8 | 13359
+   9 | 278
+  10 | 
+  11 | 2
+  12 | 6
+  13 | 
+  14 | 1</code></pre>
+</div>
+</div>
+<ul>
+<li>Does the display appear to be reasonably symmetric about a representative value, or would you describe its shape in some other way?</li>
+</ul>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>cylinders
+ 5.8  6.1  6.6    7  7.1  7.2  7.4  8.1  8.5  8.9  9.2  9.7  9.8 11.2 12.6 14.1 
+   1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1 
+ 7.8  8.3 
+   2    2 </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8.575</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8.2</code></pre>
+</div>
+</div>
+<p>This data of cylinders also appears to have a slight positive skew, shown by mean (orange line) to the right of the median (red line) and mode (yellow line). However the mean is a lot closer to the median and mode in this than in the previous graph because there appear to bee less extreme observations.</p>
+<ul>
+<li>Do there appear to be any outlying strength values?</li>
+</ul>
+<p>14.1 appears to be an outlying strength value, as well as 11.2 and 12.6. Without these three values the mean and median are almost identical, shown below in cylinders.clean.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 6.1 5.8 7.8 7.1 7.2 9.2 6.6 8.3 7.0 8.3 7.8 8.1 7.4 8.5 8.9 9.8 9.7</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7.858824</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7.8</code></pre>
+</div>
+</div>
+<ul>
+<li>What proportion of strength observations in this sample exceed 10 MPa?</li>
+</ul>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "15 %"</code></pre>
+</div>
+</div>
+<p>About 15% of the data observations exceed 10 Mpa.</p>
+</section>
+<section id="b.-in-what-ways-are-the-two-sides-of-the-display-similar-are-there-any-obvious-differences-between-the-beam-observations-and-the-cylinder-observations" class="level3">
+<h3 class="anchored" data-anchor-id="b.-in-what-ways-are-the-two-sides-of-the-display-similar-are-there-any-obvious-differences-between-the-beam-observations-and-the-cylinder-observations"><code>b.</code> In what ways are the two sides of the display similar? Are there any obvious differences between the beam observations and the cylinder observations?</h3>
+<p>Both displays show relatively normal distributions with slight skews to the right. Similarly both the beam and cylinders have approximately 15% of the data outside the normal distribution. An obvious difference between the two is that the beam data was more skewed than the cylinder. A reason for this may be that the range of values for the beam is smaller than the range of values for cylinders, so the beam mean is more sensitive to outlying data.</p>
+</section>
+</section>
+<section id="exposure-to-microbial-products-especially-endotoxin-may-have-an-impact-on-vulnerability-to-allergic-diseases.-the-article-dust-sampling-methods-for-endotoxin-an-essential-but-underestimated-issue-indoor-air-2006-20-27-considered-various-issues-associated-with-determining-endotoxin-concentration.-the-following-data-on-concentration-eumg-in-settled-dust-for-one-sample-of-urban-homes-and-another-of-farm-homes-was-kindly-supplied-by-the-authors-of-the-cited-article." class="level2">
+<h2 class="anchored" data-anchor-id="exposure-to-microbial-products-especially-endotoxin-may-have-an-impact-on-vulnerability-to-allergic-diseases.-the-article-dust-sampling-methods-for-endotoxin-an-essential-but-underestimated-issue-indoor-air-2006-20-27-considered-various-issues-associated-with-determining-endotoxin-concentration.-the-following-data-on-concentration-eumg-in-settled-dust-for-one-sample-of-urban-homes-and-another-of-farm-homes-was-kindly-supplied-by-the-authors-of-the-cited-article."><code>1.34</code> Exposure to microbial products, especially endotoxin, may have an impact on vulnerability to allergic diseases. The article “Dust Sampling Methods for Endotoxin – An Essential, But Underestimated Issue” (Indoor Air, 2006: 20-27) considered various issues associated with determining endotoxin concentration. The following data on concentration (EU/mg) in settled dust for one sample of urban homes and another of farm homes was kindly supplied by the authors of the cited article.</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>urban <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">6.0</span>, <span class="fl">5.0</span>, <span class="fl">11.0</span>, <span class="fl">33.0</span>, <span class="fl">4.0</span>, <span class="fl">5.0</span>, <span class="fl">80.0</span>, <span class="fl">18.0</span>, <span class="fl">35.0</span>, <span class="fl">17.0</span>, <span class="fl">23.0</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>farm <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">4.0</span>, <span class="fl">14.0</span>, <span class="fl">11.0</span>, <span class="fl">9.0</span>, <span class="fl">9.0</span>, <span class="fl">8.0</span>, <span class="fl">4.0</span>, <span class="fl">20.0</span>, <span class="fl">5.0</span>, <span class="fl">8.9</span>, <span class="fl">21.0</span>, <span class="fl">9.2</span>, <span class="fl">3.0</span>, <span class="fl">2.0</span>, <span class="fl">0.3</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="a.-determine-the-sample-mean-for-each-sample.-how-do-they-compare" class="level3">
+<h3 class="anchored" data-anchor-id="a.-determine-the-sample-mean-for-each-sample.-how-do-they-compare"><code>a.</code> Determine the sample mean for each sample. How do they compare?</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(urban)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 21.54545</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(farm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8.56</code></pre>
+</div>
+</div>
+<p>The mean endotoxin concentration is greater in urban homes than farm homes.</p>
+</section>
+<section id="b.-determine-the-sample-median-for-each-sample.-how-do-they-compare-why-is-the-median-for-the-urban-sample-so-different-from-the-mean-for-that-sample" class="level3">
+<h3 class="anchored" data-anchor-id="b.-determine-the-sample-median-for-each-sample.-how-do-they-compare-why-is-the-median-for-the-urban-sample-so-different-from-the-mean-for-that-sample"><code>b.</code> Determine the sample median for each sample. How do they compare? Why is the median for the urban sample so different from the mean for that sample?</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(urban)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 17</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(farm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8.9</code></pre>
+</div>
+</div>
+<p>The median endotoxin concentration is greater in urban homes than farm homes.</p>
+<p>The urban sample’s median is so different from the mean, because the mean is more sensitive to outliers in the data (such as 80 EU/mg) than the median is.</p>
+</section>
+<section id="c.-calculate-the-trimmed-mean-for-each-sample-by-deleting-the-smallest-and-largest-observation.-what-are-the-corresponding-trimming-percentages-how-do-the-values-of-these-trimmed-means-compare-to-the-corresponding-means-and-medians" class="level3">
+<h3 class="anchored" data-anchor-id="c.-calculate-the-trimmed-mean-for-each-sample-by-deleting-the-smallest-and-largest-observation.-what-are-the-corresponding-trimming-percentages-how-do-the-values-of-these-trimmed-means-compare-to-the-corresponding-means-and-medians"><code>c.</code> Calculate the trimmed mean for each sample by deleting the smallest and largest observation. What are the corresponding trimming percentages? How do the values of these trimmed means compare to the corresponding means and medians?</h3>
+<p>To start I will sort the data to see what are the largest and smallest observations for both.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(urban)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  4  5  5  6 11 17 18 23 33 35 80</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(farm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  0.3  2.0  3.0  4.0  4.0  5.0  8.0  8.9  9.0  9.0  9.2 11.0 14.0 20.0 21.0</code></pre>
+</div>
+</div>
+<p>From the sorted data I can see the lowest and highest values for urban are c(4,80), and for farm they are c(0.3,21). These values are removed from the urban.trim and farm.trim shown below.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>urban.trim <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">6.0</span>, <span class="fl">5.0</span>, <span class="fl">11.0</span>, <span class="fl">33.0</span>, <span class="fl">5.0</span>, <span class="fl">18.0</span>, <span class="fl">35.0</span>, <span class="fl">17.0</span>, <span class="fl">23.0</span>)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>farm.trim <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">4.0</span>, <span class="fl">14.0</span>, <span class="fl">11.0</span>, <span class="fl">9.0</span>, <span class="fl">9.0</span>, <span class="fl">8.0</span>, <span class="fl">4.0</span>, <span class="fl">20.0</span>, <span class="fl">5.0</span>, <span class="fl">8.9</span>, <span class="fl">9.2</span>, <span class="fl">3.0</span>, <span class="fl">2.0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>To find the corresponding trimming percentages I subtracted the sum of the subtracted values from the sums of the urban and farm data sets respectively, and then divide each by the length of each data set respectively.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">sum</span>(urban)<span class="sc">-</span><span class="dv">84</span>)<span class="sc">/</span><span class="fu">length</span>(urban)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 13.90909</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">sum</span>(farm)<span class="sc">-</span><span class="fl">21.3</span>)<span class="sc">/</span><span class="fu">length</span>(farm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7.14</code></pre>
+</div>
+</div>
+<p>The two values removed from the urban dataset is about 14% of the data, slightly more then the 7.14% variation of the farm data set.</p>
+<p>Now to look at the trimmed means.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(urban.trim)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 17</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(farm.trim)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8.238462</code></pre>
+</div>
+</div>
+<p>The trimmed mean of the urban data is closer to the median of the urban data, whereas the trimmed mean for the farm data is farther away from the mean and median of the untrimmed data. After this analysis it would seem that trimming the first data set may be appropriate, whereas trimming the second may lead to misleading data. Looking at the stem-and-leaf displays are helpful in visualizing distributions and outliers.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stem</span>(urban, <span class="at">scale =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  The decimal point is 1 digit(s) to the right of the |
+
+  0 | 4556
+  1 | 178
+  2 | 3
+  3 | 35
+  4 | 
+  5 | 
+  6 | 
+  7 | 
+  8 | 0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stem</span>(farm, <span class="at">scale =</span> .<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  The decimal point is 1 digit(s) to the right of the |
+
+  0 | 02344589999
+  1 | 14
+  2 | 01</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="exercise-34-presented-the-following-data-on-endotoxin-concentration-in-settled-dust-both-for-a-sample-of-urban-homes-and-for-a-sample-of-farm-homes" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-34-presented-the-following-data-on-endotoxin-concentration-in-settled-dust-both-for-a-sample-of-urban-homes-and-for-a-sample-of-farm-homes"><code>1.48</code> Exercise 34 presented the following data on endotoxin concentration in settled dust both for a sample of urban homes and for a sample of farm homes:</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>urban</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  6  5 11 33  4  5 80 18 35 17 23</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>farm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  4.0 14.0 11.0  9.0  9.0  8.0  4.0 20.0  5.0  8.9 21.0  9.2  3.0  2.0  0.3</code></pre>
+</div>
+</div>
+<section id="a.-determine-the-value-of-the-sample-standard-deviation-for-each-sample-interpret-these-values-and-then-contrast-variability-in-the-two-samples." class="level3">
+<h3 class="anchored" data-anchor-id="a.-determine-the-value-of-the-sample-standard-deviation-for-each-sample-interpret-these-values-and-then-contrast-variability-in-the-two-samples."><code>a.</code> Determine the value of the sample standard deviation for each sample, interpret these values, and then contrast variability in the two samples.</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(urban)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 22.29961</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(farm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6.087669</code></pre>
+</div>
+</div>
+<p>Another way we could find the standard deviation given the hint and the following equation given in class :</p>
+<p>[s^2=_{i=1}^{n}(x_i - x)^2] [=[_{i=1}<sup>{n}x_i</sup>2 - ]]</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># hint</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>sigma_x_i.u <span class="ot">&lt;-</span> <span class="fl">237.0</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>sigma_x_i.f <span class="ot">&lt;-</span> <span class="fl">128.4</span></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>sigma_x_i_2.u <span class="ot">&lt;-</span> <span class="dv">10079</span></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>sigma_x_i_2.f <span class="ot">&lt;-</span> <span class="fl">1617.94</span></span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>n.u <span class="ot">&lt;-</span> <span class="fu">length</span>(urban)</span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>n.f <span class="ot">&lt;-</span> <span class="fu">length</span>(farm)</span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>constant.u <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span>(n.u<span class="dv">-1</span>)</span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>constant.f <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span>(n.f<span class="dv">-1</span>)</span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a>sv.u <span class="ot">&lt;-</span> constant.u<span class="sc">*</span>(sigma_x_i_2.u <span class="sc">-</span> (sigma_x_i.u)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>n.u)</span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a>sv.f <span class="ot">&lt;-</span> constant.f<span class="sc">*</span>(sigma_x_i_2.f <span class="sc">-</span> (sigma_x_i.f)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>n.f)</span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(sv.u)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 22.29961</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(sv.f)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6.087669</code></pre>
+</div>
+</div>
+</section>
+<section id="b.-compute-the-fourth-spread-for-each-sample-and-compare.-do-the-fourth-spreads-convey-the-same-message-about-variability-that-the-standard-deviations-do-explain." class="level3">
+<h3 class="anchored" data-anchor-id="b.-compute-the-fourth-spread-for-each-sample-and-compare.-do-the-fourth-spreads-convey-the-same-message-about-variability-that-the-standard-deviations-do-explain."><code>b.</code> Compute the fourth spread for each sample and compare. Do the fourth spreads convey the same message about variability that the standard deviations do? Explain.</h3>
+<p>The quickest way to do this in r is with quantile().</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(urban)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  0%  25%  50%  75% 100% 
+ 4.0  5.5 17.0 28.0 80.0 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(farm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  0%  25%  50%  75% 100% 
+ 0.3  4.0  8.9 10.1 21.0 </code></pre>
+</div>
+</div>
+<p>Explanation : coming soon</p>
+<p>Another way to find the forth spread is by first computing the upper fourth and lower fourth . To do that I first sorted the data, and then split it in half. Notice that because n for both data sets is odd, I figure out the middle value that is included in both, before I create the new data sets.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sort </span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>sorted.u <span class="ot">&lt;-</span> <span class="fu">sort</span>(urban)</span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>sorted.f <span class="ot">&lt;-</span> <span class="fu">sort</span>(farm)</span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>sorted.u</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  4  5  5  6 11 17 18 23 33 35 80</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>sorted.f</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  0.3  2.0  3.0  4.0  4.0  5.0  8.0  8.9  9.0  9.0  9.2 11.0 14.0 20.0 21.0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># find included value </span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>include.u <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(n.u<span class="sc">/</span><span class="dv">2</span>)<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>include.f <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(n.f<span class="sc">/</span><span class="dv">2</span>)<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>sorted.u[include.u]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 17</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>sorted.f[include.f]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8.9</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># upper and lower forth </span></span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>urban.lower <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>,  <span class="dv">5</span>,  <span class="dv">5</span>,  <span class="dv">6</span>, <span class="dv">11</span>, <span class="dv">17</span>)</span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>urban.upper <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">17</span>, <span class="dv">18</span>, <span class="dv">23</span>, <span class="dv">33</span>, <span class="dv">35</span>, <span class="dv">80</span>)</span>
+<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>farm.lower <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.3</span>,  <span class="fl">2.0</span>,  <span class="fl">3.0</span>,  <span class="fl">4.0</span>,  <span class="fl">4.0</span>,  <span class="fl">5.0</span>,  <span class="fl">8.0</span>,  <span class="fl">8.9</span>)</span>
+<span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a>farm.upper <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">8.9</span>,  <span class="fl">9.0</span>,  <span class="fl">9.0</span>,  <span class="fl">9.2</span>, <span class="fl">11.0</span>, <span class="fl">14.0</span>, <span class="fl">20.0</span>, <span class="fl">21.0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now that the data is sorted, the middle values of 17 and 8.9 have been found, and the data has been split into two chunks I can compute the minimum,lower forth median, median, upper forth median, and the largest value.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(urban)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(urban.lower)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.5</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(urban)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 17</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(urban.upper)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 28</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(urban)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 80</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(farm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(farm.lower)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(farm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8.9</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(farm.upper)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10.1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(farm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 21</code></pre>
+</div>
+</div>
+<ul>
+<li>The authors of the cited article also provided endotoxin concentrations in dust bag dust:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>urban.bag <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">34.0</span>, <span class="fl">49.0</span>, <span class="fl">13.0</span>, <span class="fl">33.0</span>, <span class="fl">24.0</span>, <span class="fl">24.0</span>, <span class="fl">35.0</span>, <span class="fl">104.0</span>, <span class="fl">34.0</span>, <span class="fl">40.0</span>, <span class="fl">38.0</span>, <span class="fl">1.0</span>)</span>
+<span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a>farm.bag <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.0</span>, <span class="fl">64.0</span>, <span class="fl">6.0</span>, <span class="fl">17.0</span>, <span class="fl">35.0</span>, <span class="fl">11.0</span>, <span class="fl">17.0</span>, <span class="fl">13.0</span>, <span class="fl">5.0</span>, <span class="fl">27.0</span>, <span class="fl">23.0</span>,</span>
+<span id="cb88-3"><a href="#cb88-3" aria-hidden="true" tabindex="-1"></a>              <span class="fl">28.0</span>, <span class="fl">10.0</span>, <span class="fl">13.0</span>, <span class="fl">0.2</span>)</span>
+<span id="cb88-4"><a href="#cb88-4" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(urban.bag)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   0%   25%   50%   75%  100% 
+  1.0  24.0  34.0  38.5 104.0 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(farm.bag)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  0%  25%  50%  75% 100% 
+ 0.2  8.0 13.0 25.0 64.0 </code></pre>
+</div>
+</div>
+<p>Construct a comparative boxplot (as did the cited paper) and compare and contrast the four samples.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(urban)</span>
+<span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(urban.bag)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(farm)</span>
+<span id="cb93-3"><a href="#cb93-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(farm.bag)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-28-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="the-article-a-thin-film-oxygen-uptake-test-for-the-evaluation-of-automotive-crankcase-lubricants-lubric.-engr.-1984-75-83-reported-the-following-data-on-oxidation-induction-time-min-for-various-commercial-oils" class="level2">
+<h2 class="anchored" data-anchor-id="the-article-a-thin-film-oxygen-uptake-test-for-the-evaluation-of-automotive-crankcase-lubricants-lubric.-engr.-1984-75-83-reported-the-following-data-on-oxidation-induction-time-min-for-various-commercial-oils"><code>1.51</code> The article “A Thin-Film Oxygen Uptake Test for the Evaluation of Automotive Crankcase Lubricants” (Lubric. Engr., 1984: 75-83) reported the following data on oxidation-induction time (min) for various commercial oils:</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a>oxi.induct.time.min <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">87</span>, <span class="dv">103</span>, <span class="dv">130</span>, <span class="dv">160</span>, <span class="dv">180</span>, <span class="dv">195</span>, <span class="dv">132</span>, <span class="dv">145</span>, <span class="dv">211</span>, <span class="dv">105</span>, <span class="dv">145</span>,</span>
+<span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a>                         <span class="dv">153</span>, <span class="dv">152</span>, <span class="dv">138</span>, <span class="dv">87</span>, <span class="dv">99</span>, <span class="dv">93</span>, <span class="dv">119</span>, <span class="dv">129</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="a.-calculate-the-sample-variance-and-the-standard-deviation." class="level3">
+<h3 class="anchored" data-anchor-id="a.-calculate-the-sample-variance-and-the-standard-deviation."><code>a.</code> Calculate the sample variance and the standard deviation.</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>oxi.var <span class="ot">&lt;-</span> <span class="fu">var</span>(oxi.induct.time.min)</span>
+<span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a>oxi.sd <span class="ot">&lt;-</span> <span class="fu">sd</span>(oxi.induct.time.min)</span>
+<span id="cb95-3"><a href="#cb95-3" aria-hidden="true" tabindex="-1"></a>oxi.var</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1264.766</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>oxi.sd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 35.56355</code></pre>
+</div>
+</div>
+</section>
+<section id="b.-if-the-observations-were-re-expressed-in-hours-what-would-be-the-resulting-values-of-the-sample-variance-and-sample-standard-deviation-answer-without-actually-performing-the-re-expression." class="level3">
+<h3 class="anchored" data-anchor-id="b.-if-the-observations-were-re-expressed-in-hours-what-would-be-the-resulting-values-of-the-sample-variance-and-sample-standard-deviation-answer-without-actually-performing-the-re-expression."><code>b.</code> If the observations were re-expressed in hours, what would be the resulting values of the sample variance and sample standard deviation? Answer without actually performing the re-expression.</h3>
+<p>The standard deviation has the same units as the data values (minutes) so in hours the standard deviation would be 35.56/60 (or a little over half an hour) whereas the variance is the standard deviation squared, so the values would be converted 1264.766/60^2.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a>oxi.var<span class="sc">/</span><span class="dv">60</span><span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3513239</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a>oxi.sd<span class="sc">/</span><span class="dv">60</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5927258</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="co"># verification </span></span>
+<span id="cb103-2"><a href="#cb103-2" aria-hidden="true" tabindex="-1"></a>oxi.induct.time.hour <span class="ot">&lt;-</span> oxi.induct.time.min<span class="sc">/</span><span class="dv">60</span></span>
+<span id="cb103-3"><a href="#cb103-3" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(oxi.induct.time.hour)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3513239</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(oxi.induct.time.hour) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5927258</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="observations-on-burst-strength-lbin2-were-obtained-both-for-test-nozzle-welds-proper-procedures-are-the-key-to-welding-radioactive-waste-canisters-welding-j.-auud.-1997-61-67" class="level2">
+<h2 class="anchored" data-anchor-id="observations-on-burst-strength-lbin2-were-obtained-both-for-test-nozzle-welds-proper-procedures-are-the-key-to-welding-radioactive-waste-canisters-welding-j.-auud.-1997-61-67"><code>1.60</code> Observations on burst strength (lb/in2) were obtained both for test nozzle welds (“Proper Procedures Are the Key to Welding Radioactive Waste Canisters,” Welding J., Auud. 1997: 61-67)</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a>Test <span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">7200</span>, <span class="dv">6100</span>, <span class="dv">7300</span>, <span class="dv">7300</span>, <span class="dv">8000</span>, <span class="dv">7400</span>,</span>
+<span id="cb107-2"><a href="#cb107-2" aria-hidden="true" tabindex="-1"></a>         <span class="dv">7300</span>, <span class="dv">7300</span>, <span class="dv">8000</span>, <span class="dv">6700</span>, <span class="dv">8300</span>)         </span>
+<span id="cb107-3"><a href="#cb107-3" aria-hidden="true" tabindex="-1"></a>Cannister <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5250</span>, <span class="dv">5625</span>, <span class="dv">5900</span>, <span class="dv">5900</span>, <span class="dv">5700</span>, <span class="dv">6050</span>,</span>
+<span id="cb107-4"><a href="#cb107-4" aria-hidden="true" tabindex="-1"></a>               <span class="dv">5800</span>, <span class="dv">6000</span>, <span class="dv">5875</span>, <span class="dv">6100</span>, <span class="dv">5850</span>, <span class="dv">6600</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="a.-construct-a-comparative-boxplot-and-comment-on-interesting-features-the-cited-article-did-not-include-such-a-picture-but-the-authors-commented-that-they-had-looked-at-one." class="level3">
+<h3 class="anchored" data-anchor-id="a.-construct-a-comparative-boxplot-and-comment-on-interesting-features-the-cited-article-did-not-include-such-a-picture-but-the-authors-commented-that-they-had-looked-at-one."><code>a.</code> Construct a comparative boxplot and comment on interesting features (the cited article did not include such a picture, but the authors commented that they had looked at one).</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb108-2"><a href="#cb108-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(Test, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">5000</span>, <span class="dv">8500</span>), <span class="at">main =</span> <span class="st">"Test"</span>)</span>
+<span id="cb108-3"><a href="#cb108-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(Cannister, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">5000</span>, <span class="dv">8500</span>), <span class="at">main =</span> <span class="st">"Cannister"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Test)<span class="sc">-</span><span class="fu">mean</span>(Cannister)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1467.045</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7354.545</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Cannister)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5887.5</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(Test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 613.7811</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(Cannister)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 317.9301</code></pre>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<script src="https://giscus.app/client.js" data-repo="rbolt13/rbolt22" data-repo-id="R_kgDOIJG8zw" data-category="General" data-category-id="DIC_kwDOIJG8z84CSd2f" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
