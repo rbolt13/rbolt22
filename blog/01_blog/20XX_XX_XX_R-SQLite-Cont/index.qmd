@@ -1,0 +1,199 @@
+---
+title: "R and SQLite"
+date: "2023-01-23"
+categories: [R, SQL]
+toc: true
+draft: true
+---
+
+
+::: {.panel-tabset}
+
+### `0.0 Set-Up`
+
+**Contents:**
+
+* 0.1 Packages
+
+* 0.2 Data
+
+* 0.3 Data base
+
+### `0.1 Packages`
+
+For all my data queries and manipulation in R I will be using base R, [dplyr](https://dplyr.tidyverse.org/), and [magrittr](https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html).
+
+```{r R packages, warning=FALSE, message=FALSE}
+library(dplyr)
+library(magrittr)
+```
+
+To create a SQL database, and run SQL queries in R chunks I will be using a package called [RSQLite](https://cran.r-project.org/web/packages/RSQLite/index.html). 
+
+```{r SQLite package}
+library(RSQLite)
+```
+
+### `0.2 Data` 
+
+This post will use three data sets that I copied from [Learn SQL](https://www.sql-practice.com/): 
+
+1. `patients`: Which includes patient_id, first_name, last_name, gender, birth_date, city, province_id, allergies, height, and weight. Note I only copied the first 1000 entries. 
+
+```{r patients data}
+patients <- utils::read.csv('../../00_data/patients.csv')
+```
+
+2. `province_names`: Which includes province_id, and province_name. 
+
+```{r province_names data}
+province_names <- utils::read.csv("../../00_data/province_names.csv")
+```
+
+3. `admissions`: which includes patient_id, admission_date, discharge_date, diagnosis, attending_doctor_id
+
+```{r admissions data}
+admissions <- utils::read.csv("../../00_data/admissions.csv")
+```
+
+
+### `0.3 Database`  
+
+To create a database use: 
+
+* `dbConnect()` to connect to a SQL data base called Hospital.db in the 00_data folder. 
+
+* `SQLite()` to connect to a SQLite database file. 
+
+```{r}
+hosp <- RSQLite::dbConnect(RSQLite::SQLite(),
+                           "../../00_data/Hospital.db")
+```
+
+To define data within the database use:
+
+* `dbWriteTable()` to create a data set within the hospital database first call the data base (hosp), define a name, and then define the data. 
+
+```{r, eval=FALSE}
+RSQLite::dbWriteTable(hosp,
+                      "patients",
+                      patients)
+RSQLite::dbWriteTable(hosp,
+                      "province_names",
+                      province_names)
+RSQLite::dbWriteTable(hosp,
+                      "admissions",
+                      admissions)
+```
+
+Verify the three data sets are in the database using:
+
+* `dbListTables()` to list the tables within the hosp database. 
+
+```{r}
+RSQLite::dbListTables(hosp)
+```
+
+---
+
+
+# `11.` Show by week the revenue by province, and city. 
+
+::: {.panel-tabset}
+
+### `11.0`
+
+**Contents**
+
+* 11.1 Solution in R
+
+* 11.2 Solution in SQL
+
+### `11.1 R`
+
+Start by defining discharge_week_num using:
+
+* `strftime()` to input discharge_date from the admissions data and format by week of the year.  
+
+```{r}
+admissions$discharge_week_num <- base::strftime(admissions$discharge_date, format = "%V")
+```
+
+Redefine the cost_after_insurance column as an integer using: 
+
+* `as.interger` to convert cost_after_insurance to an integer. 
+
+```{r}
+patients <- patients %>%
+  dplyr::mutate(
+    has_insurance = dplyr::case_when(
+    patient_id %%2==1 ~ "Yes",
+    patient_id %%2!=1 ~ "No"
+  ),cost_after_insurance = dplyr::case_when(
+    has_insurance == "Yes" ~ 10,
+    has_insurance == "No" ~ 50
+  ))
+```
+
+
+```{r}
+patients$cost_after_insurance <- as.integer(patients$cost_after_insurance)
+```
+
+Create a list of patients, admission, and province names data called hosp using: 
+
+* `list` to create a list. 
+
+```{r}
+hosp <- base::list(patients, admissions, province_names) 
+```
+
+To show weekly revenue by province in R use: 
+
+* `Reduce` to use a function to combine all the data sets in the hosp list. 
+
+* `group_by` to group the data by discharge_week_num, and then by province_name. 
+
+* `summarise` to define weekly_cost_after_insurance.
+
+* `sum` to add up the cost_after_insurance by week and province_name. 
+
+* `arrange` to arrange by discharge_week_num.
+
+* `head()` to show the first ten rows of data
+
+```{r}
+base::Reduce(function(x,y)merge(x,y, all=TRUE), hosp) %>%
+  dplyr::group_by(discharge_week_num, province_name, city)  %>%
+  dplyr::summarise(cost_after_insurance = base::sum(cost_after_insurance)) %>%
+  dplyr::arrange(discharge_week_num) %>%
+  utils::head(10)
+```
+
+To show the weekly revenue by city modify: 
+
+* `group_by` adding city. 
+
+```{r}
+base::Reduce(function(x,y)merge(x,y, all=TRUE), hosp) %>%
+  dplyr::group_by(discharge_week_num, province_name, city)  %>%
+  dplyr::summarise(cost_after_insurance = base::sum(cost_after_insurance)) %>%
+  dplyr::arrange(discharge_week_num) %>%
+  utils::head(10)
+```
+
+### `11.2 SQL`
+
+**COMING SOON**
+
+In SQL use: 
+
+```{r, eval=FALSE}
+RSQLite::dbGetQuery(hosp,
+                    "SELECT ")
+```
+
+
+
+
+:::

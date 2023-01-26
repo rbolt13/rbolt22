@@ -11,6 +11,9 @@ about:
     - icon: mastodon
       text: Mastodon
       href: https://pnw.zone/@rbolt
+    - icon: spotify
+      text: Spotify
+      href: https://open.spotify.com/user/innluxglueuzbltzfxgbsc2dz?si=b2fd3674e2694dd3
     - icon: linkedin
       text: LinkedIn
       href: https://www.linkedin.com/in/randi-bolt/

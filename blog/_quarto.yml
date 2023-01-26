@@ -24,6 +24,9 @@ website:
       - icon: mastodon
         href: https://pnw.zone/@rbolt
         aria-label: Mastodon
+      - icon: spotify
+        href: https://open.spotify.com/user/innluxglueuzbltzfxgbsc2dz?si=b2fd3674e2694dd3
+        aria-label: Spotify
       - icon: linkedin
         href: https://www.linkedin.com/in/randi-bolt/
         aria-label: Linkedin

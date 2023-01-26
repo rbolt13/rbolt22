@@ -186,6 +186,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  </a>
   </li>  
   <li class="nav-item compact">
+    <a class="nav-link" href="https://open.spotify.com/user/innluxglueuzbltzfxgbsc2dz?si=b2fd3674e2694dd3"><i class="bi bi-spotify" role="img" aria-label="Spotify">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
     <a class="nav-link" href="https://www.linkedin.com/in/randi-bolt/"><i class="bi bi-linkedin" role="img" aria-label="Linkedin">
 </i> 
  </a>
@@ -517,31 +522,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x_train,x_test,y_train,y_test<span class="op">=</span>train_test_split(x,y,test_size<span class="op">=</span><span class="fl">0.2</span>)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>x_train.head</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
-<pre><code>&lt;bound method NDFrame.head of      PassengerId  Pclass                               Name     Sex   Age  \
-549          550       2     Davies, Master. John Morgan Jr    male   8.0   
-664          665       3        Lindqvist, Mr. Eino William    male  20.0   
-462          463       1                  Gee, Mr. Arthur H    male  47.0   
-137          138       1        Futrelle, Mr. Jacques Heath    male  37.0   
-500          501       3                   Calic, Mr. Petar    male  17.0   
-..           ...     ...                                ...     ...   ...   
-342          343       2         Collander, Mr. Erik Gustaf    male  28.0   
-397          398       2            McKane, Mr. Peter David    male  46.0   
-524          525       3                  Kassem, Mr. Fared    male   NaN   
-684          685       2  Brown, Mr. Thomas William Solomon    male  60.0   
-306          307       1            Fleming, Miss. Margaret  female   NaN   
+<pre><code>&lt;bound method NDFrame.head of      PassengerId  Pclass                                             Name  \
+310          311       1                   Hays, Miss. Margaret Bechstein   
+579          580       3                              Jussila, Mr. Eiriik   
+591          592       1  Stephenson, Mrs. Walter Bertram (Martha Eustis)   
+232          233       2                        Sjostedt, Mr. Ernst Adolf   
+138          139       3                              Osen, Mr. Olaf Elon   
+..           ...     ...                                              ...   
+819          820       3                     Skoog, Master. Karl Thorsten   
+371          372       3                        Wiklund, Mr. Jakob Alfred   
+327          328       2                          Ball, Mrs. (Ada E Hall)   
+159          160       3                       Sage, Master. Thomas Henry   
+45            46       3                         Rogers, Mr. William John   
 
-     SibSp  Parch             Ticket      Fare Cabin Embarked  
-549      1      1         C.A. 33112   36.7500   NaN        S  
-664      1      0  STON/O 2. 3101285    7.9250   NaN        S  
-462      0      0             111320   38.5000   E63        S  
-137      1      0             113803   53.1000  C123        S  
-500      0      0             315086    8.6625   NaN        S  
-..     ...    ...                ...       ...   ...      ...  
-342      0      0             248740   13.0000   NaN        S  
-397      0      0              28403   26.0000   NaN        S  
-524      0      0               2700    7.2292   NaN        C  
-684      1      1              29750   39.0000   NaN        S  
-306      0      0              17421  110.8833   NaN        C  
+        Sex   Age  SibSp  Parch             Ticket     Fare Cabin Embarked  
+310  female  24.0      0      0              11767  83.1583   C54        C  
+579    male  32.0      0      0  STON/O 2. 3101286   7.9250   NaN        S  
+591  female  52.0      1      0              36947  78.2667   D20        C  
+232    male  59.0      0      0             237442  13.5000   NaN        S  
+138    male  16.0      0      0               7534   9.2167   NaN        S  
+..      ...   ...    ...    ...                ...      ...   ...      ...  
+819    male  10.0      3      2             347088  27.9000   NaN        S  
+371    male  18.0      1      0            3101267   6.4958   NaN        S  
+327  female  36.0      0      0              28551  13.0000     D        S  
+159    male   NaN      8      2           CA. 2343  69.5500   NaN        S  
+45     male   NaN      0      0    S.C./A.4. 23567   8.0500   NaN        S  
 
 [712 rows x 11 columns]&gt;</code></pre>
 </div>

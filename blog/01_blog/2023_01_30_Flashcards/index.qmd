@@ -6,20 +6,74 @@ toc: true
 draft: true
 ---
 
-This post covers terminology in the fields of data science, machine learning, math, probability, and statistics. 
+This post covers terminology in the fields of data science, machine learning, math, probability, and statistics with interactive flashcards. 
 
 ![](../../00_img/flashcards.png)
 
 # Introduction 
 
-This is why... each section is split up by topic ... also more will be added. 
+The last couple of data science interviews I went on the first technical interview was a lightning round of "Tell Me What This Is?". These questions included topics regarding machine learning, statistics, mathematics, and data science. To help me get better prepared for these types of interviews I originally thought about creating my own data dictionary. However, those already existed and I wanted something that would be more interactive. That's why instead of a dictionary, I am using quarto to create tabbed panels aka "Flashcards". That way each definition can be hidden or revealed by flipping over the flashcard (aka switching to the "Definition" tab).
 
-# Data Science
+All words are sorted alphabetically and will continually update with time. Please let me know in the comments if there's anything you think I should add, or a word you would have defined differently. 
+
+# A
 
 ::: {.panel-tabset}
 
-### Word
+### A/B Testing
 
+### Definition 
+To compare two versions of something, usually a control (A) and a test variable (B). 
+
+:::
+
+# B 
+
+::: {.panel-tabset}
+
+### Bayes Theorem
+
+### Definition 
+A method for calculating conditional probabilities, or the likelihood of one event occurring if another has previously occurred. 
+
+$$P(A|B)=\frac{P(A|B)P(A)}{P(B)}$$
+
+:::
+
+::: {.panel-tabset}
+
+### Bias
+
+### Definition 
+When a model or statistic that doesn’t provide a true representation of the population.
+
+:::
+
+::: {.panel-tabset}
+
+### Binomial Property
+
+### Definition 
+The probability that exactly x successes on n repeated trials in an experiment which has two possible outcomes. 
+$$P_x={n\choose x}p^xq^{n-x}$$
+
+:::
+
+# C 
+
+::: {.panel-tabset}
+
+### Categorical Data
+
+### Definition 
+
+Data that can be divided into groups or categories such as sex, race, and age. 
+
+:::
+
+::: {.panel-tabset}
+
+### Conditional Probability
 
 ### Definition 
 
@@ -27,8 +81,29 @@ This is why... each section is split up by topic ... also more will be added.
 
 ::: {.panel-tabset}
 
-### Word
+### Confusion (Error) Matrix
 
+### Definition 
+
+:::
+
+# D 
+
+::: {.panel-tabset}
+
+### Data Classification
+
+### Definition 
+
+Organizing data by relevant categories according to predefined criteria so that it may be used and protected more efficiently. 
+
+An example would be data that is classified as public, such as username, or profile picture, or classifying it as private such as password, or credit card number. 
+
+:::
+
+::: {.panel-tabset}
+
+### Data Leakage
 
 ### Definition 
 
@@ -36,8 +111,26 @@ This is why... each section is split up by topic ... also more will be added.
 
 ::: {.panel-tabset}
 
-### Word
+### Data Science
 
+### Definition 
+
+Studying data to find insight using computer science, mathematics, and statistics. 
+
+:::
+
+::: {.panel-tabset}
+
+### Database
+
+### Definition 
+Organized collection of data. 
+
+:::
+
+::: {.panel-tabset}
+
+### Decision Tree
 
 ### Definition 
 
@@ -45,17 +138,7 @@ This is why... each section is split up by topic ... also more will be added.
 
 ::: {.panel-tabset}
 
-### Word
-
-
-### Definition 
-
-:::
-
-::: {.panel-tabset}
-
-### Word
-
+### Derivative
 
 ### Definition 
 
@@ -63,17 +146,7 @@ This is why... each section is split up by topic ... also more will be added.
 
 ::: {.panel-tabset}
 
-### Word
-
-
-### Definition 
-
-:::
-
-::: {.panel-tabset}
-
-### Word
-
+### Descriptive Statistics
 
 ### Definition 
 
@@ -81,17 +154,7 @@ This is why... each section is split up by topic ... also more will be added.
 
 ::: {.panel-tabset}
 
-### Word
-
-
-### Definition 
-
-:::
-
-::: {.panel-tabset}
-
-### Word
-
+### Determinate
 
 ### Definition 
 
@@ -99,19 +162,7 @@ This is why... each section is split up by topic ... also more will be added.
 
 ::: {.panel-tabset}
 
-### Word
-
-
-### Definition 
-
-:::
-
-# Machine Learning 
-
-::: {.panel-tabset}
-
-### Word
-
+### Dimensionality Reduction
 
 ### Definition 
 
@@ -119,8 +170,17 @@ This is why... each section is split up by topic ... also more will be added.
 
 ::: {.panel-tabset}
 
-### Word
+### Discrete Mathematics
 
+### Definition 
+
+:::
+
+# E 
+
+::: {.panel-tabset}
+
+### Eigenvalue
 
 ### Definition 
 
@@ -128,8 +188,27 @@ This is why... each section is split up by topic ... also more will be added.
 
 ::: {.panel-tabset}
 
-### Word
+### Eigenvector
 
+### Definition 
+
+:::
+
+# G 
+
+::: {.panel-tabset}
+
+### Gamma Function
+
+### Definition 
+
+:::
+
+# H 
+
+::: {.panel-tabset}
+
+### Homogenous
 
 ### Definition 
 
@@ -137,8 +216,17 @@ This is why... each section is split up by topic ... also more will be added.
 
 ::: {.panel-tabset}
 
-### Word
+### Hypothesis Testing
 
+### Definition 
+
+:::
+
+# I
+
+::: {.panel-tabset}
+
+### Inferential Statistics
 
 ### Definition 
 
@@ -146,8 +234,28 @@ This is why... each section is split up by topic ... also more will be added.
 
 ::: {.panel-tabset}
 
-### Word
+### Interval Data
 
+### Definition 
+Data that is measured along a scale, where **each point is placed at equal distance from one another**. Examples would be temperature, or SAT scores. 
+
+:::
+
+# K
+
+::: {.panel-tabset}
+
+### K-Mean Clustering
+
+### Definition 
+
+:::
+
+# L
+
+::: {.panel-tabset}
+
+### Law of Large Numbers
 
 ### Definition 
 
@@ -155,8 +263,17 @@ This is why... each section is split up by topic ... also more will be added.
 
 ::: {.panel-tabset}
 
-### Word
+### Linear Regression
 
+### Definition 
+
+:::
+
+# M
+
+::: {.panel-tabset}
+
+### Machine Learning 
 
 ### Definition 
 
@@ -164,8 +281,17 @@ This is why... each section is split up by topic ... also more will be added.
 
 ::: {.panel-tabset}
 
-### Word
+### Matrix
 
+### Definition 
+
+:::
+
+# N
+
+::: {.panel-tabset}
+
+### Neural Network
 
 ### Definition 
 
@@ -173,8 +299,37 @@ This is why... each section is split up by topic ... also more will be added.
 
 ::: {.panel-tabset}
 
-### Word
+### Nominal Data
 
+### Definition 
+Is categorical data that groups variables into **labeled categories** that do not overlap, and cannot be ranked. Nominal data needs to be grouped to be analyzed. Examples would be sex or race. 
+
+:::
+
+# O 
+
+::: {.panel-tabset}
+
+### Ordinal Data
+
+### Definition 
+Is categorical data that has an **order or ranking system** such as education level, economic status, or satisfaction rating. 
+
+:::
+
+::: {.panel-tabset}
+
+### Overfitting
+
+### Definition 
+
+:::
+
+# R
+
+::: {.panel-tabset}
+
+### Random Forest Model
 
 ### Definition 
 
@@ -182,8 +337,57 @@ This is why... each section is split up by topic ... also more will be added.
 
 ::: {.panel-tabset}
 
-### Word
+### Ratio Data
 
+
+### Definition 
+Is quantitative data that **has a true zero** such as speed, age, and weight. 
+
+:::
+
+::: {.panel-tabset}
+
+### Regularization
+
+### Definition 
+
+:::
+
+# S
+
+::: {.panel-tabset}
+
+### Snowflake and Start Scheme
+
+
+### Definition 
+Both are logical arrangements of a multidimensional database, where the fact table is in the middle of the structure, and it is surrounded by dimension tables. A snowflake scheme has normalized dimension tables meaning there are sub-dimensional tables, whereas a star schema is denormalized and easier to  query since there are fewer joins between tables.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+**Star Schema**
+
+![](../../00_img/star-schema.png)
+
+:::
+
+::: {.column width="50%"}
+
+**Snowflake Schema**
+
+![](../../00_img/snowflake-schema.png)
+
+:::
+
+::::
+
+:::
+
+::: {.panel-tabset}
+
+### Stationary Process
 
 ### Definition 
 
@@ -191,19 +395,7 @@ This is why... each section is split up by topic ... also more will be added.
 
 ::: {.panel-tabset}
 
-### Word
-
-
-### Definition 
-
-:::
-
-# Mathematics
-
-::: {.panel-tabset}
-
-### Word
-
+### Statistics
 
 ### Definition 
 
@@ -211,8 +403,17 @@ This is why... each section is split up by topic ... also more will be added.
 
 ::: {.panel-tabset}
 
-### Word
+### Systems of Linear Equations
 
+### Definition 
+
+:::
+
+# T 
+
+::: {.panel-tabset}
+
+### Training and Test Data
 
 ### Definition 
 
@@ -220,17 +421,7 @@ This is why... each section is split up by topic ... also more will be added.
 
 ::: {.panel-tabset}
 
-### Word
-
-
-### Definition 
-
-:::
-
-::: {.panel-tabset}
-
-### Word
-
+### Transformation
 
 ### Definition 
 
@@ -238,238 +429,19 @@ This is why... each section is split up by topic ... also more will be added.
 
 ::: {.panel-tabset}
 
-### Word
-
-
-### Definition 
-
-:::
-
-::: {.panel-tabset}
-
-### Word
-
+### Type 1 and Type 2 Error
 
 ### Definition 
 
 :::
 
-::: {.panel-tabset}
-
-### Word
-
-
-### Definition 
-
-:::
+# U
 
 ::: {.panel-tabset}
 
-### Word
-
-
-### Definition 
-
-:::
-
-::: {.panel-tabset}
-
-### Word
-
+### Uneven or Unbalanced Data
 
 ### Definition 
-
-:::
-
-::: {.panel-tabset}
-
-### Word
-
-
-### Definition 
-
-:::
-
-# Probability
-
-::: {.panel-tabset}
-
-### Word
-
-
-### Definition 
-
-:::
-
-::: {.panel-tabset}
-
-### Word
-
-
-### Definition 
-
-:::
-
-::: {.panel-tabset}
-
-### Word
-
-
-### Definition 
-
-:::
-
-::: {.panel-tabset}
-
-### Word
-
-
-### Definition 
-
-:::
-
-::: {.panel-tabset}
-
-### Word
-
-
-### Definition 
-
-:::
-
-::: {.panel-tabset}
-
-### Word
-
-
-### Definition 
-
-:::
-
-::: {.panel-tabset}
-
-### Word
-
-
-### Definition 
-
-:::
-
-::: {.panel-tabset}
-
-### Word
-
-
-### Definition 
-
-:::
-
-::: {.panel-tabset}
-
-### Word
-
-
-### Definition 
-
-:::
-
-::: {.panel-tabset}
-
-### Word
-
-
-### Definition 
-
-:::
-
-# Statistics 
-
-::: {.panel-tabset}
-
-### Word
-
-
-### Definition 
-
-:::
-
-::: {.panel-tabset}
-
-### Word
-
-
-### Definition 
-
-:::
-
-::: {.panel-tabset}
-
-### Word
-
-
-### Definition 
-
-:::
-
-::: {.panel-tabset}
-
-### Word
-
-
-### Definition 
-
-:::
-
-::: {.panel-tabset}
-
-### Word
-
-
-### Definition 
-
-:::
-
-::: {.panel-tabset}
-
-### Word
-
-
-### Definition 
-
-:::
-
-::: {.panel-tabset}
-
-### Word
-
-
-### Definition 
-
-:::
-
-::: {.panel-tabset}
-
-### Word
-
-
-### Definition 
-
-:::
-
-::: {.panel-tabset}
-
-### Word
-
-
-### Definition 
-
-:::
-
-::: {.panel-tabset}
-
-### Word
-
-
-### Definition 
+When the target variable has more observations in a specific class than the others. It would not be a good idea to use accuracy as a performance measure for highly imbalanced data.
 
 :::

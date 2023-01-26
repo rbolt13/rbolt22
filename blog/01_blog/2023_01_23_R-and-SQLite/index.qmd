@@ -30,32 +30,39 @@ There are a handful of programming languages that data scientists use when query
 
 For all my data queries and manipulation in R I will be using base R, [dplyr](https://dplyr.tidyverse.org/), and [magrittr](https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html).
 
-```{r, warning=FALSE, message=FALSE}
+```{r R packages, warning=FALSE, message=FALSE}
 library(dplyr)
 library(magrittr)
 ```
 
 To create a SQL database, and run SQL queries in R chunks I will be using a package called [RSQLite](https://cran.r-project.org/web/packages/RSQLite/index.html). 
 
-```{r}
+```{r SQLite package}
 library(RSQLite)
 ```
 
 ### `0.2 Data` 
 
-This post will use two data sets that I copied from [Learn SQL](https://www.sql-practice.com/): 
+This post will use three data sets that I copied from [Learn SQL](https://www.sql-practice.com/): 
 
 1. `patients`: Which includes patient_id, first_name, last_name, gender, birth_date, city, province_id, allergies, height, and weight. Note I only copied the first 1000 entries. 
 
-```{r}
+```{r patients data}
 patients <- utils::read.csv('../../00_data/patients.csv')
 ```
 
 2. `province_names`: Which includes province_id, and province_name. 
 
-```{r}
+```{r province_names data}
 province_names <- utils::read.csv("../../00_data/province_names.csv")
 ```
+
+3. `admissions`: which includes patient_id, admission_date, discharge_date, diagnosis, attending_doctor_id
+
+```{r admissions data}
+admissions <- utils::read.csv("../../00_data/admissions.csv")
+```
+
 
 ### `0.3 Database`  
 
@@ -72,7 +79,7 @@ hosp <- RSQLite::dbConnect(RSQLite::SQLite(),
 
 To define data within the database use:
 
-* `dbWriteTable()` to create a data set within the hospital database called patients and province_names with the respective data. 
+* `dbWriteTable()` to create a data set within the hospital database first call the data base (hosp), define a name, and then define the data. 
 
 ```{r, eval=FALSE}
 RSQLite::dbWriteTable(hosp,
@@ -81,9 +88,12 @@ RSQLite::dbWriteTable(hosp,
 RSQLite::dbWriteTable(hosp,
                       "province_names",
                       province_names)
+RSQLite::dbWriteTable(hosp,
+                      "admissions",
+                      admissions)
 ```
 
-Verify the two data sets are in the database using:
+Verify the three data sets are in the database using:
 
 * `dbListTables()` to list the tables within the hosp database. 
 
@@ -709,33 +719,3 @@ patients %>%
          patient_id %%2==1,
          city == "Burlington")
 ```
-
-### `10.2 SQL`
-
-In SQL use: 
-
-* `SELECT` to select all * columns.
-
-* `FROM` to select all columns from the patients data.
-
-* `Where` defines multiple conditions. 
-
-* `LIKE` is a condition where first_name has the third letter equal to a lower case b.
-
-* `AND` to define multiple conditions such as gender, patient_id, and city.
-
-* `BETWEEN` to define weight is greater than 50, but less than 70. 
-
-```{r}
-RSQLite::dbGetQuery(hosp,
-                    "SELECT *
-                     FROM patients
-                     WHERE
-                      first_name LIKE '__b%'
-                      AND gender = 'F'
-                      AND weight BETWEEN 50 AND 70
-                      AND patient_id % 2 = 1
-                      AND city = 'Burlington';")
-```
-
-:::
