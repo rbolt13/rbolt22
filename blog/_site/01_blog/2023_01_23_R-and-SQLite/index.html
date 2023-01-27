@@ -226,11 +226,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#display-the-total-number-of-patients-for-each-province.-order-by-descending." id="toc-display-the-total-number-of-patients-for-each-province.-order-by-descending." class="nav-link" data-scroll-target="#display-the-total-number-of-patients-for-each-province.-order-by-descending."><code>7.</code> Display the total number of patients for each province. Order by descending.</a></li>
   <li><a href="#show-the-provinces-that-have-more-patients-identified-as-m-than-f.-must-only-show-full-province_name." id="toc-show-the-provinces-that-have-more-patients-identified-as-m-than-f.-must-only-show-full-province_name." class="nav-link" data-scroll-target="#show-the-provinces-that-have-more-patients-identified-as-m-than-f.-must-only-show-full-province_name."><code>8.</code> Show the provinces that have more patients identified as ‘M’ than ‘F’. Must only show full province_name.</a></li>
   <li><a href="#each-admission-costs-50-for-patients-without-insurance-and-10-for-patients-with-insurance.-all-patients-with-an-even-patient_id-have-insurance." id="toc-each-admission-costs-50-for-patients-without-insurance-and-10-for-patients-with-insurance.-all-patients-with-an-even-patient_id-have-insurance." class="nav-link" data-scroll-target="#each-admission-costs-50-for-patients-without-insurance-and-10-for-patients-with-insurance.-all-patients-with-an-even-patient_id-have-insurance."><code>9.</code> Each admission costs $50 for patients without insurance, and $10 for patients with insurance. All patients with an even patient_id have insurance.</a></li>
-  <li><a href="#we-are-looking-for-a-specific-patient.-pull-all-columns-for-the-patient-who-matches-the-following-criteria" id="toc-we-are-looking-for-a-specific-patient.-pull-all-columns-for-the-patient-who-matches-the-following-criteria" class="nav-link" data-scroll-target="#we-are-looking-for-a-specific-patient.-pull-all-columns-for-the-patient-who-matches-the-following-criteria"><code>10.</code> We are looking for a specific patient. Pull all columns for the patient who matches the following criteria:</a>
-  <ul class="collapse">
-  <li><a href="#section-9" id="toc-section-9" class="nav-link" data-scroll-target="#section-9"><code>10.0</code></a></li>
-  <li><a href="#r-9" id="toc-r-9" class="nav-link" data-scroll-target="#r-9"><code>10.1 R</code></a></li>
-  </ul></li>
+  <li><a href="#we-are-looking-for-a-specific-patient.-pull-all-columns-for-the-patient-who-matches-the-following-criteria" id="toc-we-are-looking-for-a-specific-patient.-pull-all-columns-for-the-patient-who-matches-the-following-criteria" class="nav-link" data-scroll-target="#we-are-looking-for-a-specific-patient.-pull-all-columns-for-the-patient-who-matches-the-following-criteria"><code>10.</code> We are looking for a specific patient. Pull all columns for the patient who matches the following criteria:</a></li>
   </ul>
 </nav>
     </div>
@@ -1006,17 +1002,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Their patient_id is an odd number</li>
 <li>They are from the city ‘Burlington’</li>
 </ul>
-<p>::: {.panel-tabset}</p>
-<section id="section-9" class="level3">
-<h3 class="anchored" data-anchor-id="section-9"><code>10.0</code></h3>
+<div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-11-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-1" role="tab" aria-controls="tabset-11-1" aria-selected="true"><code>10.0</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-11-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-2" role="tab" aria-controls="tabset-11-2" aria-selected="false"><code>10.1 R</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-11-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-3" role="tab" aria-controls="tabset-11-3" aria-selected="false"><code>10.2 SQL</code></a></li></ul>
+<div class="tab-content">
+<div id="tabset-11-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-11-1-tab">
 <p><strong>Contents</strong></p>
 <ul>
 <li><p>10.1 Solution in R</p></li>
 <li><p>10.2 Solution in SQL</p></li>
 </ul>
-</section>
-<section id="r-9" class="level3">
-<h3 class="anchored" data-anchor-id="r-9"><code>10.1 R</code></h3>
+</div>
+<div id="tabset-11-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-11-2-tab">
 <p>In R define the patients data then use,</p>
 <ul>
 <li><p><code>%&gt;%</code> to pipe the data.</p></li>
@@ -1037,9 +1033,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 1 Penicillin    160     51</code></pre>
 </div>
 </div>
+</div>
+<div id="tabset-11-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-11-3-tab">
+<p>In SQL use:</p>
+<ul>
+<li><p><code>SELECT</code> to select all * columns.</p></li>
+<li><p><code>FROM</code> to select all columns from the patients data.</p></li>
+<li><p><code>Where</code> defines multiple conditions.</p></li>
+<li><p><code>LIKE</code> is a condition where first_name has the third letter equal to a lower case b.</p></li>
+<li><p><code>AND</code> to define multiple conditions such as gender, patient_id, and city.</p></li>
+<li><p><code>BETWEEN</code> to define weight is greater than 50, but less than 70.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>RSQLite<span class="sc">::</span><span class="fu">dbGetQuery</span>(hosp,</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"SELECT *</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="st">                     FROM patients</span></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="st">                     WHERE</span></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="st">                      first_name LIKE '__b%'</span></span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a><span class="st">                      AND gender = 'F'</span></span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a><span class="st">                      AND weight BETWEEN 50 AND 70</span></span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a><span class="st">                      AND patient_id % 2 = 1</span></span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a><span class="st">                      AND city = 'Burlington';"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  patient_id first_name last_name gender birth_date       city province_id
+1        695    Sabrina    Hettie      F 2000-11-25 Burlington          ON
+   allergies height weight
+1 Penicillin    160     51</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

@@ -719,3 +719,33 @@ patients %>%
          patient_id %%2==1,
          city == "Burlington")
 ```
+
+### `10.2 SQL`
+
+In SQL use: 
+
+* `SELECT` to select all * columns.
+
+* `FROM` to select all columns from the patients data.
+
+* `Where` defines multiple conditions. 
+
+* `LIKE` is a condition where first_name has the third letter equal to a lower case b.
+
+* `AND` to define multiple conditions such as gender, patient_id, and city.
+
+* `BETWEEN` to define weight is greater than 50, but less than 70. 
+
+```{r}
+RSQLite::dbGetQuery(hosp,
+                    "SELECT *
+                     FROM patients
+                     WHERE
+                      first_name LIKE '__b%'
+                      AND gender = 'F'
+                      AND weight BETWEEN 50 AND 70
+                      AND patient_id % 2 = 1
+                      AND city = 'Burlington';")
+```
+
+:::
