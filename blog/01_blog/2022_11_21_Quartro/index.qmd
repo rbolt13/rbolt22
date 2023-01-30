@@ -63,6 +63,8 @@ Here is a list of links I used to help create this Quarto blog. As well as links
 
 [Greg Wilson](https://third-bit.com/)
 
+[David Neuzerling](https://mdneuzerling.com/): [Repo](https://github.com/mdneuzerling/mdneuzerling.com)
+
 [Jenny Bryan (Made with Blogdown and Hugo)](https://jennybryan.org/): [Repo](https://github.com/jennybc/jennybryan.org)
 
 [Jon Harmon](http://jonthegeek.com/)

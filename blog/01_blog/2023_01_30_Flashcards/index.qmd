@@ -3,18 +3,18 @@ title: "Flashcards"
 date: "2023-01-30"
 categories: [Statistics, Machine Learning, Math]
 toc: true
-draft: true
+draft: false
 ---
 
-This post covers terminology in the fields of data science, machine learning, math, probability, and statistics with interactive flashcards. 
+This post uses interactive flashcards to cover terminology in the fields of data science, machine learning, mathematics, probability, and statistics. 
 
 ![](../../00_img/flashcards.png)
 
 # Introduction 
 
-The last couple of data science interviews I went on the first technical interview was a lightning round of "Tell Me What This Is?". These questions included topics regarding machine learning, statistics, mathematics, and data science. To help me get better prepared for these types of interviews I originally thought about creating my own data dictionary. However, those already existed and I wanted something that would be more interactive. That's why instead of a dictionary, I am using quarto to create tabbed panels aka "Flashcards". That way each definition can be hidden or revealed by flipping over the flashcard (aka switching to the "Definition" tab).
+I've recently been applying to and partaking in interviews for remote data science positions all over the country. The last couple of first round technical interviews I went on I was asked a range of questions related to data science, statistics, machine learning, probability, linear algebra, and mathematics. To test myself on answering these types of questions more confidently I created these definitions "Flashcards", which are actually tabset panels, a [component layout](https://quarto.org/docs/interactive/layout.html) in quarto. 
 
-All words are sorted alphabetically and will continually update with time. Please let me know in the comments if there's anything you think I should add, or a word you would have defined differently. 
+Each definition can be viewed by clicking on the "Definition" tab for each word. All words are sorted alphabetically, definitions are  generally casual, words will be continually added, and regularly updating.
 
 # A
 
@@ -34,9 +34,9 @@ To compare two versions of something, usually a control (A) and a test variable 
 ### Bayes Theorem
 
 ### Definition 
-A method for calculating conditional probabilities, or the likelihood of one event occurring if another has previously occurred. 
+A method for calculating conditional probability, or the likelihood of one event occurring based on prior knowledge of conditions that might be related to the event. 
 
-$$P(A|B)=\frac{P(A|B)P(A)}{P(B)}$$
+$$P(A|B)=\frac{P(A|B)P(A)}{P(B)}=\frac{\text{(likelihood)}\times\text{(prior)}}{\text{(evidence)}}$$
 
 :::
 
@@ -45,7 +45,13 @@ $$P(A|B)=\frac{P(A|B)P(A)}{P(B)}$$
 ### Bias
 
 ### Definition 
-When a model or statistic that doesn’t provide a true representation of the population.
+When a model or statistic doesn’t provide a true representation of the population.
+
+$$bias=\mathbb{E}[f'(x)]-f(x)$$
+
+Bias of the estimated function tells us the capacity of the underlying model to predict the values. 
+
+High bias = overly-simplified model, under-fitting, high error on both testing and training data. 
 
 :::
 
@@ -54,7 +60,7 @@ When a model or statistic that doesn’t provide a true representation of the po
 ### Binomial Property
 
 ### Definition 
-The probability that exactly x successes on n repeated trials in an experiment which has two possible outcomes. 
+The probability of exactly x successes on n repeated trials in an experiment which has two possible outcomes. 
 $$P_x={n\choose x}p^xq^{n-x}$$
 
 :::
@@ -89,8 +95,6 @@ $$P(A|B)=P(A\cap B)P(B)$$
 ### Definition 
 A technique for summarizing performance measurement for machine learning classification algorithms that makes it easy to see whether the system is confusing classes. 
 
-(Actual Values, predicted values, true/false positive/negative, accuracy, precision, f-measure, classifications rate, prevalence, null error rate, cohen's kappa, ROC Curve)
-
 :::
 
 # D 
@@ -100,10 +104,7 @@ A technique for summarizing performance measurement for machine learning classif
 ### Data Classification
 
 ### Definition 
-
 Organizing data by relevant categories according to predefined criteria so that it may be used and protected more efficiently. 
-
-An example would be data that is classified as public, such as username, or profile picture, or classifying it as private such as password, or credit card number. 
 
 :::
 
@@ -332,7 +333,7 @@ A rectangular array of numbers arranged in rows and columns which represent a ma
 ### Definition 
 A type of artificial intelligence that uses connected nodes which loosely model the neurons in the brain. Each node, also known as a neuron, is connected by what is called an edge. Both neurons and edges have a weight that adjusts as the model learns, and can increase or decrease the strength of the signal which travels from the first layer (input) to the last layer (output). 
  
- ![A neural network showing nodes connected by edges, a input layer, hidden layers, and an output layer.](../../00_img/nn.png)
+ ![A neural network showing nodes connected by edges, an input layer, hidden layers, and an output layer.](../../00_img/nn.png)
 
 :::
 
@@ -363,6 +364,8 @@ Is categorical data that has an **order or ranking system** such as education le
 ### Definition 
 When machine learning models fit exactly to the training model, and therefore may fail to predict future observations. 
 
+![](../../00_img/under-over-fitting.png)
+
 :::
 
 # R
@@ -372,7 +375,7 @@ When machine learning models fit exactly to the training model, and therefore ma
 ### Random Forest Model
 
 ### Definition 
-A classification algorithm consists of many decision trees, and can correct decision trees' habit of overfitting to their training set. 
+A classification algorithm that consists of many decision trees, and can correct decision trees' habit of overfitting to their training set. 
 
 :::
 
@@ -391,7 +394,7 @@ Is quantitative data that **has a true zero** such as speed, age, and weight.
 ### Regularization
 
 ### Definition 
-A technique to reduce the errors of overfitting by adding extra information. (L1 - Lasso Regression, L2 - Ridge Regression)
+A technique to reduce the errors of overfitting by adding extra information. 
 
 :::
 
@@ -483,7 +486,7 @@ A linear mapping between two vector spaces that preserves the operations of vect
 ### Definition 
 Type 1 error is a false positive (rejects the null which is actually true), and a type 2 error is a false negative (fails to reject the null which is actually false). 
 
-![Left image reads "Type 1 error (false positive)", and shows a docotr telling a man he is pregnant. Left image reads "Type 2 error (false negative)", and shows a doctor telling a pregnant patient "Your're not pregnant". "](../../00_img/pregnant-type-errors.webp)
+![Left image reads "Type 1 error (false positive)", and shows a doctor telling a man he is pregnant. Right image reads "Type 2 error (false negative)", and shows a doctor telling a pregnant patient "You're not pregnant".](../../00_img/pregnant-type-errors.webp)
 
 :::
 

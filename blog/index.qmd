@@ -3,7 +3,7 @@ title: "Randi Bolt"
 image: 00_img/prof-pic.png
 comments: false
 about:
-  template: broadside
+  template: jolla
   links:
     - icon: github
       text: Github

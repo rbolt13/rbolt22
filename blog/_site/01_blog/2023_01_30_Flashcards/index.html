@@ -182,12 +182,12 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p>This post covers terminology in the fields of data science, machine learning, math, probability, and statistics with interactive flashcards.</p>
+<p>This post uses interactive flashcards to cover terminology in the fields of data science, machine learning, mathematics, probability, and statistics.</p>
 <p><img src="../../00_img/flashcards.png" class="img-fluid"></p>
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>The last couple of data science interviews I went on the first technical interview was a lightning round of “Tell Me What This Is?”. These questions included topics regarding machine learning, statistics, mathematics, and data science. To help me get better prepared for these types of interviews I originally thought about creating my own data dictionary. However, those already existed and I wanted something that would be more interactive. That’s why instead of a dictionary, I am using quarto to create tabbed panels aka “Flashcards”. That way each definition can be hidden or revealed by flipping over the flashcard (aka switching to the “Definition” tab).</p>
-<p>All words are sorted alphabetically and will continually update with time. Please let me know in the comments if there’s anything you think I should add, or a word you would have defined differently.</p>
+<p>I’ve recently been applying to and partaking in interviews for remote data science positions all over the country. The last couple of first round technical interviews I went on I was asked a range of questions related to data science, statistics, machine learning, probability, linear algebra, and mathematics. To test myself on answering these types of questions more confidently I created these definitions “Flashcards”, which are actually tabset panels, a <a href="https://quarto.org/docs/interactive/layout.html">component layout</a> in quarto.</p>
+<p>Each definition can be viewed by clicking on the “Definition” tab for each word. All words are sorted alphabetically, definitions are generally casual, words will be continually added, and regularly updating.</p>
 </section>
 <section id="a" class="level1">
 <h1>A</h1>
@@ -212,8 +212,8 @@ ul.task-list li input[type="checkbox"] {
 
 </div>
 <div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
-<p>A method for calculating conditional probabilities, or the likelihood of one event occurring if another has previously occurred.</p>
-<p><span class="math display">\[P(A|B)=\frac{P(A|B)P(A)}{P(B)}\]</span></p>
+<p>A method for calculating conditional probability, or the likelihood of one event occurring based on prior knowledge of conditions that might be related to the event.</p>
+<p><span class="math display">\[P(A|B)=\frac{P(A|B)P(A)}{P(B)}=\frac{\text{(likelihood)}\times\text{(prior)}}{\text{(evidence)}}\]</span></p>
 </div>
 </div>
 </div>
@@ -224,7 +224,10 @@ ul.task-list li input[type="checkbox"] {
 
 </div>
 <div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
-<p>When a model or statistic that doesn’t provide a true representation of the population.</p>
+<p>When a model or statistic doesn’t provide a true representation of the population.</p>
+<p><span class="math display">\[bias=\mathbb{E}[f'(x)]-f(x)\]</span></p>
+<p>Bias of the estimated function tells us the capacity of the underlying model to predict the values.</p>
+<p>High bias = overly-simplified model, under-fitting, high error on both testing and training data.</p>
 </div>
 </div>
 </div>
@@ -235,7 +238,7 @@ ul.task-list li input[type="checkbox"] {
 
 </div>
 <div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
-<p>The probability that exactly x successes on n repeated trials in an experiment which has two possible outcomes. <span class="math display">\[P_x={n\choose x}p^xq^{n-x}\]</span></p>
+<p>The probability of exactly x successes on n repeated trials in an experiment which has two possible outcomes. <span class="math display">\[P_x={n\choose x}p^xq^{n-x}\]</span></p>
 </div>
 </div>
 </div>
@@ -273,7 +276,6 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
 <p>A technique for summarizing performance measurement for machine learning classification algorithms that makes it easy to see whether the system is confusing classes.</p>
-<p>(Actual Values, predicted values, true/false positive/negative, accuracy, precision, f-measure, classifications rate, prevalence, null error rate, cohen’s kappa, ROC Curve)</p>
 </div>
 </div>
 </div>
@@ -288,7 +290,6 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div id="tabset-8-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-2-tab">
 <p>Organizing data by relevant categories according to predefined criteria so that it may be used and protected more efficiently.</p>
-<p>An example would be data that is classified as public, such as username, or profile picture, or classifying it as private such as password, or credit card number.</p>
 </div>
 </div>
 </div>
@@ -564,7 +565,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../../00_img/nn.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">A neural network showing nodes connected by edges, a input layer, hidden layers, and an output layer.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">A neural network showing nodes connected by edges, an input layer, hidden layers, and an output layer.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -603,6 +604,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div id="tabset-33-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-33-2-tab">
 <p>When machine learning models fit exactly to the training model, and therefore may fail to predict future observations.</p>
+<p><img src="../../00_img/under-over-fitting.png" class="img-fluid"></p>
 </div>
 </div>
 </div>
@@ -616,7 +618,7 @@ ul.task-list li input[type="checkbox"] {
 
 </div>
 <div id="tabset-34-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-34-2-tab">
-<p>A classification algorithm consists of many decision trees, and can correct decision trees’ habit of overfitting to their training set.</p>
+<p>A classification algorithm that consists of many decision trees, and can correct decision trees’ habit of overfitting to their training set.</p>
 </div>
 </div>
 </div>
@@ -638,7 +640,7 @@ ul.task-list li input[type="checkbox"] {
 
 </div>
 <div id="tabset-36-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-36-2-tab">
-<p>A technique to reduce the errors of overfitting by adding extra information. (L1 - Lasso Regression, L2 - Ridge Regression)</p>
+<p>A technique to reduce the errors of overfitting by adding extra information.</p>
 </div>
 </div>
 </div>
@@ -735,7 +737,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../../00_img/pregnant-type-errors.webp" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Left image reads “Type 1 error (false positive)”, and shows a docotr telling a man he is pregnant. Left image reads “Type 2 error (false negative)”, and shows a doctor telling a pregnant patient “Your’re not pregnant”. ”</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Left image reads “Type 1 error (false positive)”, and shows a doctor telling a man he is pregnant. Right image reads “Type 2 error (false negative)”, and shows a doctor telling a pregnant patient “You’re not pregnant”.</figcaption><p></p>
 </figure>
 </div>
 </div>
