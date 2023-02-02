@@ -7,6 +7,7 @@ draft: true
 ---
 
 
+
 ::: {.panel-tabset}
 
 ### `0.0 Set-Up`
@@ -23,16 +24,20 @@ draft: true
 
 For all my data queries and manipulation in R I will be using base R, [dplyr](https://dplyr.tidyverse.org/), and [magrittr](https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html).
 
+
 ```{r R packages, warning=FALSE, message=FALSE}
 library(dplyr)
 library(magrittr)
 ```
 
+
 To create a SQL database, and run SQL queries in R chunks I will be using a package called [RSQLite](https://cran.r-project.org/web/packages/RSQLite/index.html). 
+
 
 ```{r SQLite package}
 library(RSQLite)
 ```
+
 
 ### `0.2 Data` 
 
@@ -40,27 +45,28 @@ This post will use three data sets that I copied from [Learn SQL](https://www.sq
 
 1. `patients`: Which includes patient_id, first_name, last_name, gender, birth_date, city, province_id, allergies, height, and weight. Note I only copied the first 1000 entries. 
 
+
 ```{r patients data}
 patients <- utils::read.csv('../../00_data/patients.csv')
 ```
 
+
 2. `province_names`: Which includes province_id, and province_name. 
+
 
 ```{r province_names data}
 province_names <- utils::read.csv("../../00_data/province_names.csv")
 ```
 
+
 3. `admissions`: which includes patient_id, admission_date, discharge_date, diagnosis, attending_doctor_id
+
 
 ```{r admissions data}
 admissions <- utils::read.csv("../../00_data/admissions.csv")
 ```
 
-4. `doctors`: which includes doctor_id, first_name, last_name, and specialty. 
 
-```{r doctors data}
-doctors <- utils::read.csv("../../00_data/doctors.csv")
-```
 
 ### `0.3 Database`  
 
@@ -70,14 +76,17 @@ To create a database use:
 
 * `SQLite()` to connect to a SQLite database file. 
 
+
 ```{r}
 hosp <- RSQLite::dbConnect(RSQLite::SQLite(),
                            "../../00_data/Hospital.db")
 ```
 
+
 To define data within the database use:
 
 * `dbWriteTable()` to create a data set within the hospital database first call the data base (hosp), define a name, and then define the data. 
+
 
 ```{r, eval=FALSE}
 RSQLite::dbWriteTable(hosp,
@@ -89,116 +98,23 @@ RSQLite::dbWriteTable(hosp,
 RSQLite::dbWriteTable(hosp,
                       "admissions",
                       admissions)
-RSQLite::dbWriteTable(hosp,
-                      "doctors",
-                      doctors)
 ```
+
 
 Verify the three data sets are in the database using:
 
 * `dbListTables()` to list the tables within the hosp database. 
 
+
 ```{r}
 RSQLite::dbListTables(hosp)
 ```
 
+
 ---
 
 
-# `11.` For each day display total admissions on that day. Disply the amount changed from the previous day. 
-### R
-
-### SQL 
-
-```{r}
-dbGetQuery(hosp,
-           "SELECT admission_date,
-           COUNT(*) AS total_admissions,
-           COUNT(admission_date) - LAG(COUNT(admission_date)) OVER(ORDER BY admission_date) AS admission_count_change
-FROM admissions
-GROUP BY admission_date"
-           )
-```
-
-# `12.` Show patient_id, first_name, last_name, and attending doctor's specialty. Show only the patients who has a diagnosis as "Epilepsey" and the doctors first name is "Lisa". 
-
-### R
-
-```{r}
-doctors
-```
-
-
-### SQL
-
-```{r}
-dbGetQuery(hosp,
-           "SELECT
-  p.patient_id,
-  p.first_name AS patient_first_name,
-  p.last_name AS patient_last_name,
-  d.specialty AS attending_doctor_specialty
-FROM patients p
-  JOIN admissions a ON a.patient_id = p.patient_id
-  JOIN doctors d ON d.doctor_id = a.attending_doctor_id
-WHERE
-  d.first_name = 'Lisa' and
-  a.diagnosis = 'Epilepsy'"
-           )
-```
-
-
-# `13.` Show all the patients grouped into weight groups. Show the total amount of patients in each weight group. Order the list by the weight group decending. 
-
-For example, if they weight 100 to 109 pounds they are placed in the 100 weight group, 110-119 = 110 weight group, etc. 
-
-
-### Contents
-
-### R
-
-### SQL 
-
-
-```{r}
-dbGetQuery(hosp,
-           "SELECT
-  COUNT(*) AS patients_in_group,
-  FLOOR(weight / 10) * 10 AS weight_group
-FROM patients
-GROUP BY weight_group
-ORDER BY weight_group DESC"
-           )
-```
-
-# `14.` Show patient_id, weight, height, isObese from the patients table. Display isObese as a boolean 0 or 1. 
-
-Weight is in units kg, and height is in units cm. 
-
-Obese is defined as weight(kg)/(height(m)^2)>=30.
-
-### Contents
-
-### R
-
-### SQL
-
-```{r}
-RSQLite::dbGetQuery(hosp,
-                    "SELECT patient_id, 
-                            weight, 
-                            height, 
-                     (CASE 
-                     WHEN weight/(POWER(height/100.0,2)) >= 30 THEN 1
-      ELSE 0
-      END) AS isObese
-FROM patients")
-```
-
-
-# `15.` Show by week (month?) the revenue by province, and city. 
-
---> what if I grouped by month? could I do that in SQL? 
+# `11.` Show by week the revenue by province, and city. 
 
 ::: {.panel-tabset}
 
@@ -216,13 +132,16 @@ Start by defining discharge_week_num using:
 
 * `strftime()` to input discharge_date from the admissions data and format by week of the year.  
 
+
 ```{r}
 admissions$discharge_week_num <- base::strftime(admissions$discharge_date, format = "%V")
 ```
 
+
 Redefine the cost_after_insurance column as an integer using: 
 
 * `as.interger` to convert cost_after_insurance to an integer. 
+
 
 ```{r}
 patients <- patients %>%
@@ -236,18 +155,20 @@ patients <- patients %>%
   ))
 ```
 
-
 ```{r}
 patients$cost_after_insurance <- as.integer(patients$cost_after_insurance)
 ```
+
 
 Create a list of patients, admission, and province names data called hosp using: 
 
 * `list` to create a list. 
 
+
 ```{r}
 hosp <- base::list(patients, admissions, province_names) 
 ```
+
 
 To show weekly revenue by province in R use: 
 
@@ -263,6 +184,7 @@ To show weekly revenue by province in R use:
 
 * `head()` to show the first ten rows of data
 
+
 ```{r}
 base::Reduce(function(x,y)merge(x,y, all=TRUE), hosp) %>%
   dplyr::group_by(discharge_week_num, province_name, city)  %>%
@@ -270,44 +192,34 @@ base::Reduce(function(x,y)merge(x,y, all=TRUE), hosp) %>%
   dplyr::arrange(discharge_week_num) %>%
   utils::head(10)
 ```
+
 
 To show the weekly revenue by city modify: 
 
 * `group_by` adding city. 
 
+
 ```{r}
 base::Reduce(function(x,y)merge(x,y, all=TRUE), hosp) %>%
   dplyr::group_by(discharge_week_num, province_name, city)  %>%
   dplyr::summarise(cost_after_insurance = base::sum(cost_after_insurance)) %>%
   dplyr::arrange(discharge_week_num) %>%
-  na.omit() %>%
   utils::head(10)
 ```
 
 ```{r}
 weekly_cost <- base::Reduce(function(x,y)merge(x,y, all=TRUE), hosp) %>%
-  dplyr::group_by(discharge_week_num, province_name)  %>%
+  dplyr::group_by(discharge_week_num, province_name, city)  %>%
   dplyr::summarise(cost_after_insurance = base::sum(cost_after_insurance)) %>%
   dplyr::arrange(discharge_week_num) %>%
-  na.omit()
+  utils::head(10)
 ```
 
 ```{r}
 library(ggplot2)
-library(plotly)
 ```
 
-```{r}
-x <- weekly_cost %>% ggplot(aes(x = discharge_week_num, 
-                           y = cost_after_insurance,
-                           color = province_name)) +
-  geom_point() +
-  geom_line() +
-  geom_smooth() 
-ggplotly(x)
 
-# weekly_cost
-```
 
 
 
@@ -316,12 +228,15 @@ ggplotly(x)
 
 **COMING SOON**
 
+
 ```{r}
 # dbReadTable(hosp, "province_names")
 ```
 
 
+
 In SQL use: 
+
 
 ```{r, eval=FALSE}
 RSQLite::dbGetQuery(hosp,
@@ -338,8 +253,6 @@ RSQLite::dbGetQuery(hosp,
                      ORDER BY patients DESC")
 ```
 
-
-
 ```{r}
 dbGetQuery(hosp,
            "SELECT attending_doctor_id,
@@ -352,7 +265,10 @@ dbGetQuery(hosp,
            )
 ```
 
+
+
+
+
+
 :::
-
-
 

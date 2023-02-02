@@ -8,7 +8,7 @@ draft: false
 
 This post uses interactive flashcards to cover terminology in the fields of data science, machine learning, mathematics, probability, and statistics. 
 
-![](../../00_img/flashcards.png)
+![](flashcards.png)
 
 # Introduction 
 

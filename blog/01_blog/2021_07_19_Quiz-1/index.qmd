@@ -6,7 +6,7 @@ categories: [Geometry, Math, Proof]
 toc: true
 ---
 
-This is a "presentation" style proof for Math-338: Modern College Geometry, and looks at congruence of two verticle angles. 
+This is a "presentation" style proof for Math-338: Modern College Geometry, and looks at congruence of two vertical angles. 
 
 ![](../../00_img/verticle_angles.png)
 

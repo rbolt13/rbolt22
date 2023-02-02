@@ -7,7 +7,7 @@ toc: true
 
 Here is a list of links I used to help create this Quarto blog. As well as links for web accessibility, examples of other quarto blogs, and examples of non-quarto blogs. 
 
-![](../../00_img/quarto.png)
+![](quarto.png)
 
 ::: {.panel-tabset}
 
