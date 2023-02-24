@@ -7,7 +7,7 @@ toc: true
 
 For a class fall term 2021 at PSU I had to do a piece of 'self' art, so to expand my skills in R I decided to try out some generative art. Most of these are based off examples given on [djnavarro's github](https://github.com/djnavarro/jasmines). 
 
-![](../../00_img/me.png)
+![](me.png)
 
 # `1. Set-Up`
 

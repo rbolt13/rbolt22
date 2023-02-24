@@ -7,7 +7,7 @@ toc: true
 
 Notes consists of logic, Euclid's 5th, Congruence and Length Theorem, Congruence and Angle Theorem, angles and parallel lines, and triangle congruence theorems. 
 
-![](../../00_img/parallel-lines.jpeg)
+![](parallel-lines.jpeg)
 
 # `1. Logic`
 

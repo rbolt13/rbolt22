@@ -4,30 +4,4 @@ background-video: true
 from: markdown+emoji
 ---
 
-:::: {.columns}
-
-::: {.column width="50%"}
-
-<img 
-    style="display: block; 
-           margin-left: true;
-           margin-right: auto;
-           width: 95%;"
-    src="https://media.giphy.com/media/xT77XUHgj7vDdnbiFi/giphy.gif" 
-    alt="David Bowie lightning bolt with moving particles.">
-</img>
-:::
-
-::: {.column width="50%"}
-**About**
-
-I am a data analyst / scientist based out of Portland, Oregon.
-
-I have been writing about mathematics, statistics, and data science in my blog since 2021. 
-
-I am constantly exploring new topics, and ways to improve upon past and current work. 
-
-I graduated magna cum laude with a BS in Mathematics from Portland State University in 2022. 
-
-:::
-::::
+Coming Soon...

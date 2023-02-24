@@ -3,20 +3,20 @@ project:
 
 website:
   title: "Randi Bolt"
-  favicon: 00_img/pink-bolt.jpeg
+  favicon: img/rbolt.png
+  page-footer: 
+    left: "Made with [Quarto](https://quarto.org/) and deployed with [Netlify](https://www.netlify.com/)."
+    center: 'Randi Bolt 2023'
   navbar:
     right:
-      - href: index.qmd
-        text: home
-        aria-label: Home
-      - href: about.qmd
-        text: about
-        aria-label: About
       - href: blog.qmd
-        text: blog
+        text: Blog
         aria-label: Blog
+      - href: projects.qmd
+        text: Projects
+        aria-label: Projects
       - href: resume.qmd
-        text: resume
+        text: Resume
         aria-label: Resume
       - icon: github
         href: https://github.com/rbolt13
@@ -24,20 +24,14 @@ website:
       - icon: mastodon
         href: https://pnw.zone/@rbolt
         aria-label: Mastodon
-      - icon: spotify
-        href: https://open.spotify.com/user/innluxglueuzbltzfxgbsc2dz?si=b2fd3674e2694dd3
-        aria-label: Spotify
       - icon: linkedin
         href: https://www.linkedin.com/in/randi-bolt/
         aria-label: Linkedin
 format:
   html:
-    theme: journal
-    linkcolor: rgb(212, 25, 94)
-    backgroundcolor: rgb(247, 215, 227)
-    css: styles.css
-
-editor: visual
+    theme: 
+      light: [scss/light-theme.scss]
+      dark: [scss/dark-theme.scss]
 
 comments: 
   giscus:

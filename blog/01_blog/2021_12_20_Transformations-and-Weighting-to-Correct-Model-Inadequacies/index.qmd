@@ -7,9 +7,9 @@ toc: true
 
 This post covers examples from Chapter 5 of [Introduction to Linear Regression Analysis](https://www.amazon.com/Introduction-Regression-Analysis-Douglas-Montgomery/dp/0470542810). 
 
-![](../../00_img/slr_meme.jpeg)
+![](slr_meme.jpeg)
 
-# `1. Set Up`
+# `1.` Set Up
 
 For this analysis I will be using four packages: 
 
@@ -28,14 +28,14 @@ library(dplyr)
 library(MASS) 
 ```
 
-# `2. Example 5.1: The Electric Utility Data`
+# `2.` Example 5.1: The Electric Utility Data
 
 An electric utility company is interested in developing a model relating peak-hour demand $(y)$ to total energy usage during the month $(x)$. 
 
 To start lets look at the data. 
 
 ```{r}
-ex51 <- utils::read.csv("../../00_data/ex5-1.csv")
+ex51 <- utils::read.csv("data/ex5-1.csv")
 ex51
 ```
 
@@ -101,12 +101,12 @@ The impression from examining this plot is that the variance is stable; conseque
 
 Note that there is one suspiciously large residual (customer 26) and one customer whose energy usage is somewhat large (customer 50). The effect of these two points on the fit should be studied further before the model is released for use. 
 
-# `3. Example 5.2: The Windmill Data`
+# `3.` Example 5.2: The Windmill Data
 
 A research engineer is investigating the use of a windmill to generate electricity. He has collected data on the DC Output from his windmill and the corresponding wind velocity. 
 
 ```{r}
-ex52 <- utils::read.csv("../../00_data/ex5-2.csv")
+ex52 <- utils::read.csv("data/ex5-2.csv")
 utils::head(ex52)
 ```
 

@@ -7,16 +7,16 @@ toc: true
 
 Almost every statistics class I've ever taken has covered skewness. This post will give a physical interpretation of skewness that will help you always know if a graph is left or right skewed. 
 
-![](../../00_img/skewness.png)
+![](skewness.png)
 
 # `Physical Interpretation`
 
 Imagine your body is a symmetrical bell curve where your neck is your mode, waist is your median, hips are your mean, and are all stacked on top of each other to create a symmetrical bell curve as shown in the image below. 
 
-![](../../00_img/body-bell-curve.png)
+![](body-bell-curve.png)
 
 When the hips are to the the right of your neck then you are creating a right skew. When you hips are to the left of your neck then your body bell curve is left skewed as shown in the diagram below. 
 
-![](../../00_img/body-skew.png)
+![](body-skew.png)
 
 [Shakira famously said her hips don't lie](https://youtu.be/DUT5rEU6pqM), but my hips dictate skewness. 

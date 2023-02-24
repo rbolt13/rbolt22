@@ -8,7 +8,7 @@ draft: false
 
 Using a R package called SQLite, this post demonstrates how to answer data related questions with both R and SQL (Structured Query Language). 
 
-![Naruto with SQL logo, and Sauske with the R Studio logo, standing back to back.](../../00_img/SQL-and-R.png)
+![Naruto with SQL logo, and Sauske with the R Studio logo, standing back to back.](SQL-and-R.png)
 
 # `0.` Introduction 
 
@@ -48,19 +48,19 @@ This post will use three data sets that I copied from [Learn SQL](https://www.sq
 1. `patients`: Which includes patient_id, first_name, last_name, gender, birth_date, city, province_id, allergies, height, and weight. Note I only copied the first 1000 entries. 
 
 ```{r patients data}
-patients <- utils::read.csv('../../00_data/patients.csv')
+patients <- utils::read.csv('data/patients.csv')
 ```
 
 2. `province_names`: Which includes province_id, and province_name. 
 
 ```{r province_names data}
-province_names <- utils::read.csv("../../00_data/province_names.csv")
+province_names <- utils::read.csv("data/province_names.csv")
 ```
 
 3. `admissions`: which includes patient_id, admission_date, discharge_date, diagnosis, attending_doctor_id
 
 ```{r admissions data}
-admissions <- utils::read.csv("../../00_data/admissions.csv")
+admissions <- utils::read.csv("data/admissions.csv")
 ```
 
 
@@ -74,7 +74,7 @@ To create a database use:
 
 ```{r}
 hosp <- RSQLite::dbConnect(RSQLite::SQLite(),
-                           "../../00_data/Hospital.db")
+                           "data/Hospital.db")
 ```
 
 To define data within the database use:
@@ -135,7 +135,7 @@ In SQL use:
 
 * `SELECT` to select. 
 
-* `(*)` to include all columns. 
+* `*` to include all columns. 
 
 * `FROM` to define the patients data for select to include all columns from. 
 
@@ -749,3 +749,5 @@ RSQLite::dbGetQuery(hosp,
 ```
 
 :::
+
+

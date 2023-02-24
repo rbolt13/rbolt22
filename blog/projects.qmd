@@ -1,0 +1,116 @@
+---
+comments: false
+---
+# Projects 
+
+::: columns
+::: {.column width="30%"}
+## Covid Analysis 
+
+![](img/Covid.png)
+
+The Coronavirus is an infectious disease, that shut down the United states on March 15th, 2020 and shut down Oregon on March 23, 2020. While most of the state, county, and world have reopened, Covid still appears to be sticking around longer than expected. This study uses two data sets to look at the Covid both across different states, as well as different counteis in my home state of Oregon...
+ [Continue reading](https://rbolt13.github.io/covid19/){target=_blank}
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="30%"}
+## Oregon Grown
+
+![](img/dcdd.png)
+
+A state known for growing all varieties of trees and greenery, it’s no wonder that Oregon was one of the first states to legalize recreational cannabis in 2014. Measure 91 changed the lives of both those affiliated with cannabis and those who benefit from the tax revenue it brings in. While many businesses and industries struggled in 2020 due to COVID-19 the cannabis industry kept growing. 
+
+[Continue reading](https://rbolt13.github.io/Oregon-Grown/){target=_blank}
+
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="30%"}
+## Rsite
+![](img/rsite.png)
+
+
+Four different projects from Statistics 363: **Introduction to R**, which includes analysis of NYC Flight Data, investigating if Kobe Bryant had "hot hands", comparing Gas and Hydro power using base R and ggplot2, and exploring states with the highest and lowest numbers of Covid cases. 
+
+[Continue reading](https://rbolt13.github.io/rsite/index.html){target=_blank}
+
+:::
+:::
+
+# Undergrad Notes - PSU
+
+::: columns
+::: {.column width="30%"}
+## Math 338
+Notes from Rebecca Tramel's **Modern College Geometry** Winter 2022 class. Topics include axioms, proof writing, Euclid's Elements, congruence, isometries, triangles, area proofs, circles, group theory for symmetries, Euclidean distance, taxi-cab geometry, spherical geometry, hyperbolic geometry, ... [Continue reading](https://rbolt13.github.io/mth338/){target=_blank}
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="30%"}
+## Math 344
+Notes from Julie Bracken's **Introduction to Group Theory** Winter 2022 class. Topics include set theory, cancellation law, subgroups, cyclic subgroups, injecteive, surjective, bijective, function composition, permutation groups, symmetric groups, dihedral group, cycle decomposition, parity of transposistions, alternating groups, isomorphism, partitions, Lagrange's Theorem, homomorphism, normal subgroups, kernal, ... [Continue reading](https://rbolt13.github.io/mth344/){target=_blank}
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="30%"}
+## Stat 451
+Notes from Subash Kochar's **Applied Statistics for Engineers and Scientists** Summer 2021 class. Topics include discrete and continous random various, bernoulli random variables, pmf, pdf, expeced value, variance, mean, standard deviation, probablity distributions: Poisson, binomial, uniform, normal, exponential, gamma, chi-squared, Weibull, lognormal, ...[Continue reading](https://rbolt13.github.io/stat451/){target=_blank}
+:::
+:::
+
+::: columns
+::: {.column width="30%"}
+## Stat 461 
+Notes from Dorcas Ofori-Boaten's **Introduction to Mathematical Statistics I** Fall 2021 class. Topics include mean, median, mode, variance, standard deviation, Empirical Rule, set theory, DeMorgans Law, Distributive Law, counting rules, statistical independence, mutual independence, total law of probability, Bayes Rule, discrete and continuous random variables, probability distribution, expected value, CDF, PMF, PDF, ... [Continue reading](https://rbolt13.github.io/stat461/){target=_blank}
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="30%"}
+## Stat 462
+Notes from Nadee Jayasena's **Introduction ot Mathematical Statistics II** Winter 2022 class. Topics include marginal PDF's, joint PDF's and CDF's, independence of random variables, bivariate probability, conditional distribution, conditional covariance, correlation, univariate transformations, bivariate transformations, Jacobians, method of moment-generating functions, sampling distributions, central limit theorem, ... [Continue reading](https://rbolt13.github.io/stat462/){target=_blank}
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="30%"}
+## Stat 464
+Notes from Ge Shao's **Applied Regression Analysis** Fall 2021 class. Topics include simple linear regression, least-square estimates, hypothesis testing, t-stat, p-stat, sum of squares estimates, mean square error, confidence interval, R squared, multiple linear models, hat matrix, multilinearity, model adequacy checking, residual analysis, PRESS statistic, detecting outliers, correcting model inadequacies, stabilizing variance, DIFFTS, DFBETAS, COVRATIO, ...[Continue reading](https://rbolt13.github.io/stat464/){target=_blank}
+:::
+:::
+
+# Blog Iterations
+
+::: columns
+::: {.column width="30%"}
+## rbolt.me (2023)
+Current iteration of my blog. Made using Quarto and deployed with Netlify. Topics include interview preparation, R and SQL, creating a package in R, web scraping, python basics, quarto links, ... [Continue reading](https://www.rbolt.me/){target=_blank}
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="30%"}
+## rbolt2 (2022)
+Made with R using blogdown and deployed with Netlify. Topics include NBA circular barcharts, reproducible research, docker, Shiny Style Guide notes, finals and midterm preparation notes, ... [Continue reading](https://rbolt2.netlify.app/){target=_blank}
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="30%"}
+## rbolt (2021)
+Made with R using blogdown and deployed with Netlify. Topics include using API's, generative art, idempotent proof, abstract mathematics, transformation and weighting to correct model inadequacies, diagnostics for leverage and influence, ...[Continue reading](https://rbolt.netlify.app/){target=_blank}
+:::
+:::

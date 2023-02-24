@@ -32,7 +32,7 @@ library(MASS)
 (Introduced in Chapter 3 Example 3.1) A soft drink bottler is analyzing the vending machine service routes in his distribution system. He is interested in predicting the amount of time required by the route driver to service the vending machines in an outlet. The service activity includes stocking the machine with beverage products and minor maintenance or housekeeping. The industrial engineer responsible for the study suggests that the two most important variables affecting the delivery time (y) are the number of cases of product stocked ($x_1$) and the distance walked by the route driver ($x_2$). 
 
 ```{r}
-ex31 <- utils::read.csv("../../00_data/ex6-1.csv")
+ex31 <- utils::read.csv("data/ex6-1.csv")
 ex31
 ```
 

@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2022-12-19">
+
+<title>Randi Bolt - NBA Salaries - Part 1: Web-Scraping</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../00_img/pink-bolt.jpeg" rel="icon" type="image/jpeg">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Randi Bolt</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html">home</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html">about</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html">blog</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../resume.html">resume</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/rbolt13"><i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://pnw.zone/@rbolt"><i class="bi bi-mastodon" role="img" aria-label="Mastodon">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://open.spotify.com/user/innluxglueuzbltzfxgbsc2dz?si=b2fd3674e2694dd3"><i class="bi bi-spotify" role="img" aria-label="Spotify">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/randi-bolt/"><i class="bi bi-linkedin" role="img" aria-label="Linkedin">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">NBA Salaries - Part 1: Web-Scraping</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">R</div>
+                <div class="quarto-category">Web-Scraping</div>
+                <div class="quarto-category">NBA</div>
+                <div class="quarto-category">Data Visuals</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">December 19, 2022</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><code>0.0</code> Introduction</a></li>
+  <li><a href="#about-the-data" id="toc-about-the-data" class="nav-link" data-scroll-target="#about-the-data"><code>0.1</code> About The Data</a></li>
+  <li><a href="#package-installs" id="toc-package-installs" class="nav-link" data-scroll-target="#package-installs"><code>0.2</code> Package Installs</a></li>
+  <li><a href="#scraping-function" id="toc-scraping-function" class="nav-link" data-scroll-target="#scraping-function"><code>1.0</code> Scraping Function</a></li>
+  <li><a href="#for-loop-to-collect-the-data-into-a-list" id="toc-for-loop-to-collect-the-data-into-a-list" class="nav-link" data-scroll-target="#for-loop-to-collect-the-data-into-a-list"><code>2.0</code> For Loop to Collect the Data into a List</a></li>
+  <li><a href="#merge-data" id="toc-merge-data" class="nav-link" data-scroll-target="#merge-data"><code>3.0</code> Merge Data</a></li>
+  <li><a href="#view-data" id="toc-view-data" class="nav-link" data-scroll-target="#view-data"><code>4.0</code> View Data</a>
+  <ul class="collapse">
+  <li><a href="#change-salaray-from-character-to-numeric" id="toc-change-salaray-from-character-to-numeric" class="nav-link" data-scroll-target="#change-salaray-from-character-to-numeric"><code>4.1</code> Change Salaray from Character to Numeric</a></li>
+  <li><a href="#basic-statistics" id="toc-basic-statistics" class="nav-link" data-scroll-target="#basic-statistics"><code>4.2</code> Basic Statistics</a></li>
+  <li><a href="#box-plots" id="toc-box-plots" class="nav-link" data-scroll-target="#box-plots"><code>4.3</code> Box Plots</a>
+  <ul class="collapse">
+  <li><a href="#yearly-salary-by-postion" id="toc-yearly-salary-by-postion" class="nav-link" data-scroll-target="#yearly-salary-by-postion"><code>4.3.1</code> 2022 - 2023 Yearly Salary by Postion</a></li>
+  <li><a href="#yearly-salary-by-team" id="toc-yearly-salary-by-team" class="nav-link" data-scroll-target="#yearly-salary-by-team"><code>4.4</code> 2022-2023 Yearly Salary by Team</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#save-data" id="toc-save-data" class="nav-link" data-scroll-target="#save-data"><code>5.0</code> Save Data</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p>Scraping and cleaning NBA Salary data from <a href="http://www.espn.com/nba/salaries">ESPN - NBA Players Salaries</a>, with some simple statistic and data visuals.</p>
+<p><img src="../../00_img/NBA-Money.webp" class="img-fluid"></p>
+<section id="introduction" class="level1">
+<h1><code>0.0</code> Introduction</h1>
+<p>Money is a crucial element in any professional sport, and NBA players are ranked among some of the highest paid athletes in the world<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. As a data scientist, having data for NBA players salaries could go a long way in many different types of analysis, and machine learning models. It is also good to practice and experience scraping different websites, and cleaning the data.</p>
+</section>
+<section id="about-the-data" class="level1">
+<h1><code>0.1</code> About The Data</h1>
+<p>This data comes from <a href="http://www.espn.com/nba/salaries">ESPN - NBA Players Salaries</a>. I choose this data for a number of reasons, mainly that it includes extra information such as the player position, and team they play for.</p>
+</section>
+<section id="package-installs" class="level1">
+<h1><code>0.2</code> Package Installs</h1>
+<p>To scrape and clean <a href="http://www.espn.com/nba/salaries">ESPN - NBA Players Salaries</a>, I will use two packages:</p>
+<ul>
+<li><p><a href="https://rvest.tidyverse.org/">rvest</a>: To scrape the data.</p></li>
+<li><p><a href="https://www.tidyverse.org/">tidyverse</a>: To gather, manipulate, and clean the data.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rvest)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="scraping-function" class="level1">
+<h1><code>1.0</code> Scraping Function</h1>
+<p>Similar to some of my other scraping function this function starts by taking in a small part of the url, in this case the <code>url_page</code>. It then uses that information to do the following:</p>
+<ol type="1">
+<li>Pastes the <code>url_page</code> to the rest of the URL and reads the whole URL as HTML.</li>
+<li>Scrapes all the “div” elements off the HTML.</li>
+<li>Saves the first div element.</li>
+<li>Uses the first row of the table as the column names.</li>
+<li>Removes the duplicated rows of column names.</li>
+<li>Removes the first row of column names.</li>
+<li>Adds a POSITION column.</li>
+<li>Removes player position in NAME column</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>salary.scrape <span class="ot">&lt;-</span> <span class="cf">function</span>(url_page){</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">" </span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="st">  This function takes in the url_page and returns a df of the table on that page.</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="st">  "</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># save and read url</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  url <span class="ot">&lt;-</span> base<span class="sc">::</span><span class="fu">paste0</span>(<span class="st">"http://www.espn.com/nba/salaries"</span>, url_page)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  html <span class="ot">&lt;-</span> <span class="fu">read_html</span>(url)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># read table</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  div <span class="ot">&lt;-</span> html <span class="sc">%&gt;%</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_elements</span>(<span class="st">"div"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  html_table</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># only use first table the rest are repeats or empty</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  tb1 <span class="ot">&lt;-</span> div[[<span class="dv">1</span>]]</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># use first row as column names</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>(tb1) <span class="ot">&lt;-</span> <span class="fu">as.character</span>(<span class="fu">unlist</span>(tb1[<span class="dv">1</span>,]))</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># remove duplicate headers</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  tb2 <span class="ot">&lt;-</span> tb1 <span class="sc">%&gt;%</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="fu">duplicated</span>(RK) <span class="sc">==</span> <span class="cn">FALSE</span>)</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>  <span class="co"># remove first row</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>  tb3 <span class="ot">&lt;-</span> tb2[<span class="sc">-</span><span class="dv">1</span>,]</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add position column, and remove position from name</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>  tb3<span class="sc">$</span>POSITION <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">'.*, '</span>,<span class="st">""</span>, tb3<span class="sc">$</span>NAME)</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>  tb3<span class="sc">$</span>NAME <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">', [A-Z]{,2}'</span>,<span class="st">''</span>, tb3<span class="sc">$</span>NAME)</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(tb3)</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="for-loop-to-collect-the-data-into-a-list" class="level1">
+<h1><code>2.0</code> For Loop to Collect the Data into a List</h1>
+<p><a href="http://www.espn.com/nba/salaries">ESPN - NBA Players Salaries</a> has 13 pages of data to scrape, so to do this quickly and efficiently I am:</p>
+<ol type="1">
+<li>Creating a string of <code>url_pages</code>.</li>
+<li>Creating an empty list for each table to be saved in.</li>
+<li>Created a for loop to save a table for each page into the <code>salary_list()</code>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a string of url page extensions</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>url_pages <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">"/_/page/2"</span>, <span class="st">"/_/page/3"</span>, <span class="st">"/_/page/4"</span>, <span class="st">"/_/page/5"</span>, </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>               <span class="st">"/_/page/6"</span>, <span class="st">"/_/page/7"</span>, <span class="st">"/_/page/8"</span>, <span class="st">"/_/page/9"</span>, </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>               <span class="st">"/_/page/10"</span>, <span class="st">"/_/page/11"</span>, <span class="st">"/_/page/12"</span>, <span class="st">"/_/page/13"</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># empty list</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>salary_list <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># pulls salary info from each url page</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(url_pages))</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  output <span class="ot">&lt;-</span> <span class="fu">salary.scrape</span>(url_pages[[i]])</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  salary_list[[i]] <span class="ot">&lt;-</span> output</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="merge-data" class="level1">
+<h1><code>3.0</code> Merge Data</h1>
+<p>Now that all 13 pages of data are saved into a list, I then:</p>
+<ol type="1">
+<li>Use <code>rbind()</code> to merge all the data.</li>
+<li>Remove the last row of data, which is the column headers.</li>
+<li>Change Salary Column from character to numeric.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># combine all 13 pages into one list</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>nba_salaries_2023 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(salary_list[[<span class="dv">1</span>]],</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                           salary_list[[<span class="dv">2</span>]],</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                           salary_list[[<span class="dv">3</span>]],</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                           salary_list[[<span class="dv">4</span>]],</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>                           salary_list[[<span class="dv">5</span>]],</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>                           salary_list[[<span class="dv">6</span>]],</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>                           salary_list[[<span class="dv">7</span>]],</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>                           salary_list[[<span class="dv">8</span>]],</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>                           salary_list[[<span class="dv">9</span>]],</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>                           salary_list[[<span class="dv">10</span>]],</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>                           salary_list[[<span class="dv">11</span>]],</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>                           salary_list[[<span class="dv">12</span>]],</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>                           salary_list[[<span class="dv">13</span>]],</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>                           <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"RK"</span>, <span class="st">"NAME"</span>, <span class="st">"TEAM"</span>, <span class="st">"SALARY"</span>, <span class="st">"POSITION"</span>))</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co"># remove last row</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>nba_salaries_2023 <span class="ot">&lt;-</span> <span class="fu">head</span>(nba_salaries_2023,<span class="sc">-</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="view-data" class="level1">
+<h1><code>4.0</code> View Data</h1>
+<p>Since we have the data, might as well look at it and play with it a little. To start lets just see the highest paid NBA players:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>utils<span class="sc">::</span><span class="fu">head</span>(nba_salaries_2023, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 5
+   RK    NAME                  TEAM                   SALARY      POSITION
+   &lt;chr&gt; &lt;chr&gt;                 &lt;chr&gt;                  &lt;chr&gt;       &lt;chr&gt;   
+ 1 1     Stephen Curry         Golden State Warriors  $48,070,014 PG      
+ 2 2     Russell Westbrook     Los Angeles Lakers     $47,063,478 PG      
+ 3 3     LeBron James          Los Angeles Lakers     $44,474,988 SF      
+ 4 4     Kevin Durant          Brooklyn Nets          $44,119,845 PF      
+ 5 5     Bradley Beal          Washington Wizards     $43,279,250 SG      
+ 6 6     Damian Lillard        Portland Trail Blazers $42,492,492 PG      
+ 7 7     Giannis Antetokounmpo Milwaukee Bucks        $42,492,492 PF      
+ 8 8     Kawhi Leonard         LA Clippers            $42,492,492 SF      
+ 9 9     Paul George           LA Clippers            $42,492,492 SG      
+10 10    Klay Thompson         Golden State Warriors  $40,600,080 SG      </code></pre>
+</div>
+</div>
+<section id="change-salaray-from-character-to-numeric" class="level2">
+<h2 class="anchored" data-anchor-id="change-salaray-from-character-to-numeric"><code>4.1</code> Change Salaray from Character to Numeric</h2>
+<p>Notice that the SALARY column is a character value. This will not be helpful when trying to do math, or make graphs with this numerical data. To change this 3 things must be addressed:</p>
+<ol type="1">
+<li>Removing the dollar sign.</li>
+<li>Removing the commas.</li>
+<li>Change character type to numeric.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>nba_salaries_2023<span class="sc">$</span>SALARY <span class="ot">&lt;-</span> <span class="fu">str_remove_all</span>(nba_salaries_2023<span class="sc">$</span>SALARY,</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"</span><span class="sc">\\</span><span class="st">$"</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>nba_salaries_2023<span class="sc">$</span>SALARY <span class="ot">&lt;-</span> <span class="fu">str_remove_all</span>(nba_salaries_2023<span class="sc">$</span>SALARY,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                    <span class="st">","</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>nba_salaries_2023<span class="sc">$</span>SALARY <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(nba_salaries_2023<span class="sc">$</span>SALARY)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now we are able to do math, make graphs, and arrange the data by salary.</p>
+</section>
+<section id="basic-statistics" class="level2">
+<h2 class="anchored" data-anchor-id="basic-statistics"><code>4.2</code> Basic Statistics</h2>
+<div class="cell">
+
+</div>
+<ol type="1">
+<li>Highest paid value : 48,070,014</li>
+<li>Lowest paid value : 5,318</li>
+<li>Median : 4,043,639</li>
+<li>Mean : 8,599,110</li>
+<li>Standard Deviation : 10,152,995</li>
+</ol>
+</section>
+<section id="box-plots" class="level2">
+<h2 class="anchored" data-anchor-id="box-plots"><code>4.3</code> Box Plots</h2>
+<section id="yearly-salary-by-postion" class="level3">
+<h3 class="anchored" data-anchor-id="yearly-salary-by-postion"><code>4.3.1</code> 2022 - 2023 Yearly Salary by Postion</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="at">data =</span> nba_salaries_2023,</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">mapping =</span> ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">x =</span> SALARY,</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">y =</span> POSITION)) <span class="sc">+</span> </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>From this visual we can see that Point Guards (PG) appear to be paid the most, while Guards (G) and Forwards (F) on average are paid the least.</p>
+</section>
+<section id="yearly-salary-by-team" class="level3">
+<h3 class="anchored" data-anchor-id="yearly-salary-by-team"><code>4.4</code> 2022-2023 Yearly Salary by Team</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="at">data =</span> nba_salaries_2023,</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">mapping =</span> ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">x =</span> SALARY,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">y =</span> TEAM)) <span class="sc">+</span> </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>This plot is not the easiest to read, and might be worth sub-setting the information further. However eye-balling this visual we can see most teams pay between <code>$</code>2,000,000 and <code>$</code>15,000,000 per player with a few outliers. These outliers of course being superstar players.</p>
+</section>
+</section>
+</section>
+<section id="save-data" class="level1">
+<h1><code>5.0</code> Save Data</h1>
+<p>Lastly, it is important to save the data to work with in the future. To do this I used the <code>write.csv()</code> function to save the data as a csv.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>utils<span class="sc">::</span><span class="fu">write.csv</span>(nba_salaries_2023, </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>                 <span class="fu">paste0</span>(<span class="st">"../../00_data/"</span>,</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>                        base<span class="sc">::</span><span class="fu">Sys.Date</span>(),</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"_NBA_22-23_Salaries.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p><a href="https://www.forbes.com/sites/brettknight/2022/05/11/the-worlds-10-highest-paid-athletes-2022/?sh=77961731f6c9">Forbes - The Worlds 10 Highest-Paid Athletes of 2022</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<script src="https://giscus.app/client.js" data-repo="rbolt13/rbolt22" data-repo-id="R_kgDOIJG8zw" data-category="General" data-category-id="DIC_kwDOIJG8z84CSd2f" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

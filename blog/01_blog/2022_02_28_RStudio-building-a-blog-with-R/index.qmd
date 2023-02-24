@@ -7,7 +7,7 @@ toc: true
 
 These are my notes from Posit's (formerly R Studio) ["Building a Blog with R"](https://youtu.be/MrW5XFf7aps) tutorial, which was presented by [Isabella Velasquez](https://ivelasq.rbind.io/about.html) on January 25th, 2022. [Materials for this presentation](https://github.com/ivelasq/2022-01-25_building-a-blog-with-r) are available on Github. Check out [Posit meet-up](https://www.meetup.com/posit-enterprise-community-meetup/) for more from Posit.
 
-![](../../00_img/blog.jpeg)
+![](blog.jpeg)
 
 # `1. About Isabella Velesquez`
 
@@ -103,7 +103,7 @@ Email: isabella.velasquez@rstudio.com
 
 # `7. Overall Thoughts`
 
-While this was called "Building a blog", there wasn't a lot of blog building. Similar to other RStudio presentations it was very business and product information heavy. 
+While this was called "Building a blog", there wasn't a lot of blog building. It was very business and product information heavy. 
 
 # `8. Recommended Blog (from chat)`
 

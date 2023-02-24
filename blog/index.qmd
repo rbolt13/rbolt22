@@ -1,29 +1,34 @@
 ---
-title: "Randi Bolt"
-image: 00_img/prof-pic.png
 comments: false
-about:
-  template: jolla
-  links:
-    - icon: github
-      text: Github
-      href: https://github.com/rbolt13/
-    - icon: mastodon
-      text: Mastodon
-      href: https://pnw.zone/@rbolt
-    - icon: spotify
-      text: Spotify
-      href: https://open.spotify.com/user/innluxglueuzbltzfxgbsc2dz?si=b2fd3674e2694dd3
-    - icon: linkedin
-      text: LinkedIn
-      href: https://www.linkedin.com/in/randi-bolt/
 from: markdown+emoji
 ---
 
-Hello, and welcome to my new and improved blog made with [Quarto](https://quarto.org/), [Github](https://github.com/), and [Netlify](https://www.netlify.com/).
+:::: {.columns}
 
-I post bimonthly about a range of topics that are related to data science, statistics, mathematics, and machine learning. Check out my journey, and feel free to leave my posts comments. I'd love to hear from you!
+::: {.column width="50%"}
 
-Thanks for stopping by, and please enjoy!
+<img 
+    style="display: block; 
+           margin-left: true;
+           margin-right: auto;
+           width: 95%;
+           border-radius: 1rem;"
+    src="img/profile.png" 
+    alt="Picture of Randi Bolt wearing a sheshia, smiling with her hands under her chin.">
+</img>
+:::
 
-:kissing_heart::sparkles:
+::: {.column width="50%"}
+
+<br>
+
+I am a data analyst who uses data science and machine learning techniques to extrapolate insight from data. 
+
+I am constantly exploring new topics, and ways to improve upon past and current work.
+
+I graduated magna cum laude with a BS in Mathematics from Portland State University in 2022.
+
+I was born, raised, and am currently based out of Portland, Oregon.
+
+:::
+::::

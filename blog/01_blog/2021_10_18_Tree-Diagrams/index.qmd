@@ -7,7 +7,7 @@ toc: true
 
 In this post I wanted to create a tree diagram based off my [Statistics-461 Notes](https://rbolt13.github.io/stat461/). 
 
-![](../../00_img/treediagram.png)
+![](treediagram.png)
 
 # `1. Set-Up`
 

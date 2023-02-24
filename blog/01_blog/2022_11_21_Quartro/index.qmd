@@ -21,6 +21,8 @@ Here is a list of links I used to help create this Quarto blog. As well as links
 
 [From R Markdown to Quarto](https://github.com/rstudio-conf-2022/rmd-to-quarto)
 
+[How to style your Quarto blog without knowing a lot of HTML/CSS](https://www.youtube.com/watch?v=ErRX8plZpQE)
+
 [Installing and Configuring Python with RStudio](https://support.posit.co/hc/en-us/articles/360023654474-Installing-and-Configuring-Python-with-RStudio)
 
 [Managing Execution](https://quarto.org/docs/projects/code-execution.html)
@@ -41,6 +43,8 @@ Here is a list of links I used to help create this Quarto blog. As well as links
 
 [Abhirup Moitra](https://abhirup-moitra-mathstat.netlify.app/)
 
+[Albert Rapp](https://albert-rapp.de/)
+
 [Bea Milz](https://beamilz.com/): [Repo](https://github.com/beatrizmilz/blog-en)
 
 [Daniel Tran](https://www.ddanieltan.com/): [Repo](https://github.com/ddanieltan/ddanieltan.com)
@@ -48,6 +52,10 @@ Here is a list of links I used to help create this Quarto blog. As well as links
 [Danielle Navarro - Notes from a data witch](https://blog.djnavarro.net/): [Repo](https://github.com/djnavarro/quarto-blog)
 
 [Deesha menghani](https://deepshamenghani.quarto.pub/dmenghani/):  [Repo](https://github.com/deepshamenghani/Portfolio_DeepshaM)
+
+[Jesse Adler](https://www.jessesadler.com/)
+
+[Meghan Harris](https://thetidytrekker.com/): [Repo](https://github.com/Meghansaha/thetidytrekker-quarto)
 
 [Rober Mitchell](https://robertmitchellv.com/): [Repo](https://github.com/robertmitchellv/robertmitchellv.github.io)
 
@@ -60,6 +68,8 @@ Here is a list of links I used to help create this Quarto blog. As well as links
 [Alicia Johnson (Made with blogdown))](https://ajohns24.github.io/portfolio/) 
 
 [Allison Hill, PhD](https://www.apreshill.com/)
+
+[Crystal Lewis](https://cghlewis.com/)
 
 [Greg Wilson](https://third-bit.com/)
 

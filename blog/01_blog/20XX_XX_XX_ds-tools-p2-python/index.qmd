@@ -7,9 +7,11 @@ toc: true
 draft: true
 ---
 
-This post covers XX data related questions, and solutions using  Python - R - SQL. 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(eval=FALSE)
+```
 
-![](../../00_img/ds_powerpuff.png)
+This post covers XX data related questions, and solutions using  Python - R - SQL. 
 
 # `0.` Introduction 
 

@@ -6,9 +6,9 @@ toc: true
 draft: false
 ---
 
-This post covers topics from [Lillian Pierson](https://www.data-mania.com/blog/author/lillianpierson/)'s Linkedin Learning course [Python for Data Sciene Training Part 1](https://www.linkedin.com/learning-login/continue?account=71753745&forceAccount=false&authModeName=SAML-1&authUUID=Jn8kaR1lSRaVYTMZwb8wJw%3D%3D&redirect=https%3A%2F%2Fwww.linkedin.com%2Flearning%2Fpython-for-data-science-essential-training-part-1%2Fdata-science-life-hacks%3Fautoplay%3Dtrue%26resume%3Dfalse%26u%3D71753745). Topics include Series, Data Frames, Data Visuals, Math and Statistics. 
+This post covers topics from [Lillian Pierson](https://www.data-mania.com/blog/author/lillianpierson/)'s Linkedin Learning course [Python for Data Sciene Training Part 1](https://www.linkedin.com/learning-login/continue?account=71753745&forceAccount=false&authModeName=SAML-1&authUUID=Jn8kaR1lSRaVYTMZwb8wJw%3D%3D&redirect=https%3A%2F%2Fwww.linkedin.com%2Flearning%2Fpython-for-data-science-essential-training-part-1%2Fdata-science-life-hacks%3Fautoplay%3Dtrue%26resume%3Dfalse%26u%3D71753745). Topics include Series, Data Frames, Data Visuals, Math and Statistics.
 
-![Image of a pink snake with a bow](../../00_img/pink-snake.png)
+![Image of a pink snake with a bow](pink-snake.png)
 
 # `0.0` Introduction
 
@@ -29,7 +29,7 @@ from pandas import Series, DataFrame
 
 # `1.0` Series
 
-### `1.0.1` Create a Series object with 8 rows. 
+### `1.0.1` Create a Series object with 8 rows.
 
 ```{python}
 series_obj = Series(np.arange(8), index=['row 1', 'row 2', 'row 3', 'row 4', 'row 5', 'row 6', 'row 7', 'row 8'])
@@ -52,7 +52,7 @@ series_obj[[0,7]]
 
 ## `1.2` Slicing
 
-Select every row between 3 and 7. 
+Select every row between 3 and 7.
 
 ```{python}
 series_obj['row 3':'row 7']
@@ -60,13 +60,13 @@ series_obj['row 3':'row 7']
 
 ## `1.3` Scalars
 
-### `1.3.1` Print values greater than 5. 
+### `1.3.1` Print values greater than 5.
 
 ```{python}
 series_obj[series_obj>5]
 ```
 
-### `1.3.2` Set row 1 to the value 8. 
+### `1.3.2` Set row 1 to the value 8.
 
 ```{python}
 series_obj['row 1'] = 8
@@ -77,7 +77,7 @@ series_obj
 
 ### `1.4.1` Create a variable of missing values using np.nan
 
-* np.nan: numpy function, not a number (nan)
+-   np.nan: numpy function, not a number (nan)
 
 ```{python}
 missing = np.nan
@@ -93,7 +93,7 @@ series_obj2
 
 ### `1.4.3` Find what values are missing using .isnull()
 
-* isnull(): pandas function that returns t/f if null
+-   isnull(): pandas function that returns t/f if null
 
 ```{python}
 series_obj2.isnull()
@@ -101,7 +101,7 @@ series_obj2.isnull()
 
 ## `1.5` Rename Data
 
-### `1.5.1` Name series object. 
+### `1.5.1` Name series object.
 
 ```{python}
 series_obj.name ="added_variable"
@@ -112,9 +112,9 @@ series_obj
 
 ### `2.0.1` Create a data frame object of 36 random numbers (6X6) with a set seed of 25.
 
-* np.random.seed(): numpy seed generator function 
-* np.random.rand(): numpy random number generator function
-* reshape(): numpy function to reshape data frame 
+-   np.random.seed(): numpy seed generator function
+-   np.random.rand(): numpy random number generator function
+-   reshape(): numpy function to reshape data frame
 
 ```{python}
 np.random.seed(25)
@@ -126,7 +126,7 @@ DF_obj
 
 ## `2.1` Extracting
 
-### `2.1.1` Select values from row 2, row 5, column 5, and column 2. 
+### `2.1.1` Select values from row 2, row 5, column 5, and column 2.
 
 ```{python}
 DF_obj.loc[['row 2', 'row 5'], ['column 5', 'column 2']]
@@ -140,12 +140,11 @@ DF_obj.loc[['row 2', 'row 5'], ['column 5', 'column 2']]
 DF_obj < .2
 ```
 
-
 ## `2.3` Missing Values
 
-### `2.3.1` Set the values in rows 4-5 of column 1, and rows 2-4 of column 6 to missing.  
+### `2.3.1` Set the values in rows 4-5 of column 1, and rows 2-4 of column 6 to missing.
 
-* iloc: python function used to select a particular cell of the dataset.
+-   iloc: python function used to select a particular cell of the dataset.
 
 ```{python}
 DF_obj.iloc[3:5, 0] = missing
@@ -155,7 +154,7 @@ DF_obj
 
 ### `2.3.2` Replace non values with 0.
 
-* fillna: pandas function used to replace missing values. 
+-   fillna: pandas function used to replace missing values.
 
 ```{python}
 # fill NaN values with 0
@@ -163,15 +162,15 @@ filled_DF = DF_obj.fillna(0)
 filled_DF
 ```
 
-### `2.3.3` Count the number of missing values in each column. 
+### `2.3.3` Count the number of missing values in each column.
 
 ```{python}
 DF_obj.isnull().sum()
 ```
 
-### `2.3.4` Filter out rows with missing values. 
+### `2.3.4` Filter out rows with missing values.
 
-* dropna(): pandas function that removes rows with missing values. 
+-   dropna(): pandas function that removes rows with missing values.
 
 ```{python}
 DF_no_NaN_rows = DF_obj.dropna()
@@ -185,10 +184,9 @@ DF_no_NaN_columns = DF_obj.dropna(axis=1)
 DF_no_NaN_columns
 ```
 
-
 ### `2.3.6` Fill the missing values with the method ffill.
 
-* ffill: pandas function fill forward which fills in the lass non-null value in DF. 
+-   ffill: pandas function fill forward which fills in the lass non-null value in DF.
 
 ```{python}
 fill_DF = DF_obj.fillna(method='ffill')
@@ -197,7 +195,7 @@ fill_DF
 
 ## `2.4` Duplicates
 
-### `2.4.1` Create a new data frame object. 
+### `2.4.1` Create a new data frame object.
 
 ```{python}
 DF_obj2 = DataFrame({'column 1':[1,1,2,2,3,3,3],
@@ -206,24 +204,24 @@ DF_obj2 = DataFrame({'column 1':[1,1,2,2,3,3,3],
 DF_obj2
 ```
 
-### `2.4.2` Show which rows have duplicates. 
+### `2.4.2` Show which rows have duplicates.
 
-* duplicated(): pandas function that returns t/f for rows with duplicate values. 
+-   duplicated(): pandas function that returns t/f for rows with duplicate values.
 
 ```{python}
 DF_obj2.duplicated()
 ```
 
-### `2.4.3` Drop duplicates rows. 
+### `2.4.3` Drop duplicates rows.
 
-* drop_duplicates()
+-   drop_duplicates()
 
 ```{python}
 DF_obj2_row_drop  = DF_obj2.drop_duplicates()
 DF_obj2_row_drop
 ```
 
-### `2.4.4` Drop duplicate from column 3. 
+### `2.4.4` Drop duplicate from column 3.
 
 ```{python}
 DF_obj2_c3_drop = DF_obj2.drop_duplicates(['column 3'])
@@ -232,7 +230,7 @@ DF_obj2_c3_drop
 
 ## `2.5` Adding data
 
-### `2.5.1` Slice the first 6 rows of series object. 
+### `2.5.1` Slice the first 6 rows of series object.
 
 ```{python}
 new_series_obj = series_obj['row 0':'row 6']
@@ -246,21 +244,21 @@ variable_added = DataFrame.join(DF_obj, series_obj)
 variable_added
 ```
 
-### `2.5.3` Use append to add data table to itself retaining index values. 
+### `2.5.3` Use append to add data table to itself retaining index values.
 
 ```{python}
 added_datatable = variable_added.append(variable_added, ignore_index=False)
 added_datatable
 ```
 
-### `2.5.4` Use append to add data table to itself, resetting index values. 
+### `2.5.4` Use append to add data table to itself, resetting index values.
 
 ```{python}
 added_datatable = variable_added.append(variable_added, ignore_index=True)
 added_datatable
 ```
 
-### `2.5.5` Create a 6x6 data frame with values arraged from 0-35, and another 3x5 data frame with values arranged from 0-14. 
+### `2.5.5` Create a 6x6 data frame with values arraged from 0-35, and another 3x5 data frame with values arranged from 0-14.
 
 ```{python}
 DF_obj3 = pd.DataFrame(np.arange(36).reshape(6,6))
@@ -270,13 +268,13 @@ DF_obj4 = pd.DataFrame(np.arange(15).reshape(5,3))
 DF_obj4
 ```
 
-### `2.5.6` Concatenate by adding columns. 
+### `2.5.6` Concatenate by adding columns.
 
 ```{python}
 pd.concat([DF_obj3, DF_obj4], axis = 1)
 ```
 
-### `2.5.7` Concatenate by adding rows. 
+### `2.5.7` Concatenate by adding rows.
 
 ```{python}
 pd.concat([DF_obj3, DF_obj4])
@@ -284,10 +282,10 @@ pd.concat([DF_obj3, DF_obj4])
 
 ## `2.6` Grouping and Aggregating Data
 
-### `2.6.1` Read cars csv with python. 
+### `2.6.1` Read cars csv with python.
 
 ```{python}
-address = '../../00_data/mtcars.csv'
+address = 'data/mtcars.csv'
 cars = pd.read_csv(address)
 # assign column names
 cars.columns = ['car_names', 'mpg', 'cyl', 'disp', 'hp', 'drat', 'wt', 'qsec', 'vs', 'am', 'gear', 'carb']
@@ -301,7 +299,7 @@ cars_groups = cars.groupby(cars['cyl'])
 cars_groups.mean()
 ```
 
-### `2.6.3` Group by am and find mean values. 
+### `2.6.3` Group by am and find mean values.
 
 ```{python}
 cars_trans_group = cars.groupby(cars['am'])
@@ -441,7 +439,7 @@ df.plot(color=color_theme)
 
 ### `3.1.11` Add Labels (Object Oriented Method)
 
-Note: Car names are numbers because of the data set I am using. 
+Note: Car names are numbers because of the data set I am using.
 
 ```{python}
 # create a figure
@@ -634,11 +632,11 @@ plt.legend(veh_type, loc='best')
 plt.show()
 ```
 
-### `3.3.5 `Saving a pie chart
+### `3.3.5`Saving a pie chart
 
 ```{python}
 plt.pie(x)
-plt.savefig('../../00_figs/pie-chart.png')
+plt.savefig('figs/pie-chart.png')
 plt.show()
 ```
 
@@ -648,7 +646,7 @@ plt.show()
 
 ```{python}
 # address
-address = '../../00_data/Superstore-Sales.csv'
+address = 'data/Superstore-Sales.csv'
 # create a dataframe of csv file
 df = pd.read_csv(address, index_col='Order Date', encoding='cp1252', parse_dates=True)
 

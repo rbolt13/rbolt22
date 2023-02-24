@@ -7,7 +7,7 @@ toc: true
 
 In this post I create some polygons and line segments with [LearnGeom](https://cran.r-project.org/web/packages/LearnGeom/LearnGeom.pdf).
 
-![](../../00_img/triangles.jpeg)
+![](triangles.jpeg)
 
 ```{r, error=FALSE, message=FALSE, echo=FALSE}
 knitr::opts_chunk$set(error=FALSE, 

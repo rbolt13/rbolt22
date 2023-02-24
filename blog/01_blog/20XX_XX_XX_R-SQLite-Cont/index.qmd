@@ -6,6 +6,9 @@ toc: true
 draft: true
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(eval=FALSE)
+```
 
 ::: {.panel-tabset}
 
@@ -106,9 +109,21 @@ RSQLite::dbListTables(hosp)
 
 
 # `11.` For each day display total admissions on that day. Disply the amount changed from the previous day. 
-### R
 
-### SQL 
+### `11.0`
+
+**Contents**
+
+* 11.1 Solutions in R
+
+* 11.2 Solutions in SQL
+
+### `11.1 R`
+
+```{r}
+```
+
+### `11.2 SQL` 
 
 ```{r}
 dbGetQuery(hosp,

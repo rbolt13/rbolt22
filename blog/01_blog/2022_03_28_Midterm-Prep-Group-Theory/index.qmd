@@ -7,7 +7,7 @@ toc: true
 
 Notes consist of Sets, Subsets, Operations, Group, Abelian Group, Subgroups, and Homework 1 and 2 questions. 
 
-![](../../00_img/abelian-group.jpeg)
+![](abelian-group.jpeg)
 
 # `1. Set`
 

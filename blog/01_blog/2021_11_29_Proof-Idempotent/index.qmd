@@ -7,7 +7,7 @@ toc: true
 
 Define the hat matrix $H=X(X^TX)^{-1}X^T$. Prove H and I-H are Idempotent
 
-![](../../00_img/idempotent.png)
+![](idempotent.png)
 
 # `Proof`
 

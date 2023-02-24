@@ -7,7 +7,7 @@ toc: true
 
 Scraping and cleaning NBA Salary data from [ESPN - NBA Players Salaries](http://www.espn.com/nba/salaries), with some simple statistic and data visuals. 
 
-![](../../00_img/NBA-Money.webp)
+![](NBA-Money.webp)
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(error=FALSE,
@@ -222,7 +222,7 @@ Lastly, it is important to save the data to work with in the future. To do this 
 
 ```{r}
 utils::write.csv(nba_salaries_2023, 
-                 paste0("../../00_data/",
+                 paste0("data/",
                         base::Sys.Date(),
                         "_NBA_22-23_Salaries.csv"))
 ```
