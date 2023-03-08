@@ -7,10 +7,21 @@ comments: false
 ::: {.column width="30%"}
 ## Covid Analysis 
 
-![](img/Covid.png)
+<html>
+  
+<body>
+    <center>
+        <object data="img/Covid.png"
+                width="230" 
+                height="240"> 
+        </object>
+    </center>
+</body>
+  
+  </html>
 
-The Coronavirus is an infectious disease, that shut down the United states on March 15th, 2020 and shut down Oregon on March 23, 2020. While most of the state, county, and world have reopened, Covid still appears to be sticking around longer than expected. This study uses two data sets to look at the Covid both across different states, as well as different counteis in my home state of Oregon...
- [Continue reading](https://rbolt13.github.io/covid19/){target=_blank}
+The COVID-19 pandemic has had a significant impact on the world, and the United States has been hit particularly hard. With millions of reported cases and hundreds of thousands of deaths, the need for accurate data analysis has become increasingly important. This data analysis project focuses on the cases and deaths related to COVID-19 in the United States and my home state, Oregon. The goal of this project is to explore and compare the trends in cases and deaths in both areas.
+ [Continue reading](https://covid-19-analysis-in-r.netlify.app/){target=_blank}
 :::
 
 ::: {.column width="5%"}

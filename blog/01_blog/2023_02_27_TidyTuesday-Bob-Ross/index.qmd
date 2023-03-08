@@ -1,0 +1,350 @@
+---
+title: "The Joy of Analysis"
+date: "2023-02-27"
+categories: ["#TidyTuesday", R]
+toc: true
+draft: true
+---
+
+```{r set up}
+#| warning: false
+#| message: false
+#| echo: false
+knitr::opts_chunk$set(warning = FALSE, 
+                      message = FALSE) 
+# here::i_am("blog/01_blog/2023_02_21_TidyTuesday-Bob-Ross/index.qmd")
+```
+
+In this blog I analyze colors used in "They Joy of Painting", a beloved TV show hosted by Bob Ross. In this post I explore these colors used across the seasons. 
+
+# Introduction
+
+::: {.panel-tabset}
+
+### Introduction 
+
+[Bob Ross](https://en.wikipedia.org/wiki/Bob_Ross) was known for his soothing voice, calm demeanor, and his ability to create beautiful landscapes with simple brushstrokes. One of the defining features of his painting was the vibrant and bold colors he used to bring his landscapes to life. Whether you're a fan of [The Joy of Painting](https://en.wikipedia.org/wiki/The_Joy_of_Painting) or simply interested data analysis, this post will offer you valuable insights. 
+
+Lets **consider a viewer** who is **new to painting**, and wants to explore its joy by watching a season of "The Joy of Painting", and following along. This viewer is **budget conscious** and might be **disappointed to spend money on paint supplies that are hardly used**. This analysis considers this use case by investigating the frequency of colors used across seasons.   
+
+### Libraries
+
+This analysis will only use packages from the [Tidyverse](https://www.tidyverse.org/).
+
+```{r}
+library(tidyverse)
+library(plotly)
+```
+
+### Data
+
+This analysis will only use the Bob Ross data set that is included in TidyTuesday for February 2023. 
+
+```{r}
+bob_ross <- read_csv(
+  "https://raw.githubusercontent.com/jwilber/Bob_Ross_Paintings/master/data/bob_ross_paintings.csv",
+) 
+head(bob_ross)
+```
+
+:::
+
+# Data Cleaning 
+
+::: {.panel-tabset}
+
+### br_subset
+
+```{r}
+br_subset <- bob_ross %>%
+  group_by(season) %>%
+  summarise(black_gesso = sum(Black_Gesso),
+    bright_red = sum(Bright_Red),
+    burnt_umber = sum(Burnt_Umber),
+    carmium_yellow = sum(Cadmium_Yellow),
+    dark_sienna = sum(Dark_Sienna),
+    indian_red = sum(Indian_Red),
+    indian_yellow = sum(Indian_Yellow),
+    liquid_black = sum(Liquid_Black),
+    liquid_clear = sum(Liquid_Clear),
+    midnight_black = sum(Midnight_Black),
+    phthalo_blue = sum(Phthalo_Blue),
+    phthalo_green = sum(Phthalo_Green),
+    prussian_blue = sum(Prussian_Blue),
+    sap_green = sum(Sap_Green),
+    titanium_white = sum(Titanium_White),
+    van_dyke_brown = sum(Van_Dyke_Brown),
+    yellow_orchre = sum(Yellow_Ochre),
+    alizarian_crimson = sum(Alizarin_Crimson)) %>%
+  pivot_longer(
+    !season, 
+    names_to = "color", 
+    values_to = "count")
+```
+
+
+
+
+:::
+
+# Exploritroy Data Analysis 
+
+## About "The Joy of Painting": 
+
+::: {.panel-tabset}
+
+### About 
+
+* 31 total seasons.
+
+* 13 episodes per season. 
+
+* 403 total episodes. 
+
+When we consider the use case above, and that a canvas costs about `$`3. Then a budge conscious user can assume their **budge for paint canvas** will be about **`$`40 per season**, and about **`$`1,210 for all 403 episodes**.
+
+### Table
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show Code"
+episodes_per_season <- bob_ross %>%
+  dplyr::group_by(season) %>%
+  dplyr::summarise(total_episodes = n()) 
+
+episodes_per_season %>% base::t()
+```
+
+:::
+
+## Colors used: 
+
+::: {.panel-tabset}
+
+### Colors
+
+* On **average 138** colors were used each season.
+
+* The **least** amount of colors used in a single season was **92** in season 1. 
+
+* The **most** amount of colors used in a single season was **156** in season 14. 
+
+### Table
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show Code"
+br_colors <- bob_ross %>%
+  group_by(season) %>%
+  summarise(total_num_colors = sum(num_colors)) 
+
+mean_colors <- mean(br_colors$total_num_colors)
+min_colors <- min(br_colors$total_num_colors)
+max_colors <- max(br_colors$total_num_colors)
+
+br_colors %>% t()
+```
+
+### Graph
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show Code"
+#| warning: false
+#| message: false
+br_colors <- c(
+  "#4E1500", "#000000", "#DB0000", 
+  "#8A3324", "#FFEC00", "#5F2E1F", 
+  "#CD5C5C", "#FFB800", "#000000", 
+  "#FFFFFF", "#000000", "#0C0040", 
+  "#102E3C", "#021E44", "#0A3410", 
+  "#FFFFFF", "#221B15", "#C79B00")
+cols_used_each_season <- ggplot(
+  br_subset, 
+  aes(
+    x = season,
+    y = count,
+    fill = color)
+  ) +
+  geom_col(
+    position = "stack",
+    stat = "identity"
+    ) +
+  ggtitle("Colors Used Each Season") +
+  xlab("Season") +
+  ylab("Colors Used") +
+  scale_fill_manual(values = br_colors)
+  theme(
+    plot.title = element_text(family = "Times"),
+    axis.title.x = element_text(family = "Times"),
+    axis.title.y = element_text(family = "Times")
+  )
+
+ggplotly(cols_used_each_season)
+```
+
+
+:::
+
+## Color Trends:
+
+::: {.panel-tabset}
+
+### Trends 
+
+* <font color="#CD5C5C"> **Indian Red** </font> is the color that is **least used**. It was only featured once in  season 22 episode 1 in the Painting _Autumn Images_ shown below. 
+
+<center>
+
+![[Autumn Images](https://www.youtube.com/embed/HMx34Am6RFg) is a painting of a mountain in front <br>of big white clouds, and surrounded by trees. ](https://www.twoinchbrush.com/images/painting14.png)
+
+</center>
+
+* <font color="#8A3324"> **Burnt Umber** </font> was only used in 55 episodes. The last painting it was used in was from season 6 episode 13 and is called _Blaze of Color_, shown below.
+
+<center>
+
+![[Blaze of Color](	https://www.youtube.com/embed/se7wOprxRGs) is a painting of a green and dark blue creek <br>surrounded by yellow and light green grass, trees, and <br>a vibrant blue, pink, yellow, orange, and red sunset. ](https://www.twoinchbrush.com/images/painting229.png)
+
+</center>
+
+* <font color="#5F2E1F"> **Dark Sienna** </font> may have been used instead of Burnt umber. It can in the episode of the last season, season 31 episode 13, in a painting called _Wilderness Day_, shown below. 
+
+<center>
+
+![[Wilderness Day](https://www.youtube.com/embed/nJGCVFn57U8) is a painting of a dark green meadow that includes <br>trees, bushes, and a misty mountain in the  background. ](https://www.twoinchbrush.com/images/painting411.png)
+
+</center>
+
+### Graph
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show Code"
+
+a <- bob_ross %>%
+  filter(Burnt_Umber == 1) %>%
+  summarise(episode = episode,
+            season = season,
+            img_src = img_src,
+            painting_title = painting_title,
+            youtube_src = youtube_src)
+
+b <- bob_ross %>%
+  filter(Dark_Sienna == 1) %>%
+  summarise(episode = episode,
+            season = season,
+            img_src = img_src,
+            painting_title = painting_title,
+            youtube_src = youtube_src)
+
+
+
+color_labs <- c(black_gesso = "Black Gesso", 
+                bright_red = "Bright Red", 
+                burnt_umber = "Burnt Umber",
+                carmium_yellow = "Carmium Yellow", 
+                dark_sienna = "Dark Sienna", 
+                indian_red = "Indian Red",
+                indian_yellow = "Indian Yellow", 
+                liquid_black = "Liquid Black", 
+                liquid_clear = "Liquid Clear",
+                midnight_black = "Midnight Black", 
+                phthalo_blue = "Phthalo Blue", 
+                phthalo_green = "Phthalo Green",
+                prussian_blue = "Prussian Blue", 
+                sap_green = "Sap Green", 
+                titanium_white = "Titanium White",
+                van_dyke_brown = "Van Dyke Brown", 
+                yellow_orchre = "Yellow Orchre", 
+                alizarian_crimson = "Alizarian Crimson")
+
+
+html_colors <- c(
+  "#000000", "#DB0000", "#8A3324",
+  "#FFEC00", "#5F2E1F", "#CD5C5C", 
+  "#FFB800", "#000000", "#FFFFFF",
+  "#000000", "#0C0040", "#102E3C",
+  "#021E44", "#0A3410", "#FFFFFF",
+  "#221B15", "#C79B00", "#4E1500")
+
+# html_colors <- rep(html_colors, 31)
+# br_subset$html_colors <- html_colors
+
+ggplot(br_subset, aes(x = season, y = count)) +
+  geom_point() +
+  facet_wrap(
+    vars(color), 
+    labeller = labeller(color = color_labs)) +
+  ggtitle("Color Trends By Season") +
+  xlab("Season") +
+  ylab("Count") + 
+  theme(
+    plot.title = element_text(family = "Times"),
+    axis.title.x = element_text(family = "Times"),
+    axis.title.y = element_text(family = "Times"),
+    strip.background = element_rect(
+     color="#2c1320", 
+     fill= "#6c464e", 
+     size=1.5, 
+     linetype="solid"),
+    strip.text.x = element_text(
+      family = "Times",
+      color = "#feebe2")
+  )
+```
+
+:::
+
+# Conclusion 
+
+::: {.panel-tabset}
+
+### Results
+
+**Considering the use case of a viewer who is:**
+
+* new to painting
+
+* budge conscious
+
+* disappointed when spending money on something they hardly used
+
+**My recommendations would be:** 
+
+1. Each season has the same amount of episodes, so the user might consider viewing the paintings from each season, and deciding which season of paintings they like best before selecting the color they will purchase. They will enjoy painting more if they know they will enjoy the end result. 
+
+2. Season 1 uses the least amount of colors, and might be a good place to start for someone who is new to painting, and cannot otherwise decide which seasons paintings they enjoy the most. 
+
+3. Consider using similar colors interchangeably such as <font color="#5F2E1F"> Dark Sienna </font> instead of <font color="#8A3324"> Burnt Umber </font> and <font color="#CD5C5C"> Indian Red </font>. The user might need to mix in more black or white, to get a similar result to the painting they are recreating, which is another thing to consider when purchasing supplies. 
+
+### Discussion 
+
+**What other questions would our given use case be curious about answering before investing their time into "The Joy of Painting"?**
+
+* Should they buy more of one paint (such as black and white) over others (such as purple)? 
+
+* Is there any correlation between painting title and colors used? 
+
+* What clusters of paintings use similar color palettes?
+
+**What are some other use cases for this data?**
+
+* An event planner who wants to pick one painting with the least amount of colors and complexity to paint with a group of people of varying experience levels. 
+
+* An experienced painter who wants to wants to work with the most colors possible. 
+
+* A homeowner who wants to recreate a painting with colors that will compliment their interier design choices. 
+
+:::
+
+
+
+
+
+
+
+
+
+
+

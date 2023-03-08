@@ -1,0 +1,95 @@
+---
+title: "Creating a TidyTuesday Repository"
+date: "2023-02-13"
+categories: ["#TidyTuesday", R]
+draft: true
+---
+
+In this post I will guide you through the process of setting up a #TidyTuesday repository, a project that involves analyzing and visualizing a new data set every week. 
+
+# Introduction 
+
+[#TidyTuesday]() is a weekly social data project aimed at providing a fun and structured way for R users to improve their skills. Every Tuesday a new data set is shared and participants are encourages to explore and share their insights through data visualizations, code, and blog posts. 
+
+By creating a repository for your #TidyTuesday project, you can easily organize your code and visualizations, collaborate with others, and showcase your data analysis skills. 
+
+# Set Up 
+
+## Architecture
+
+The repository needs to be organized in a tidy format, making it easy for others to reproduce and build upon the analysis. 
+
+::: {.panel-tabset}
+
+### Architecture
+
+* 2023
+
+  * week_08
+  
+    * index.R
+    
+    * plot.png
+    
+    * README.md
+
+* README.md
+    
+### Bash Commands
+
+1. Create a tidytuesday directory. 
+
+```{r}
+#| eval: false
+mkdir tidytuesday
+```
+
+2. Move into the tidytuesday folder. 
+
+```{bash}
+#| eval: false
+cd tidytuesday
+```
+
+3. Create a 2023 folder inside the tidytuesday folder. 
+
+```{bash}
+#| eval: false
+mkdir 2023
+```
+
+4. Move into the 2023 folder. 
+
+```{bash}
+#| eval: false
+cd 2023
+```
+
+5. Create a week_08 folder insider the 2023 folder. 
+
+```{bash}
+#| eval: false
+mkdir week_08
+```
+
+:::
+
+## Week 08 Project 
+
+
+In the week 8 folder create an R file called index.R. This will be the R code that creates the graph. 
+
+Run the R code to create the plot.png. 
+
+## README.md
+
+Create a readme. md in the folder and fill it out. 
+
+Create a readme for the project and fill out info. 
+
+## Github 
+
+Create git hub repo. 
+
+Connect to project. 
+

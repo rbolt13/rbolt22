@@ -1,0 +1,14 @@
+{
+  "hash": "9a23306001a4e7a16046cace463a6775",
+  "result": {
+    "markdown": "---\ntitle: \"Creating a TidyTuesday Repository\"\ndate: \"2023-02-13\"\ncategories: [\"#TidyTuesday\", R]\ndraft: true\n---\n\n\nIn this post I will guide you through the process of setting up a #TidyTuesday repository, a project that involves analyzing and visualizing a new data set every week. \n\n# Introduction \n\n[#TidyTuesday]() is a weekly social data project aimed at providing a fun and structured way for R users to improve their skills. Every Tuesday a new data set is shared and participants are encourages to explore and share their insights through data visualizations, code, and blog posts. \n\nBy creating a repository for your #TidyTuesday project, you can easily organize your code and visualizations, collaborate with others, and showcase your data analysis skills. \n\n# Set Up \n\n## Architecture\n\nThe repository needs to be organized in a tidy format, making it easy for others to reproduce and build upon the analysis. \n\n::: {.panel-tabset}\n\n### Architecture\n\n* 2023\n\n  * week_08\n  \n    * index.R\n    \n    * plot.png\n    \n    * README.md\n\n* README.md\n    \n### Bash Commands\n\n1. Create a tidytuesday directory. \n\n\n::: {.cell}\n\n```{.r .cell-code}\nmkdir tidytuesday\n```\n:::\n\n\n2. Move into the tidytuesday folder. \n\n\n::: {.cell}\n\n```{.bash .cell-code}\ncd tidytuesday\n```\n:::\n\n\n3. Create a 2023 folder inside the tidytuesday folder. \n\n\n::: {.cell}\n\n```{.bash .cell-code}\nmkdir 2023\n```\n:::\n\n\n4. Move into the 2023 folder. \n\n\n::: {.cell}\n\n```{.bash .cell-code}\ncd 2023\n```\n:::\n\n\n5. Create a week_08 folder insider the 2023 folder. \n\n\n::: {.cell}\n\n```{.bash .cell-code}\nmkdir week_08\n```\n:::\n\n\n:::\n\n## Week 08 Project \n\n\nIn the week 8 folder create an R file called index.R. This will be the R code that creates the graph. \n\nRun the R code to create the plot.png. \n\n## README.md\n\nCreate a readme. md in the folder and fill it out. \n\nCreate a readme for the project and fill out info. \n\n## Github \n\nCreate git hub repo. \n\nConnect to project. \n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
