@@ -1,0 +1,98 @@
+---
+title: "NCAA"
+date: "2023-03-14"
+categories: [R]
+toc: true
+draft: true
+---
+
+```{r}
+library(rpart)
+library(rpart.plot)
+library(tidyverse)
+```
+
+
+# Load Data
+
+From Kaggle: https://www.kaggle.com/datasets/woodygilbertson/ncaam-march-madness-scores-19852021 
+
+```{r}
+march_madness_data <- read.csv("data_cleaned.csv")
+head(march_madness_data)
+```
+
+## chat gpt code
+
+1. Load the data into R and into training and testing sets.  
+
+```{r}
+# Load data
+ncaa_data <- march_madness_data %>%
+  filter(YEAR == c("2021", "2019"))
+
+# Split data into training and testing sets
+set.seed(123)
+train_index <- sample(nrow(ncaa_data), size = round(0.7 * nrow(ncaa_data)), replace = FALSE)
+train_data <- ncaa_data[train_index, ]
+test_data <- ncaa_data[-train_index, ]
+```
+
+2. Use `rpart` to build a decision tree based on test data. 
+
+```{r}
+#| eval: false
+# Build decision tree using rpart
+ncaa_tree <- rpart(WTEAM ~ ., 
+                   data = train_data, 
+                   method = "class")
+```
+
+
+
+
+3. Evaluate the accuracy of the decision tree using the testing data. 
+
+```{r}
+#| eval: false
+# Predict the winner of each game in the testing data using the decision tree
+test_data$predicted_winner <- predict(
+  ncaa_tree, 
+  newdata = test_data, 
+  type = "class")
+
+# Calculate the accuracy of the predictions
+accuracy <- sum(test_data$predicted_winner == test_data$Winner) / nrow(test_data)
+
+```
+
+
+4. Use decision tree to make predictions for future games. 
+
+```{r}
+# Load data for upcoming games
+# upcoming_games <- read.csv("upcoming_games.csv")
+
+# Predict the winner of each upcoming game using the decision tree
+# upcoming_games$predicted_winner <- predict(ncaa_tree, newdata = upcoming_games, type = "class")
+
+```
+
+
+# Chat gpt example decision tree code
+
+```{r}
+# Load required packages
+library(rpart)
+library(rpart.plot)
+
+# Load example data
+data(iris)
+
+# Create decision tree using rpart
+iris_tree <- rpart(Species ~ ., data = iris)
+
+# Plot the decision tree
+rpart.plot(iris_tree)
+```
+
