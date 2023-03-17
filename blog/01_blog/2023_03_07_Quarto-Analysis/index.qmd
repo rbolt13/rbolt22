@@ -1,0 +1,87 @@
+---
+title: "Quarto Blogs Analysis"
+date: "2023-03-07"
+categories: [R, Analysis]
+draft: true
+---
+
+Quarto has gained a lot of traction in the blogging community, especially among data scientists and statisticians. In this post we explore and analyze Quarto blog features and design elements that are common or make an individual blog stand out. 
+
+# Introduction
+
+::: {.panel-tabset}
+
+### Introduction
+
+[Quarto](https://quarto.org/) is a popular open-source publishing system built on Pandoc that allows users to create and maintain websites with ease. 
+
+By looking at these blogs, we hope to provide insight into the best practices for creating a successful and engaging blog using Quarto. Whether you're new to Quarto or a seasoned user, this post will offer valuable insights into the elements that make a great Quarto blog. So without further ado, let's dive into the world of Quarto and discover the best of the best.
+
+### Set Up 
+
+```{r packages}
+library(tidyverse)
+```
+
+### Data
+
+```{r data}
+quarto_data <- data.frame(
+  blog = c(),
+  name = c(),
+  link = c()
+)
+```
+
+:::
+
+# Analysis 
+
+## Pages 
+
+This section breaks down each blog into the pages that a user can click on such as "Home" or "About". Pages like these are often the most visited and most critical pages on a blog. Analyzing specific pages on a blog can provide valuable insights into a blog's design, functionality, overall strategy, and can help bloggers to identify areas for improvement and optimize their websites for maximum engagement and effectiveness.
+
+::: {.panel-tabset}
+
+### Home 
+
+#### **Overview - Home Page Analysis**
+
+The home page is often the first thing that visitors see when they land on your website, and as such it should give them a good idea of what your website is all about. By taking the time to create a well-designed and informative home page, you can attract and retain visitors, showcase your best content, and establish your brand identity.
+
+#### **Trends**
+
+* ?/10 Blogs do this
+
+* ?/10 Blogs do this
+
+* ?/10 Blogs do this
+
+### Blog
+
+
+
+### About
+
+
+
+### Project
+
+:::
+
+## Overall 
+
+::: {.panel-tabset}
+### Features
+
+### Design Elements
+
+By using consistent design elements, such as your logo, color scheme, and typography, you can create a cohesive and professional-looking website that visitors will be more likely to trust and engage with.
+
+### Content 
+
+### User Engagement
+
+:::
+
+# Conclusion 

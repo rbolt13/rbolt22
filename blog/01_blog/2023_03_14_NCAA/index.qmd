@@ -38,16 +38,15 @@ train_data <- ncaa_data[train_index, ]
 test_data <- ncaa_data[-train_index, ]
 ```
 
-2. Use `rpart` to build a decision tree based on test data. 
+2. Use `tree` to build a decision tree based on test data. 
 
 ```{r}
-#| eval: false
-# Build decision tree using rpart
-ncaa_tree <- rpart(WTEAM ~ ., 
-                   data = train_data, 
-                   method = "class")
-```
+# Build decision tree using tree
+ncaa_tree <- tree::tree(
+  WTEAM ~ ., 
+  data = ncaa_data)
 
+```
 
 
 

@@ -3,7 +3,7 @@ title: "The Joy of Analysis"
 date: "2023-02-27"
 categories: ["#TidyTuesday", R]
 toc: true
-draft: true
+draft: false
 ---
 
 ```{r set up}
@@ -15,7 +15,9 @@ knitr::opts_chunk$set(warning = FALSE,
 # here::i_am("blog/01_blog/2023_02_21_TidyTuesday-Bob-Ross/index.qmd")
 ```
 
-In this blog I analyze colors used in "They Joy of Painting", a beloved TV show hosted by Bob Ross. In this post I explore these colors used across the seasons. 
+As an artist and TV personality, Bob Ross has captivated audiences for decades with his signature afro, and of course, his beautiful paintings. In this blog post, we will take a closer look at the colors that Bob Ross used during his time on "The Joy of Painting". 
+
+![](color_trends_by_season.png)
 
 # Introduction
 
@@ -23,135 +25,169 @@ In this blog I analyze colors used in "They Joy of Painting", a beloved TV show 
 
 ### Introduction 
 
-[Bob Ross](https://en.wikipedia.org/wiki/Bob_Ross) was known for his soothing voice, calm demeanor, and his ability to create beautiful landscapes with simple brushstrokes. One of the defining features of his painting was the vibrant and bold colors he used to bring his landscapes to life. Whether you're a fan of [The Joy of Painting](https://en.wikipedia.org/wiki/The_Joy_of_Painting) or simply interested data analysis, this post will offer you valuable insights. 
+[Bob Ross](https://en.wikipedia.org/wiki/Bob_Ross) was known for his soothing voice, calm demeanor, and his ability to create beautiful landscapes with simple brushstrokes. One of the defining features of his painting was the vibrant and bold colors he used to bring his landscapes to life. Whether you're a fan of [The Joy of Painting](https://en.wikipedia.org/wiki/The_Joy_of_Painting) or simply interested in data analytics, this post will offer you valuable insights. 
 
 Lets **consider a viewer** who is **new to painting**, and wants to explore its joy by watching a season of "The Joy of Painting", and following along. This viewer is **budget conscious** and might be **disappointed to spend money on paint supplies that are hardly used**. This analysis considers this use case by investigating the frequency of colors used across seasons.   
 
 ### Libraries
 
-This analysis will only use packages from the [Tidyverse](https://www.tidyverse.org/).
+This analysis will uses packages the [tidyverse](https://www.tidyverse.org/) to wrangle the data, and plotly to make interactive graphs.
 
-```{r}
+```{r load libraries}
+#| warning: false
 library(tidyverse)
 library(plotly)
 ```
 
 ### Data
 
-This analysis will only use the Bob Ross data set that is included in TidyTuesday for February 2023. 
+This analysis will only use the Bob Ross data set that is included in [TidyTuesday](https://github.com/rfordatascience/tidytuesday) for February 21, 2023. 
 
-```{r}
+```{r load data}
+#| code-fold: true
+#| code-summary: "Show Code"
 bob_ross <- read_csv(
   "https://raw.githubusercontent.com/jwilber/Bob_Ross_Paintings/master/data/bob_ross_paintings.csv",
 ) 
 head(bob_ross)
 ```
 
-:::
 
-# Data Cleaning 
+### Data Cleaning 
 
-::: {.panel-tabset}
+## episode_per_season
 
-### br_subset
+**episode_per_season** : groups the original bob_ross data by season and then counts how many episode is in each season. 
 
-```{r}
+```{r create episode_per_season}
+#| code-fold: true
+#| code-summary: "Show Code"
+episodes_per_season <- bob_ross %>%
+  dplyr::group_by(season) %>%
+  dplyr::summarise(total_episodes = dplyr::n()) 
+```
+
+## br_colors
+
+**br_colors** : short for Bob Ross colors, this data groups the original bob_ross data by season, and then counts the total amount of color used that season.
+
+```{r create br_colors}
+#| code-fold: true
+#| code-summary: "Show Code"
+br_colors <- bob_ross %>%
+  dplyr::group_by(season) %>%
+  dplyr::summarise(
+    total_num_colors = base::sum(num_colors)) 
+```
+
+## br_subset
+
+**br_subset** : short for Bob Ross subset, this data groups the original bob_ross data by season and then counts how many times each color was used in each season.
+
+```{r create br_subset}
+#| code-fold: true
+#| code-summary: "Show Code"
 br_subset <- bob_ross %>%
-  group_by(season) %>%
-  summarise(black_gesso = sum(Black_Gesso),
-    bright_red = sum(Bright_Red),
-    burnt_umber = sum(Burnt_Umber),
-    carmium_yellow = sum(Cadmium_Yellow),
-    dark_sienna = sum(Dark_Sienna),
-    indian_red = sum(Indian_Red),
-    indian_yellow = sum(Indian_Yellow),
-    liquid_black = sum(Liquid_Black),
-    liquid_clear = sum(Liquid_Clear),
-    midnight_black = sum(Midnight_Black),
-    phthalo_blue = sum(Phthalo_Blue),
-    phthalo_green = sum(Phthalo_Green),
-    prussian_blue = sum(Prussian_Blue),
-    sap_green = sum(Sap_Green),
-    titanium_white = sum(Titanium_White),
-    van_dyke_brown = sum(Van_Dyke_Brown),
-    yellow_orchre = sum(Yellow_Ochre),
-    alizarian_crimson = sum(Alizarin_Crimson)) %>%
-  pivot_longer(
+  dplyr::group_by(season) %>%
+  dplyr::summarise(
+    black_gesso = base::sum(Black_Gesso),
+    bright_red = base::sum(Bright_Red),
+    burnt_umber = base::sum(Burnt_Umber),
+    carmium_yellow = base::sum(Cadmium_Yellow),
+    dark_sienna = base::sum(Dark_Sienna),
+    indian_red = base::sum(Indian_Red),
+    indian_yellow = base::sum(Indian_Yellow),
+    liquid_black = base::sum(Liquid_Black),
+    liquid_clear = base::sum(Liquid_Clear),
+    midnight_black = base::sum(Midnight_Black),
+    phthalo_blue = base::sum(Phthalo_Blue),
+    phthalo_green = base::sum(Phthalo_Green),
+    prussian_blue = base::sum(Prussian_Blue),
+    sap_green = base::sum(Sap_Green),
+    titanium_white = base::sum(Titanium_White),
+    van_dyke_brown = base::sum(Van_Dyke_Brown),
+    yellow_orchre = base::sum(Yellow_Ochre),
+    alizarian_crimson = base::sum(Alizarin_Crimson)
+    ) %>%
+  tidyr::pivot_longer(
     !season, 
     names_to = "color", 
     values_to = "count")
 ```
 
+### Queries
 
+## Summary Stats
 
+**mean_colors** : Give the average number of colors used a season.
 
-:::
-
-# Exploritroy Data Analysis 
-
-## About "The Joy of Painting": 
-
-::: {.panel-tabset}
-
-### About 
-
-* 31 total seasons.
-
-* 13 episodes per season. 
-
-* 403 total episodes. 
-
-When we consider the use case above, and that a canvas costs about `$`3. Then a budge conscious user can assume their **budge for paint canvas** will be about **`$`40 per season**, and about **`$`1,210 for all 403 episodes**.
-
-### Table
-
-```{r}
+```{r mean colors}
 #| code-fold: true
 #| code-summary: "Show Code"
-episodes_per_season <- bob_ross %>%
-  dplyr::group_by(season) %>%
-  dplyr::summarise(total_episodes = n()) 
-
-episodes_per_season %>% base::t()
+mean_colors <- base::mean(br_colors$total_num_colors)
+mean_colors
 ```
 
-:::
+**min_colors** : Gives the minimum amount of colors used in a season.
 
-## Colors used: 
-
-::: {.panel-tabset}
-
-### Colors
-
-* On **average 138** colors were used each season.
-
-* The **least** amount of colors used in a single season was **92** in season 1. 
-
-* The **most** amount of colors used in a single season was **156** in season 14. 
-
-### Table
-
-```{r}
+```{r min colors}
 #| code-fold: true
 #| code-summary: "Show Code"
-br_colors <- bob_ross %>%
-  group_by(season) %>%
-  summarise(total_num_colors = sum(num_colors)) 
-
-mean_colors <- mean(br_colors$total_num_colors)
-min_colors <- min(br_colors$total_num_colors)
-max_colors <- max(br_colors$total_num_colors)
-
-br_colors %>% t()
+min_colors <- base::min(br_colors$total_num_colors)
+min_colors
 ```
 
-### Graph
+**max_colors** : Gives the max amount of colors used in a season.
 
-```{r}
+```{r max colors}
 #| code-fold: true
 #| code-summary: "Show Code"
+max_colors <- base::max(br_colors$total_num_colors)
+max_colors
+```
+
+## Color Specific Details
+
+**burnt_umber_details** : Gives the episode number, season, img_src, paiting title, and youtube_scr for all episodes that used burnt umber. 
+
+```{r query burnt_umber}
+#| code-fold: true
+#| code-summary: "Show Code"
+burnt_umber_details <- bob_ross %>%
+  dplyr::filter(Burnt_Umber == 1) %>%
+  dplyr::summarise(
+    episode = episode,
+    season = season,
+    img_src = img_src,
+    painting_title = painting_title,
+    youtube_src = youtube_src)
+```
+
+**dark_sienna_details** : Gives the episode number, season, img_src, paiting title, and youtube_scr for all episodes that used dark sienna. 
+
+```{r query dark_sienna}
+#| code-fold: true
+#| code-summary: "Show Code"
+dark_sienna_details <- bob_ross %>%
+  dplyr::filter(Dark_Sienna == 1) %>%
+  dplyr::summarise(
+    episode = episode,
+    season = season,
+    img_src = img_src,
+    painting_title = painting_title,
+    youtube_src = youtube_src)
+```
+
+### Visuals
+
+## colors_graph
+
+**colors_graph** : Is a graph that shows the amount of specific colors used each season. 
+
+```{r create colors_graph}
 #| warning: false
-#| message: false
+#| code-fold: true
+#| code-summary: "Show Code"
 br_colors <- c(
   "#4E1500", "#000000", "#DB0000", 
   "#8A3324", "#FFEC00", "#5F2E1F", 
@@ -159,38 +195,143 @@ br_colors <- c(
   "#FFFFFF", "#000000", "#0C0040", 
   "#102E3C", "#021E44", "#0A3410", 
   "#FFFFFF", "#221B15", "#C79B00")
-cols_used_each_season <- ggplot(
+colors_graph <- ggplot2::ggplot(
   br_subset, 
   aes(
     x = season,
     y = count,
     fill = color)
   ) +
-  geom_col(
-    position = "stack",
-    stat = "identity"
+  ggplot2::geom_col(
+    stat = "identity",
+    position = "stack"
     ) +
-  ggtitle("Colors Used Each Season") +
-  xlab("Season") +
-  ylab("Colors Used") +
-  scale_fill_manual(values = br_colors)
-  theme(
+  ggplot2::ggtitle("Colors Used Each Season") +
+  ggplot2::xlab("Season") +
+  ggplot2::ylab("Colors Used") + 
+  ggplot2::scale_fill_manual(values = br_colors) +
+  ggplot2::theme(
     plot.title = element_text(family = "Times"),
     axis.title.x = element_text(family = "Times"),
     axis.title.y = element_text(family = "Times")
   )
+```
 
-ggplotly(cols_used_each_season)
+## color_trends
+
+**color_trends** : Is a graph that shows color trends by season. 
+
+```{r create color_trends graph}
+#| warning: false
+#| code-fold: true
+#| code-summary: "Show Code"
+color_labs <- c(black_gesso = "Black Gesso", 
+                bright_red = "Bright Red", 
+                burnt_umber = "Burnt Umber",
+                carmium_yellow = "Carmium Yellow", 
+                dark_sienna = "Dark Sienna", 
+                indian_red = "Indian Red",
+                indian_yellow = "Indian Yellow", 
+                liquid_black = "Liquid Black", 
+                liquid_clear = "Liquid Clear",
+                midnight_black = "Midnight Black", 
+                phthalo_blue = "Phthalo Blue", 
+                phthalo_green = "Phthalo Green",
+                prussian_blue = "Prussian Blue", 
+                sap_green = "Sap Green", 
+                titanium_white = "Titanium White",
+                van_dyke_brown = "Van Dyke Brown", 
+                yellow_orchre = "Yellow Orchre", 
+                alizarian_crimson = "Alizarian Crimson")
+
+# html_colors <- rep(html_colors, 31)
+# br_subset$html_colors <- html_colors
+color_trends <- ggplot2::ggplot(
+  br_subset, 
+  ggplot2::aes(
+    x = season, 
+    y = count)
+  ) +
+  ggplot2::geom_point() +
+  ggplot2::facet_wrap(
+    vars(color), 
+    labeller = labeller(color = color_labs)) +
+  ggplot2::ggtitle("Color Trends By Season") +
+  ggplot2::xlab("Season") +
+  ggplot2::ylab("Count") + 
+  ggplot2::labs(
+    caption = "Graph by Randi Bolt\nData from #TidyTuesday"
+    ) +
+  ggplot2::theme(
+    plot.title = element_text(family = "Times"),
+    axis.title.x = element_text(family = "Times"),
+    axis.title.y = element_text(family = "Times"),
+    strip.background = element_rect(
+     color="#2c1320", 
+     fill= "#6c464e", 
+     size=1.5, 
+     linetype="solid"),
+    strip.text.x = element_text(
+      family = "Times",
+      color = "#feebe2") 
+  ) 
 ```
 
 
 :::
 
-## Color Trends:
+# Exploritroy Data Analysis 
 
 ::: {.panel-tabset}
 
-### Trends 
+### About 
+
+## About "The Joy of Painting": 
+
+* 31 total seasons.
+
+* 13 episodes per season. 
+
+* 403 total episodes. 
+
+When we consider the use case above, and that a canvas costs about `$`3. Then a budget conscious user can assume their **budget for paint canvas** will be about **`$`40 per season**, and about **`$`1,210 for all 403 episodes**.
+
+Below is a table that shows the total number of episodes per season. 
+
+```{r}
+#| echo: false
+episodes_per_season %>% base::t()
+```
+
+### Colors
+
+## Colors Used
+
+* On **average 138** colors were used each season.
+
+* The **least** amount of colors used in a single season was **92** in season 1. 
+
+* The **most** amount of colors used in a single season was **156** in season 14. 
+
+When considering out use case, a budget conscious viewer may consider starting their journey at season 1 where the least amounf ot colors are used. 
+
+Below is a table that shows the total number of colors used per season, and a graph that shows the total number of colors used each season stacked by color that was used. 
+
+```{r print colors_table}
+#| echo: false
+br_colors %>% t()
+```
+
+```{r print colors graph}
+#| echo: false
+#| warning: false
+#| message: false
+ggplotly(colors_graph)
+```
+
+### Trends
+
+## Color Trends 
 
 * <font color="#CD5C5C"> **Indian Red** </font> is the color that is **least used**. It was only featured once in  season 22 episode 1 in the Painting _Autumn Images_ shown below. 
 
@@ -216,82 +357,11 @@ ggplotly(cols_used_each_season)
 
 </center>
 
-### Graph
+Below is a graph that shows the number of time a color was used each season. 
 
-```{r}
-#| code-fold: true
-#| code-summary: "Show Code"
-
-a <- bob_ross %>%
-  filter(Burnt_Umber == 1) %>%
-  summarise(episode = episode,
-            season = season,
-            img_src = img_src,
-            painting_title = painting_title,
-            youtube_src = youtube_src)
-
-b <- bob_ross %>%
-  filter(Dark_Sienna == 1) %>%
-  summarise(episode = episode,
-            season = season,
-            img_src = img_src,
-            painting_title = painting_title,
-            youtube_src = youtube_src)
-
-
-
-color_labs <- c(black_gesso = "Black Gesso", 
-                bright_red = "Bright Red", 
-                burnt_umber = "Burnt Umber",
-                carmium_yellow = "Carmium Yellow", 
-                dark_sienna = "Dark Sienna", 
-                indian_red = "Indian Red",
-                indian_yellow = "Indian Yellow", 
-                liquid_black = "Liquid Black", 
-                liquid_clear = "Liquid Clear",
-                midnight_black = "Midnight Black", 
-                phthalo_blue = "Phthalo Blue", 
-                phthalo_green = "Phthalo Green",
-                prussian_blue = "Prussian Blue", 
-                sap_green = "Sap Green", 
-                titanium_white = "Titanium White",
-                van_dyke_brown = "Van Dyke Brown", 
-                yellow_orchre = "Yellow Orchre", 
-                alizarian_crimson = "Alizarian Crimson")
-
-
-html_colors <- c(
-  "#000000", "#DB0000", "#8A3324",
-  "#FFEC00", "#5F2E1F", "#CD5C5C", 
-  "#FFB800", "#000000", "#FFFFFF",
-  "#000000", "#0C0040", "#102E3C",
-  "#021E44", "#0A3410", "#FFFFFF",
-  "#221B15", "#C79B00", "#4E1500")
-
-# html_colors <- rep(html_colors, 31)
-# br_subset$html_colors <- html_colors
-
-ggplot(br_subset, aes(x = season, y = count)) +
-  geom_point() +
-  facet_wrap(
-    vars(color), 
-    labeller = labeller(color = color_labs)) +
-  ggtitle("Color Trends By Season") +
-  xlab("Season") +
-  ylab("Count") + 
-  theme(
-    plot.title = element_text(family = "Times"),
-    axis.title.x = element_text(family = "Times"),
-    axis.title.y = element_text(family = "Times"),
-    strip.background = element_rect(
-     color="#2c1320", 
-     fill= "#6c464e", 
-     size=1.5, 
-     linetype="solid"),
-    strip.text.x = element_text(
-      family = "Times",
-      color = "#feebe2")
-  )
+```{r print color trends graph}
+#| echo: false
+color_trends
 ```
 
 :::
@@ -304,13 +374,13 @@ ggplot(br_subset, aes(x = season, y = count)) +
 
 **Considering the use case of a viewer who is:**
 
-* new to painting
+* New to painting.
 
-* budge conscious
+* Budget conscious.
 
-* disappointed when spending money on something they hardly used
+* Disappointed when spending money on something they hardly used.
 
-**My recommendations would be:** 
+## My recommendations would be: 
 
 1. Each season has the same amount of episodes, so the user might consider viewing the paintings from each season, and deciding which season of paintings they like best before selecting the color they will purchase. They will enjoy painting more if they know they will enjoy the end result. 
 
