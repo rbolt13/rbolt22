@@ -27,11 +27,11 @@ As an artist and TV personality, Bob Ross has captivated audiences for decades w
 
 [Bob Ross](https://en.wikipedia.org/wiki/Bob_Ross) was known for his soothing voice, calm demeanor, and his ability to create beautiful landscapes with simple brushstrokes. One of the defining features of his painting was the vibrant and bold colors he used to bring his landscapes to life. Whether you're a fan of [The Joy of Painting](https://en.wikipedia.org/wiki/The_Joy_of_Painting) or simply interested in data analytics, this post will offer you valuable insights. 
 
-Lets **consider a viewer** who is **new to painting**, and wants to explore its joy by watching a season of "The Joy of Painting", and following along. This viewer is **budget conscious** and might be **disappointed to spend money on paint supplies that are hardly used**. This analysis considers this use case by investigating the frequency of colors used across seasons.   
+Let's **consider a viewer** who is **new to painting**, and wants to explore its joy by watching a season of "The Joy of Painting", and following along. This viewer is **budget conscious** and might be **disappointed to spend money on paint supplies that are hardly used**. This analysis considers this use case by investigating the frequency of colors used across seasons.   
 
 ### Libraries
 
-This analysis will uses packages the [tidyverse](https://www.tidyverse.org/) to wrangle the data, and plotly to make interactive graphs.
+This analysis will use packages the [tidyverse](https://www.tidyverse.org/) to wrangle the data, and plotly to make interactive graphs.
 
 ```{r load libraries}
 #| warning: false
@@ -294,7 +294,7 @@ color_trends <- ggplot2::ggplot(
 
 * 403 total episodes. 
 
-When we consider the use case above, and that a canvas costs about `$`3. Then a budget conscious user can assume their **budget for paint canvas** will be about **`$`40 per season**, and about **`$`1,210 for all 403 episodes**.
+When we consider our use case above, and that a canvas costs about `$`3. Then a budget conscious user can assume their **budget for paint canvas** will be about **`$`40 per season**, and about **`$`1,210 for all 403 episodes**.
 
 Below is a table that shows the total number of episodes per season. 
 
@@ -313,7 +313,7 @@ episodes_per_season %>% base::t()
 
 * The **most** amount of colors used in a single season was **156** in season 14. 
 
-When considering out use case, a budget conscious viewer may consider starting their journey at season 1 where the least amounf ot colors are used. 
+When considering our use case, a budget conscious viewer may consider starting their journey at season 1 where the least amount of colors are used. 
 
 Below is a table that shows the total number of colors used per season, and a graph that shows the total number of colors used each season stacked by color that was used. 
 
@@ -382,11 +382,11 @@ color_trends
 
 ## My recommendations would be: 
 
-1. Each season has the same amount of episodes, so the user might consider viewing the paintings from each season, and deciding which season of paintings they like best before selecting the color they will purchase. They will enjoy painting more if they know they will enjoy the end result. 
+1. Each season has the same amount of episodes, so the user might consider viewing the paintings from each season, and deciding which season's paintings they like best before selecting the color they will purchase. They will enjoy painting more if they know they will enjoy the end result. 
 
 2. Season 1 uses the least amount of colors, and might be a good place to start for someone who is new to painting, and cannot otherwise decide which seasons paintings they enjoy the most. 
 
-3. Consider using similar colors interchangeably such as <font color="#5F2E1F"> Dark Sienna </font> instead of <font color="#8A3324"> Burnt Umber </font> and <font color="#CD5C5C"> Indian Red </font>. The user might need to mix in more black or white, to get a similar result to the painting they are recreating, which is another thing to consider when purchasing supplies. 
+3. Consider using similar colors interchangeably, such as <font color="#5F2E1F"> Dark Sienna </font> instead of <font color="#8A3324"> Burnt Umber </font> and <font color="#CD5C5C"> Indian Red </font>. The user might need to mix in more black or white, to get a similar result to the painting they are recreating, which is another thing to consider when purchasing supplies. 
 
 ### Discussion 
 
