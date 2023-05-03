@@ -1,7 +1,7 @@
 ---
 title: "The Joy of Analysis"
 date: "2023-02-27"
-categories: ["#TidyTuesday", R]
+categories: ["#TidyTuesday", R, "Data Visuals"]
 toc: true
 draft: false
 ---

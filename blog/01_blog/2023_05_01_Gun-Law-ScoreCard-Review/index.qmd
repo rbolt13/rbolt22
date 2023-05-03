@@ -1,0 +1,213 @@
+---
+title: "Gun Law Scorecard (Article Review)"
+date: "2023-05-01"
+categories: ["Article Review"]
+draft: true
+---
+
+In this post, I'll be sharing my review of the data visuals and analysis presented in the article [Gun Law Scorecard](https://giffords.org/lawcenter/resources/scorecard/). 
+
+## Introduction 
+
+[Gun Law Scorecard](https://giffords.org/lawcenter/resources/scorecard/) grades each U.S. state on gun safety, highlighting the correlation between gun regulation and lower gun-related deaths. The article features 9 interactive data visuals that tell the story of gun laws and deaths in the country. In this review, I will describe each data visual's features and provide three bullet points summarizing my thoughts. 
+
+## 1. Grading the States (Map)
+
+::: columns
+::: {.column width="60%"}
+
+![The data visualization is a choropleth map that displays the relationship between a state's gun law strength, gun death rank, gun death rate, and grade for gun safety. Each state is represented with a color-coded gradient that corresponds to its value for each of these factors.](img/img1.png)
+
+:::
+
+::: {.column width="2%"}
+:::
+
+::: {.column width="38%"}
+
+- The title of each section in this article corresponds to the content depicted in the visual presented within in. 
+
+- The visual explanation consists of four sentences. The first two describe the grading system used in the article.The third presents the thesis that "strong gun laws save lives". The last sentence explains how the visual works.
+
+- The interactive features of the visual include: (1) a drop-down menu located beside the "GRADE" title that allows users to switch between "GUN LAW STRENGTH," "GUN DEATH RANK," and "GUN DEATH RATE"; (2) the ability to hover over each state with a mouse, revealing its grade, strength, or rank; and (3) pop-up windows that provide a more detailed analysis of each state.
+
+:::
+:::
+
+## 2. Grading the States (Table)
+
+::: columns
+::: {.column width="60%"}
+
+![A table showing Grade, State, Gun Law Strength, Gun Death Rank, and Fun Death Rate.](img/img2.png)
+
+:::
+::: {.column width="2%"}
+:::
+
+::: {.column width="38%"}
+
+* Gun Law Strength (Ranked) is the left most column which follows our intuition to have a ranked row on the left of our table. It is also the more optimistic choice between Law Strength and Death Rate. 
+
+* Pop-out darkens the rest of the screen, and gives state specific information of what has changed this year and how each state can improve. 
+
+:::
+
+:::
+
+* The table shows all 50 states (no option to show less), so it is helpful to be able to switch back to the map to keep scrolling.
+
+## 3. Gun Laws Vs. Gun Deaths
+
+::: columns
+::: {.column width="60%"}
+
+![A linear regression dot plot comparing Gun Deaths Per 100,000 to Gun Law Strength.](img/img3.png)
+:::
+::: {.column width="2%"}
+:::
+
+::: {.column width="38%"}:::
+* Title of the plot tells the viewer the conclusion of the the visual which is, _As Gun Laws Weaken, Gun Deaths Rise_. 
+
+* I'm curious about some of the outlier states such as New Mexico, and New Hampshire.
+
+* It would be interesting to include more data and run a more in depth linear analysis. 
+
+::: 
+:::
+
+## 4. Compare States
+
+::: columns
+::: {.column width="60%"}
+
+![Comparison Table to compare two states on Grade, Gun Law Strength Rank, Gun Death Rate Rank, Fun Deaths Per 100k, and % Difference from National Average. ](img/img4.png)
+:::
+::: {.column width="2%"}
+:::
+
+::: {.column width="38%"}:::
+* Starting comparison is the top ranking state California, and the bottom ranking state Arkansas. 
+
+* The interactive table above was helpful in finding other comparisons such as Massachusetts and Mississippi. 
+
+* This visual and the table are the only two with the option to share to twitter or facebook on the footer of the visual. 
+
+::: 
+:::
+
+## 5. Federal Process
+
+::: columns
+::: {.column width="60%"}
+
+![Timeline of Federal Progress from 1934 to 2022.](img/img5.png)
+:::
+::: {.column width="2%"}
+:::
+
+::: {.column width="38%"}:::
+
+* Bold text in left tells what the visual is about which is that in the past 100 years there has only been 6 national laws passed. The idea of more national regulation is a theme throughout this article. 
+
+* Both the word "Progress" and the years are written in red. Showing that progress happened these years. 
+
+* Simple, effective, and informative. By clicking on the different hears the reader can learn a little bit about the law. There is also more information about each law when clicking on the "Learn More" button under the text on the left. 
+::: 
+:::
+
+## 6. Best & Worst
+
+::: columns
+::: {.column width="60%"}
+
+![Best and Worst Plaques for Strongest Laws, Most Improved, Safest State, Weakest Laws, Biggest Drop, and Deadliest State. ](img/img6.png)
+:::
+::: {.column width="2%"}
+:::
+
+::: {.column width="38%"}:::
+* Good visual to compare the good and the bad. Each has two interactive buttons. One to show a states entire score card, and the other to input that state into the comparison table. 
+
+* Metrics for plaques were Strongest/Weakest Laws, Most Improved/ Biggest Drop, and Safest/Deadliest State. 
+
+* Each plaque includes an image of a state, but the imgage (unlike the other buttons below the line) does not pop the user up to the interactive map. Meaning it is purely decorative. Something to consider. 
+
+::: 
+:::
+
+## 7. State Progress (Heat Map Chart)
+
+::: columns
+::: {.column width="60%"}
+
+![Heat Map Chart of New Gun Safety Laws in 2022.](img/img7.png)
+:::
+::: {.column width="2%"}
+:::
+
+::: {.column width="38%"}:::
+* Interesting choice of visual, but helpful in giving a broad understanding of what the state laws related to guns look like. 
+
+* When hovering over the category name the rectangle changes from blue to red, and a dark blue box pops up to tell the reader the exact number of laws. 
+
+* Another visual I may have considered using for this is a horizontal bar chart. This visual style would make it easier for the reader to notice that both "Access to Guns" and "Other Gun Safety Laws" have 14 new laws in 2022. Similarly the "Domestic Violence" and "Gun Dealer Regulations" both have 6 new gun laws in 2022.
+::: 
+:::
+
+## 8. State Progress (Dot Plot)
+
+::: columns
+::: {.column width="60%"}
+
+![Dot Plot of New Gun Safety Laws from 2013 to 2022. ](img/img8.png)
+:::
+::: {.column width="2%"}
+:::
+
+::: {.column width="38%"}:::
+* This visual works well with the one above it, because after reading about the new laws in 2022 one would be curious what the progression over time has been.
+
+* Interactivity is fun, but I would have preferred the amount actively visible above the plot since there are only 10 points. 
+
+* I am curious if there exists data that shows which state gun laws may have been created because of a mass shooting event. 
+
+::: 
+:::
+
+## 9. Hate Crimes & Guns (Bar Graph)
+
+::: columns
+::: {.column width="60%"}
+
+![Bar Graph of Hate Crimes Reported to the FBI from 2012 to 2021.](img/img9.png)
+:::
+::: {.column width="2%"}
+:::
+
+::: {.column width="38%"}:::
+* Important visual to add that is related to the main thesis of the article. 
+
+* Since the hate crimes seem to be on the rise, it may be interesting to view the number of hate crimes by state, or see if there is any relevence to included that data into the scorecard. 
+
+* It may be interesting to see this same visual, but broken down by hate crime, or comparing other categories of gun violence such as suicide, domestic violence, and police violence. 
+
+::: 
+:::
+
+
+## Final Thoughts
+
+Here are some of my main take away from this analysis:
+
+1. A consistent color scheme of Red, White, and Blue was present across the article, and data visuals. Red is more prominently used with guns, gun deaths, worst states, and as a highlight, accent, or call to action color. The blue seems more neutral or positive. Something to consider when deciding on color palletes for visuals.  
+
+2. A "new" metric was created (the scorecard) to tell a consistent story through multiple data visuals. 
+
+3. Interactive visuals are a great way to engage the reader to investigate their own state, and familiarize themselves with other states. 
+
+4. Other data that might be interesting to view, gun sales, suicide by gun, mass shootings, state regulations, and gun related hate crimes. 
+ 
+
+

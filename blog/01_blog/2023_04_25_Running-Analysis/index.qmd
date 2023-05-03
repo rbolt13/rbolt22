@@ -1,0 +1,108 @@
+---
+title: "Running Analysis"
+date: "2023-05-02"
+categories: ["#TidyTuesday", R, "Data Visuals", "Analysis"]
+draft: true
+---
+
+The London Marathon is one of the most popular and iconic long-distance running events in the world, with thousands of runners from all over the globe participating in the annual event. In this blog post, we will explore the London Marathon data through the lens of data visualization and analysis. 
+
+# About the London Marathon
+
+Every year, thousands of runners take on the challenge of completing the 26.2 mile course through the streets of London. The event has become a major fixture in the sporting calendar, and occurs once a year around the end of April. They may also have more attendees since the distance to travel is more convenient. 
+
+# Home Court Advantage
+
+::: columns
+::: {.column width="38%"}
+**$$\underline{Overview}$$** 
+
+
+The **United Kingdom** had the most winners from their nation with **44 runners**. Followed by **Kenya** with **31 runners**. 
+
+**Belgum**, **China**, **Spain**, and **Soviet Union** tie for the **least winners** from their nation winning with only **1 runner** each. 
+
+**$$\underline{Initial Analysis}$$**
+
+It makes sense that the nation that host the event will have the most winners since their would be home court advantage. 
+
+:::
+
+::: {.column width="2%"}
+:::
+
+::: {.column width="60%"}
+
+![](../2023_04_25_London-Marathon/img/vis1.png)
+:::
+:::
+
+# Rolling to Victory 
+
+Here is some analysis
+
+- avg for men, women, wheelchair men, wheelchair women
+
+- subset last ten years - 20 yrs - 30 yrs
+
+::: columns
+::: {.column width="49%"}
+
+![](../2023_04_25_London-Marathon/img/vis2.png)
+
+:::
+
+::: {.column width="2%"}
+:::
+
+::: {.column width="49%"}
+
+![](../2023_04_25_London-Marathon/img/vis3.png)
+
+:::
+:::
+
+# Section title
+
+Here is some analysis
+
+::: columns
+::: {.column width="49%"}
+
+![](../2023_04_25_London-Marathon/img/vis4.png)
+
+:::
+
+::: {.column width="2%"}
+:::
+
+::: {.column width="49%"}
+
+![](../2023_04_25_London-Marathon/img/vis5.png)
+
+:::
+:::
+
+# Section Title
+
+::: columns
+::: {.column width="38%"}
+
+somethings
+
+- oldest person, and their time 
+
+- youngest person, and their time
+
+:::
+
+::: {.column width="2%"}
+:::
+
+::: {.column width="60%"}
+
+![](../2023_04_25_London-Marathon/img/vis6.png)
+:::
+:::
+
+# Conclusion 
