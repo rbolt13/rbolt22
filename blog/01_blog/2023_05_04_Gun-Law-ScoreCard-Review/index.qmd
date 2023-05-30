@@ -1,7 +1,7 @@
 ---
 title: "Gun Law Scorecard (Article Review)"
-date: "2023-05-01"
-categories: ["Article Review"]
+date: "2023-05-04"
+categories: ["Article Review", "Data Visuals"]
 draft: true
 ---
 

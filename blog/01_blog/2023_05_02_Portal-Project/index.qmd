@@ -33,7 +33,10 @@ This post will follow a similar format to what is presented in Rohan Alexander's
 # Date: 2 May 2023
 # Prerequisites: -
 #### Workspace setup ####
-base::library(tidyverse) # A collection of data-related packages
+# tidyverse: A collection of data-related packages
+# ggridges: creates partially overlapping line plots
+base::library(tidyverse) 
+base::library(ggridges)
 ```
 
 # 1. Plan
