@@ -3,42 +3,82 @@ comments: false
 ---
 # Projects 
 
+## [#TidyTuesday](https://github.com/rbolt13/tidytuesday)
+
 ::: columns
-::: {.column width="30%"}
-## Covid Analysis 
+::: {.column width="38%"}
 
-![](img/Covid.png)
-
-The COVID-19 pandemic has had a significant impact on the world, and the United States has been hit particularly hard. With millions of reported cases and hundreds of thousands of deaths, the need for accurate data analysis has become increasingly important. This data analysis project focuses on the cases and deaths related to COVID-19 in the United States and my home state, Oregon. The goal of this project is to explore and compare the trends in cases and deaths in both areas.
- [Continue reading](https://covid-19-analysis-in-r.netlify.app/){target=_blank}
-:::
-
-::: {.column width="5%"}
-:::
-
-::: {.column width="30%"}
-## Oregon Grown
-
-![](img/dcdd.png)
-
-A state known for growing all varieties of trees and greenery, it’s no wonder that Oregon was one of the first states to legalize recreational cannabis in 2014. Measure 91 changed the lives of both those affiliated with cannabis and those who benefit from the tax revenue it brings in. While many businesses and industries struggled in 2020 due to COVID-19 the cannabis industry kept growing. 
-
-[Continue reading](https://rbolt13.github.io/Oregon-Grown/){target=_blank}
+[![](img/tt.png)](https://github.com/rbolt13/tidytuesday)
 
 :::
 
-::: {.column width="5%"}
+::: {.column width="4%"}
 :::
 
-::: {.column width="30%"}
-## Rsite
-![](img/rsite.png)
+::: {.column width="58%"}
+
+TidyTuesday is a weekly data analysis and visualization challenge that provides a structured format to practice data wrangling and visualization skills using R programming language. Each week, a new dataset is posted to the TidyTuesday Github repository and participants are encouraged to explore and visualize the data using the principles of tidy data.
+ [Continue reading](https://github.com/rbolt13/tidytuesday){target=_blank}
+ 
+:::
+:::
+
+## [Covid-19 Dashboard](https://rbolt13.github.io/covid-dashboard/)
+
+::: columns
+::: {.column width="38%"}
+
+[![](img/covid-dashboard.png)](https://rbolt13.github.io/covid-dashboard/)
+
+:::
+
+::: {.column width="4%"}
+:::
+
+::: {.column width="58%"}
+
+Covid Dashboard is an interactive analysis tool that specifically examines Covid-19 cases and fatalities in both the United States and my home state of Oregon. What initially began as a class project at the onset of the pandemic, has undergone multiple iterations and refinements to evolve into a fully functional and informative dashboard.
+ [Continue reading](https://rbolt13.github.io/covid-dashboard/){target=_blank}
+ 
+:::
+:::
+
+## [#Rsite](https://rbolt13.github.io/rsite/index.html)
+
+::: columns
+::: {.column width="38%"}
+
+[![](img/rsite.png)](https://rbolt13.github.io/rsite/index.html)
+
+:::
+
+::: {.column width="4%"}
+:::
+
+::: {.column width="58%"}
 
 
-Four different projects from Statistics 363: **Introduction to R**, which includes analysis of NYC Flight Data, investigating if Kobe Bryant had "hot hands", comparing Gas and Hydro power using base R and ggplot2, and exploring states with the highest and lowest numbers of Covid cases. 
+ Four different projects from Statistics 363: **Introduction to R**, which includes analysis of NYC Flight Data, investigating if Kobe Bryant had "hot hands", comparing Gas and Hydro power using base R and ggplot2, and exploring states with the highest and lowest numbers of Covid cases. [Continue reading](https://rbolt13.github.io/rsite/index.html){target=_blank}
+ 
+:::
+:::
 
-[Continue reading](https://rbolt13.github.io/rsite/index.html){target=_blank}
+## [Oregon Grown](https://rbolt13.github.io/Oregon-Grown/)
 
+::: columns
+::: {.column width="38%"}
+
+[![](img/dcdd.png)](https://rbolt13.github.io/Oregon-Grown/)
+
+:::
+
+::: {.column width="4%"}
+:::
+
+::: {.column width="58%"}
+
+A state known for growing all varieties of trees and greenery, it’s no wonder that Oregon was one of the first states to legalize recreational cannabis in 2014. Measure 91 changed the lives of both those affiliated with cannabis and those who benefit from the tax revenue it brings in. While many businesses and industries struggled in 2020 due to COVID-19 the cannabis industry kept growing. [Continue reading](https://rbolt13.github.io/Oregon-Grown/){target=_blank}
+ 
 :::
 :::
 
