@@ -13,8 +13,8 @@ from: markdown+emoji
            margin-right: auto;
            width: 95%;
            border-radius: 1rem;"
-    src="img/profile.png" 
-    alt="Picture of Randi Bolt wearing a sheshia, smiling with her hands under her chin.">
+    src="img/takamatsu.JPG" 
+    alt="Picture of Randi Bolt wearing a Damian Lillard jersey, sitting on the side of of tree covered hill at the tip of Takamatsu Japan.">
 </img>
 :::
 
@@ -29,6 +29,8 @@ I am constantly exploring new topics, and ways to improve upon past and current 
 I graduated magna cum laude with a BS in Mathematics from Portland State University in 2022.
 
 I was born, raised, and am currently based out of Portland, Oregon.
+
+私は日本語を勉強しています。
 
 :::
 ::::
