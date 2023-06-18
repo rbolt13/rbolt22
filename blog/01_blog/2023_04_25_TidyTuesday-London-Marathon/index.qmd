@@ -5,7 +5,7 @@ categories: ["#TidyTuesday", R]
 draft: false
 ---
 
-In this week's #TidyTuesday submission I delve into London Marathon data, unveiling the number of winners by nationality throughout the marathon's history. 
+In this week's [#TidyTuesday](https://github.com/rfordatascience/tidytuesday) submission I delve into London Marathon data, unveiling the number of winners by nationality throughout the marathon's history. 
 
 # London Marathon 
 
