@@ -1,0 +1,14 @@
+{
+  "hash": "7e124af4ab49af355aff852af6a3fbcc",
+  "result": {
+    "markdown": "---\ntitle: \"Week 17 Tidy Tuesday: London Marathon\"\ndate: \"2023-04-25\"\ncategories: [\"#TidyTuesday\", R]\ndraft: true\n---\n\n\nIn this week's #TidyTuesday submission I delve into London Marathon data, unveiling the number of winners by nationality throughout the marathon's history. \n\n# London Marathon \n\nThe data this week comes from Nicola Rennie's [LondonMarathon R package](https://github.com/nrennie/LondonMarathon). This is an R package containing two data sets scraped from Wikipedia (1 November 2022) on London Marathon winners, and some general data. How the dataset was created, and some analysis, is described in Nicola's post [\"Scraping London Marathon data with {rvest}\"](https://nrennie.rbind.io/blog/web-scraping-rvest-london-marathon/). Thank you for putting this dataset together @nrennie!\n\n![](plot.png)\n\n# Code\n\nThis week I wanted to add flags to for each nationality to the graph, so two more functions are added to this weeks workflow: \n\n* `flags()`: which reads in each flags .pgn, and saves them as a list. \n\n* `add_flag()`: reads in the list of flags, and overlays the images on the graph. \n\n::: {.panel-tabset}\n\n### Cleaning Function\n\n\n::: {.cell}\n\n:::\n\n\n### Visualizing Function\n\n\n::: {.cell}\n\n:::\n\n\n### Styling Function\n\n\n::: {.cell}\n\n:::\n\n\n### Flags Function\n\n\n::: {.cell}\n\n:::\n\n\n### Add Flags Functions\n\n\n::: {.cell}\n\n:::\n\n\n### index.R\n\n\n::: {.cell}\n\n:::\n\n\n:::\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -1,0 +1,64 @@
+---
+title: "Week 17 Tidy Tuesday: London Marathon"
+date: "2023-04-25"
+categories: ["#TidyTuesday", R]
+draft: true
+---
+
+In this week's #TidyTuesday submission I delve into London Marathon data, unveiling the number of winners by nationality throughout the marathon's history. 
+
+# London Marathon 
+
+The data this week comes from Nicola Rennie's [LondonMarathon R package](https://github.com/nrennie/LondonMarathon). This is an R package containing two data sets scraped from Wikipedia (1 November 2022) on London Marathon winners, and some general data. How the dataset was created, and some analysis, is described in Nicola's post ["Scraping London Marathon data with {rvest}"](https://nrennie.rbind.io/blog/web-scraping-rvest-london-marathon/). Thank you for putting this dataset together @nrennie!
+
+![](plot.png)
+
+# Code
+
+This week I wanted to add flags to for each nationality to the graph, so two more functions are added to this weeks workflow: 
+
+* `flags()`: which reads in each flags .pgn, and saves them as a list. 
+
+* `add_flag()`: reads in the list of flags, and overlays the images on the graph. 
+
+::: {.panel-tabset}
+
+### Cleaning Function
+
+```{r}
+
+```
+
+### Visualizing Function
+
+```{r}
+
+```
+
+### Styling Function
+
+```{r}
+
+```
+
+### Flags Function
+
+```{r}
+
+```
+
+### Add Flags Functions
+
+```{r}
+
+```
+
+### index.R
+
+```{r}
+
+```
+
+:::
+
+
