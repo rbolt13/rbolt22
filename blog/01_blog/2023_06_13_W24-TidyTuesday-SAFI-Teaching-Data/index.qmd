@@ -1,0 +1,13 @@
+---
+title: "Week 17 Tidy Tuesday: SAFI Teaching Data"
+date: "2023-06-13"
+categories: ["#TidyTuesday", R]
+draft: true
+---
+
+
+
+
+Diving into the Rich Farmlands: Week 24 Submission to TidyTuesday" invites you to delve into the captivating realm of the African Farmer-Led Irrigation Survey. In this week's submission, we explore the intriguing relationship between livestock ownership and the number of rooms in households, unraveling a compelling visual that sheds light on the interplay between agricultural practices and living conditions.
+
+Exploring the Dynamic Link: Week 24 TidyTuesday Submission - Studying African Farmer-Led Irrigation Survey" invites you to dive into a rich dataset focused on understanding the role of farmer-led irrigation in Africa. In this week's submission, we unveil a captivating visual that delves into the intriguing relationship between livestock ownership and the number of rooms in households, shedding light on the intricate dynamics between agriculture and household characteristics in the context of irrigation practices.
