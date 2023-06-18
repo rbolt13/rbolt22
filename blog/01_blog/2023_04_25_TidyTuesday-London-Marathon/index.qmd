@@ -2,7 +2,7 @@
 title: "Week 17 Tidy Tuesday: London Marathon"
 date: "2023-04-25"
 categories: ["#TidyTuesday", R]
-draft: true
+draft: false
 ---
 
 In this week's #TidyTuesday submission I delve into London Marathon data, unveiling the number of winners by nationality throughout the marathon's history. 
@@ -15,50 +15,253 @@ The data this week comes from Nicola Rennie's [LondonMarathon R package](https:/
 
 # Code
 
-This week I wanted to add flags to for each nationality to the graph, so two more functions are added to this weeks workflow: 
+This week I wanted to add flags for each nationality, so two more functions are added to this weeks workflow: 
 
 * `flags()`: which reads in each flags .pgn, and saves them as a list. 
 
 * `add_flag()`: reads in the list of flags, and overlays the images on the graph. 
 
+Additionally are the three key functions: cleaning, visualizing, and styling, as well as the index.R file which integrates data loading, function execution, and the generation of of a data visualization.
+
 ::: {.panel-tabset}
 
-### Cleaning Function
+### Cleaning
 
-```{r}
+```{r cleaning function}
+#| code-fold: true
+#| code-summary: "Show Code"
+#| warning: false
+#### Load Packages ####
+library(dplyr)
+library(magrittr)
 
+#### Cleaning Function ####
+clean <- function(data){
+  clean_data <- data %>%
+    dplyr::group_by(Nationality) %>%
+    dplyr::summarise(
+      nat_winners = dplyr::n()) %>%
+    dplyr::arrange(
+      dplyr::desc(nat_winners))
+  return(clean_data)
+}
 ```
 
-### Visualizing Function
+### Visualizing
 
-```{r}
+```{r visualizing function}
+#| code-fold: true
+#| code-summary: "Show Code"
+#| warning: false
+#### Load Packages ####
+library(ggplot2)
 
+#### Load Colors ####
+geom_bar_color <- "#DD733A"
+
+#### Visual Function ####
+vis <- function(df){
+  vis <- ggplot2::ggplot(
+    df,
+    ggplot2::aes(
+      x = nat_winners,
+      y = stats::reorder(
+        Nationality, 
+        nat_winners))) +
+    ggplot2::geom_bar(
+      stat = "identity",
+      fill = geom_bar_color)
+  return(vis)
+}
 ```
 
-### Styling Function
+### Styling
 
-```{r}
+```{r styling function}
+#| code-fold: true
+#| code-summary: "Show Code"
+#| warning: false
+#### Load Packages ####
+library(ggplot2)
 
+#### Load Colors ####
+background_color <- "#596D78"
+title_color <- "#ABB3B8"
+graph_color <- "#ABB3B8"
+bonus_1 <- "#4F555B"
+bonus_2 <- "#B4AE59"
+
+#### Style Function ####
+style <- function(vis){
+  sty <- vis +
+    # labels
+    ggplot2::labs(
+      title = "Nationality of London Marathon Winners",
+      subtitle = "",
+      caption = "Graph by Randi Bolt \n Data from #TidyTuesday",
+      x = "Number of Winners",
+      y = "") +
+    # values next to bars
+    ggplot2::geom_text(
+      ggplot2::aes(label = nat_winners,
+                   hjust = 1.2)) +
+    ggplot2::theme(
+      # title
+      plot.title = element_text(
+        size = 18,
+        face = "bold",
+        color = title_color,
+        hjust = .5),
+      # caption 
+      plot.caption = element_text(
+        color = title_color),
+      # graph background
+      panel.background = element_rect(
+        fill = graph_color),
+      # x and y axis labels
+      axis.title = element_text(
+        size = 14, 
+        color = title_color),
+      # axis ticks text
+      axis.text = element_text(
+        siz = 10,
+        color = title_color),
+      # background
+      plot.backgroun = ggplot2::element_rect(
+        fill = background_color
+      )
+    )
+  return(sty)
+}
 ```
 
-### Flags Function
+### Flags
 
-```{r}
+```{r flags function}
+#| code-fold: true
+#| code-summary: "Show Code"
+#| warning: false
+#### Load Packages ####
+base::library(png)
 
+#### Load Flags ####
+uk <-  readPNG("flags/uk.png")   
+kenya <-  readPNG("flags/kenya.png") 
+usa <-  readPNG("flags/usa.png")
+swi <-  readPNG("flags/switzerland.png")
+ethi <-  readPNG("flags/ethiopia.png")
+nor <-  readPNG("flags/norway.png")
+ire <-  readPNG("flags/ireland.png")
+mex <-  readPNG("flags/mexico.png")
+germany <-  readPNG("flags/germany.png") 
+port <-  readPNG("flags/portugal.png")
+italy <-  readPNG("flags/italy.png")
+can <-  readPNG("flags/canada.png")
+sweden <-  readPNG("flags/sweden.png")
+japan <-  readPNG("flags/japan.png")
+fran <-  readPNG("flags/france.png")
+denmark <-  readPNG("flags/denmark.png")
+aus <-  readPNG("flags/australia.png")
+pol <- readPNG("flags/poland.png")
+neth <- readPNG("flags/netherlands.png")
+mor <- readPNG("flags/morocco.png")
+spain <- readPNG("flags/spain.png")
+su <- readPNG("flags/soviet_union.png")
+china <- readPNG("flags/china.png")
+bel <- readPNG("flags/belgium.png")
+
+#### Flag List ####
+flag_list <- list(
+  uk, kenya, usa,
+  swi, ethi, nor,
+  ire, mex, germany,
+  port, italy, can,
+  sweden, japan, fran,
+  denmark, aus, pol,
+  neth, mor, spain,
+  su, china, bel)
+
+#### Save Flags ####
+saveRDS(flag_list, file="data/flag_list.RData")
 ```
 
-### Add Flags Functions
+### Add Flags
 
-```{r}
+```{r add flags function}
+#| code-fold: true
+#| code-summary: "Show Code"
+#| warning: false
+#### Load Packages #### 
+library(ggplot2)
+library(grid)
 
+#### Load Data ####
+flags_list <- readRDS("data/flag_list.RData")
+
+#### Add Flags ####
+add_flags <- function(styled_vis){
+  for (i in 1:length(flags_list)){
+    flag_new <- styled_vis + 
+      # add static annotation
+      ggplot2::annotation_custom(
+        # cycles through list and stacking flags on graph
+        grid::rasterGrob(
+          flags_list[[i]], 
+          width=1, height=1),
+        xmin = -2, xmax = -.1,
+        ymin = 24.55-i, ymax = 25.45-i)
+    styled_vis <- flag_new
+  }
+  return(flag_new)
+}
 ```
 
 ### index.R
 
-```{r}
+```{r inded.R file}
+#| code-fold: true
+#| code-summary: "Show Code"
+#| warning: false
+#### Load Packages ####
+base::library(tidyverse) 
+base::library(png)
+#### Load Data ####
+remotes::install_github("nrennie/LondonMarathon")
+data(winners, package = "LondonMarathon")
 
+#### Clean Data ####
+data <- clean(winners)
+
+#### Create Data Visual ####
+data_vis <- vis(data)
+
+#### Style Data Visual ####
+sty_vis <- style(data_vis)
+
+#### Add Flags ####
+sty_vis_with_flags <- add_flags(sty_vis)
+
+#### Save Plot ####
+ggsave(
+  "plot.png", 
+  width = 30, 
+  height = 20, 
+  units = "cm")
 ```
+
+### Links
+
+[Week 17 Submission](https://github.com/rbolt13/tidytuesday/tree/main/2023/week_17) 
+
+[TidyTuesday Repository](https://github.com/rbolt13/tidytuesday).
 
 :::
 
+# Quick Notes
 
+* Download images from wikimedia with `utils::download.file(url = "", destfile = "", mode = "wb)`. 
+
+* Add images to data visual with `ggplot2::annotation_custion()` and `grid::rasterGrob`. 
+
+
+* `ggplot2::labs()` reads markdown such as newline, `\n`.
