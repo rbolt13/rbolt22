@@ -2,7 +2,7 @@
 title: "Gun Law Scorecard (Article Review)"
 date: "2023-05-04"
 categories: ["Article Review", "Data Visuals"]
-draft: true
+draft: false
 ---
 
 In this post, I'll be sharing my review of the data visuals and analysis presented in the article [Gun Law Scorecard](https://giffords.org/lawcenter/resources/scorecard/). 
