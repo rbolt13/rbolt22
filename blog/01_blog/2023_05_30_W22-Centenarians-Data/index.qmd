@@ -185,7 +185,7 @@ ggsave(
 
 ### Links
 
-[Week 24 Submission](https://github.com/rbolt13/tidytuesday/tree/main/2023/week_24) 
+[Week 22 Submission](https://github.com/rbolt13/tidytuesday/tree/main/2023/week_22) 
 
 [TidyTuesday Repository](https://github.com/rbolt13/tidytuesday).
 
