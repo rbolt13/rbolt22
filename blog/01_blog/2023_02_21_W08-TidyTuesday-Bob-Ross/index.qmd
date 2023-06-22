@@ -1,7 +1,7 @@
 ---
 title: "Week 8 Tidy Tuesday: Bob Ross Paintings"
 date: "2023-02-21"
-categories: ["#TidyTuesday", R]
+categories: ["#TidyTuesday", R, "Data Visuals"]
 draft: false
 ---
 

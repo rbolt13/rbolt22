@@ -1,11 +1,11 @@
 ---
 title: "Week 22 Tidy Tuesday: Centenarians Data"
 date: "2023-05-30"
-categories: ["#TidyTuesday", R]
+categories: ["#TidyTuesday", R, "Data Visuals"]
 draft: false
 ---
 
-For week 22 of [#TidyTuesday](https://github.com/rfordatascience/tidytuesday) we dive into the realm of centenarians' data, uncovering a suprising trend: a remarkably high number of centenarian deaths are recorded in the month of January. 
+For week 22 of [#TidyTuesday](https://github.com/rfordatascience/tidytuesday) we dive into the realm of centenarians' data, uncovering a surprising trend: a remarkably high number of centenarian deaths are recorded in the month of January. 
 
 # Verified Oldest People
 

@@ -1,7 +1,7 @@
 ---
 title: "Week 24 Tidy Tuesday: SAFI Teaching Data"
 date: "2023-06-13"
-categories: ["#TidyTuesday", R]
+categories: ["#TidyTuesday", R, "Data Visuals"]
 draft: false
 ---
 

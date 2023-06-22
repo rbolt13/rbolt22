@@ -1,7 +1,7 @@
 ---
 title: "Week 17 Tidy Tuesday: London Marathon"
 date: "2023-04-25"
-categories: ["#TidyTuesday", R]
+categories: ["#TidyTuesday", R, "Data Visuals"]
 draft: false
 ---
 
