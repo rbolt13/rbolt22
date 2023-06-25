@@ -47,7 +47,7 @@ In this post, I'll be sharing my review of the data visuals and analysis present
 
 ::: {.column width="38%"}
 
-* Gun Law Strength (Ranked) is the left most column which follows our intuition to have a ranked row on the left of our table. It is also the more optimistic choice between Law Strength and Death Rate. 
+* Gun Law Strength (Ranked) is the left most column. This follows our intuition to have a ranked row as the leftmost column of the table. It is also the more optimistic choice between Law Strength and Death Rate. 
 
 * Pop-out darkens the rest of the screen, and gives state specific information of what has changed this year and how each state can improve. 
 
@@ -109,7 +109,7 @@ In this post, I'll be sharing my review of the data visuals and analysis present
 
 ::: {.column width="38%"}:::
 
-* Bold text in left tells what the visual is about which is that in the past 100 years there has only been 6 national laws passed. The idea of more national regulation is a theme throughout this article. 
+* Bold text in left tells what the visual is about which is that in the past 100 years there has only been 6 national gun laws passed. The idea of more national regulation is a theme throughout this article. 
 
 * Both the word "Progress" and the years are written in red. Showing that progress happened these years. 
 
@@ -122,7 +122,7 @@ In this post, I'll be sharing my review of the data visuals and analysis present
 ::: columns
 ::: {.column width="60%"}
 
-![Best and Worst Plaques for Strongest Laws, Most Improved, Safest State, Weakest Laws, Biggest Drop, and Deadliest State. ](img/img6.png)
+![Best and Worst for Strongest Laws, Most Improved, Safest State, Weakest Laws, Biggest Drop, and Deadliest State. ](img/img6.png)
 :::
 ::: {.column width="2%"}
 :::
@@ -132,7 +132,7 @@ In this post, I'll be sharing my review of the data visuals and analysis present
 
 * Metrics for plaques were Strongest/Weakest Laws, Most Improved/ Biggest Drop, and Safest/Deadliest State. 
 
-* Each plaque includes an image of a state, but the imgage (unlike the other buttons below the line) does not pop the user up to the interactive map. Meaning it is purely decorative. Something to consider. 
+* Each plaque includes an image of a state, but the image (unlike the other buttons below the line) does not pop the user up to the interactive map. Meaning it is purely decorative. Something to consider. 
 
 ::: 
 :::

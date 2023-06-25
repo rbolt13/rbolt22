@@ -1719,7 +1719,7 @@
     "href": "01_blog/2023_05_04_Gun-Law-ScoreCard-Review/index.html#grading-the-states-table",
     "title": "Gun Law Scorecard (Article Review)",
     "section": "2. Grading the States (Table)",
-    "text": "2. Grading the States (Table)\n\n\n\n\n\nA table showing Grade, State, Gun Law Strength, Gun Death Rank, and Fun Death Rate.\n\n\n\n\n\n\nGun Law Strength (Ranked) is the left most column which follows our intuition to have a ranked row on the left of our table. It is also the more optimistic choice between Law Strength and Death Rate.\nPop-out darkens the rest of the screen, and gives state specific information of what has changed this year and how each state can improve.\n\n\n\n\nThe table shows all 50 states (no option to show less), so it is helpful to be able to switch back to the map to keep scrolling."
+    "text": "2. Grading the States (Table)\n\n\n\n\n\nA table showing Grade, State, Gun Law Strength, Gun Death Rank, and Fun Death Rate.\n\n\n\n\n\n\nGun Law Strength (Ranked) is the left most column. This follows our intuition to have a ranked row as the leftmost column of the table. It is also the more optimistic choice between Law Strength and Death Rate.\nPop-out darkens the rest of the screen, and gives state specific information of what has changed this year and how each state can improve.\n\n\n\n\nThe table shows all 50 states (no option to show less), so it is helpful to be able to switch back to the map to keep scrolling."
   },
   {
     "objectID": "01_blog/2023_05_04_Gun-Law-ScoreCard-Review/index.html#gun-laws-vs.-gun-deaths",
@@ -1740,14 +1740,14 @@
     "href": "01_blog/2023_05_04_Gun-Law-ScoreCard-Review/index.html#federal-process",
     "title": "Gun Law Scorecard (Article Review)",
     "section": "5. Federal Process",
-    "text": "5. Federal Process\n\n\n\n\n\nTimeline of Federal Progress from 1934 to 2022.\n\n\n\n\n\n\nBold text in left tells what the visual is about which is that in the past 100 years there has only been 6 national laws passed. The idea of more national regulation is a theme throughout this article.\nBoth the word “Progress” and the years are written in red. Showing that progress happened these years.\nSimple, effective, and informative. By clicking on the different hears the reader can learn a little bit about the law. There is also more information about each law when clicking on the “Learn More” button under the text on the left."
+    "text": "5. Federal Process\n\n\n\n\n\nTimeline of Federal Progress from 1934 to 2022.\n\n\n\n\n\n\nBold text in left tells what the visual is about which is that in the past 100 years there has only been 6 national gun laws passed. The idea of more national regulation is a theme throughout this article.\nBoth the word “Progress” and the years are written in red. Showing that progress happened these years.\nSimple, effective, and informative. By clicking on the different hears the reader can learn a little bit about the law. There is also more information about each law when clicking on the “Learn More” button under the text on the left."
   },
   {
     "objectID": "01_blog/2023_05_04_Gun-Law-ScoreCard-Review/index.html#best-worst",
     "href": "01_blog/2023_05_04_Gun-Law-ScoreCard-Review/index.html#best-worst",
     "title": "Gun Law Scorecard (Article Review)",
     "section": "6. Best & Worst",
-    "text": "6. Best & Worst\n\n\n\n\n\nBest and Worst Plaques for Strongest Laws, Most Improved, Safest State, Weakest Laws, Biggest Drop, and Deadliest State.\n\n\n\n\n\n\nGood visual to compare the good and the bad. Each has two interactive buttons. One to show a states entire score card, and the other to input that state into the comparison table.\nMetrics for plaques were Strongest/Weakest Laws, Most Improved/ Biggest Drop, and Safest/Deadliest State.\nEach plaque includes an image of a state, but the imgage (unlike the other buttons below the line) does not pop the user up to the interactive map. Meaning it is purely decorative. Something to consider."
+    "text": "6. Best & Worst\n\n\n\n\n\nBest and Worst for Strongest Laws, Most Improved, Safest State, Weakest Laws, Biggest Drop, and Deadliest State.\n\n\n\n\n\n\nGood visual to compare the good and the bad. Each has two interactive buttons. One to show a states entire score card, and the other to input that state into the comparison table.\nMetrics for plaques were Strongest/Weakest Laws, Most Improved/ Biggest Drop, and Safest/Deadliest State.\nEach plaque includes an image of a state, but the image (unlike the other buttons below the line) does not pop the user up to the interactive map. Meaning it is purely decorative. Something to consider."
   },
   {
     "objectID": "01_blog/2023_05_04_Gun-Law-ScoreCard-Review/index.html#state-progress-heat-map-chart",
