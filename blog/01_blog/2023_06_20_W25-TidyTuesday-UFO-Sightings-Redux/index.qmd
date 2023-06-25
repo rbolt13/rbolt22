@@ -1,0 +1,227 @@
+---
+title: "Week 25 Tidy Tuesday: UFO Sightings Redux"
+date: "2023-06-25"
+categories: ["#TidyTuesday", R, "Data Visuals"]
+draft: true
+---
+
+Explore the mysterious realm of unidentified flying objects as I dive into my Week 25 [#TidyTuesday](https://github.com/rfordatascience/tidytuesday) submission. In this otherworldly data visual I uncover intriguing patterns about sightings lasting less than 5 minutes in Oregon, all classified according to their reported shapes.  
+
+# UFO Sightings Redux
+
+The data this week comes from the [National UFO Reporting Center](https://nuforc.org/webreports/ndxshape.html), [cleaned](https://github.com/jonthegeek/apis/blob/main/01_ufo-data.qmd) and [enriched](https://github.com/jonthegeek/apis/blob/main/01_ufo-enrich.qmd) with data from [sunrise-sunset.org](https://sunrise-sunset.org/) by [Jon Harmon](https://github.com/jonthegeek/apis/).
+
+If this dataset looks familiar, that's because we [used a version of it back in 2019](https://tidytues.day/2019/2019-06-25). The new version adds the last several years of data, adds information about time-of-day, and cleans up some errors in the original dataset. We'd love to see visualizations describing the differences between the 2019 dataset and this new dataset!
+
+> The [National UFO Reporting Center](https://nuforc.org/) was founded in 1974 by noted UFO investigator [Robert J. Gribble](https://nuforc.org/gribble/). The Center’s primary function over the past five decades has been to receive, record, and to the greatest degree possible, corroborate and document reports from individuals who have been witness to unusual, possibly UFO-related events.  Throughout its history, the Center has processed over 170,000 reports, and has distributed its information to thousands of individuals.
+
+![](plot.png)
+
+# Code 
+
+This week ...
+
+::: {.panel-tabset}
+
+### Cleaning
+
+```{r cleaning function}
+#| code-fold: true
+#| code-summary: "Show Code"
+#| warning: false
+#### Load Packages ####
+# magrittr: %>% pipe function. 
+# dplyr: data cleaning functions.
+# tidyr: data manipulation functions.
+base::library(dplyr)
+base::library(magrittr)
+base::library(tidyr)
+
+#### Cleaning Function ####
+clean <- function(df){
+  # Filter date for Oregon
+  or_df <- df %>%
+    dplyr::filter(state == c("OR")) %>%
+    dplyr::reframe(
+      shape = shape, 
+      duration_seconds = duration_seconds,
+      duration_minutes = duration_seconds/60)
+  # remove nas 
+  or_df$duration_seconds <- stats::na.omit(or_df$duration_seconds)
+  # Subset for all data 5 minutes or less
+  clean_df <- 
+    base::subset(or_df, 
+                 duration_seconds < 301) %>%
+    tidyr::replace_na(list(shape = c("not available")))
+    
+  return(clean_df)
+}
+```
+
+### Visualize
+
+```{r visualize function}
+#| code-fold: true
+#| code-summary: "Show Code"
+#| warning: false
+#### Load Packages ####
+base::library(ggplot2)
+
+#### Visual Function ####
+vis <- function(clean_df){
+  vis <- ggplot2::ggplot(
+    clean_df,
+    ggplot2::aes(x = shape,
+                 y = duration_minutes,
+                 fill = shape,
+                 color = shape)) +
+    geom_boxplot(outlier.shape = NA) +
+    geom_jitter(
+      na.rm = TRUE, 
+      color = "#d2ff46", 
+      alpha = 0.7)
+  return(vis)
+}
+```
+
+### Style
+
+```{r stle function}
+#| code-fold: true
+#| code-summary: "Show Code"
+#| warning: false
+#### Load Packages ####
+# ggplot2: graphing functions.
+# showtext: font functions. 
+base::library("ggplot2")
+base::library("showtext")
+
+#### Load Fonts ####
+sysfonts::font_add_google("Orbitron", "font")
+showtext::showtext_auto()
+
+#### Load Colors ####
+col1 <- "#d2ff46"
+col2 <- "#0d0d0d"
+col3 <- "white"
+
+#### Axis Labels ####
+axis_labs <- c("changing", "orb", "formation", "oval", "unknown",
+               "cigar", "rectangle", "circle", "egg", "sphere", 
+               "other", "light", "triangle", "teardrop", "cross",
+               "diamond", "cylinder", "disk", "fireball", "not available", 
+               "flash", "chevron", "cone")
+
+#### Style Function ####
+sty <- function(vis){
+  sty <- vis +
+    # labs
+    ggplot2::labs(
+      title = "Shapes in Oregon: Short Sightings",
+      subtitle = "\nThe following box plot displays the distribution of UFO sightings lasting less than 5 minutes in Oregon, categorized by \ntheir reported shape. Among this subset of sightings, Cylinder, Disk, Fireball, Not Available, Flash, Chevron, and Cone \nwere more frequently reported with durations of less than two minutes. In contrast, the Changing UFO shape was \nobserved for a broader duration range, spanning from 2 to 5 minutes. \n\nThe asterisk (*) denotes the mean duration in minutes.\n ",
+      caption = "Randi Bolt - June 2023 \n#TidyTuesday: UFO Sightings Redux",
+      x = "Shape",
+      y = "Duration in Minutes")  +
+    # x and y axis
+    ggplot2::scale_y_continuous(limits = c(0,5)) + 
+    ggplot2::scale_x_discrete(limits = axis_labs) +
+    # variable color and fill colors
+    ggplot2::scale_color_viridis_d() +
+    ggplot2::scale_fill_viridis_d(alpha = 0.6) +
+    # mean point
+    stat_summary(fun = mean, geom = "point", shape = 8, size = 4) +
+    # theme
+    ggplot2::theme(
+      # labs 
+      plot.title = element_text(
+        size = 30,
+        family = "font",
+        face = "bold",
+        hjust = 0,
+        color = col1),
+      plot.subtitle = element_text(
+        size = 18,
+        family = "font",
+        hjust = 0,
+        color = col1),
+      plot.caption = element_text(
+        size = 12,
+        family = "font",
+        hjust = 1,
+        color = col1),
+      axis.title = element_text(
+        size = 24, 
+        family = "font",
+        color = col1),
+      axis.text = element_text(
+        size = 18, 
+        family = "font",
+        color = col1),
+      axis.text.x = element_text(
+        angle = 55,
+        vjust = .7), 
+      plot.background = element_rect(fill = col2),
+      panel.background = element_rect(fill = col2),
+      panel.grid.major.x = element_blank(),
+      panel.grid.major.y = element_blank(),
+      panel.grid.minor.y = element_blank(),
+      legend.position = "none") 
+  return(sty)
+}
+```
+
+### index.R
+
+```{r index.R file}
+#| code-fold: true
+#| code-summary: "Show Code"
+#| warning: false
+#### Week ####
+week <- c("25")
+
+#### Load Packages ####
+# tidyverse: A collection of data-related packages.
+base::library(tidyverse)
+
+#### Load Data ####
+# tt_data: ufo_sightings
+tt_data <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-06-20/ufo_sightings.csv')
+
+#### Clean Data ####
+clean_data <- clean(tt_data)
+
+#### Create Data Visual ####
+vis_data <- vis(clean_data)
+
+#### Style Data Visual ####
+sty_vis <- sty(vis_data)
+
+#### Save Plot ####
+ggsave(
+  "plot.png", 
+  width = 30, 
+  height = 20, 
+  units = "cm",
+  dpi = 150)
+
+```
+
+
+### Links
+
+[Week 25 Submission](https://github.com/rbolt13/tidytuesday/tree/main/2023/week_25) 
+
+[TidyTuesday Repository](https://github.com/rbolt13/tidytuesday).
+
+
+:::
+
+# Quick Notes
+
+* Statistical analysis requires time. As I venture into more technical territories 
+
+* Findings 
+
+* This week looks at shapes of sightings 
+
+* This visual could be considered somewhat problematic for the following reasons: (1) There is no statistical significance to the order in which this visual is arranged. 

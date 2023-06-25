@@ -206,4 +206,4 @@ ggsave(
 
 * When I use the showtext package to assign fonts to the text on my graphs and go to save them as a .png file, if I don't update the `dpi = value` (dots per inch) then I have huge spaces in between lines of text. I found that the larger the dpi value the more space there is between lines of text. 150 dpi seems to be a good dpi for this graph.
 
-* Troubleshooting problems with the tidytuesdayR package has seemed to be more time consuming than the original iterations of this project that just copyed and loaded the .csv link. I am still debating if using this package actually streamlines project iteration. 
+* I am still debating using the TidyTuesdayR package. It is nice to have the link to the .csv file avaialble in the code. 
