@@ -1,8 +1,8 @@
 ---
 title: "Week 25 Tidy Tuesday: UFO Sightings Redux"
-date: "2023-06-25"
+date: "2023-06-20"
 categories: ["#TidyTuesday", R, "Data Visuals"]
-draft: true
+draft: false
 ---
 
 Explore the mysterious realm of unidentified flying objects as I dive into my Week 25 [#TidyTuesday](https://github.com/rfordatascience/tidytuesday) submission. In this otherworldly data visual I uncover intriguing patterns about sightings lasting less than 5 minutes in Oregon, all classified according to their reported shapes.  
@@ -19,7 +19,7 @@ If this dataset looks familiar, that's because we [used a version of it back in 
 
 # Code 
 
-This week ...
+This weeks code retains its core components of cleaning, visualizing, and styling, while the index.R file handles data loading, file execution, and the generation of a data visualization. 
 
 ::: {.panel-tabset}
 
@@ -75,8 +75,8 @@ vis <- function(clean_df){
                  y = duration_minutes,
                  fill = shape,
                  color = shape)) +
-    geom_boxplot(outlier.shape = NA) +
-    geom_jitter(
+    ggplot2::geom_boxplot(outlier.shape = NA) +
+    ggplot2::geom_jitter(
       na.rm = TRUE, 
       color = "#d2ff46", 
       alpha = 0.7)
@@ -129,7 +129,11 @@ sty <- function(vis){
     ggplot2::scale_color_viridis_d() +
     ggplot2::scale_fill_viridis_d(alpha = 0.6) +
     # mean point
-    stat_summary(fun = mean, geom = "point", shape = 8, size = 4) +
+    ggplot2::stat_summary(
+      fun = mean, 
+      geom = "point", 
+      shape = 8, 
+      size = 4) +
     # theme
     ggplot2::theme(
       # labs 
@@ -218,10 +222,16 @@ ggsave(
 
 # Quick Notes
 
-* Statistical analysis requires time. As I venture into more technical territories 
+* I utilized `tidyr::replace_na()` in the cleaning function to replace missing values (NA) with the string 'not available'. 
 
-* Findings 
+* In the visualizing function, I opted to use `ggplot2::geom_jitter()` instead of `ggplot2::geom_point()` due to the nature of the data. Since the data points represent estimates of sighting durations, and they are mostly in minutes rather than specific seconds, using geom_point() would result in straight lines of dots across the box plots. Therefore, I decided to apply jittering using geom_jitter() to add some randomness to the point positions, which I deemed acceptable for visualizing the estimated sighting durations.
 
-* This week looks at shapes of sightings 
+* In the styling function, I utilized `ggplot2::scale_x_discrete(limits = axis_labs)` to define the order of the x-axis labels.  Note that if you misspell a word, the data will not appear on your graph. 
 
-* This visual could be considered somewhat problematic for the following reasons: (1) There is no statistical significance to the order in which this visual is arranged. 
+* As the styling function grows longer, I find myself considering the idea of splitting it up. One approach I might explore is separating the labels into their own distinct function. This way, I can assess whether this change significantly improves the readability of the styling function.
+
+* This visual raises some concerns, and I acknowledge the need to allocate more time for statistical analysis in the future. The following issues can be identified with this visual. 
+
+1. Lack of statistical significance in the arrangement of UFO shapes along the x-axis: The order was chosen based on aesthetic and readability considerations, rather than any statistical criteria.
+
+2. Absence of statistical analysis for outlier elimination: Since the data was limited to sightings lasting 5 minutes or less, no statistical analysis was conducted to identify and eliminate outliers.
