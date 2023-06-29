@@ -6,11 +6,11 @@ draft: false
 toc: true
 ---
 
-![Green snake in a dark room with a dark light on it. Image by [Austin Lowman](https://unsplash.com/@shutter_hunter).](img.avif)
+In this blog post, we will explore basic Python commands for managing virtual environments and installing packages. These commands will help you set up isolated environments for your Python projects, ensuring clean and organized development. 
+
+![](img2.webp)
 
 # Introduction 
-
-In this blog post, we will explore basic Python commands for managing virtual environments and installing packages. These commands will help you set up isolated environments for your Python projects, ensuring clean and organized development. 
 
 The information provided here is based on the YouTube video titled "[Python Tutorial: VENV (Mac & Linux) - How to Use Virtual Environments with the Built-In venv Module](https://www.youtube.com/watch?v=Kg1Yvry_Ydk)" by [Corey Schafer](http://coreyms.com/).
 
