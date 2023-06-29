@@ -1,0 +1,114 @@
+---
+title: "Basic Python Commands for Virtual Environments and Package Management"
+date: "2023-06-09"
+categories: ["Python"]
+draft: false
+toc: true
+---
+
+![Green snake in a dark room with a dark light on it. Image by [Austin Lowman](https://unsplash.com/@shutter_hunter).](img.avif)
+
+# Introduction 
+
+In this blog post, we will explore basic Python commands for managing virtual environments and installing packages. These commands will help you set up isolated environments for your Python projects, ensuring clean and organized development. 
+
+The information provided here is based on the YouTube video titled "[Python Tutorial: VENV (Mac & Linux) - How to Use Virtual Environments with the Built-In venv Module](https://www.youtube.com/watch?v=Kg1Yvry_Ydk)" by [Corey Schafer](http://coreyms.com/).
+
+Note: Remember not to commit the virtual environment (venv) and include it in the .gitignore file. However, do commit the requirements.txt file for package version control.
+
+Let's dive into the essential Python commands:
+
+# 1. Checking Installed Packages in the Global Environment
+
+To view the list of packages installed on your machine in the global environment, execute the following command in your terminal:
+
+```{r}
+#| eval: false
+pip3 list
+```
+
+
+# 2. Creating a Virtual Environment
+
+To create a virtual environment, use the following command:
+
+```{bash}
+#| eval: false
+python3 -m venv project_name
+```
+
+# 3. Creating a Virtual Environment in a Project Folder
+
+It's important to avoid placing your project files within the virtual environment. Instead, create the virtual environment in a project folder by executing the following command:
+
+```{bash}
+#| eval: false
+python3 -m venv project_folder/project_name
+```
+
+# 4. Activating the Virtual Environment
+
+To activate the virtual environment, run the appropriate command based on your operating system:
+
+```{bash}
+#| eval: false
+activate virtual enviroment
+```
+
+# 5. Checking the Python Version in the Virtual Environment
+
+To determine the Python version being used within the virtual environment, use the following command:
+
+```{bash}
+#| eval: false
+which python
+```
+
+# 6. Checking Installed Packages in the Virtual Environment
+
+To view the packages installed within the virtual environment, execute the following command:
+
+```{bash}
+#| eval: false
+pip list
+```
+
+# 7. Installing Packages in the Virtual Environment
+
+To install packages within the virtual environment, use the following command:
+
+```{bash}
+#| eval: false
+pip install package_name
+```
+
+# 8. Creating a File of Packages and Versions
+
+To create a file containing a list of installed packages and their versions, use the following command:
+
+```{bash}
+#| eval: false
+pip freeze > requirements.txt
+```
+
+# 9. Installing Packages from a Requirements File
+
+To install packages from a requirements file, execute the following command:
+
+```{bash}
+#| eval: false
+pip install -r requirements.txt
+```
+
+# 10. Deactivating the Virtual Environment
+
+To deactivate the virtual environment and return to the global environment, use the following command:
+
+```{bash}
+#| eval: false
+deactivate 
+```
+
+# Conclusion
+
+These basic Python commands provide a solid foundation for managing virtual environments and package installations. By utilizing virtual environments, you can isolate project dependencies and ensure consistent and reproducible development environments. Remember to create and commit a requirements.txt file for version control of your project's dependencies, while excluding the virtual environment itself from version control.
