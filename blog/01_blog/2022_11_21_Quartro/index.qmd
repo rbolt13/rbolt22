@@ -47,6 +47,8 @@ Here is a list of links I used to help create this Quarto blog. As well as links
 
 [Bea Milz](https://beamilz.com/): [Repo](https://github.com/beatrizmilz/blog-en)
 
+[Emy Tamika](https://emitanaka.org/)
+
 [Daniel Tran](https://www.ddanieltan.com/): [Repo](https://github.com/ddanieltan/ddanieltan.com)
 
 [Danielle Navarro - Notes from a data witch](https://blog.djnavarro.net/): [Repo](https://github.com/djnavarro/quarto-blog)

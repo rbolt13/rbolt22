@@ -22,15 +22,11 @@ from: markdown+emoji
 
 <br>
 
-I am a data analyst who uses data science and machine learning techniques to extrapolate insight from data. 
+I am a Digital Advertising Specialist at [Adpearance](https://adpearance.com/) who leverages data science and machine learning techniques to guide strategic decision-making and ad campaign optimization. 
 
-I am constantly exploring new topics, and ways to improve upon past and current work.
+I graduated magna cum laude from Portland State University in 2022, earning a Bachelor of Science in Mathematics. Before completing my degree, I gained valuable experience in diverse industries including construction, retail, administration, and accounting. 
 
-I graduated magna cum laude with a BS in Mathematics from Portland State University in 2022.
-
-I was born, raised, and am currently based out of Portland, Oregon.
-
-私は日本語を勉強しています。
+I have a relentless passion for exploring new topics and continuously improving upon my past and current work. Be sure to check out my [blog](http://localhost:4773/blog.html) and [github](https://github.com/rbolt13) to see what I'm working on!
 
 :::
 ::::
