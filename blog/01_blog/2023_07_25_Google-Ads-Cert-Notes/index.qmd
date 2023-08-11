@@ -1,0 +1,104 @@
+---
+title: "Google Ads Certification Notes"
+date: "2023-07-25"
+categories: ["Digital Advertising"]
+draft: true
+---
+
+Notes consist of ...
+
+# Introduction 
+
+Blah blah blah 
+
+# Keywords
+
+::: {.panel-tabset}
+
+### $\color{blue}\textbf{Broadmatch}$
+
+Show ad if keyword (or any variation like misspellings, synonyms, or related search) are included in a user's search terms. 
+
+### **Example**
+
+bike $\rightarrow$ bicycle 
+
+crane $\rightarrow$ lifting gear
+
+### **Benefits**
+
+* Less time building keyword lists.
+
+* Cast a wide net.
+
+* Discover terms you might not be aware of. 
+
+:::
+
+::: {.panel-tabset}
+
+### $\color{green}\textbf{Broadmath Modifiers +}$
+
+Show ad if keyword or close variations are apart of the search. 
+
+### **Example**
+
++bike, +girl, +bike $\rightarrow$ blue bicycle for 6 year old girls
+
++bike, +girl, +bike $\nrightarrow$ girl bike 
+
++john, +deere, +tractor $\rightarrow$ john deere tractor for home property
+
++john, +deere, +tractor $\nrightarrow$ home property tractor
+
+### **Benefits**
+
+*
+
+:::
+
+::: {.panel-tabset}
+
+### $\color{purple}\textbf{Phrase Match " "}$
+
+Shows ads if the keywords within the quotation marks or close varations of them match a user's search term. 
+
+### **Example**
+
+"My First Big Bike" $\rightarrow$ My First Big Bike
+
+"My First Big Bike" $\nrightarrow$ first big bike 
+
+### **Benefits**
+
+* No extra words can be added to phrase. 
+
+* More targeted than broad match. 
+
+* More flexible than exact match. 
+
+:::
+
+::: {.panel-tabset}
+
+### $\color{orange}\textbf{Exactmatch [ ]}$
+
+### **Example**
+
+
+
+### **Benefits**
+
+
+
+:::
+
+::: {.panel-tabset}
+
+### $\color{red}\textbf{Negative Keywords -}$
+
+### **Example**
+
+### **Benefits**
+
+:::
