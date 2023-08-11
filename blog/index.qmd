@@ -22,7 +22,7 @@ from: markdown+emoji
 
 <br>
 
-I am a Digital Advertising Specialist at [Adpearance](https://adpearance.com/) who leverages data science and machine learning techniques to guide strategic decision-making and ad campaign optimization. 
+I am a Digital Advertising Specialist at [Adpearance](https://adpearance.com/) who leverages data science techniques to guide strategic decision-making and ad campaign optimization. 
 
 I graduated magna cum laude from Portland State University in 2022, earning a Bachelor of Science in Mathematics. Before completing my degree, I gained valuable experience in diverse industries including construction, retail, administration, and accounting. 
 
