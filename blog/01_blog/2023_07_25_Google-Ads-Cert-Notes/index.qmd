@@ -1,31 +1,163 @@
 ---
 title: "Google Ads Certification Notes"
 date: "2023-07-25"
-categories: ["Digital Advertising"]
+categories: ["Digital Advertising", "Keywords"]
+toc: true
 draft: true
 ---
 
-Notes consist of ...
+These notes consist of ... campaign types, keywords, 
+
+![](img.jpeg)
 
 # Introduction 
 
 Blah blah blah 
 
+```{r keyword example table build}
+#| echo: false
+library(gt)
+keyword_ex <- data.frame(
+  keyword = c("children's bicycles",
+              "+children's +bicycles",
+              "'children's bicycles'",
+              "[children's bicycles]"),
+  search_1 = c("buy kids bicycles",
+               "children's toys and bicylces",
+               "safe children's bicycles",
+               "children's bicycles"),
+  search_2 = c("children's scooters",
+               "mountain bicycles for children",
+               "buy children's bicycles",
+               "kids bicycles"),
+  search_3 = c("",
+               "",
+               "children's bicycles for sale",
+               "bicycles for children")
+)
+keyword_ex_tb <- keyword_ex |> gt() |>
+  tab_style(
+    style = list(
+      cell_fill(color = "white"),
+      cell_text(color = "blue")
+      ),
+    locations = cells_body(rows = 1)
+  ) |>
+  tab_style(
+    style = list(
+      cell_fill(color = "white"),
+      cell_text(color = "darkgreen")
+      ),
+    locations = cells_body(rows = 2)
+  ) |>
+  tab_style(
+    style = list(
+      cell_fill(color = "white"),
+      cell_text(color = "purple")
+      ),
+    locations = cells_body(rows = 3)
+  ) |>
+  tab_style(
+    style = list(
+      cell_fill(color = "white"),
+      cell_text(color = "orange")
+      ),
+    locations = cells_body(rows = 4)
+  ) |>
+  cols_label(
+    keyword = "Keyword",
+    search_1 = "Search 1",
+    search_2 = "Search 2",
+    search_3 = "Search 3"
+  )
+```
+
+# Digital Advertising Funnel
+
+# Campaign Types
+
+## Types
+
+Search: Aka Google Search. 
+
+Display: Show ads on a website in display form such as a banner or image. 
+
+Video: Aka YouTube Ads. 
+
+Shopping:  
+
+App.: 
+
+Local (special)
+
+Hotel (special)
+
+Smart (special)
+
+# Heirarchy 
+
+Account > Campaings > Ad Groups > Ad 
+
+# Audiences
+
+**Affinity**: based on users passions and habits. 
+
+**In-Market**: based on users on the cusp of making a purchase. 
+
+**Custom Intent**: based on audiences who have demonstrated intent based on provided criteria. 
+
+**Re-marketing**: based on users who've previously interacted with company.
+
+**Similar**: based on characteristics of current customers. 
+
+**Custom Match**: upload customers email addresses. 
+
+**Youtube**: based on interactions with Youtube. 
+
+**Demographics**: based on general demographics. 
+
+**Detailed demographics**: based on more specific demographics. 
+
+**Location and Language**: based on location and / or language of user. 
+
 # Keywords
+
+## Definitions
+
+$\color{blue}\textbf{Broadmatch}$: Show ad if keyword (or any variation like misspellings, synonyms, or related search) are included in a user's search terms. 
+
+$\color{green}\textbf{Broadmath Modifiers +}$: Show ad if keyword or close variations are apart of the search. 
+
+$\color{purple}\textbf{Phrase Match " "}$: Shows ads if the keywords within the quotation marks or close variations of them match a user's search term. 
+
+$\color{orange}\textbf{Exactmatch [ ]}$: Shows ads only if search means the same thing as your keyword. 
+
+$\color{red}\textbf{Negative Keywords -}$: Ads wont show if someone includes that negative keyword in their search. 
+
+## Search Examples
+
+```{r keyword example table print}
+#| echo: false
+keyword_ex_tb
+```
+
+## Examples and Benefits
 
 ::: {.panel-tabset}
 
+### X 
+
+Click on each tab for examples and benefits. 
+
 ### $\color{blue}\textbf{Broadmatch}$
 
-Show ad if keyword (or any variation like misspellings, synonyms, or related search) are included in a user's search terms. 
+**Example**
 
-### **Example**
+* bike $\rightarrow$ bicycle 
 
-bike $\rightarrow$ bicycle 
+* crane $\rightarrow$ lifting gear
 
-crane $\rightarrow$ lifting gear
-
-### **Benefits**
+**Benefits**
 
 * Less time building keyword lists.
 
@@ -33,43 +165,38 @@ crane $\rightarrow$ lifting gear
 
 * Discover terms you might not be aware of. 
 
-:::
-
-::: {.panel-tabset}
-
 ### $\color{green}\textbf{Broadmath Modifiers +}$
 
-Show ad if keyword or close variations are apart of the search. 
+**Example**
 
-### **Example**
+* +bike, +girl, +bike $\rightarrow$ blue bicycle for 6 year old girls
 
-+bike, +girl, +bike $\rightarrow$ blue bicycle for 6 year old girls
+* +bike, +girl, +bike $\nrightarrow$ girl bike 
 
-+bike, +girl, +bike $\nrightarrow$ girl bike 
+* +john, +deere, +tractor $\rightarrow$ john deere tractor for home property
 
-+john, +deere, +tractor $\rightarrow$ john deere tractor for home property
+* +john, +deere, +tractor $\nrightarrow$ home property tractor
 
-+john, +deere, +tractor $\nrightarrow$ home property tractor
+**Benefits**
 
-### **Benefits**
+* Discover terms you not be aware of. 
 
-*
+* Indicate if certain concepts must be present. 
 
-:::
-
-::: {.panel-tabset}
 
 ### $\color{purple}\textbf{Phrase Match " "}$
 
-Shows ads if the keywords within the quotation marks or close varations of them match a user's search term. 
+**Example**
 
-### **Example**
+* "My First Big Bike" $\rightarrow$ My First Big Bike
 
-"My First Big Bike" $\rightarrow$ My First Big Bike
+* "My First Big Bike" $\nrightarrow$ first big bike 
 
-"My First Big Bike" $\nrightarrow$ first big bike 
+* "The Weekender" $\rightarrow$ The Weekender
 
-### **Benefits**
+* "The Weekender" $\nrightarrow$ The Bar And Grill Weekender
+
+**Benefits**
 
 * No extra words can be added to phrase. 
 
@@ -81,24 +208,38 @@ Shows ads if the keywords within the quotation marks or close varations of them 
 
 ::: {.panel-tabset}
 
+### X
+
+Click on each tab for examples and benefits. 
+
 ### $\color{orange}\textbf{Exactmatch [ ]}$
 
-### **Example**
+**Example**
 
+* [men's bicycles] $\rightarrow$ men's bicycles or men's bike
 
+* [men's bicycles] $\nrightarrow$ men's bikes for sale
 
-### **Benefits**
+* [compact utility tractor] $\rightarrow$ compact utility tractor
 
+* [compact utility tractor] $\nrightarrow$ compact utility tractor for lease 
 
+**Benefits**
 
-:::
-
-::: {.panel-tabset}
+* Match with very specific searches. 
 
 ### $\color{red}\textbf{Negative Keywords -}$
 
-### **Example**
+**Example**
 
-### **Benefits**
+* (-scooter) $\nrightarrow$ scooter
+
+* (-toy) $\nrightarrow$ toy
+
+**Benefits**
+
+* Match terms you know your customers will be using. 
 
 :::
+
+

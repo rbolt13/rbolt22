@@ -4,6 +4,7 @@ project:
 website:
   title: "Randi Bolt"
   favicon: img/rbolt.png
+  google-analytics: "G-GPSGHZ166H"
   page-footer: 
     left: "Made with [Quarto](https://quarto.org/) and deployed with [Netlify](https://www.netlify.com/)."
     center: 'Randi Bolt 2023'
@@ -32,6 +33,8 @@ format:
     theme: 
       light: [scss/light-theme.scss]
       dark: [scss/dark-theme.scss]
+    template-partials:
+      - metadata.html
 
 comments: 
   giscus:
