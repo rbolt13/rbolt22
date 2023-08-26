@@ -26,7 +26,7 @@ I am a Digital Advertising Specialist at [Adpearance](https://adpearance.com/) w
 
 I graduated magna cum laude from Portland State University in 2022, earning a Bachelor of Science in Mathematics. Before completing my degree, I gained valuable experience in diverse industries including construction, retail, administration, and accounting. 
 
-I have a relentless passion for exploring new topics and continuously improving upon my past and current work. Be sure to check out my [blog](http://localhost:4773/blog.html) and [github](https://github.com/rbolt13) to see what I'm working on!
+I have a relentless passion for exploring new topics and continuously improving upon my past and current work. Be sure to check out my [blog](http://localhost:4773/blog.html) and [github](https://github.com/rbolt13) to see what I'm working on!!
 
 :::
 ::::
