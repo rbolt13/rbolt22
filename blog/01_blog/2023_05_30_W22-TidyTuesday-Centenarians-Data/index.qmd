@@ -71,6 +71,9 @@ vis <- function(clean_df){
 #| code-fold: true
 #| code-summary: "Show Code"
 #| warning: false
+#### Install Packages
+install.packages("ggchicklet", repos = "https://cinc.rud.is")
+
 #### Load Packages ####
 base::library(ggplot2)
 base::library(ggchicklet)

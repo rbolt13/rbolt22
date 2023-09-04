@@ -1,5 +1,4 @@
 ---
-title: "Blog"
 listing:
   contents: 01_blog
   sort: "date desc"

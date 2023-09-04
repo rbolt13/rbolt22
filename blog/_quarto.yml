@@ -16,9 +16,6 @@ website:
       - href: projects.qmd
         text: Projects
         aria-label: Projects
-      - href: resume.qmd
-        text: Resume
-        aria-label: Resume
       - icon: github
         href: https://github.com/rbolt13
         aria-label: GitHub
@@ -30,9 +27,7 @@ website:
         aria-label: Linkedin
 format:
   html:
-    theme: 
-      light: [scss/light-theme.scss]
-      dark: [scss/dark-theme.scss]
+    theme: scss/light-theme.scss
     template-partials:
       - metadata.html
 

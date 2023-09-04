@@ -1,27 +1,23 @@
 /*-- scss:defaults --*/
 
 //color-scheme
-$honeydew:        #f1ffe7 !default;
-$champagne:       #feebe2 !default;
-$cherry-blossom:  #fbb4b9 !default;
-$eggplant:        #6c464e !default;
-$dark-purple:     #2c1320 !default;
-$steel-blue:      #4D7EA8 !default;
+$light:         #f8f9f6 !default;
+$dark:          #161B33 !default;
 
-$white:    #fff !default;
-$black:    #000 !default;
+$red:           #CC2936 !default;
+$blue:          #40ACBA !default;
 
 //banner color
-$primary: #6c464e !default;
+$primary: $red !default;
 
 //body color
-$body-bg: #feebe2 !default;
+$body-bg: $light !default;
 
 //body text color
-$body-color: #2c1320 !default;
+$body-color: $dark !default;
 
 //body text color
-$body-color: #000 !default;
+$body-color: $dark !default;
 
 //font
 $font-family-base:    'Source Sans Pro', 'Lato' !default;
@@ -32,9 +28,9 @@ $headings-font-family:    'Prata', 'Roboto' !default;
 /*-- scss:rules --*/
 //category box
 div.quarto-post .listing-categories .listing-category {
-    color: $champagne;
-    background-color: $eggplant;
-    border: solid 1px $dark-purple;
+    color: $dark;
+    background-color: $light;
+    border: solid 1px $dark;
     border-radius: 0.6rem;
     text-transform: none;
     font-size: .65em;
@@ -47,43 +43,75 @@ div.quarto-post .listing-categories .listing-category {
     margin-bottom: 4px;
 }
 
+//hyperlinks
+a {
+    color: $blue;
+    text-decoration: underline;
+}
+
 // about links
 div.quarto-about-jolla .about-link {
     font-size: .8em;
-    color: $dark-purple;
-    background-color: $champagne;
-    border: solid 1px $dark-purple;
+    color: $dark;
+    background-color: $light;
+    border: solid 1px $dark;
     border-radius: 0.6rem;
     padding: 0.25em 0.5em;
     border-radius: 4px;
 }
 
-//title color
+//blog title color
 .quarto-title-banner .quarto-title .title {
     font-weight: 600;
-    color: $champagne;
+    color: $dark;
 }
 
-//link
-a {
-    color: #4D7EA8;
-    text-decoration: underline;
+// blog title banner
+.quarto-title-banner {
+    margin-bottom: 1em;
+    background: $light;
+    color: $dark;
 }
 
 //line color between blog posts
 div.quarto-post {
-    border-bottom: 1px solid $dark-purple;
+    border-bottom: 1px solid $dark;
 }
 
 //category tags on blog
 .quarto-title .quarto-categories .quarto-category a {
-    color: $champagne;
-    background-color: $eggplant;
-    text-transform: none;
+    color: $dark;
+    background-color: $light;
     font-size: 1.2em;
+}
+
+//
+#title-block-header {
+    margin-block-end: -1rem;
+    position: relative;
+    margin-top: 0px;
 }
 
 //projects line seperating title from project
 h2, .h2 {
-    border-bottom: 1px solid $eggplant;
+    border-bottom: 1px solid $dark;
+}
+
+//
+.blockquote {
+    font-size: inherit;
+    padding-left: 1rem;
+    padding-right: 1.5rem;
+    color: $dark;
+    font-style: italic;
+}
+
+//
+code {
+    font-size: 0.875em;
+    color: $blue;
+    background-color: #eff0ee;
+    border-radius: 0.25rem;
+    padding: 0.125rem 0.25rem;
+    word-wrap: break-word;
 }
