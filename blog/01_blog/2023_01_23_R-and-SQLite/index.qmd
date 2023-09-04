@@ -38,6 +38,7 @@ library(magrittr)
 To create a SQL database, and run SQL queries in R chunks I will be using a package called [RSQLite](https://cran.r-project.org/web/packages/RSQLite/index.html). 
 
 ```{r SQLite package}
+# install.packages("RSQLite")
 library(RSQLite)
 ```
 
@@ -715,7 +716,7 @@ In R define the patients data then use,
 patients %>%
   dplyr::filter(base::grepl("^.{2}[b]", first_name),
          gender == "F",
-         weight > 50 && weight < 80,
+         weight > 50 & weight < 80,
          patient_id %%2==1,
          city == "Burlington")
 ```
