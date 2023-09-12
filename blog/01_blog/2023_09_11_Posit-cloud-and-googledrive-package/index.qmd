@@ -9,7 +9,7 @@ draft: true
 Streamline your workflow with [Posit Cloud](https://posit.cloud/) and the [googledrive](https://googledrive.tidyverse.org/index.html) package. Consider this a simple introduction to effortless data management and collaboration. 
 
 
-![](img.png)
+![](img/googledrive-hex.png)
 
 ## Introduction 
 
