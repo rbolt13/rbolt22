@@ -1,0 +1,128 @@
+---
+title: "Tidy Python"
+date: "2023-06-14"
+categories: ["#TidyTuesday", "Data Visuals"]
+draft: true
+toc: true
+---
+
+```{python}
+#### Load Packages ####
+import pandas as pd
+import matplotlib.pyplot as plt
+```
+
+
+```{python}
+#### Load Data ####
+url = 'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-02-21/bob_ross.csv'
+tt_data = pd.read_csv(url, header=0)
+```
+
+
+```{python}
+#### Cleaning Function ####
+def clean(df):
+  clean_df = df.groupby(['season'])['num_colors'].sum().reset_index(name ='total_num_colors')
+  return(clean_df)
+
+# test
+clean_data = clean(tt_data)
+clean_data.head()
+```
+
+```{python}
+#### Visual Function ####
+def vis(clean_df):
+  # create a new fig and a set of subplots within that fig
+  vis, ax = plt.subplots()
+  # plot stem (lollipop) on ax 
+  ax.stem(clean_data.season, 
+          clean_data.total_num_colors,
+          linefmt = 'k-',
+          basefmt = 'k-')
+  # Labels
+  ax.set_title('Colors Used Each Season')
+  ax.set_ylabel('Count')
+  ax.set_xlabel('Season')
+  return(vis)
+
+# test
+vis_clean = vis(clean_data)
+plt.show(vis_clean)
+```
+
+```{python}
+#### Style Function ####
+def sty(vis):
+  ax.set_title('TV Show Viewership by Season')
+  return(vis)
+
+# test
+sty_vis = sty(vis_clean)
+plt.show(sty_vis)
+```
+
+
+
+```{python}
+fig, ax = plt.subplots()
+ax.stem(clean_data.season, 
+        clean_data.total_num_colors, 
+          # line format: sets line to blue
+          linefmt='b-', 
+          # marker format: set to blue color and o style
+          markerfmt='bo', 
+          # base format: set base color to red and use solid line 
+          basefmt='r-'
+# get current figure, saves plot as variable
+plot_variable = plt.gcf()
+# save as .png
+# plt.savefig('lollipop_graph.png')
+# display plot
+plt.show()
+```
+
+
+```{python}
+import matplotlib.pyplot as plt
+
+# Sample data
+tv_season = ['Season 1', 'Season 2', 'Season 3', 'Season 4', 'Season 5']
+count = [10, 15, 12, 8, 20]
+
+# Adjusting figure size and spacing
+fig, ax = plt.subplots(figsize=(8, 6))
+fig.subplots_adjust(bottom=0.2, top=0.2)
+
+# Plotting the lollipop graph
+ax.stem(tv_season, count, linefmt='b-', markerfmt='bo', basefmt='r-')
+
+# Customizing the plot
+ax.set_xlabel('TV Season')
+ax.set_ylabel('Count')
+
+# Adding a title
+ax.set_title('TV Show Viewership by Season', loc='center', fontdict={'fontsize': 16, 'fontweight': 'bold'})
+
+# Adding a subtitle
+subtitle_text = 'Subtitle'
+subtitle_y = -0.15
+ax.text(0.5, subtitle_y, subtitle_text, transform=ax.transAxes, ha='center')
+
+# Adding a caption
+caption = 'Source: Your Data Source'
+ax.text(0.5, -0.2, caption, transform=ax.transAxes, ha='center')
+
+# Rotating x-axis labels for better visibility
+plt.xticks(rotation=45)
+
+# Displaying the graph
+plt.show()
+
+```
+
+
+
+
+

@@ -1,23 +1,21 @@
 ---
-title: "Google Ads Certification Notes"
-date: "2023-07-25"
+title: "Introduction to Keywords"
+date: "2023-09-04"
 categories: ["Digital Advertising", "Keywords"]
 toc: true
 draft: true
 ---
 
-These notes consist of ... campaign types, keywords, 
-
-![](img.jpeg)
-
-# Introduction 
-
-Blah blah blah 
+These notes are based on google ads and my own reasearch. This is just an introduction post. Mostly notes. 
 
 ```{r keyword example table build}
 #| echo: false
 library(gt)
 keyword_ex <- data.frame(
+  type = c("Broadmatch",
+           "Broadmath Modifiers +",
+           "Phrase Match",
+           "Exactmatch [ ]"),
   keyword = c("children's bicycles",
               "+children's +bicycles",
               "'children's bicycles'",
@@ -65,6 +63,7 @@ keyword_ex_tb <- keyword_ex |> gt() |>
     locations = cells_body(rows = 4)
   ) |>
   cols_label(
+    type = "Keyword Type",
     keyword = "Keyword",
     search_1 = "Search 1",
     search_2 = "Search 2",
@@ -72,53 +71,6 @@ keyword_ex_tb <- keyword_ex |> gt() |>
   )
 ```
 
-# Digital Advertising Funnel
-
-# Campaign Types
-
-## Types
-
-Search: Aka Google Search. 
-
-Display: Show ads on a website in display form such as a banner or image. 
-
-Video: Aka YouTube Ads. 
-
-Shopping:  
-
-App.: 
-
-Local (special)
-
-Hotel (special)
-
-Smart (special)
-
-# Heirarchy 
-
-Account > Campaigns > Ad Groups > Ad 
-
-# Audiences
-
-**Affinity**: based on users passions and habits. 
-
-**In-Market**: based on users on the cusp of making a purchase. 
-
-**Custom Intent**: based on audiences who have demonstrated intent based on provided criteria. 
-
-**Re-marketing**: based on users who've previously interacted with company.
-
-**Similar**: based on characteristics of current customers. 
-
-**Custom Match**: upload customers email addresses. 
-
-**Youtube**: based on interactions with Youtube. 
-
-**Demographics**: based on general demographics. 
-
-**Detailed demographics**: based on more specific demographics. 
-
-**Location and Language**: based on location and / or language of user. 
 
 # Keywords
 
@@ -241,5 +193,4 @@ Click on each tab for examples and benefits.
 * Match terms you know your customers will be using. 
 
 :::
-
 
