@@ -10,21 +10,21 @@ website:
     center: 'Randi Bolt 2023'
   navbar:
     right:
-      - href: blog.qmd
-        text: Blog
-        aria-label: Blog
-      - href: projects.qmd
-        text: Projects
-        aria-label: Projects
-      - icon: github
-        href: https://github.com/rbolt13
-        aria-label: GitHub
-      - icon: mastodon
-        href: https://pnw.zone/@rbolt
-        aria-label: Mastodon
-      - icon: linkedin
-        href: https://www.linkedin.com/in/randi-bolt/
-        aria-label: Linkedin
+          - href: blog.qmd
+            text: Blog
+            aria-label: Blog
+          - href: projects.qmd
+            text: Projects
+            aria-label: Projects
+          - icon: github
+            href: https://github.com/rbolt13
+            aria-label: GitHub
+          - icon: mastodon
+            href: https://pnw.zone/@rbolt
+            aria-label: Mastodon
+          - icon: linkedin
+            href: https://www.linkedin.com/in/randi-bolt/
+            aria-label: Linkedin
 format:
   html:
     theme: scss/light-theme.scss
