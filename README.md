@@ -1,7 +1,5 @@
 # rbolt22 
-This is my personal [blog](https://www.rbolt.me/) made with [Quarto](https://quarto.org/), [Github](https://github.com/), and [Netlify](https://www.netlify.com/). 
-
-#### -- Project Status: [Under Construction]
+This is my personal [blog](https://2023-rboltme.netlify.app/) made with [Quarto](https://quarto.org/), [Github](https://github.com/), and [Netlify](https://www.netlify.com/). 
 
 # Technologies 
 
